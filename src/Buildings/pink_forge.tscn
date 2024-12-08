@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5s6xt7yfpbox"]
+
+[ext_resource type="PackedScene" uid="uid://ckvwcg42h8hk5" path="res://Buildings/pinkforge.glb" id="1_keebb"]
+
+[node name="PinkForge" instance=ExtResource("1_keebb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.92511, 8.11575)
