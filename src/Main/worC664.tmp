@@ -49,58 +49,6 @@ offset_right = 3412.0
 offset_bottom = 2283.0
 color = Color(1, 0.0392157, 0.145098, 0.231373)
 
-[node name="RegenRect" type="ColorRect" parent="UI"]
-visible = false
-layout_mode = 0
-offset_right = 3412.0
-offset_bottom = 2283.0
-color = Color(0.17139, 0.642574, 0.231583, 0.231373)
-
-[node name="Version" type="TextEdit" parent="UI"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 1.0
-offset_right = 98.0
-offset_bottom = 38.0
-text = "Pre-Alpha
-"
-
-[node name="HealthBar" type="TextEdit" parent="UI"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 611.0
-offset_right = 101.0
-offset_bottom = 646.0
-text = "Health: 6/6"
-
-[node name="Regen" type="Timer" parent="UI"]
-wait_time = 5.0
-
-[node name="Debug Menu" type="TextEdit" parent="UI"]
-layout_mode = 0
-offset_left = 398.0
-offset_top = -1.0
-offset_right = 655.0
-offset_bottom = 182.0
-text = "Debug Menu:
-1. Restart Scene
-2. Max Health 
-3. Min Health
-4. Regen Health
-5. Lost 1 HP (Disabled)"
-
-[node name="Heal" type="Timer" parent="UI"]
-wait_time = 2.0
-
-[node name="ConsoleLog" type="TextEdit" parent="UI"]
-layout_mode = 0
-offset_left = 1579.0
-offset_top = -1.0
-offset_right = 1901.0
-offset_bottom = 610.0
-text = "Log:
-"
-
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
@@ -161,8 +109,5 @@ transform = Transform3D(-0.310527, -0.882936, -0.352131, 0, -0.370444, 0.928855,
 [node name="Spawn12" type="Node3D" parent="Map/Spawns"]
 transform = Transform3D(-0.351139, -0.869708, -0.346855, -7.08226e-09, -0.370444, 0.928855, -0.936323, 0.326157, 0.130077, 7.58606, 0, 62.3506)
 
-[connection signal="timeout" from="UI/Regen" to="." method="_on_regen_timeout"]
-[connection signal="timeout" from="UI/Regen" to="Map/Player" method="_on_regen_timeout"]
-[connection signal="timeout" from="UI/Heal" to="." method="_on_heal_timeout"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="player_hit" from="Map/Player" to="." method="_on_player_player_hit"]

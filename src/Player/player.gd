@@ -1,6 +1,11 @@
 extends CharacterBody3D
 
 var speed 
+@export var health = 6
+const MAX_HEALTH = 6
+const MIN_HEALTH = 1
+var beenHit = false
+const HEAL_VALUE = 1
 
 # constands
 const WALK_SPEED = 5.0 # How fast the player moves
@@ -29,6 +34,7 @@ var bullet_instance
 @onready var gun_anim = $Pivot/Camera3D/Pistol_3/AnimationPlayer
 @onready var gun_barrel = $Pivot/Camera3D/Pistol_3/RayCast3D
 @onready var bullet_spawn = $Pivot/BulletSpawn
+@onready var healthbar = $"../../UI/HealthBar"
 
 # signals
 signal player_hit
@@ -36,6 +42,7 @@ signal player_hit
 # Disables mouse on game start 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	healthbar.text = "Health: 6/6"
 
 # Handles mouse camera movement
 func _unhandled_input(event): 
@@ -115,6 +122,11 @@ func _headbob(time) -> Vector3:
 func hit(dir):
 	emit_signal("player_hit")
 	velocity += dir * HIT_STAGGER # Limit this somehow
+	health -= HEAL_VALUE
+	healthbar.text = "Health: " + str(health) + "/6"
+	if health <= 0:
+		# Game Restarts
+		get_tree().reload_current_scene() 
 
 func shoot():
 	if !gun_anim.is_playing():
@@ -124,3 +136,11 @@ func shoot():
 			get_parent().add_child(bullet_instance)			
 			bullet_instance.position = gun_barrel.global_position
 			bullet_instance.transform.basis = gun_barrel.global_transform.basis
+
+func _set_health(value):
+	health = value
+	healthbar.text = "Health: " + str(health) + "/6"
+
+func heal():
+	health += HEAL_VALUE
+	healthbar.text = "Health: " + str(health) + "/" + str(MAX_HEALTH)
