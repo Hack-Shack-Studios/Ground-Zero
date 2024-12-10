@@ -19,10 +19,6 @@ config/icon="res://Icons/icon.svg"
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
-[filesystem]
-
-import/blender/enabled=false
-
 [input]
 
 jump={
