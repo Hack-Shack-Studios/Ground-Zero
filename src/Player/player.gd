@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var speed 
-@export var health = 6
+@export var health : int = 6
 const MAX_HEALTH = 6
 const MIN_HEALTH = 1
 var beenHit = false
@@ -37,6 +37,7 @@ var bullet_instance
 @onready var healthbar = $"../../UI/HealthBar"
 
 # signals
+@warning_ignore("unused_signal")
 signal player_hit
 
 # Disables mouse on game start 
@@ -83,7 +84,6 @@ func _physics_process(delta: float) -> void:
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	# Adding inertia, preventing players from being able to stop movement mid-air
-	# TODO: Move this into own function, but declare velocity varibles above
 	if is_on_floor():
 		# Whatever direction they are going, the velocity increases that way
 		if direction:
@@ -144,3 +144,9 @@ func _set_health(value):
 func heal():
 	health += HEAL_VALUE
 	healthbar.text = "Health: " + str(health) + "/" + str(MAX_HEALTH)
+	
+func _get_health() -> int:
+	return health
+	
+	
+	
