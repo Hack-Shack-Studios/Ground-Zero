@@ -34,7 +34,7 @@ var bullet_instance
 @onready var gun_anim = $Pivot/Camera3D/Pistol_3/AnimationPlayer
 @onready var gun_barrel = $Pivot/Camera3D/Pistol_3/RayCast3D
 @onready var bullet_spawn = $Pivot/BulletSpawn
-@onready var healthbar = $"../../UI/HealthBar"
+@onready var healthbar = $"../../UI/OldHealthBar"
 
 # signals
 @warning_ignore("unused_signal")
@@ -42,7 +42,6 @@ signal player_hit
 
 # Disables mouse on game start 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	healthbar.text = "Health: 6/6"
 
 # Handles mouse camera movement
@@ -50,7 +49,7 @@ func _unhandled_input(event):
 	# Condition is true whenever the mouse moves 
 	# The camera moves more or less based on how 
 	# quickly the mouse is moving, multiplied by the sense
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && Input.get_mouse_mode() == 4:
 		
 		# Rotation is flipped, up and down is based on 
 		# the x-axis, and left and right is based on the 

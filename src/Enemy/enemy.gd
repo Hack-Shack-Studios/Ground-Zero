@@ -77,6 +77,7 @@ func _process(delta: float) -> void:
 			await get_tree().create_timer(EXPLODE_DELAY_SECS).timeout
 			queue_free()
 			emit_signal("enemy_died")
+			forge.hit()
 
 
 	
@@ -102,7 +103,7 @@ func _process(delta: float) -> void:
 func _in_forge_range():
 	#print("Forge distance: ", global_position.distance_to(forge.global_position))
 	return global_position.distance_to(forge.global_position) <= FORGE_EXPLODE_RANGE
-	
+
 func _in_player_range():
 	#print("Player distance: ", global_position.distance_to(player.global_position))
 	return global_position.distance_to(player.global_position) <= ATTACK_RANGE
