@@ -1,8 +1,9 @@
 extends Control
 
+@onready var main = $"../../"
 
 func _on_resume_pressed() -> void:
-	pass # Replace with function body.
+	main.paused_menu()
 
 
 func _on_main_menu_pressed() -> void:
