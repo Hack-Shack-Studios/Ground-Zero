@@ -20,4 +20,8 @@ func hit() -> void:
 	emit_signal("forge_hit")
 	if health <= 0:
 		# Game Restarts
+		for node in get_parent().get_children():
+			if(node is CharacterBody3D):
+				print("I deleted something!")
+				node.queue_free()
 		get_tree().reload_current_scene() 

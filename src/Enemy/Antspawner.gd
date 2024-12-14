@@ -14,4 +14,5 @@ func _on_spawn_timer_timeout() -> void:
 	
 	#Add a node3d derived from WorldNode3D and pass all enemy instances into it.
 	get_parent().get_node("EnemyGroups").add_child(enemy)
+	print(get_parent().get_node("EnemyGroups").get_path())
 	
