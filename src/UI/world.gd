@@ -42,7 +42,7 @@ var spawn_delay : int = 3.5
 # Called when the node enters the scene tree for the first time.
 # FIXME: You Win / You Lose text
 func _ready() -> void:
-	Input.set_mouse_mode(4)
+	Input.set_mouse_mode(2)
 	get_viewport().size = DisplayServer.screen_get_size()
 	result_text.visible = false
 	randomize()
@@ -146,7 +146,7 @@ func _set_forge_bar() -> void:
 
 func paused_menu() -> void:
 	if paused:
-		Input.set_mouse_mode(4)
+		Input.set_mouse_mode(2)
 		pause_menu.hide()
 		Engine.time_scale = 1
 	else:

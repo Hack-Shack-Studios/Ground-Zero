@@ -49,7 +49,7 @@ func _unhandled_input(event):
 	# Condition is true whenever the mouse moves 
 	# The camera moves more or less based on how 
 	# quickly the mouse is moving, multiplied by the sense
-	if event is InputEventMouseMotion && Input.get_mouse_mode() == 4:
+	if event is InputEventMouseMotion && Input.get_mouse_mode() == 2:
 		
 		# Rotation is flipped, up and down is based on 
 		# the x-axis, and left and right is based on the 
