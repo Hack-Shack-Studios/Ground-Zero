@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfa6nffv7pvih"]
+[gd_scene load_steps=13 format=3 uid="uid://cfa6nffv7pvih"]
 
 [ext_resource type="PackedScene" uid="uid://cma5r78iv0s35" path="res://Weapons/Pistol_3.fbx" id="1_1lmul"]
 
@@ -98,6 +98,9 @@ orientation = 0
 transparency = 1
 albedo_texture = SubResource("Texture2DRD_4pntc")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_yrcek"]
+size = Vector3(0.904907, 0.13, 0.5)
+
 [node name="Pistol" instance=ExtResource("1_1lmul")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
 
@@ -122,3 +125,11 @@ transform = Transform3D(-5, 0, -7.54979e-07, 0, 5, 0, 7.54979e-07, 0, -5, 0.6125
 visible = false
 mesh = SubResource("PlaneMesh_d4ojb")
 surface_material_override/0 = SubResource("StandardMaterial3D_4lbty")
+
+[node name="Area3D" type="Area3D" parent="." index="4"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 8.35189e-23, 0, 8.35188e-23, 1, 0.137024, -2.35162e-09, 0.0537989)
+shape = SubResource("BoxShape3D_yrcek")
