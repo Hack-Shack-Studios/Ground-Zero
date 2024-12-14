@@ -1,7 +1,7 @@
 extends Node3D
 
 const SPEED = 40.0
-
+var test = 5
 @onready var mesh = $MeshInstance3D
 @onready var ray = $RayCast3D
 @onready var particles = $GPUParticles3D
@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 		mesh.visible = false
 		particles.emitting = true
 		ray.enabled = false
-		if ray.get_collider().is_in_group("enemy"): # if the bullet hits an enemy
+		if ray.get_collider().is_in_sgroup("enemy"): # if the bullet hits an enemy
 			ray.get_collider().hit()
 		
 		await get_tree().create_timer(1.0).timeout
