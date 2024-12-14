@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4ia7qyxbvug"]
+
+[ext_resource type="Script" path="res://Enemy/Antspawner.gd" id="1_20coh"]
+
+[node name="Spawner" type="Node3D"]
+script = ExtResource("1_20coh")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bklke6nfj1a0q"]
+[gd_scene load_steps=11 format=3 uid="uid://bklke6nfj1a0q"]
+
+[ext_resource type="Script" path="res://Buildings/forge.gd" id="1_ageue"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8m3j"]
 albedo_color = Color(0.0588235, 0.101961, 0.227451, 1)
@@ -30,6 +32,7 @@ points = PackedVector3Array(-0.5, -1, 0, -0.497651, -1, -0.0490407, -0.497651, -
 [node name="Forge" type="StaticBody3D"]
 collision_layer = 3
 collision_mask = 3
+script = ExtResource("1_ageue")
 
 [node name="Buidling" type="Node3D" parent="."]
 

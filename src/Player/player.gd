@@ -1,6 +1,11 @@
 extends CharacterBody3D
 
 var speed 
+@export var health : int = 6
+const MAX_HEALTH = 6
+const MIN_HEALTH = 1
+var beenHit = false
+const HEAL_VALUE = 1
 
 # constands
 const WALK_SPEED = 5.0 # How fast the player moves
@@ -29,20 +34,22 @@ var bullet_instance
 @onready var gun_anim = $Pivot/Camera3D/Pistol_3/AnimationPlayer
 @onready var gun_barrel = $Pivot/Camera3D/Pistol_3/gun_barrel
 @onready var aimcast = $Pivot/Camera3D/AimCast
+@onready var healthbar = $"../../UI/OldHealthBar"
 
 # signals
+@warning_ignore("unused_signal")
 signal player_hit
 
 # Disables mouse on game start 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	healthbar.text = "Health: 6/6"
 
 # Handles mouse camera movement
 func _unhandled_input(event): 
 	# Condition is true whenever the mouse moves 
 	# The camera moves more or less based on how 
 	# quickly the mouse is moving, multiplied by the sense
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && Input.get_mouse_mode() == 4:
 		
 		# Rotation is flipped, up and down is based on 
 		# the x-axis, and left and right is based on the 
@@ -76,7 +83,6 @@ func _physics_process(delta: float) -> void:
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	# Adding inertia, preventing players from being able to stop movement mid-air
-	# TODO: Move this into own function, but declare velocity varibles above
 	if is_on_floor():
 		# Whatever direction they are going, the velocity increases that way
 		if direction:
@@ -115,6 +121,11 @@ func _headbob(time) -> Vector3:
 func hit(dir):
 	emit_signal("player_hit")
 	velocity += dir * HIT_STAGGER # Limit this somehow
+	health -= HEAL_VALUE
+	healthbar.text = "Health: " + str(health) + "/6"
+	if health <= 0:
+		# Game Restarts
+		get_tree().reload_current_scene() 
 
 func shoot():
 	if !gun_anim.is_playing():
@@ -130,5 +141,19 @@ func shoot():
 	#var result = space_state.intersect_ray()
 	
 
+	
+	
+
+func _set_health(value):
+	health = value
+	healthbar.text = "Health: " + str(health) + "/6"
+
+func heal():
+	health += HEAL_VALUE
+	healthbar.text = "Health: " + str(health) + "/" + str(MAX_HEALTH)
+	
+func _get_health() -> int:
+	return health
+	
 	
 	
