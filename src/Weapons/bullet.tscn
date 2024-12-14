@@ -26,6 +26,7 @@ initial_velocity_max = 5.0
 size = Vector3(0.04, 0.04, 0.04)
 
 [node name="Bullet" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.516948)
 script = ExtResource("1_hart0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -33,6 +34,7 @@ mesh = SubResource("BoxMesh_27lnx")
 surface_material_override/0 = SubResource("StandardMaterial3D_bwrc1")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.144689)
 target_position = Vector3(0, 0, -0.6)
 collision_mask = 2
 collide_with_areas = true

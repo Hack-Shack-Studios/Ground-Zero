@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var hit_rect = $UI/ColorRect
+@onready var UI = $UI
 @onready var spawns = $Map/Spawns
 @onready var navigation_region = $Map/NavigationRegion3D
 
@@ -9,6 +10,8 @@ var instance
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	hit_rect.size = get_viewport().size
 	randomize()
 
 

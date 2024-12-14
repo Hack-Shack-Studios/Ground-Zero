@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2xr28r77qiug"]
+[gd_scene load_steps=11 format=3 uid="uid://b2xr28r77qiug"]
 
 [ext_resource type="Script" path="res://Main/world.gd" id="1_06f6a"]
 [ext_resource type="PackedScene" uid="uid://orvopfwdvrfy" path="res://Player/player.tscn" id="2_wo2ma"]
 [ext_resource type="PackedScene" uid="uid://bklke6nfj1a0q" path="res://Buildings/forge.tscn" id="3_aj2uf"]
 [ext_resource type="PackedScene" uid="uid://dhaeynqrn8bx5" path="res://Buildings/simple_fortress.tscn" id="4_ygca6"]
+[ext_resource type="PackedScene" uid="uid://b5pxkpv2qnha5" path="res://Map/skybox.tscn" id="5_1xixi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ejsy0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -29,25 +30,27 @@ albedo_color = Color(0.145098, 0.556863, 0.262745, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162144, -0.0722611, 0.146532)
 script = ExtResource("1_06f6a")
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+visible = false
+layout_mode = 0
+color = Color(1, 0.0392157, 0.145098, 0.231373)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nm1w5")
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="UI"]
-visible = false
-layout_mode = 0
-offset_right = 1310.0
-offset_bottom = 803.0
-color = Color(1, 0.0392157, 0.145098, 0.231373)
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -108,6 +111,8 @@ transform = Transform3D(-0.310527, -0.882936, -0.352131, 0, -0.370444, 0.928855,
 
 [node name="Spawn12" type="Node3D" parent="Map/Spawns"]
 transform = Transform3D(-0.351139, -0.869708, -0.346855, -7.08226e-09, -0.370444, 0.928855, -0.936323, 0.326157, 0.130077, 7.58606, 0, 62.3506)
+
+[node name="Skybox" parent="." instance=ExtResource("5_1xixi")]
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="player_hit" from="Map/Player" to="." method="_on_player_player_hit"]

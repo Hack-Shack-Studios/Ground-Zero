@@ -19,7 +19,7 @@ const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
 # Bullets
-var bullet = load("res://Weapons/bullet.tscn")
+var bullet = preload("res://Weapons/bullet.tscn")
 var bullet_instance
 
 # The @onready lets us easily control and edit these variables without 
@@ -27,8 +27,8 @@ var bullet_instance
 @onready var head = $Pivot
 @onready var camera = $Pivot/Camera3D
 @onready var gun_anim = $Pivot/Camera3D/Pistol_3/AnimationPlayer
-@onready var gun_barrel = $Pivot/Camera3D/Pistol_3/RayCast3D
-@onready var bullet_spawn = $Pivot/BulletSpawn
+@onready var gun_barrel = $Pivot/Camera3D/Pistol_3/gun_barrel
+@onready var aimcast = $Pivot/Camera3D/AimCast
 
 # signals
 signal player_hit
@@ -118,9 +118,17 @@ func hit(dir):
 
 func shoot():
 	if !gun_anim.is_playing():
-			gun_anim.play("shoot")
-			bullet_instance = bullet.instantiate()
-			
-			get_parent().add_child(bullet_instance)			
-			bullet_instance.position = gun_barrel.global_position
-			bullet_instance.transform.basis = gun_barrel.global_transform.basis
+		gun_anim.play("shoot")
+		if aimcast.is_colliding():
+			var b = bullet.instantiate()
+			gun_barrel.add_child(b)
+			b.look_at(aimcast.get_collision_point(), Vector3.UP)
+	#var space_state = camera.get_world_3d().direct_space_state
+	#var screen_center = get_viewport().size / 2
+	#var origin = camera.project_ray_origin(screen_center)
+	#var end = origin + camera.project_ray_normal(screen_center) * 1000
+	#var result = space_state.intersect_ray()
+	
+
+	
+	
