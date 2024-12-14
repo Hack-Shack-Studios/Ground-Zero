@@ -134,6 +134,7 @@ func shoot():
 			var b = bullet.instantiate()
 			gun_barrel.add_child(b)
 			b.look_at(aimcast.get_collision_point(), Vector3.UP)
+			
 	#var space_state = camera.get_world_3d().direct_space_state
 	#var screen_center = get_viewport().size / 2
 	#var origin = camera.project_ray_origin(screen_center)
