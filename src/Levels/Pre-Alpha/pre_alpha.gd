@@ -33,7 +33,7 @@ var MAX_WAVES : int = 5
 var waves_remaining := MAX_WAVES
 var wave_count : Array[int] = [25, 20, 15, 10, 5]
 var total_enemies : int 
-var spawn_delay : int = 3.5
+var spawn_delay : float = 3.5
 @onready var wave_timer_text = $UI/CanvasLayer/WaveCountControl/WaveTimerText
 @onready var spawn_timer = $EnemySpawnTimer
 @export var enemies = []
@@ -42,7 +42,7 @@ var spawn_delay : int = 3.5
 # Called when the node enters the scene tree for the first time.
 # FIXME: You Win / You Lose text
 func _ready() -> void:
-	Input.set_mouse_mode(2)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_viewport().size = DisplayServer.screen_get_size()
 	result_text.visible = false
 	randomize()
@@ -146,11 +146,11 @@ func _set_forge_bar() -> void:
 
 func paused_menu() -> void:
 	if paused:
-		Input.set_mouse_mode(2)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		pause_menu.hide()
 		Engine.time_scale = 1
 	else:
-		Input.set_mouse_mode(3)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 		pause_menu.show()
 		Engine.time_scale = 0
 	paused = !paused
