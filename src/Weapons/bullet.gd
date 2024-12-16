@@ -1,7 +1,6 @@
 extends Node3D
 
 const SPEED = 40.0
-
 @onready var mesh = $MeshInstance3D
 @onready var ray = $RayCast3D
 @onready var particles = $GPUParticles3D
@@ -17,10 +16,12 @@ func _process(delta: float) -> void:
 	if ray.is_colliding(): # If bullet hits something, emit particles and then delete itself
 		mesh.visible = false
 		particles.emitting = true
-		ray.enabled = false
-		if ray.get_collider().is_in_group("enemy"): # if the bullet hits an enemy
-			ray.get_collider().hit()
-		
+		if ray.get_collider() != null:
+			if ray.get_collider().is_in_group("enemy"): # if the bullet hits an enemy
+				ray.get_collider().hit()
+		else:
+			print("true")
+		ray.enabled = false #This disables ALL COLLISIONS, meaning .get_collider() will guaranteed return null.
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 

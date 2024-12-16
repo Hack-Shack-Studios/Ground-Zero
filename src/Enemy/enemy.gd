@@ -34,7 +34,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	# Sets the enemies velocity to zero every frame
 	velocity = Vector3.ZERO
 	
@@ -96,17 +95,26 @@ func _process(delta: float) -> void:
 	else:
 		# print("shooting...")
 		anim_tree.set("parameters/conditions/Shoot", true)
-		# If niether are true, make the robot walk         
-			
-	move_and_slide()
+		# If niether are true, make the robot walk  
+	
+	if is_inside_tree():   
+		move_and_slide()
+	else:
+		pass
 
 func _in_forge_range():
 	#print("Forge distance: ", global_position.distance_to(forge.global_position))
-	return global_position.distance_to(forge.global_position) <= FORGE_EXPLODE_RANGE
+	if is_inside_tree():
+		return global_position.distance_to(forge.global_position) <= FORGE_EXPLODE_RANGE
+	else:
+		return false
 
 func _in_player_range():
 	#print("Player distance: ", global_position.distance_to(player.global_position))
-	return global_position.distance_to(player.global_position) <= ATTACK_RANGE
+	if is_inside_tree():
+		return global_position.distance_to(player.global_position) <= ATTACK_RANGE
+	else:
+		return false
 
 func _hit_finished():
 	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1.0:
