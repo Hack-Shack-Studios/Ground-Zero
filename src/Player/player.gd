@@ -1,34 +1,35 @@
+class_name Player
 extends CharacterBody3D
 
-var speed 
-@export var health : int = 6
-const MAX_HEALTH = 6
-const MIN_HEALTH = 1
-var beenHit = false
-const HEAL_VALUE = 1
+## Handles the Playable Character 
+##
+## This script handles all things reguarding the player, this includes health, 
+## shooting, movement, fov, and more. It will most like be tweaked once we 
+## begin to add other players into the game, but the main concept will stay the same
 
-# constands
+signal player_hit
+
+const MIN_HEALTH: int = 1
 const WALK_SPEED = 5.0 # How fast the player moves
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5 # How fast the player jumps
 const SENSITIVITY = 0.01 # Mouse camera movement sense 
 const HIT_STAGGER = 8.0
-
-# head bob variables 
 const BOB_FREQ = 2.0 # How often the steps occur
 const BOB_AMP = 0.08 # How high and low the steps go
-var t_bob = 0.0
-
-# fov variables 
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
-# Bullets
+@export var health : int = 6
+
+var speed: float
+var beenHit := false
+var heal_value: int = 1
+var max_health: int = 6
+var t_bob := 0.0 # head bobbing
 var bullet = preload("res://Weapons/Coil Pistol/coil_bullet.tscn")
 var bullet_instance
 
-# The @onready lets us easily control and edit these variables without 
-# having to directly go into the code everytime
 @onready var head = $Pivot
 @onready var camera = $Pivot/Camera3D
 @onready var gun_anim = $Pivot/Camera3D/Pistol_3/AnimationPlayer
@@ -36,21 +37,17 @@ var bullet_instance
 @onready var aimcast = $Pivot/Camera3D/AimCast
 @onready var healthbar = $"../../UI/OldHealthBar"
 
-# signals
-@warning_ignore("unused_signal")
-signal player_hit
 
-# Disables mouse on game start 
 func _ready():
 	healthbar.text = "Health: 6/6"
 
-# Handles mouse camera movement
+
+## Handles mouse camera movement
 func _unhandled_input(event): 
-	# Condition is true whenever the mouse moves 
-	# The camera moves more or less based on how 
-	# quickly the mouse is moving, multiplied by the sense
+	## Condition is true whenever the mouse moves 
+	## The camera moves more or less based on how 
+	## quickly the mouse is moving, multiplied by the sense
 	if event is InputEventMouseMotion && Input.get_mouse_mode() == 2:
-		
 		# Rotation is flipped, up and down is based on 
 		# the x-axis, and left and right is based on the 
 		# y axis, its kinda confusing but there are resources 
@@ -59,10 +56,10 @@ func _unhandled_input(event):
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		
 		# Max rotation allowed
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60)) 
+
 
 func _physics_process(delta: float) -> void:
-	
 	# When the game detects the player is not 
 	# touching the ground, it sets the velocity downwards
 	if not is_on_floor():
@@ -104,7 +101,6 @@ func _physics_process(delta: float) -> void:
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
-	# Shooting 
 	# NOTE: MAKE SEPERATE FUNCTIONS FOR DIFFERNET GUNS
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
@@ -112,20 +108,23 @@ func _physics_process(delta: float) -> void:
 	# Handles smooth colisions 
 	move_and_slide()
 
+
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
 
+
 func hit(dir):
 	emit_signal("player_hit")
 	velocity += dir * HIT_STAGGER # Limit this somehow
-	health -= HEAL_VALUE
+	health -= heal_value
 	healthbar.text = "Health: " + str(health) + "/6"
 	if health <= 0:
 		# Game Restarts
 		get_tree().reload_current_scene() 
+
 
 func shoot():
 	if !gun_anim.is_playing():
@@ -134,27 +133,17 @@ func shoot():
 			var b = bullet.instantiate()
 			gun_barrel.add_child(b)
 			b.look_at(aimcast.get_collision_point(), Vector3.UP)
-			
-	#var space_state = camera.get_world_3d().direct_space_state
-	#var screen_center = get_viewport().size / 2
-	#var origin = camera.project_ray_origin(screen_center)
-	#var end = origin + camera.project_ray_normal(screen_center) * 1000
-	#var result = space_state.intersect_ray()
-	
 
-	
-	
 
-func _set_health(value):
+func _set_health(value) -> void:
 	health = value
 	healthbar.text = "Health: " + str(health) + "/6"
 
-func heal():
-	health += HEAL_VALUE
-	healthbar.text = "Health: " + str(health) + "/" + str(MAX_HEALTH)
-	
+
+func heal() -> void:
+	health += heal_value
+	healthbar.text = "Health: " + str(health) + "/" + str(max_health)
+
+
 func _get_health() -> int:
 	return health
-	
-	
-	

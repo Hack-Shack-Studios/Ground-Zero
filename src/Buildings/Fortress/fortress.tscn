@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhaeynqrn8bx5"]
 
-[ext_resource type="PackedScene" uid="uid://cjmrhmpn8t2q4" path="res://Buildings/Wall.tscn" id="1_uw0ku"]
+[ext_resource type="PackedScene" uid="uid://cjmrhmpn8t2q4" path="res://Buildings/Fortress/wall.tscn" id="1_uw0ku"]
 
 [node name="Simple Fortress" type="Node3D"]
 

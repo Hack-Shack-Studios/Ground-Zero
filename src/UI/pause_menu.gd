@@ -1,6 +1,12 @@
+class_name Pause_Menu
 extends Control
 
+## Pause Menu During Game
+##
+## Manages the pause menu that can occur during the game
+
 @onready var main = $"../../"
+
 
 func _on_resume_pressed() -> void:
 	main.paused_menu()

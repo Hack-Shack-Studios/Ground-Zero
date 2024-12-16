@@ -1,19 +1,19 @@
+class_name BodyPart
 extends Area3D
 
-@export var damage := 1
+## Handles Collision with Medusa Bot's Body Parts
+##
+## Every body part of the Medusa bot contains this script. The only difference in the 
+## code is for the Head BoneAttachment3D, making damage 2, instead of 1
 
-@warning_ignore("unused_signal")
-signal body_part_hit(dam)
+## If the current body part is hit, the enemy will take @damage amount of damage
+signal body_part_hit(damage)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+## The amount of damage this body part takes
+@export var damage: int = 1
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
+## If this body part is hit, it emits a signal telling the entire enemy to take 
+## @damage amount of damage
 func hit():
-	print("hit")
 	emit_signal("body_part_hit", damage)

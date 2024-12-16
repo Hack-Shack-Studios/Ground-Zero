@@ -1,27 +1,27 @@
+class_name Forge
 extends StaticBody3D
 
-var health = 30
+## Handles Forge components 
+##
+## The Forge is a machine that must be protected by the players, and is targeted by 
+## the AI. The forge will handle a variety of things in this script, mainly the forge's
+## health and upgrades
+
 signal forge_hit
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var minimum_health: int = 0
+var damage_amount: int = 1
+var health: int = 30
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-	
+## Gets the current health of the forge
 func _get_health() -> int:
 	return health
 
+## Occurs whenever enemy attacks the forge, reducing the health by 1
+## If the forge's health every reaches 0, the scene restarts
 func hit() -> void:
-	health -= 1
 	emit_signal("forge_hit")
-	if health <= 0:
-		# Game Restarts
-		for node in get_parent().get_children():
-			if(node is CharacterBody3D):
-				print("I deleted something!")
-				node.queue_free()
+	health -= damage_amount
+	
+	if health <= minimum_health:
 		get_tree().reload_current_scene() 

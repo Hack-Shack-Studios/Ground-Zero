@@ -1,5 +1,9 @@
+class_name OptionsMenu
 extends Control
 
+## Handles the Options of the Menu 
+##
+## Handles the Volume, About Us Page, and Back button, they all explain themselves
 
 
 func _on_volume_pressed() -> void:
