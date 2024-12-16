@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu1f0386nf08b"]
-
-[ext_resource type="PackedScene" uid="uid://ckvwcg42h8hk5" path="res://Buildings/pinkforge.glb" id="1_dkhvs"]
-
-[node name="Forge" instance=ExtResource("1_dkhvs")]

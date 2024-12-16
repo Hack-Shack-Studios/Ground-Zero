@@ -24,7 +24,7 @@ const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
 # Bullets
-var bullet = preload("res://Weapons/bullet.tscn")
+var bullet = preload("res://Weapons/Coil Pistol/coil_bullet.tscn")
 var bullet_instance
 
 # The @onready lets us easily control and edit these variables without 

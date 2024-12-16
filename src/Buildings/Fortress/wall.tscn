@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjmrhmpn8t2q4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8aub2"]
+albedo_color = Color(0.333333, 0.368627, 0.388235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6oba4"]
+material = SubResource("StandardMaterial3D_8aub2")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bkh72"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41e80"]
+albedo_color = Color(0.792157, 0, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_dkwe2"]
+material = SubResource("StandardMaterial3D_41e80")
+
+[node name="Wall" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(36.2048, 0, 0, 0, 11.9564, 0, 0, 0, 1.99273, 0, 6, 0)
+mesh = SubResource("BoxMesh_6oba4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(36.2048, 0, 0, 0, 11.9564, 0, 0, 0, 1.99273, 0, 6, 0)
+shape = SubResource("ConvexPolygonShape3D_bkh72")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.965926, -0.127851, -0.100105, 0, -0.0773552, 2.4699, -0.258819, -0.477148, -0.373597, -16.3855, 5.77619, -1.28705)
+mesh = SubResource("TorusMesh_dkwe2")

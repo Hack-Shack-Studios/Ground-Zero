@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2xr28r77qiug"]
+[gd_scene load_steps=13 format=3 uid="uid://c1vint114dxqw"]
 
-[ext_resource type="Script" path="res://UI/world.gd" id="1_06f6a"]
 [ext_resource type="PackedScene" uid="uid://daxcj2wau0q4c" path="res://UI/pause_menu.tscn" id="2_a4bss"]
 [ext_resource type="PackedScene" uid="uid://orvopfwdvrfy" path="res://Player/player.tscn" id="2_wo2ma"]
-[ext_resource type="PackedScene" uid="uid://bklke6nfj1a0q" path="res://Buildings/forge.tscn" id="3_aj2uf"]
-[ext_resource type="PackedScene" uid="uid://b5pxkpv2qnha5" path="res://Map/skybox.tscn" id="3_f37f7"]
-[ext_resource type="PackedScene" uid="uid://dhaeynqrn8bx5" path="res://Buildings/simple_fortress.tscn" id="4_ygca6"]
+[ext_resource type="PackedScene" uid="uid://bklke6nfj1a0q" path="res://Buildings/Forge/forge.tscn" id="3_aj2uf"]
+[ext_resource type="PackedScene" uid="uid://b5pxkpv2qnha5" path="res://Other/Scenes/skybox.tscn" id="3_f37f7"]
+[ext_resource type="PackedScene" uid="uid://dhaeynqrn8bx5" path="res://Buildings/Fortress/fortress.tscn" id="5_pbw2e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ejsy0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -35,7 +34,6 @@ albedo_color = Color(0.145098, 0.556863, 0.262745, 1)
 
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162144, -0.0722611, 0.146532)
-script = ExtResource("1_06f6a")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -234,8 +232,6 @@ navigation_mesh = SubResource("NavigationMesh_paohd")
 
 [node name="Forge" parent="Map/NavigationRegion3D" instance=ExtResource("3_aj2uf")]
 
-[node name="Simple Fortress" parent="Map/NavigationRegion3D" instance=ExtResource("4_ygca6")]
-
 [node name="Floor" type="CSGBox3D" parent="Map/NavigationRegion3D"]
 transform = Transform3D(1.40979, 0, 0, 0, 1, 0, 0, 0, 1.34003, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_aabde")
@@ -279,6 +275,8 @@ transform = Transform3D(-0.310527, -0.882936, -0.352131, 0, -0.370444, 0.928855,
 
 [node name="Spawn12" type="Node3D" parent="Map/Spawns"]
 transform = Transform3D(-0.351139, -0.869708, -0.346855, -7.08226e-09, -0.370444, 0.928855, -0.936323, 0.326157, 0.130077, 7.58606, 0, 62.3506)
+
+[node name="Simple Fortress" parent="Map" instance=ExtResource("5_pbw2e")]
 
 [connection signal="timeout" from="UI/Regen" to="." method="_on_regen_timeout"]
 [connection signal="timeout" from="UI/Regen" to="Map/Player" method="_on_regen_timeout"]
