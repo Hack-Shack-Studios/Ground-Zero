@@ -106,7 +106,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Shooting 
 	# NOTE: MAKE SEPERATE FUNCTIONS FOR DIFFERNET GUNS
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot"):
 		shoot()
 
 	# Handles smooth colisions 
