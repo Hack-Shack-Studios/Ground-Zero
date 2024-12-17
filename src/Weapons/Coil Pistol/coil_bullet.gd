@@ -31,6 +31,6 @@ func _process(delta: float) -> void:
 		queue_free()
 
 
-# If bullet hits nothing, will delete itself after 10 seconds
+## If bullet hits nothing, will delete itself after 10 seconds
 func _on_timer_timeout() -> void: 
 	queue_free()

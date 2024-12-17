@@ -73,7 +73,6 @@ func _process(delta: float) -> void:
 		"hurt": # When in range of the forge
 			await get_tree().create_timer(EXPLODE_DELAY_SECS).timeout
 			queue_free()
-			emit_signal("enemy_died")
 			forge.hit()
 
 	## Check if enemy is in range of the forge
