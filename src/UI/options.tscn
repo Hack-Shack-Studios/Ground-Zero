@@ -110,6 +110,9 @@ offset_top = 190.0
 offset_right = 543.0
 offset_bottom = 317.0
 theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
+min_value = -50.0
+max_value = 10.0
+step = 0.5
 
 [node name="Resolutions" type="OptionButton" parent="."]
 layout_mode = 2

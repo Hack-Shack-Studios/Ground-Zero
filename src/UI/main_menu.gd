@@ -1,4 +1,3 @@
-class_name MainMenu
 extends Control
 
 ## Main Menu
