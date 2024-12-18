@@ -77,44 +77,25 @@ offset_top = 164.0
 offset_right = 196.0
 offset_bottom = 204.0
 
-[node name="Left Text" type="RichTextLabel" parent="Text"]
-layout_mode = 2
-offset_right = 296.0
-offset_bottom = 626.0
+[node name="Text2" type="RichTextLabel" parent="Text"]
+offset_left = 130.0
+offset_top = 4.0
+offset_right = 885.0
+offset_bottom = 794.0
 theme_override_colors/default_color = Color(0.847059, 0.368627, 0.72549, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 20
 theme_override_font_sizes/normal_font_size = 32
-text = "Developed  By:
-• Edgar Quinones
-• Marcelo Roth
-
-
-Programming:
-• Ben Interlichia 
-• Antonio Morales 
-
-
-Modeling & Art
-• Duane Huynh
-• Kershan Young "
-
-[node name="Right Text" type="RichTextLabel" parent="Text"]
-layout_mode = 2
-offset_left = 457.0
-offset_right = 847.0
-offset_bottom = 626.0
-theme_override_colors/default_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 32
-text = "Audio & Music
-• Buder Bajalia
-
-
-Finances & Marketing 
-• Emily Delaere 
-
-
-DevOps:
-• Daniel Hiromoto"
+text = "Lead Developer: Edgar Quinones
+Creative Director: March Roth
+3D Modelling Artist: Duane Huynh
+Digital Artist: Kershan Young
+Concept Artists: Duane Huynh, Kershan Young
+Lead Programmer: Edgar Quinones
+Programmers: Ben Interlichia, Antonio Morales
+Lead Writer: March Roth
+Lead Composer: Bud Bajalia
+Marketing Lead: Emily Delaere
+DevOps Engineer: Daniel Hiromoto "
 
 [connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
