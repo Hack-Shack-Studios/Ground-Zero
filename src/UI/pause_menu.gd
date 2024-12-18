@@ -22,3 +22,15 @@ func _on_main_menu_pressed() -> void:
 func _on_quit_pressed() -> void:
 	ButtonNoise.play()
 	get_tree().quit()
+
+
+func _on_resume_mouse_entered() -> void:
+	ButtonHover.play()
+
+
+func _on_main_menu_mouse_entered() -> void:
+	ButtonHover.play()
+
+
+func _on_quit_mouse_entered() -> void:
+	ButtonHover.play()

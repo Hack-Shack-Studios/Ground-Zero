@@ -13,12 +13,7 @@ config_version=5
 config/name="Ground Zero: Pre-Alpha"
 run/main_scene="res://UI/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://Icons/icon.svg"
-
-[autoload]
-
-MainMenuMusic="*res://Music/Main Menu/main_menu_music.tscn"
-ButtonNoise="*res://Music/Main Menu/button_select.tscn"
+config/icon="res://Icons/icon.png"
 
 [display]
 

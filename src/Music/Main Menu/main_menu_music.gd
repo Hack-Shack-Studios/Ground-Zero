@@ -7,7 +7,6 @@ extends AudioStreamPlayer
 
 const LEVEL_MUSIC = preload("res://Music/Main Menu/menu_music.wav")
 
-
 func _play_music(music: AudioStream, volume = 0.0):
 	if stream == music:
 		return 

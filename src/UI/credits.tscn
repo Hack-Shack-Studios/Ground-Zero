@@ -115,6 +115,6 @@ Finances & Marketing
 
 
 DevOps:
-• Daniel"
+• Daniel Hiromoto"
 
 [connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

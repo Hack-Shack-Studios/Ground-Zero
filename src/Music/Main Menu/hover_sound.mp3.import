@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://coa7xnjsjxj3u"
+path="res://.godot/imported/hover_sound.mp3-c3eed8c1468ba90c9d7ca8e0d339eb45.mp3str"
+
+[deps]
+
+source_file="res://Music/Main Menu/hover_sound.mp3"
+dest_files=["res://.godot/imported/hover_sound.mp3-c3eed8c1468ba90c9d7ca8e0d339eb45.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -6,6 +6,10 @@ extends Control
 ## Buttons speak for themselves
 
 @onready var main_menu_music = "res://Music/main_menu_music.tscn"
+@onready var volume_slider = $Volume
+
+func _ready() -> void:
+	volume_slider.value = MainMenuMusic.volume_db
 
 func _on_back_pressed() -> void:
 	ButtonNoise.play()
@@ -13,6 +17,8 @@ func _on_back_pressed() -> void:
 
 func _on_volume_value_changed(value: float) -> void:
 	MainMenuMusic.volume_db = value
+	ButtonHover.volume_db = value
+	ButtonNoise.volume_db = value 
 
 
 func _on_resolutions_item_selected(index: int) -> void:
@@ -24,3 +30,7 @@ func _on_resolutions_item_selected(index: int) -> void:
 		2:
 			DisplayServer.window_set_size(Vector2i(1280,720))
 	ButtonNoise.play()
+
+
+func _on_back_mouse_entered() -> void:
+	ButtonHover.play()

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cys7au6i4uf5u"]
+
+[ext_resource type="AudioStream" uid="uid://c2lfbkmli563y" path="res://Music/Main Menu/button_select.mp3" id="1_108ou"]
+[ext_resource type="Script" path="res://Music/Main Menu/main_menu_music.gd" id="2_tnnl7"]
+
+[node name="ButtonNoise" type="AudioStreamPlayer"]
+stream = ExtResource("1_108ou")
+script = ExtResource("2_tnnl7")

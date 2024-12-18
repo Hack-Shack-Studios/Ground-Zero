@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmli1p363m5lu"]
 
-[ext_resource type="AudioStream" uid="uid://c2lfbkmli563y" path="res://Music/Main Menu/button_select.mp3" id="1_alath"]
+[ext_resource type="AudioStream" uid="uid://coa7xnjsjxj3u" path="res://Music/Main Menu/hover_sound.mp3" id="1_4h5ew"]
 [ext_resource type="Script" path="res://Music/Main Menu/main_menu_music.gd" id="1_s3sxr"]
 
-[node name="ButtonNoise" type="AudioStreamPlayer"]
-stream = ExtResource("1_alath")
+[node name="ButtonHover" type="AudioStreamPlayer"]
+stream = ExtResource("1_4h5ew")
 script = ExtResource("1_s3sxr")

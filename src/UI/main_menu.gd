@@ -21,3 +21,19 @@ func _on_credits_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 	ButtonNoise.play()
+
+
+func _on_start_mouse_entered() -> void:
+	ButtonHover.play()
+
+
+func _on_options_mouse_entered() -> void:
+	ButtonHover.play()
+
+
+func _on_credits_mouse_entered() -> void:
+	ButtonHover.play()
+
+
+func _on_quit_mouse_entered() -> void:
+	ButtonHover.play()

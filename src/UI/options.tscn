@@ -88,7 +88,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_fonts/font = SubResource("SystemFont_k3w06")
 theme_override_font_sizes/font_size = 64
-text = "Music: "
+text = "Volume: "
 
 [node name="Resolutions Tag" type="Label" parent="."]
 layout_mode = 1
@@ -105,9 +105,9 @@ text = "Resolution: "
 
 [node name="Volume" type="HSlider" parent="."]
 layout_mode = 0
-offset_left = 159.0
+offset_left = 206.0
 offset_top = 190.0
-offset_right = 507.0
+offset_right = 554.0
 offset_bottom = 317.0
 theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
 min_value = -50.0
@@ -143,6 +143,7 @@ popup/item_1/id = 1
 popup/item_2/text = "1280x720"
 popup/item_2/id = 2
 
+[connection signal="mouse_entered" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_mouse_entered"]
 [connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="Volume" to="." method="_on_volume_value_changed"]
 [connection signal="item_selected" from="Resolutions" to="." method="_on_resolutions_item_selected"]
