@@ -29,7 +29,6 @@ var time: int
 @onready var regen_timer = $UI/Regen
 @onready var regen_rect = $UI/RegenRect
 @onready var wave_text = $UI/CanvasLayer/WaveCountControl/WaveInfo
-@onready var healthBar = $UI/CanvasLayer/HealthBarControl/HealthBar
 @onready var forge_health_bar = $UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar
 @onready var wave_timer_text = $UI/CanvasLayer/WaveCountControl/WaveTimerText
 @onready var spawn_timer = $EnemySpawnTimer
@@ -48,8 +47,6 @@ func _ready() -> void: ## TODO: You Win / You Lose text
 	randomize()
 	player = get_node(player_path)
 	forge = get_node(forge_path)
-	playerHealth = player._get_health()
-	_set_health_bar()
 	_set_forge_bar()
 	_on_enemy_spawn_timer_timeout()
 	
@@ -57,25 +54,24 @@ func _ready() -> void: ## TODO: You Win / You Lose text
 func _process(_delta: float) -> void:
 	time = spawn_timer.time_left
 	_set_forge_bar()
-	_set_health_bar()
 	wave_timer_text.text = str(time) + " seconds until next wave"
 
 	if Input.is_action_just_pressed("pause"):
 		paused_menu()
 	
 	## Debug Menu
-	if Input.is_action_just_released("debug_1"): # Restart Scene
-		get_tree().reload_current_scene() 
-	if Input.is_action_just_released("debug_2"): # Player Max Health
-		player._set_health(player.MAX_HEALTH)
-		_set_health_bar()
-	if Input.is_action_just_released("debug_3"): # Player Min Health
-		player._set_health(player.MIN_HEALTH)
-		_set_health_bar()
-	if Input.is_action_just_released("debug_4"): # Regen Health
-		_on_regen_timeout()
-	if Input.is_action_just_released("debug_5"): # Regen Health
-		forge.hit()
+	#if Input.is_action_just_released("debug_1"): # Restart Scene
+		#get_tree().reload_current_scene() 
+	#if Input.is_action_just_released("debug_2"): # Player Max Health
+		#player._set_health(player.MAX_HEALTH)
+		#_set_health_bar()
+	#if Input.is_action_just_released("debug_3"): # Player Min Health
+		#player._set_health(player.MIN_HEALTH)
+		#_set_health_bar()
+	#if Input.is_action_just_released("debug_4"): # Regen Health
+		#_on_regen_timeout()
+	#if Input.is_action_just_released("debug_5"): # Regen Health
+		#forge.hit()
 
 
 ## Spawns an enemy at one of the random spawnpoints 
@@ -100,35 +96,6 @@ func _on_enemy_spawn_timer_timeout() -> void:
 			
 	else:
 		get_tree().reload_current_scene() 	
-
-
-## If the player is hit by an enemy, their screen goes red. TODO: Move to Player class
-func _on_player_player_hit() -> void:
-	can_regen = false
-	hit_rect.visible = true
-	_set_health_bar()
-	await get_tree().create_timer(0.2).timeout
-	hit_rect.visible = false
-	regen_timer.start()
-
-## Regens player health after delay. TODO: Move to Player class
-func _on_regen_timeout() -> void:
-	can_regen = true
-	_heal_player()
-
-## Handles the healing of the player. TODO: Move to Player class
-func _heal_player() -> void:
-	playerHealth = player._get_health()
-	if (playerHealth < 6 and can_regen):
-		log_text.text += "\nPlayer Health: " + str(playerHealth) + "\ncan_regen = "+str(can_regen)
-		player.heal()
-		_set_health_bar()
-		await (get_tree().create_timer(1.0).timeout)
-		_heal_player()
-
-## Updates the player's healthbar on hit/regen. TODO: Move to Player class
-func _set_health_bar() -> void:
-	healthBar.value = player._get_health()
 
 
 ## Updates the forge's health bar on hit

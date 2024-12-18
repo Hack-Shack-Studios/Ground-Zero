@@ -29,19 +29,22 @@ var max_health: int = 6
 var t_bob := 0.0 # head bobbing
 var bullet = preload("res://Weapons/Coil Pistol/coil_bullet.tscn")
 var bullet_instance
+var can_regen := false
 
 @onready var head = $Pivot
 @onready var camera = $Pivot/Camera3D
 @onready var gun_anim = $Pivot/Camera3D/Pistol_3/AnimationPlayer
 @onready var gun_barrel = $Pivot/Camera3D/Pistol_3/gun_barrel
 @onready var aimcast = $Pivot/Camera3D/AimCast
-@onready var healthbar = $"../../UI/OldHealthBar"
+@onready var health_bar = $HUD/PlayerHealthBar
+@onready var hit_rect = $HUD/ColorRect
+@onready var regen_timer = $HUD/Regen
 
 
-func _ready():
-	healthbar.text = "Health: 6/6"
-
-
+func _ready() -> void:
+	health_bar.value = max_health
+	
+	
 ## Handles mouse camera movement
 func _unhandled_input(event): 
 	## Condition is true whenever the mouse moves 
@@ -120,7 +123,7 @@ func hit(dir):
 	emit_signal("player_hit")
 	velocity += dir * HIT_STAGGER # Limit this somehow
 	health -= heal_value
-	healthbar.text = "Health: " + str(health) + "/6"
+	update_health()
 	if health <= 0:
 		# Game Restarts
 		get_tree().reload_current_scene() 
@@ -135,15 +138,31 @@ func shoot():
 			b.look_at(aimcast.get_collision_point(), Vector3.UP)
 
 
-func _set_health(value) -> void:
-	health = value
-	healthbar.text = "Health: " + str(health) + "/6"
-
-
 func heal() -> void:
 	health += heal_value
-	healthbar.text = "Health: " + str(health) + "/" + str(max_health)
+	update_health()
 
 
-func _get_health() -> int:
-	return health
+func update_health():
+	health_bar.value = health
+
+
+## Regens player health after delay.
+func _on_regen_timeout() -> void:
+	can_regen = true
+	heal_player()
+
+## Handles the healing of the player. 
+func heal_player() -> void:
+	if (health < 6 and can_regen):
+		heal()
+		await (get_tree().create_timer(1.0).timeout)
+		heal_player()
+
+## If the player is hit by an enemy, their screen goes red.
+func _on_player_hit() -> void:
+	can_regen = false
+	hit_rect.visible = true
+	await get_tree().create_timer(0.2).timeout
+	hit_rect.visible = false
+	regen_timer.start()
