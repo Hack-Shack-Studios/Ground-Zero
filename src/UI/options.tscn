@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhcqw7qbxpvtv"]
+[gd_scene load_steps=8 format=3 uid="uid://dhcqw7qbxpvtv"]
 
 [ext_resource type="Script" path="res://UI/options.gd" id="1_6i6o4"]
 [ext_resource type="Texture2D" uid="uid://byxogsybw301e" path="res://Other/Images/forge.png" id="2_8prsk"]
+[ext_resource type="Script" path="res://UI/volume_slider.gd" id="3_4gdbj"]
 
 [sub_resource type="SystemFont" id="SystemFont_4wqm4"]
 font_names = PackedStringArray("Agency FB")
@@ -77,7 +78,7 @@ theme_override_fonts/font = SubResource("SystemFont_k3w06")
 theme_override_font_sizes/font_size = 128
 text = "Options"
 
-[node name="Volume Tag" type="Label" parent="."]
+[node name="Master Tag" type="Label" parent="."]
 layout_mode = 1
 offset_left = 16.0
 offset_top = 204.0
@@ -88,14 +89,26 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_fonts/font = SubResource("SystemFont_k3w06")
 theme_override_font_sizes/font_size = 64
-text = "Volume: "
+text = "Master:"
+
+[node name="Master" type="HSlider" parent="Master Tag"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = -14.0
+offset_right = 538.0
+offset_bottom = 113.0
+theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_4gdbj")
+bus_name = "Master"
 
 [node name="Resolutions Tag" type="Label" parent="."]
 layout_mode = 1
 offset_left = 16.0
-offset_top = 275.0
+offset_top = 504.0
 offset_right = 319.0
-offset_bottom = 427.0
+offset_bottom = 656.0
 theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
@@ -103,23 +116,12 @@ theme_override_fonts/font = SubResource("SystemFont_k3w06")
 theme_override_font_sizes/font_size = 64
 text = "Resolution: "
 
-[node name="Volume" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 206.0
-offset_top = 190.0
-offset_right = 554.0
-offset_bottom = 317.0
-theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
-min_value = -50.0
-max_value = 10.0
-step = 0.5
-
-[node name="Resolutions" type="OptionButton" parent="."]
+[node name="Resolutions" type="OptionButton" parent="Resolutions Tag"]
 layout_mode = 2
-offset_left = 247.0
-offset_top = 302.0
-offset_right = 654.0
-offset_bottom = 344.0
+offset_left = 231.0
+offset_top = 27.0
+offset_right = 638.0
+offset_bottom = 74.0
 theme_override_colors/font_disabled_color = Color(0.847059, 0.368627, 0.72549, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.847059, 0.368627, 0.72549, 1)
 theme_override_colors/font_hover_color = Color(0.847059, 0.368627, 0.72549, 1)
@@ -143,7 +145,80 @@ popup/item_1/id = 1
 popup/item_2/text = "1280x720"
 popup/item_2/id = 2
 
+[node name="Music Tag" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 304.0
+offset_right = 319.0
+offset_bottom = 456.0
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = SubResource("SystemFont_k3w06")
+theme_override_font_sizes/font_size = 64
+text = "Music:"
+
+[node name="Music" type="HSlider" parent="Music Tag"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = -14.0
+offset_right = 538.0
+offset_bottom = 113.0
+theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_4gdbj")
+bus_name = "Music"
+
+[node name="Sounds Tags" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 404.0
+offset_right = 319.0
+offset_bottom = 556.0
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = SubResource("SystemFont_k3w06")
+theme_override_font_sizes/font_size = 64
+text = "Sounds: "
+
+[node name="Full Screen" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 604.0
+offset_right = 319.0
+offset_bottom = 756.0
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = SubResource("SystemFont_k3w06")
+theme_override_font_sizes/font_size = 64
+text = "Fullscreen:"
+
+[node name="CheckButton" type="CheckButton" parent="Full Screen"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 37.0
+offset_right = 280.0
+offset_bottom = 61.0
+
+[node name="SFX" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 390.0
+offset_right = 554.0
+offset_bottom = 517.0
+theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_4gdbj")
+bus_name = "sfx"
+
 [connection signal="mouse_entered" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_mouse_entered"]
 [connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
-[connection signal="value_changed" from="Volume" to="." method="_on_volume_value_changed"]
-[connection signal="item_selected" from="Resolutions" to="." method="_on_resolutions_item_selected"]
+[connection signal="value_changed" from="Master Tag/Master" to="." method="_on_volume_value_changed"]
+[connection signal="item_selected" from="Resolutions Tag/Resolutions" to="." method="_on_resolutions_item_selected"]
+[connection signal="value_changed" from="Music Tag/Music" to="." method="_on_volume_value_changed"]
+[connection signal="toggled" from="Full Screen/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="SFX" to="." method="_on_volume_value_changed"]

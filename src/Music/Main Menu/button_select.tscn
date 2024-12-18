@@ -5,4 +5,5 @@
 
 [node name="ButtonHover" type="AudioStreamPlayer"]
 stream = ExtResource("1_4h5ew")
+bus = &"sfx"
 script = ExtResource("1_s3sxr")

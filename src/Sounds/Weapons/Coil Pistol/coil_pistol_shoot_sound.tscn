@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b82e284wg7nn7"]
+
+[ext_resource type="AudioStream" uid="uid://du5b61avc5blw" path="res://Sounds/Weapons/Coil Pistol/Gun Shoot.mp3" id="1_is7sy"]
+
+[node name="Coil_Pistol_Shooting_Sound" type="AudioStreamPlayer"]
+stream = ExtResource("1_is7sy")
+bus = &"sfx"

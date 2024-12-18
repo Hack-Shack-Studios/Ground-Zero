@@ -129,9 +129,11 @@ func hit(dir):
 		get_tree().reload_current_scene() 
 
 
+## TODO: Be able to manage multiple guns
 func shoot():
 	if !gun_anim.is_playing():
 		gun_anim.play("shoot")
+		#CoilPistolShootSound.play()
 		if aimcast.is_colliding():
 			var b = bullet.instantiate()
 			gun_barrel.add_child(b)

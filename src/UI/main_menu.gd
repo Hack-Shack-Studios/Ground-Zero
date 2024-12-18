@@ -5,8 +5,8 @@ extends Control
 ## Handles Play, Options, Credits, and Quit buttons. The buttons explain themselves.
 
 
-func _ready() -> void:
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+#func _ready() -> void:
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 
 func _on_start_pressed() -> void:

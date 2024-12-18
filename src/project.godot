@@ -20,6 +20,7 @@ config/icon="res://Icons/icon.png"
 ButtonHover="*res://Music/Main Menu/button_hover.tscn"
 ButtonNoise="*res://Music/Main Menu/button_select.tscn"
 MainMenuMusic="*res://Music/Main Menu/main_menu_music.tscn"
+CoilPistolShootSound="*res://Sounds/Weapons/Coil Pistol/coil_pistol_shoot_sound.tscn"
 
 [display]
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://du5b61avc5blw"
+path="res://.godot/imported/Gun Shoot.mp3-181bf006c182b733d7811f8c004cfe17.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Weapons/Coil Pistol/Gun Shoot.mp3"
+dest_files=["res://.godot/imported/Gun Shoot.mp3-181bf006c182b733d7811f8c004cfe17.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

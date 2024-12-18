@@ -11,9 +11,9 @@ const SPEED = 40.0
 @onready var ray = $RayCast3D
 @onready var particles = $GPUParticles3D
 
-
 func _ready() -> void:
 	set_as_top_level(true) # delete this for laser weapon
+	CoilPistolShootSound.play() ## TODO: Remove this global variable
 
 
 func _process(delta: float) -> void:

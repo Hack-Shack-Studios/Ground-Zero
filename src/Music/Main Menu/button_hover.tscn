@@ -5,4 +5,5 @@
 
 [node name="ButtonNoise" type="AudioStreamPlayer"]
 stream = ExtResource("1_108ou")
+bus = &"sfx"
 script = ExtResource("2_tnnl7")

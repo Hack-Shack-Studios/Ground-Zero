@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgri0ogat6cpi"]
+[gd_scene load_steps=3 format=3 uid="uid://dgri0ogat6cpi"]
 
+[ext_resource type="AudioStream" uid="uid://twok8ynu35k2" path="res://Other/Scenes/Menu Music CUT.wav" id="1_wpulu"]
 [ext_resource type="Script" path="res://Music/Main Menu/main_menu_music.gd" id="2_43iah"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_wpulu")
 autoplay = true
+bus = &"Music"
 script = ExtResource("2_43iah")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

@@ -7,18 +7,16 @@ extends Control
 
 @onready var main_menu_music = "res://Music/main_menu_music.tscn"
 @onready var volume_slider = $Volume
+@onready var full_screen_button = $"Full Screen/CheckButton"
 
-func _ready() -> void:
-	volume_slider.value = MainMenuMusic.volume_db
 
 func _on_back_pressed() -> void:
 	ButtonNoise.play()
 	get_tree().change_scene_to_file("res://UI/main_menu.tscn")
 
-func _on_volume_value_changed(value: float) -> void:
-	MainMenuMusic.volume_db = value
-	ButtonHover.volume_db = value
-	ButtonNoise.volume_db = value 
+#func _on_volume_value_changed(value: float) -> void:
+	#for sound in sounds:
+		#sound.volume_db = value
 
 
 func _on_resolutions_item_selected(index: int) -> void:
@@ -34,3 +32,9 @@ func _on_resolutions_item_selected(index: int) -> void:
 
 func _on_back_mouse_entered() -> void:
 	ButtonHover.play()
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
