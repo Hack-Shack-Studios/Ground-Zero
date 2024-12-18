@@ -79,7 +79,7 @@ offset_bottom = 204.0
 
 [node name="Left Text" type="RichTextLabel" parent="Text"]
 layout_mode = 2
-offset_right = 275.0
+offset_right = 296.0
 offset_bottom = 626.0
 theme_override_colors/default_color = Color(0.847059, 0.368627, 0.72549, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
