@@ -17,7 +17,8 @@ config/icon="res://Icons/icon.svg"
 
 [autoload]
 
-MainMenuMusic="*res://Music/Main Menu Music/main_menu_music.tscn"
+MainMenuMusic="*res://Music/Main Menu/main_menu_music.tscn"
+ButtonNoise="*res://Music/Main Menu/button_select.tscn"
 
 [display]
 

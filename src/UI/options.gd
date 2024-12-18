@@ -8,8 +8,8 @@ extends Control
 @onready var main_menu_music = "res://Music/main_menu_music.tscn"
 
 func _on_back_pressed() -> void:
+	ButtonNoise.play()
 	get_tree().change_scene_to_file("res://UI/main_menu.tscn")
-
 
 func _on_volume_value_changed(value: float) -> void:
 	MainMenuMusic.volume_db = value
@@ -23,3 +23,4 @@ func _on_resolutions_item_selected(index: int) -> void:
 			DisplayServer.window_set_size(Vector2i(1600,900))
 		2:
 			DisplayServer.window_set_size(Vector2i(1280,720))
+	ButtonNoise.play()
