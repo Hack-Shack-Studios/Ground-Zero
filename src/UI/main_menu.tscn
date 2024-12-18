@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3cw3g6m5rrrj"]
+[gd_scene load_steps=5 format=3 uid="uid://c3cw3g6m5rrrj"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_wbpo1"]
+[ext_resource type="Texture2D" uid="uid://byxogsybw301e" path="res://Other/Images/forge.png" id="2_rvvuj"]
+
+[sub_resource type="SystemFont" id="SystemFont_4wqm4"]
+font_names = PackedStringArray("Agency FB")
+
+[sub_resource type="SystemFont" id="SystemFont_k3w06"]
+font_names = PackedStringArray("Agency FB")
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -12,28 +19,115 @@ grow_vertical = 2
 script = ExtResource("1_wbpo1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 604.0
-offset_top = 182.0
-offset_right = 674.0
-offset_bottom = 283.0
-scale = Vector2(8.94071, 6.87777)
+offset_left = 844.0
+offset_top = 367.0
+offset_right = 914.0
+offset_bottom = 468.0
+scale = Vector2(2, 2)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+y_sort_enabled = true
 layout_mode = 2
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+z_index = 1
+y_sort_enabled = true
 layout_mode = 2
 text = "Start"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+z_index = 1
 layout_mode = 2
 text = "Options"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+z_index = 1
+y_sort_enabled = true
 layout_mode = 2
 text = "Quit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rvvuj")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 18
+alignment = 2
+
+[node name="Start" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_fonts/font = SubResource("SystemFont_4wqm4")
+theme_override_font_sizes/font_size = 64
+text = "START"
+alignment = 0
+
+[node name="Options" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_fonts/font = SubResource("SystemFont_4wqm4")
+theme_override_font_sizes/font_size = 64
+text = "OPTIONS"
+alignment = 0
+
+[node name="Credits" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_fonts/font = SubResource("SystemFont_4wqm4")
+theme_override_font_sizes/font_size = 64
+text = "CREDITS"
+alignment = 0
+
+[node name="Quit" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_fonts/font = SubResource("SystemFont_4wqm4")
+theme_override_font_sizes/font_size = 64
+text = "QUIT"
+alignment = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 409.0
+offset_top = 283.0
+offset_right = 908.0
+offset_bottom = 435.0
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = SubResource("SystemFont_k3w06")
+theme_override_font_sizes/font_size = 128
+text = "Ground Zero"
+
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
