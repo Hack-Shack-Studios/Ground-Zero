@@ -12,7 +12,7 @@ func _on_back_pressed() -> void:
 
 
 func _on_volume_value_changed(value: float) -> void:
-	MainMenuMusic.change_volume(value)
+	MainMenuMusic.volume_db = value
 
 
 func _on_resolutions_item_selected(index: int) -> void:

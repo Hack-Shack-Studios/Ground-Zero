@@ -19,7 +19,3 @@ func _play_music(music: AudioStream, volume = 0.0):
 
 func play_music_level():
 	_play_music(LEVEL_MUSIC)
-
-
-func change_volume(value: int):
-	volume_db = value
