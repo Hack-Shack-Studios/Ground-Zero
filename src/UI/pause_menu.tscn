@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://daxcj2wau0q4c"]
+[gd_scene load_steps=3 format=3 uid="uid://daxcj2wau0q4c"]
 
 [ext_resource type="Script" path="res://UI/pause_menu.gd" id="1_60u8f"]
+
+[sub_resource type="SystemFont" id="SystemFont_h1et3"]
+font_names = PackedStringArray("Agency FB")
 
 [node name="Pause" type="Control"]
 layout_mode = 3
@@ -13,28 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_60u8f")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Resume"
-
-[node name="Main Menu" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Main Menu"
-
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Quit"
-
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 z_index = 1
 layout_mode = 0
 offset_left = -964.0
@@ -43,9 +25,51 @@ offset_right = 965.0
 offset_bottom = 550.0
 color = Color(0.589096, 0.589096, 0.589096, 0.133333)
 
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Button Manager" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Button Manager"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Button Manager/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 18
+alignment = 2
+
+[node name="Resume" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_fonts/font = SubResource("SystemFont_h1et3")
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="Main Menu" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_fonts/font = SubResource("SystemFont_h1et3")
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_fonts/font = SubResource("SystemFont_h1et3")
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

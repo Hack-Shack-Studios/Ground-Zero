@@ -15,6 +15,10 @@ run/main_scene="res://UI/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Icons/icon.png"
 
+[audio]
+
+buses/default_bus_layout="res://Sounds/default_bus_layout.tres"
+
 [autoload]
 
 ButtonHover="*res://Music/Main Menu/button_hover.tscn"
@@ -35,7 +39,8 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
 [filesystem]
 
-import/blender/enabled=false
+import/blender/enabled.android=true
+import/blender/enabled.web=true
 
 [input]
 

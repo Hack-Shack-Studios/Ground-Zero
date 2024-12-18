@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cvnt3vvyq0h5t"
-path="res://.godot/imported/Forge Enhanced.blend-d29ff6594f52e66df578392a1629048a.scn"
+path="res://.godot/imported/Forge Enhanced.blend-c86297df9df8a6922276415bfc1a5839.scn"
 
 [deps]
 
-source_file="res://Map/Forge Enhanced.blend"
-dest_files=["res://.godot/imported/Forge Enhanced.blend-d29ff6594f52e66df578392a1629048a.scn"]
+source_file="res://Other/Forge Enhanced.blend"
+dest_files=["res://.godot/imported/Forge Enhanced.blend-c86297df9df8a6922276415bfc1a5839.scn"]
 
 [params]
 
