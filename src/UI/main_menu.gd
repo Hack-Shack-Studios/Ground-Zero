@@ -4,6 +4,11 @@ extends Control
 ##
 ## Handles Play, Options, Credits, and Quit buttons. The buttons explain themselves.
 
+
+func _ready() -> void:
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://Levels/Pre-Alpha/pre_alpha.tscn")
 	Engine.time_scale = 1

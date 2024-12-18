@@ -15,6 +15,12 @@ run/main_scene="res://UI/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Icons/icon.png"
 
+[autoload]
+
+ButtonHover="*res://Music/Main Menu/button_hover.tscn"
+ButtonNoise="*res://Music/Main Menu/button_select.tscn"
+MainMenuMusic="*res://Music/Main Menu/main_menu_music.tscn"
+
 [display]
 
 window/size/viewport_width=1920
