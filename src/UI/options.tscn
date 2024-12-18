@@ -1,0 +1,145 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhcqw7qbxpvtv"]
+
+[ext_resource type="Script" path="res://UI/options.gd" id="1_6i6o4"]
+[ext_resource type="Texture2D" uid="uid://byxogsybw301e" path="res://Other/Images/forge.png" id="2_8prsk"]
+
+[sub_resource type="SystemFont" id="SystemFont_4wqm4"]
+font_names = PackedStringArray("Agency FB")
+
+[sub_resource type="SystemFont" id="SystemFont_k3w06"]
+font_names = PackedStringArray("Agency FB")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_iycx4"]
+color = Color(0.847059, 0.368627, 0.72549, 1)
+thickness = 25
+
+[sub_resource type="SystemFont" id="SystemFont_dvhx5"]
+font_names = PackedStringArray("Agency FB")
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6i6o4")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8prsk")
+
+[node name="Button Manager" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Button Manager"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Button Manager/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 18
+alignment = 2
+
+[node name="Back" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_fonts/font = SubResource("SystemFont_4wqm4")
+theme_override_font_sizes/font_size = 64
+text = "BACK"
+alignment = 0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+offset_left = 379.0
+offset_top = -3.0
+offset_right = 673.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = SubResource("SystemFont_k3w06")
+theme_override_font_sizes/font_size = 128
+text = "Options"
+
+[node name="Volume Tag" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 204.0
+offset_right = 319.0
+offset_bottom = 356.0
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = SubResource("SystemFont_k3w06")
+theme_override_font_sizes/font_size = 64
+text = "Volume: "
+
+[node name="Resolutions Tag" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 275.0
+offset_right = 319.0
+offset_bottom = 427.0
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = SubResource("SystemFont_k3w06")
+theme_override_font_sizes/font_size = 64
+text = "Resolution: "
+
+[node name="Volume" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 190.0
+offset_right = 543.0
+offset_bottom = 317.0
+theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
+
+[node name="Resolutions" type="OptionButton" parent="."]
+layout_mode = 2
+offset_left = 247.0
+offset_top = 302.0
+offset_right = 654.0
+offset_bottom = 344.0
+theme_override_colors/font_disabled_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_hover_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_pressed_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_focus_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_outline_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/icon_normal_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/icon_focus_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/icon_pressed_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/icon_hover_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/icon_disabled_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_fonts/font = SubResource("SystemFont_dvhx5")
+theme_override_font_sizes/font_size = 32
+selected = 0
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
+[connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Volume" to="." method="_on_volume_value_changed"]
+[connection signal="item_selected" from="Resolutions" to="." method="_on_resolutions_item_selected"]
