@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://orvopfwdvrfy"]
+[gd_scene load_steps=9 format=3 uid="uid://orvopfwdvrfy"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0tg2p"]
 [ext_resource type="PackedScene" uid="uid://cfa6nffv7pvih" path="res://Weapons/Coil Pistol/coil_pistol.tscn" id="2_bmakn"]
@@ -16,6 +16,11 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_lmgn3"]
+font_names = PackedStringArray("Agency FB")
+
+[sub_resource type="ImageTexture" id="ImageTexture_k15up"]
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -107,6 +112,31 @@ color = Color(1, 0.0392157, 0.145098, 0.231373)
 [node name="Regen" type="Timer" parent="HUD"]
 wait_time = 5.0
 autostart = true
+
+[node name="WeaponGUI" type="PanelContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 633.0
+offset_top = 309.0
+offset_right = 961.0
+offset_bottom = 541.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InformationLabel" type="Label" parent="HUD/WeaponGUI"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.996078, 0.313726, 1)
+theme_override_fonts/font = SubResource("SystemFont_lmgn3")
+theme_override_font_sizes/font_size = 31
+text = "Current Gun: Coil Pistol
+[Bullets] / [Magazine]"
+uppercase = true
+
+[node name="DisplayedWeapon" type="TextureRect" parent="HUD/WeaponGUI"]
+layout_mode = 2
+texture = SubResource("ImageTexture_k15up")
 
 [connection signal="player_hit" from="." to="." method="_on_player_hit"]
 [connection signal="timeout" from="HUD/Regen" to="." method="_on_regen_timeout"]
