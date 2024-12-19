@@ -20,7 +20,7 @@ var can_regen: bool = false
 var enemy = load("res://Enemies/Medusa Bot/medusa_bot.tscn")
 var instance 
 var MAX_WAVES: int = 1
-var waves_remaining: int = MAX_WAVES
+var waves_remaining := MAX_WAVES
 var wave_count: Array[int] = [1]# [25, 20, 15, 10, 5]
 var total_enemies: int 
 var spawn_delay: float = 3.5

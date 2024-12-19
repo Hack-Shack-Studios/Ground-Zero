@@ -28,7 +28,7 @@ var is_hacking := false
 
 @onready var nav_agent = $NavigationAgent3D # Handles navigation for the enemy
 @onready var anim_tree = $AnimationTree # Handles animations for the bot
-
+@onready var anim = $AnimationPlayer
 
 # Ran when enemy first spawns 
 func _ready() -> void:
@@ -51,12 +51,14 @@ func _process(delta: float) -> void:
 	if forge_distance < 0:
 		forge_distance = 0
 	
-	## Handles the animation tree for the Medusa bot
+	## Handles the state machine for the Medusa bot
 	match state_machine.get_current_node():
 		"walk":
 			## The enemy will focus either the player or the forge
 			## however, if equal distances, enemy will always prioritize the forge IF robots_hacking < 2
 			if forge_distance < player_distance and forge.robots_hacking < MAX_HACKERS: # Go towards forge
+				## Timer: Chasing_player.stop() 
+				
 				nav_agent.set_target_position(FORGE_POSITION) # Goes towards the forge
 				var next_nav_point = nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
 				
@@ -65,6 +67,8 @@ func _process(delta: float) -> void:
 				move_and_slide() # updating many of the agent's internal states and properties
 				
 			else: # Chase player
+				## Timer: Chasing_player.start(3 seconds) 
+				
 				nav_agent.set_target_position(player.global_transform.origin) # Goes toward the player
 				var next_nav_point = nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
 				
@@ -82,14 +86,15 @@ func _process(delta: float) -> void:
 			await get_tree().create_timer(EXPLODE_DELAY_SECS).timeout
 			queue_free()
 
+## On Chasing_player time_out():
+# check obsidan canvas
 
-
-	
 	## Check if enemy is in range of the forge
 	## If so, destory itself 
 	if is_hacking:
 		anim_tree.set("parameters/conditions/Shoot", true)
 		velocity = Vector3.ZERO
+		
 	elif _in_forge_range() && forge.robots_hacking < MAX_HACKERS:
 		print("I HAVE HACKED THE FORGE, no movement please")
 		anim_tree.set("parameters/conditions/Walk", false)
@@ -97,9 +102,12 @@ func _process(delta: float) -> void:
 		forge.robots_hacking += 1
 		is_hacking = true
 		forge.hit() # hack
-
+		
 	elif _in_player_range():
+		## Boolean is_shooting = true
+		anim_tree.set("parameters/conditions/Walk", false)
 		anim_tree.set("parameters/conditions/Shoot", true)
+		
 	else:
 		anim_tree.set("parameters/conditions/Shoot", false)
 		anim_tree.set("parameters/conditions/Walk", true)
