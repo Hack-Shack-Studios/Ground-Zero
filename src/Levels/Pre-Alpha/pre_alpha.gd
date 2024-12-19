@@ -8,7 +8,7 @@ extends Node3D
 ## future levels we make.
 
 @export var player_path := "/root/World/Map/Player"
-@export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
+@export var forge_path := "/root/World/Map/Forge"
 
 
 var forge = null
@@ -90,7 +90,7 @@ func _on_enemy_spawn_timer_timeout() -> void:
 			var spawn_point = _get_random_child(spawns).global_position
 			instance = enemy.instantiate()
 			instance.position = spawn_point
-			navigation_region.add_child(instance)
+			get_parent().add_child(instance)
 			wave_text.text = "Waves Remaining: "+str(waves_remaining) + "\nEnemies: " + str(total_enemies) # str(len(enemies)) + "/" + 
 			await (get_tree().create_timer(spawn_delay).timeout)	
 			
