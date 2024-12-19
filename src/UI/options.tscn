@@ -118,10 +118,10 @@ text = "Resolution: "
 
 [node name="Resolutions" type="OptionButton" parent="Resolutions Tag"]
 layout_mode = 2
-offset_left = 231.0
-offset_top = 27.0
-offset_right = 638.0
-offset_bottom = 74.0
+offset_left = 228.0
+offset_top = 24.0
+offset_right = 635.0
+offset_bottom = 71.0
 theme_override_colors/font_disabled_color = Color(0.847059, 0.368627, 0.72549, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.847059, 0.368627, 0.72549, 1)
 theme_override_colors/font_hover_color = Color(0.847059, 0.368627, 0.72549, 1)

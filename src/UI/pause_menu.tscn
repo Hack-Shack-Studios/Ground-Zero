@@ -4,6 +4,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_h1et3"]
 font_names = PackedStringArray("Agency FB")
+subpixel_positioning = 0
 
 [node name="Pause" type="Control"]
 layout_mode = 3

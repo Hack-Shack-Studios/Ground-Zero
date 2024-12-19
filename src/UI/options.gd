@@ -6,7 +6,6 @@ extends Control
 ## Buttons speak for themselves
 
 @onready var main_menu_music = "res://Music/main_menu_music.tscn"
-@onready var volume_slider = $Volume
 @onready var full_screen_button = $"Full Screen/CheckButton"
 
 
