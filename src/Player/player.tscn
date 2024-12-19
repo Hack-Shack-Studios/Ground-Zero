@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0tg2p"]
 [ext_resource type="PackedScene" uid="uid://cfa6nffv7pvih" path="res://Weapons/Coil Pistol/coil_pistol.tscn" id="2_bmakn"]
 [ext_resource type="Texture2D" uid="uid://bdvippxh3rsp4" path="res://Weapons/Coil Pistol/redcrosshair.png" id="3_l20qk"]
+[ext_resource type="Texture2D" uid="uid://co0dllww6jc6v" path="res://Weapons/Coil Pistol/pistol_Icon.png" id="4_1wp0e"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cst7t"]
 
@@ -19,8 +20,6 @@ border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_lmgn3"]
 font_names = PackedStringArray("Agency FB")
-
-[sub_resource type="ImageTexture" id="ImageTexture_k15up"]
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -129,14 +128,16 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.996078, 0.313726, 1)
 theme_override_fonts/font = SubResource("SystemFont_lmgn3")
-theme_override_font_sizes/font_size = 31
+theme_override_font_sizes/font_size = 64
 text = "Current Gun: Coil Pistol
 [Bullets] / [Magazine]"
 uppercase = true
 
 [node name="DisplayedWeapon" type="TextureRect" parent="HUD/WeaponGUI"]
+modulate = Color(1, 1, 1, 0.352941)
 layout_mode = 2
-texture = SubResource("ImageTexture_k15up")
+texture = ExtResource("4_1wp0e")
+expand_mode = 2
 
 [connection signal="player_hit" from="." to="." method="_on_player_hit"]
 [connection signal="timeout" from="HUD/Regen" to="." method="_on_regen_timeout"]
