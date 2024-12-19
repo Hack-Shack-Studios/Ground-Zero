@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfa6nffv7pvih"]
+[gd_scene load_steps=14 format=3 uid="uid://cfa6nffv7pvih"]
 
 [ext_resource type="PackedScene" uid="uid://cma5r78iv0s35" path="res://Weapons/Coil Pistol/coil_pistol.fbx" id="1_1lmul"]
 
@@ -81,9 +81,39 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, -0.0349066, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_mqqyk"]
+resource_name = "reloading"
+length = 1.5
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol_3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.01, 1.49),
+"transitions": PackedFloat32Array(0.435275, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.193), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pistol_3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.01, 1.5),
+"transitions": PackedFloat32Array(0.353554, 2.46229, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.362797, 0.0795437, 1.67197), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hpi7k"]
 _data = {
 "RESET": SubResource("Animation_s1e6n"),
+"reloading": SubResource("Animation_mqqyk"),
 "shoot": SubResource("Animation_aglpy")
 }
 

@@ -29,6 +29,8 @@ var max_health: int = 6
 var t_bob := 0.0 # head bobbing
 var bullet = preload("res://Weapons/Coil Pistol/coil_bullet.tscn")
 var bullet_instance
+const magazine_size = 20 #Total amount of bullets player may shoot
+var current_bullets #How many bullets the player has left
 var can_regen := false
 
 @onready var head = $Pivot
@@ -39,10 +41,13 @@ var can_regen := false
 @onready var health_bar = $HUD/PlayerHealthBar
 @onready var hit_rect = $HUD/ColorRect
 @onready var regen_timer = $HUD/Regen
+@onready var weapon_info = $HUD/WeaponGUI/InformationLabel
 
 
 func _ready() -> void:
 	health_bar.value = max_health
+	current_bullets = magazine_size #Player should always start out with max ammo
+	weapon_info.text = str(current_bullets) + "/" + str(magazine_size) #Initialize Weapon GUI
 	
 	
 ## Handles mouse camera movement
@@ -105,8 +110,13 @@ func _physics_process(delta: float) -> void:
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	# NOTE: MAKE SEPERATE FUNCTIONS FOR DIFFERNET GUNS
+	
+	#Handle Shooting and Reloading...
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
+	if Input.is_action_just_pressed("reload") or current_bullets <= 0:
+		reload()
+		
 
 	# Handles smooth colisions 
 	move_and_slide()
@@ -131,14 +141,37 @@ func hit(dir):
 
 ## TODO: Be able to manage multiple guns
 func shoot():
-	if !gun_anim.is_playing():
-		gun_anim.play("shoot")
-		#CoilPistolShootSound.play()
-		if aimcast.is_colliding():
-			var b = bullet.instantiate()
-			gun_barrel.add_child(b)
-			b.look_at(aimcast.get_collision_point(), Vector3.UP)
+	if current_bullets > 0: #if the magazine is not empty
+		if !gun_anim.is_playing():
+			gun_anim.play("shoot")
+			#CoilPistolShootSound.play()
+			if aimcast.is_colliding():
+				var b = bullet.instantiate()
+				gun_barrel.add_child(b)
+				b.look_at(aimcast.get_collision_point(), Vector3.UP)
+				current_bullets -= 1 #use one bullet once the bullet is visually "shot"
+				update_bullets_display()
+	else:
+		reload()
 
+func update_bullets_display():
+	var remaining_ammo_color: float = current_bullets / 20.0 #Aesthetics: checks the percentage of bullets left
+	weapon_info.text = str(current_bullets) + "/" + str(magazine_size) #Updates weapon text in format Ammo remaining / Total Ammo
+	if remaining_ammo_color <= 0.5 and remaining_ammo_color >= 0.2:
+		weapon_info.add_theme_color_override("font_color", Color(1, 1, 0))
+	elif remaining_ammo_color < 0.2:
+		weapon_info.add_theme_color_override("font_color", Color(1, 0, 0))
+	else:
+		weapon_info.add_theme_color_override("font_color", Color(0, 1, 0))
+
+
+func reload():
+	gun_anim.stop()
+	gun_anim.play("reloading")
+	current_bullets = magazine_size
+	weapon_info.text = "Reloading..." #async so that this displays for whole animation before updating
+	await get_tree().create_timer(1.5).timeout #reload animation takes 1.5 seconds
+	update_bullets_display()
 
 func heal() -> void:
 	health += heal_value
