@@ -19,12 +19,13 @@ var playerHealth: int
 var can_regen: bool = false
 var enemy = load("res://Enemies/Medusa Bot/medusa_bot.tscn")
 var instance 
-var MAX_WAVES: int = 5
+var MAX_WAVES: int = 1
 var waves_remaining: int = MAX_WAVES
-var wave_count: Array[int] = [25, 20, 15, 10, 5]
+var wave_count: Array[int] = [1]# [25, 20, 15, 10, 5]
 var total_enemies: int 
 var spawn_delay: float = 3.5
 var time: int 
+
 
 @onready var regen_timer = $UI/Regen
 @onready var regen_rect = $UI/RegenRect
@@ -42,7 +43,6 @@ var time: int
 
 func _ready() -> void: ## TODO: You Win / You Lose text
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	get_viewport().size = DisplayServer.screen_get_size()
 	result_text.visible = false
 	randomize()
 	player = get_node(player_path)
@@ -95,11 +95,13 @@ func _on_enemy_spawn_timer_timeout() -> void:
 			await (get_tree().create_timer(spawn_delay).timeout)	
 			
 	else:
-		get_tree().reload_current_scene() 	
+		pass
+		#get_tree().reload_current_scene() 	
 
 
 ## Updates the forge's health bar on hit
 func _on_forge_forge_hit() -> void:
+	print("Current Forge Health: ",forge.health)
 	_set_forge_bar()
 
 

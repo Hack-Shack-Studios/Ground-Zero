@@ -19,6 +19,7 @@ const BOB_FREQ = 2.0 # How often the steps occur
 const BOB_AMP = 0.08 # How high and low the steps go
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
+const MOUSE_MODE_CAPTURED: int = 2
 
 @export var health : int = 6
 
@@ -50,7 +51,7 @@ func _unhandled_input(event):
 	## Condition is true whenever the mouse moves 
 	## The camera moves more or less based on how 
 	## quickly the mouse is moving, multiplied by the sense
-	if event is InputEventMouseMotion && Input.get_mouse_mode() == 2:
+	if event is InputEventMouseMotion && Input.get_mouse_mode() == MOUSE_MODE_CAPTURED:
 		# Rotation is flipped, up and down is based on 
 		# the x-axis, and left and right is based on the 
 		# y axis, its kinda confusing but there are resources 
@@ -119,9 +120,8 @@ func _headbob(time) -> Vector3:
 	return pos
 
 
-func hit(dir):
+func hit():
 	emit_signal("player_hit")
-	velocity += dir * HIT_STAGGER # Limit this somehow
 	health -= heal_value
 	update_health()
 	if health <= 0:
