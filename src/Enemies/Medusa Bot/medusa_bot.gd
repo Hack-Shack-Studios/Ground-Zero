@@ -8,11 +8,14 @@ extends CharacterBody3D
 ## range, death, animations, etc... The only things specially towards the Medusa bot 
 ## will be the animaitions type, and the attack ranges
 
+signal enemy_death
+
 const SPEED = 2.0
 const ATTACK_RANGE = 4.0
 const FORGE_EXPLODE_RANGE = 4.0
 const EXPLODE_DELAY_SECS = 1.5
-const DIE_ANIMATION = 4.0
+const DIE_ANIMATION = 1.5
+const HITMARKER_DECAY = 1.0
 
 @export var player_path := "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
@@ -22,6 +25,7 @@ var forge = null
 var state_machine
 var health: int = 6
 var FORGE_POSITION # TODO: Make forge constant
+var player_died
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
@@ -32,20 +36,29 @@ func _ready() -> void:
 	forge = get_node(forge_path)
 	state_machine = anim_tree.get("parameters/playback")
 	FORGE_POSITION = forge.global_transform.origin
+	#player.connect("player_death", _on_player_death)
+	player_died = get_parent().get_parent().get_parent().player_died
 
 
 func _process(delta: float) -> void:
 	## Gets the current location of the player, forge, and itself
 	velocity = Vector3.ZERO	
-	var enemy_position = global_transform.origin
-	var player_position = player.global_transform.origin	
-	var player_distance = enemy_position.distance_to(player_position)
-	
-	## To avoid bugs, distance to forge minmum is always 0
-	var forge_distance = (enemy_position.distance_to(FORGE_POSITION)) 
+	var forge_distance
+	var player_distance
+	player_died = get_parent().get_parent().get_parent().player_died #Super class variable that changes when player emits signal
+	#player_died = get_parent().get_parent().player_died
+	if not player_died:
+		var enemy_position = global_transform.origin
+		var player_position = player.global_transform.origin	
+		player_distance = enemy_position.distance_to(player_position)
+		## To avoid bugs, distance to forge minmum is always 0
+		forge_distance = (enemy_position.distance_to(FORGE_POSITION)) 
+	else:
+		var enemy_position = global_transform.origin
+		player_distance = 99999.0 #Effectively makes enemies ignore player when player is "dead"
+		forge_distance = enemy_position.distance_to(FORGE_POSITION)
 	if forge_distance < 0:
-		forge_distance = 0
-	
+			forge_distance = 0
 	# Handles the animation tree for the Medusa bot
 	match state_machine.get_current_node():
 		"walk":
@@ -71,9 +84,15 @@ func _process(delta: float) -> void:
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 			
 		"hurt": # When in range of the forge
-			await get_tree().create_timer(EXPLODE_DELAY_SECS).timeout
-			queue_free()
-			forge.hit()
+			if health > 0:
+				await get_tree().create_timer(EXPLODE_DELAY_SECS).timeout
+				queue_free()
+				forge.hit()
+			else:
+				await get_tree().create_timer(DIE_ANIMATION).timeout
+				emit_signal("enemy_death")
+				queue_free()
+				
 
 	## Check if enemy is in range of the forge
 	## If so, destory itself 
@@ -85,7 +104,11 @@ func _process(delta: float) -> void:
 		velocity = Vector3.ZERO
 		anim_tree.set("parameters/conditions/Hurt", true)         
 	else:
-		anim_tree.set("parameters/conditions/Shoot", true)
+		if player_died == false:
+			anim_tree.set("parameters/conditions/Shoot", true)
+		else:
+			anim_tree.set("parameters/conditions/Shoot", false)
+			anim_tree.set("parameters/conditions/Walk", true)
 	
 	if is_inside_tree():   
 		move_and_slide()
@@ -115,9 +138,11 @@ func _hit_finished() -> void:
 ## Currently, only the Head has damage of 2, all other body parts is 1 damage
 func _on_area_3d_body_part_hit(damage: Variant) -> void:
 	health -= damage
-	
 	if health <= 0:
-		anim_tree.set("parameters/conditions/Hurt", true)
-		await get_tree().create_timer(DIE_ANIMATION).timeout
-		queue_free()
-	
+		anim_tree.set("parameters/conditions/Hurt", true) #changed this logic for the sake of keeping track of kills
+		
+
+##KEEP TRACK OF AMOUNT OF KILLS FOR FUTURE REFERENCE:
+func _on_enemy_death() -> void:
+	get_parent().get_parent().get_parent().enemy_kills += 1
+	print(get_parent().get_parent().get_parent().enemy_kills)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://orvopfwdvrfy"]
+[gd_scene load_steps=13 format=3 uid="uid://orvopfwdvrfy"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0tg2p"]
 [ext_resource type="PackedScene" uid="uid://cfa6nffv7pvih" path="res://Weapons/Coil Pistol/coil_pistol.tscn" id="2_bmakn"]
 [ext_resource type="Texture2D" uid="uid://bdvippxh3rsp4" path="res://Weapons/Coil Pistol/redcrosshair.png" id="3_l20qk"]
-[ext_resource type="Texture2D" uid="uid://co0dllww6jc6v" path="res://Weapons/Coil Pistol/pistol_Icon.png" id="4_1wp0e"]
+[ext_resource type="Texture2D" uid="uid://dgawodhtiifkh" path="res://Weapons/Coil Pistol/Hit-Marker-PNG-Pic.png" id="4_h0bvh"]
+[ext_resource type="Texture2D" uid="uid://ffiya3g7xk72" path="res://Weapons/Coil Pistol/Coilgun_White_Transparent.png" id="4_v63of"]
+[ext_resource type="Texture2D" uid="uid://cghx3qy3tqlmt" path="res://Weapons/Coil Pistol/HeadShotVariant.png" id="6_5nxv2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cst7t"]
 
@@ -18,12 +20,23 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="SystemFont" id="SystemFont_2mcmm"]
+font_names = PackedStringArray("Agency FB")
+font_stretch = 125
+
 [sub_resource type="SystemFont" id="SystemFont_lmgn3"]
+font_names = PackedStringArray("Agency FB")
+
+[sub_resource type="SystemFont" id="SystemFont_n3oin"]
 font_names = PackedStringArray("Agency FB")
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_0tg2p")
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_cst7t")
@@ -108,6 +121,17 @@ offset_right = 960.0
 offset_bottom = 540.0
 color = Color(1, 0.0392157, 0.145098, 0.231373)
 
+[node name="TimerLabel" type="Label" parent="HUD"]
+visible = false
+layout_mode = 0
+offset_left = -260.0
+offset_top = -9.0
+offset_right = 251.0
+offset_bottom = 90.0
+theme_override_fonts/font = SubResource("SystemFont_2mcmm")
+theme_override_font_sizes/font_size = 80
+text = "Respawn in: "
+
 [node name="Regen" type="Timer" parent="HUD"]
 wait_time = 5.0
 autostart = true
@@ -136,8 +160,55 @@ uppercase = true
 [node name="DisplayedWeapon" type="TextureRect" parent="HUD/WeaponGUI"]
 modulate = Color(1, 1, 1, 0.352941)
 layout_mode = 2
-texture = ExtResource("4_1wp0e")
+texture = ExtResource("4_v63of")
 expand_mode = 2
+stretch_mode = 4
+
+[node name="RoundGUI" type="Panel" parent="HUD"]
+layout_mode = 0
+offset_left = -246.0
+offset_top = -425.0
+offset_right = 252.0
+offset_bottom = -360.0
+
+[node name="RoundsInformation" type="Label" parent="HUD/RoundGUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -199.5
+offset_right = 199.5
+offset_bottom = 103.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("SystemFont_n3oin")
+theme_override_font_sizes/font_size = 50
+text = "ROUND [ ] of [ ]"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HitMarker" type="TextureRect" parent="HUD/CenterContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_h0bvh")
+
+[node name="HitMarkerHEADSHOT" type="TextureRect" parent="HUD/CenterContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_5nxv2")
 
 [connection signal="player_hit" from="." to="." method="_on_player_hit"]
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="timeout" from="HUD/Regen" to="." method="_on_regen_timeout"]
