@@ -1,7 +1,22 @@
 extends State
 class_name Maneuver
-
-## Handles the state for chasing the forge
+## Blank state for the multiple states 
 ##
-## Chasing the forge 
+## Will be handling a single state, and placed in the state machine node
 
+
+func enter():
+    # running/crouch animation
+	pass
+
+
+func exit():
+	pass
+
+
+func update(_delta: float):
+	pass
+
+
+func physics_update(_delta: float):
+	pass

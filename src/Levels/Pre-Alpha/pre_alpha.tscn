@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2xr28r77qiug"]
+[gd_scene load_steps=14 format=3 uid="uid://b2xr28r77qiug"]
 
 [ext_resource type="Script" path="res://Levels/Pre-Alpha/pre_alpha.gd" id="1_1b5qn"]
 [ext_resource type="PackedScene" uid="uid://daxcj2wau0q4c" path="res://UI/pause_menu.tscn" id="2_bo550"]
@@ -30,6 +30,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ndq18"]
+vertices = PackedVector3Array(-2.06223, 0.499004, -3.79313, -0.062233, 0.499004, -4.04313, -0.062233, 0.499004, -67.0431, -3.31223, 0.499004, -2.54313, -3.81223, 0.499004, -0.543129, -70.0622, 0.499004, -67.0431, -70.0622, 0.499004, -0.543129, 1.93777, 0.499004, -3.79313, 3.43777, 0.499004, -2.04313, 69.9378, 0.499004, -0.543129, 69.9378, 0.499004, -67.0431, 3.43777, 0.499004, -0.543129, -0.312233, 6.249, -4.54313, -0.312233, 6.249, -4.04313, 0.687767, 6.249, -4.04313, 0.187767, 6.249, -5.04313, -0.312233, 11.249, -4.54313, -0.312233, 11.249, -4.04313, 0.687767, 11.249, -4.04313, 0.187767, 11.249, -5.04313, -0.312233, 15.249, -4.54313, -0.312233, 15.249, -4.04313, 0.687767, 15.249, -4.04313, 0.187767, 15.249, -5.04313, -2.31223, 16.499, -1.04313, -2.56223, 16.499, -1.54313, -2.56223, 16.499, 0.456871, -2.06223, 16.499, 0.706871, 0.937767, 16.499, -3.04313, -1.06223, 16.499, -3.04313, -1.31223, 16.499, -2.54313, 1.18777, 16.499, -2.54313, 1.93777, 16.499, -1.79313, 2.43777, 16.499, -1.54313, -1.31223, 16.499, 1.45687, -1.06223, 16.499, 1.95687, 1.93777, 16.499, 0.706871, 2.43777, 16.499, 0.456871, 0.437767, 16.499, 1.70687, 0.937767, 16.499, 1.95687, -1.06223, 200.499, -1.29313, -0.812233, 200.499, 0.456871, 0.937767, 200.499, 0.206871, 0.687767, 200.499, -1.54313, -0.812233, 0.499004, -1.04313, -0.562233, 0.499004, 0.206871, 0.687767, 0.499004, -0.043129, 0.437767, 0.499004, -1.29313, -0.812233, 16.499, -1.04313, -0.562233, 16.499, 0.206871, 0.687767, 16.499, -0.043129, 0.437767, 16.499, -1.29313, -4.31223, 6.249, -0.793129, -4.31223, 6.249, -0.293129, -3.81223, 6.249, -0.293129, -3.81223, 6.249, -0.793129, -4.31223, 11.249, -0.793129, -4.31223, 11.249, -0.293129, -3.81223, 11.249, -0.293129, -3.81223, 11.249, -0.793129, -4.31223, 15.249, -0.793129, -4.31223, 15.249, -0.293129, -3.81223, 15.249, -0.293129, -3.81223, 15.249, -0.793129, -0.062233, 0.499004, 65.9569, -0.062233, 0.499004, 3.20687, -2.06223, 0.499004, 2.70687, -3.31223, 0.499004, 1.45687, -70.0622, 0.499004, 65.9569, 1.93777, 0.499004, 2.70687, 3.18777, 0.499004, 1.45687, 69.9378, 0.499004, 65.9569, -0.312233, 6.249, 3.20687, -0.062233, 6.249, 3.95687, 0.437767, 6.249, 3.70687, 0.437767, 6.249, 3.20687, -0.312233, 11.249, 3.20687, -0.062233, 11.249, 3.95687, 0.437767, 11.249, 3.70687, 0.437767, 11.249, 3.20687, -0.312233, 15.249, 3.20687, -0.062233, 15.249, 3.95687, 0.437767, 15.249, 3.70687, 0.437767, 15.249, 3.20687)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 4, 2), PackedInt32Array(2, 4, 6), PackedInt32Array(2, 6, 5), PackedInt32Array(7, 1, 2), PackedInt32Array(7, 2, 8), PackedInt32Array(8, 2, 10), PackedInt32Array(8, 10, 9), PackedInt32Array(9, 11, 8), PackedInt32Array(12, 15, 13), PackedInt32Array(13, 15, 14), PackedInt32Array(16, 19, 17), PackedInt32Array(17, 19, 18), PackedInt32Array(20, 23, 21), PackedInt32Array(21, 23, 22), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(28, 31, 29), PackedInt32Array(29, 31, 30), PackedInt32Array(24, 25, 30), PackedInt32Array(30, 25, 29), PackedInt32Array(31, 28, 32), PackedInt32Array(32, 28, 33), PackedInt32Array(34, 35, 27), PackedInt32Array(27, 35, 26), PackedInt32Array(33, 37, 32), PackedInt32Array(32, 37, 36), PackedInt32Array(34, 38, 35), PackedInt32Array(35, 38, 39), PackedInt32Array(38, 36, 39), PackedInt32Array(39, 36, 37), PackedInt32Array(43, 42, 40), PackedInt32Array(40, 42, 41), PackedInt32Array(47, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(51, 50, 48), PackedInt32Array(48, 50, 49), PackedInt32Array(55, 54, 52), PackedInt32Array(52, 54, 53), PackedInt32Array(59, 58, 56), PackedInt32Array(56, 58, 57), PackedInt32Array(63, 62, 60), PackedInt32Array(60, 62, 61), PackedInt32Array(66, 65, 64), PackedInt32Array(64, 67, 66), PackedInt32Array(67, 64, 4), PackedInt32Array(4, 64, 6), PackedInt32Array(6, 64, 68), PackedInt32Array(64, 65, 69), PackedInt32Array(64, 69, 70), PackedInt32Array(70, 11, 64), PackedInt32Array(64, 11, 9), PackedInt32Array(64, 9, 71), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 72), PackedInt32Array(78, 77, 79), PackedInt32Array(79, 77, 76), PackedInt32Array(82, 81, 83), PackedInt32Array(83, 81, 80)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aabde"]
 albedo_color = Color(0.145098, 0.556863, 0.262745, 1)
@@ -269,10 +273,13 @@ transform = Transform3D(-0.310527, -0.882936, -0.352131, 0, -0.370444, 0.928855,
 [node name="Spawn12" type="Node3D" parent="Map/Spawns"]
 transform = Transform3D(-0.351139, -0.869708, -0.346855, -7.08226e-09, -0.370444, 0.928855, -0.936323, 0.326157, 0.130077, 7.58606, 0, 62.3506)
 
-[node name="Forge" parent="Map" instance=ExtResource("5_i5i1t")]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Map"]
+navigation_mesh = SubResource("NavigationMesh_ndq18")
+
+[node name="Forge" parent="Map/NavigationRegion3D" instance=ExtResource("5_i5i1t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.072731, 3.8147e-06, -0.541637)
 
-[node name="Floor" type="CSGBox3D" parent="Map"]
+[node name="Floor" type="CSGBox3D" parent="Map/NavigationRegion3D"]
 transform = Transform3D(1.40979, 0, 0, 0, 1, 0, 0, 0, 1.34003, -0.072731, 3.8147e-06, -0.541637)
 material_override = SubResource("StandardMaterial3D_aabde")
 use_collision = true
@@ -284,4 +291,4 @@ size = Vector3(100, 0.002, 100)
 [connection signal="timeout" from="UI/Regen" to="Map/Player" method="_on_regen_timeout"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="player_hit" from="Map/Player" to="." method="_on_player_player_hit"]
-[connection signal="forge_hit" from="Map/Forge" to="." method="_on_forge_forge_hit"]
+[connection signal="forge_hit" from="Map/NavigationRegion3D/Forge" to="." method="_on_forge_forge_hit"]

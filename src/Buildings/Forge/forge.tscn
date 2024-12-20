@@ -121,3 +121,8 @@ mesh = SubResource("PrismMesh_vffl1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 6, 0)
 shape = SubResource("ConvexPolygonShape3D_ym2rb")
+
+[node name="Hacked" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Hacked" to="." method="_on_hacked_timeout"]
