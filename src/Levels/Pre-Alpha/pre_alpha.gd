@@ -7,6 +7,8 @@ extends Node3D
 ## forge, the enemies, etc... This will most likely be used as a template for all 
 ## future levels we make.
 
+signal win_condition
+
 @export var player_path := "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
 
@@ -25,6 +27,8 @@ var wave_count: Array[int] = [25, 20, 15, 10, 5]
 var total_enemies: int 
 var spawn_delay: float = 3.5
 var time: int 
+var player_died = false
+var enemy_kills = 0
 
 @onready var regen_timer = $UI/Regen
 @onready var regen_rect = $UI/RegenRect
@@ -70,8 +74,10 @@ func _process(_delta: float) -> void:
 		#_set_health_bar()
 	#if Input.is_action_just_released("debug_4"): # Regen Health
 		#_on_regen_timeout()
-	#if Input.is_action_just_released("debug_5"): # Regen Health
-		#forge.hit()
+	#if Input.is_action_just_pressed("debug_5"):
+		#emit_signal("win_condition")
+		#get_tree().change_scene_to_file("res://UI/game_over.tscn")
+		
 
 
 ## Spawns an enemy at one of the random spawnpoints 
@@ -94,8 +100,10 @@ func _on_enemy_spawn_timer_timeout() -> void:
 			wave_text.text = "Waves Remaining: "+str(waves_remaining) + "\nEnemies: " + str(total_enemies) # str(len(enemies)) + "/" + 
 			await (get_tree().create_timer(spawn_delay).timeout)	
 			
-	else:
-		get_tree().reload_current_scene() 	
+	else: #if you win
+		emit_signal("win_condition") #Emit win condition signal (not neccessary, other ways to go about this)
+		get_tree().change_scene_to_file("res://UI/game_over.tscn")
+		
 
 
 ## Updates the forge's health bar on hit
@@ -119,3 +127,17 @@ func paused_menu() -> void:
 		Engine.time_scale = 0
 		
 	paused = !paused
+
+##Changes variable so that all instances of enemies on the map will effectively ignore the player
+func _on_player_player_death() -> void:
+	player_died = true #enemies will access this property through get_parent() to determine movement logic
+
+
+func _on_player_player_respawn() -> void:
+	print("RESPAWNED!")
+	player_died = false
+
+##This function is imperative for determining the text on the game end scene (game over versus win)
+func _on_win_condition() -> void:
+	Global.win = true #Singleton script that autoloads named "GlobalScript", this is one global variable
+	#print(win)

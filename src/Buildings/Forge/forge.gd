@@ -24,4 +24,4 @@ func hit() -> void:
 	health -= damage_amount
 	
 	if health <= minimum_health:
-		get_tree().reload_current_scene() 
+		get_tree().change_scene_to_file("res://UI/game_over.tscn") #GO TO: Game Over sceen

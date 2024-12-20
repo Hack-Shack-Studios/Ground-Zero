@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8rhsvg4ootc0"]
+
+[ext_resource type="Script" path="res://UI/game_over.gd" id="1_pp3ib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aplg"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_8nh40"]
+font_names = PackedStringArray("Agency FB")
+
+[sub_resource type="SystemFont" id="SystemFont_agw00"]
+font_names = PackedStringArray("Agency FB")
+
+[sub_resource type="SystemFont" id="SystemFont_biln4"]
+font_names = PackedStringArray("Agency FB")
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pp3ib")
+
+[node name="background" type="Panel" parent="."]
+layout_mode = 0
+anchor_right = 1.07292
+anchor_bottom = 1.09444
+theme_override_styles/panel = SubResource("StyleBoxFlat_3aplg")
+metadata/_edit_use_anchors_ = true
+
+[node name="game_over_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.011
+offset_left = 509.0
+offset_top = 78.0
+offset_right = 1373.0
+offset_bottom = 233.12
+theme_override_colors/font_color = Color(0.998787, 0, 0.0875063, 1)
+theme_override_fonts/font = SubResource("SystemFont_8nh40")
+theme_override_font_sizes/font_size = 150
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="button_layout" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 539.0
+offset_top = 572.0
+offset_right = 1323.0
+offset_bottom = 786.0
+
+[node name="restart_button" type="Button" parent="button_layout"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_agw00")
+theme_override_font_sizes/font_size = 50
+action_mode = 0
+text = "PLAY AGAIN"
+
+[node name="menu_button" type="Button" parent="button_layout"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_biln4")
+theme_override_font_sizes/font_size = 50
+action_mode = 0
+text = "MENU"
+
+[connection signal="pressed" from="button_layout/restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="button_layout/menu_button" to="." method="_on_menu_button_pressed"]

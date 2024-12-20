@@ -8,6 +8,8 @@ extends CharacterBody3D
 ## begin to add other players into the game, but the main concept will stay the same
 
 signal player_hit
+signal player_death
+signal player_respawn
 
 const MIN_HEALTH: int = 1
 const WALK_SPEED = 5.0 # How fast the player moves
@@ -32,30 +34,38 @@ var bullet_instance
 const magazine_size = 20 #Total amount of bullets player may shoot
 var current_bullets #How many bullets the player has left
 var can_regen := false
+var dead = false
+var round_info: String
 
 @onready var head = $Pivot
 @onready var camera = $Pivot/Camera3D
 @onready var gun_anim = $Pivot/Camera3D/Pistol_3/AnimationPlayer
 @onready var gun_barrel = $Pivot/Camera3D/Pistol_3/gun_barrel
 @onready var aimcast = $Pivot/Camera3D/AimCast
+@onready var respawn_timer = $RespawnTimer
 @onready var health_bar = $HUD/PlayerHealthBar
 @onready var hit_rect = $HUD/ColorRect
 @onready var regen_timer = $HUD/Regen
 @onready var weapon_info = $HUD/WeaponGUI/InformationLabel
-
+@onready var respawn_label = $HUD/TimerLabel
+@onready var collision = $CollisionShape3D
+@onready var rounds_label = $HUD/RoundGUI/RoundsInformation
+@onready var hit_marker = $HUD/CenterContainer/HitMarker
+@onready var hit_marker_HEADSHOT = $HUD/CenterContainer/HitMarkerHEADSHOT
 
 func _ready() -> void:
 	health_bar.value = max_health
 	current_bullets = magazine_size #Player should always start out with max ammo
-	weapon_info.text = "Coil Pistol\n"+str(current_bullets) +str(current_bullets) + "/" + str(magazine_size) #Initialize Weapon GUI
-	
+	weapon_info.text = "Coil Pistol\n" + str(current_bullets) + "/" + str(magazine_size) #Initialize Weapon GUI
+	round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
+	rounds_label.text = round_info  
 	
 ## Handles mouse camera movement
 func _unhandled_input(event): 
 	## Condition is true whenever the mouse moves 
 	## The camera moves more or less based on how 
 	## quickly the mouse is moving, multiplied by the sense
-	if event is InputEventMouseMotion && Input.get_mouse_mode() == 2:
+	if (event is InputEventMouseMotion && Input.get_mouse_mode() == 2) and not dead:
 		# Rotation is flipped, up and down is based on 
 		# the x-axis, and left and right is based on the 
 		# y axis, its kinda confusing but there are resources 
@@ -68,59 +78,66 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta: float) -> void:
+	round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
+	rounds_label.text = round_info
+	#print(get_parent().get_parent().waves_remaining)
 	# When the game detects the player is not 
 	# touching the ground, it sets the velocity downwards
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 	# When the player presses "space", they jump and they go up
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-	# Handing running mechanic
-	if Input.is_action_pressed("sprint"):
-		speed = SPRINT_SPEED
-	else:
-		speed = WALK_SPEED
-	
-	# Gets the direction vector based on user input 
-	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
-	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
-	# Adding inertia, preventing players from being able to stop movement mid-air
-	if is_on_floor():
-		# Whatever direction they are going, the velocity increases that way
-		if direction:
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
-		else:
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
-	else:
-		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
-		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
-
-	# Head bob
-	t_bob += delta * velocity.length() * float(is_on_floor())
-	camera.transform.origin = _headbob(t_bob)
-
-	# FOV
-	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
-	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
-	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
-	
-	# NOTE: MAKE SEPERATE FUNCTIONS FOR DIFFERNET GUNS
-	
-	#Handle Shooting and Reloading...
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
-	if Input.is_action_just_pressed("reload") or current_bullets <= 0:
-		reload()
+	if not dead:
+		hit_rect.visible = false
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 		
+		# Handing running mechanic
+		if Input.is_action_pressed("sprint"):
+			speed = SPRINT_SPEED
+		else:
+			speed = WALK_SPEED
+		
+		# Gets the direction vector based on user input 
+		var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
+		var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		
+		# Adding inertia, preventing players from being able to stop movement mid-air
+		if is_on_floor():
+			# Whatever direction they are going, the velocity increases that way
+			if direction:
+				velocity.x = direction.x * speed
+				velocity.z = direction.z * speed
+			else:
+				velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+				velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+		else:
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
 
-	# Handles smooth colisions 
-	move_and_slide()
+		# Head bob
+		t_bob += delta * velocity.length() * float(is_on_floor())
+		camera.transform.origin = _headbob(t_bob)
 
+		# FOV
+		var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
+		var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
+		camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
+		
+		# NOTE: MAKE SEPERATE FUNCTIONS FOR DIFFERNET GUNS
+		
+		#Handle Shooting and Reloading...
+		if Input.is_action_just_pressed("shoot"):
+			shoot()
+		if Input.is_action_just_pressed("reload") or current_bullets <= 0:
+			reload()
+		
+		# Handles smooth colisions 
+		move_and_slide()
+	else:
+		var format = "Respawn in %.1f" 
+		respawn_label.text = format % respawn_timer.time_left
+		hit_rect.visible = true
 
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
@@ -134,9 +151,22 @@ func hit(dir):
 	velocity += dir * HIT_STAGGER # Limit this somehow
 	health -= heal_value
 	update_health()
-	if health <= 0:
+	if health <= 0 and not dead:
 		# Game Restarts
-		get_tree().reload_current_scene() 
+		#get_tree().reload_current_scene() 
+		respawn()
+
+##Emits staggered signals so that enemies will not group up and attack dead player.
+func respawn():
+	respawn_label.visible = true
+	dead = true
+	emit_signal("player_death")
+	respawn_timer.start()
+	await respawn_timer.timeout
+	dead = false
+	respawn_label.visible = false
+	emit_signal("player_respawn")
+
 
 
 ## TODO: Be able to manage multiple guns
@@ -201,3 +231,7 @@ func _on_player_hit() -> void:
 	await get_tree().create_timer(0.2).timeout
 	hit_rect.visible = false
 	regen_timer.start()
+
+
+func _on_respawn_timer_timeout() -> void:
+	pass
