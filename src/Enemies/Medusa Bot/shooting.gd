@@ -5,7 +5,7 @@ class_name Shooting
 ##
 ## Chasing the forge
 
-const SHOOT_RANGE := 10.0
+const SHOOT_RANGE := 20.0
 
 @export var enemy: CharacterBody3D
 @export var player_path = "/root/World/Map/Player"
@@ -45,14 +45,12 @@ func physics_update(_delta: float):
     enemy.look_at(Vector3(player.global_position.x, enemy.global_position.y, player.global_position.z), Vector3.UP)
     await (get_tree().create_timer(animation_length).timeout)
 
-
-    if not enemy.is_on_floor():
-        enemy.velocity.y -= gravity
-
     var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
     var distance_to_player = enemy.global_position.distance_to(player.global_position)
 
-    if distance_to_player > SHOOT_RANGE:
+    if distance_to_forge < distance_to_player and forge.robots_hacking < forge.MAX_HACKERS:
+        Transitioned.emit(self, "ChasingForge")
+    elif distance_to_player > SHOOT_RANGE:
         if distance_to_player > distance_to_forge:
             Transitioned.emit(self, "ChasingPlayer")
         else:

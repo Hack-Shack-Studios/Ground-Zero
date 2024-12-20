@@ -33,6 +33,7 @@ func update(_delta: float):
 
 func physics_update(delta: float):
     enemy.move_and_slide()
+    enemy.velocity = Vector3.ZERO
 
     animation.play("walk")
 
@@ -55,7 +56,9 @@ func physics_update(delta: float):
     var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
     var distance_to_player = enemy.global_position.distance_to(player.global_position)
 
-    if distance_to_forge <= 4:
+    if forge.robots_hacking > 1:
+        Transitioned.emit(self, "ChasingPlayer")
+    elif distance_to_forge <= 4:
         Transitioned.emit(self, "Hacking")
     elif distance_to_player < distance_to_forge:
         Transitioned.emit(self, "ChasingPlayer")

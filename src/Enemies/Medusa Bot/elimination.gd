@@ -17,9 +17,6 @@ var forge = StaticBody3D
 func enter():
     forge = get_node(forge_path)
 
-    if enemy.is_hacking:
-        forge.robots_hacking -= 1
-
     animation.play("hurt")
     await get_tree().create_timer(EXPLODE_DURATION).timeout
     enemy.queue_free()

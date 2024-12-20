@@ -9,6 +9,8 @@ extends StaticBody3D
 
 signal forge_hit
 
+const MAX_HACKERS: int = 2
+
 var minimum_health: int = 0
 var damage_amount: int = 1
 var health: int = 30

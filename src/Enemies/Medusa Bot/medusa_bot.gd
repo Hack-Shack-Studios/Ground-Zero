@@ -18,24 +18,19 @@ var enemy_alive := true
 var chasing_player := false
 var player: CharacterBody3D
 
-
 @onready var nav_agent = $NavigationAgent3D
-
 
 func _ready() -> void:
     forge = get_node(forge_path)
     player = get_node(player_path)
 
-
-
 func _physics_process(_delta: float) -> void:
-    print("Robot Hackers: ",forge.robots_hacking)
     move_and_slide()
 
 func _on_area_3d_body_part_hit(damage: Variant) -> void:
     health -= damage
 
-    if health <= 0:
+    if health <= 0 and enemy_alive:
         if is_hacking:
             forge.robots_hacking -= 1
         enemy_alive = false
