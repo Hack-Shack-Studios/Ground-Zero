@@ -23,12 +23,15 @@ border_color = Color(0, 0, 0, 1)
 [sub_resource type="SystemFont" id="SystemFont_2mcmm"]
 font_names = PackedStringArray("Agency FB")
 font_stretch = 125
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_lmgn3"]
 font_names = PackedStringArray("Agency FB")
+subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_n3oin"]
 font_names = PackedStringArray("Agency FB")
+subpixel_positioning = 0
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
