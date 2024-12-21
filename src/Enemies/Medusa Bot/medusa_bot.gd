@@ -10,27 +10,32 @@ extends CharacterBody3D
 
 signal enemy_death
 
-const SPEED = 2.0
-const ATTACK_RANGE = 4.0
-const FORGE_EXPLODE_RANGE = 4.0
-const EXPLODE_DELAY_SECS = 1.5
+const MAX_HACKERS: int = 2 # Max amount of hackers bots can have
+const SPEED := 2.0 # speed of bot 
+const ATTACK_RANGE := 5.0 # range where needs to start attack
+const SHOOT_RANGE := 5.0 # range bot needs to be when hit finishes
+const FORGE_EXPLODE_RANGE := 4.0 # Hack Range
+const EXPLODE_DELAY_SECS := 1.5 # Get rid of this after hacking is added
 const DIE_ANIMATION = 1.5
 const HITMARKER_DECAY = 1.0
 
-@export var player_path := "/root/World/Map/Player"
-@export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
-
-var player = null
-var forge = null
-var state_machine
-var health: int = 6
 var FORGE_POSITION # TODO: Make forge constant
 var player_died
 
-@onready var nav_agent = $NavigationAgent3D
-@onready var anim_tree = $AnimationTree
+@export var player_path := "/root/World/Map/Player" # References player location for chasing
+@export var forge_path := "/root/World/Map/NavigationRegion3D/Forge" # References forge location for chasing
+
+var player = null # Player node
+var forge = null # Forge node
+var state_machine # Handles bots animations
+var health: int = 6 # Max health of enemy
+var is_hacking := false
+
+@onready var nav_agent = $NavigationAgent3D # Handles navigation for the enemy
+@onready var anim_tree = $AnimationTree # Handles animations for the bot
 
 
+# Ran when enemy first spawns 
 func _ready() -> void:
     player = get_node(player_path)
     forge = get_node(forge_path)
@@ -40,6 +45,7 @@ func _ready() -> void:
     player_died = get_parent().get_parent().get_parent().player_died
 
 
+# Called every frame
 func _process(delta: float) -> void:
     ## Gets the current location of the player, forge, and itself
     velocity = Vector3.ZERO
@@ -130,9 +136,9 @@ func _in_player_range() -> bool:
 
 
 func _hit_finished() -> void:
-    if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1.0:
-        var dir = global_position.direction_to(player.global_position)
-        player.hit(dir)
+	if global_position.distance_to(player.global_position) < SHOOT_RANGE:
+		player.hit()
+
 
 ## If any body part is hit, it will take @damage ammount of damage.
 ## Currently, only the Head has damage of 2, all other body parts is 1 damage
