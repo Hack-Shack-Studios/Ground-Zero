@@ -17,9 +17,10 @@ const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5 # How fast the player jumps
 const HIT_STAGGER = 8.0
 const BOB_FREQ = 2.0 # How often the steps occur
-const BOB_AMP = 0.08 # How high and low the steps go
+const BOB_AMP = 0.08 # How high aWnd low the steps go
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
+const MOUSE_MODE_CAPTURED: int = 2
 
 @export var health : int = 6
 
@@ -146,17 +147,13 @@ func _headbob(time) -> Vector3:
     return pos
 
 
-func hit(dir):
-    emit_signal("player_hit")
-    velocity += dir * HIT_STAGGER # Limit this somehow
-    health -= heal_value
-    update_health()
-    if health <= 0 and not dead:
-        # Game Restarts
-        #get_tree().reload_current_scene()
-        respawn()
+func hit():
+	emit_signal("player_hit")
+	health -= heal_value
+	update_health()
+	if health <= 0 and not dead:
+		respawn()
 
-##Emits staggered signals so that enemies will not group up and attack dead player.
 func respawn():
     respawn_label.visible = true
     dead = true
@@ -166,8 +163,6 @@ func respawn():
     dead = false
     respawn_label.visible = false
     emit_signal("player_respawn")
-
-
 
 ## TODO: Be able to manage multiple guns
 func shoot():
