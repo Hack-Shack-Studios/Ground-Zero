@@ -2,12 +2,8 @@
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_wbpo1"]
 [ext_resource type="Texture2D" uid="uid://byxogsybw301e" path="res://Other/Images/forge.png" id="2_rvvuj"]
-
-[sub_resource type="SystemFont" id="SystemFont_4wqm4"]
-font_names = PackedStringArray("Agency FB")
-
-[sub_resource type="SystemFont" id="SystemFont_k3w06"]
-font_names = PackedStringArray("Agency FB")
+[ext_resource type="Texture2D" uid="uid://cht4cbafm060i" path="res://Other/Images/HackShack_Logo_Pink.png" id="3_1ndym"]
+[ext_resource type="FontFile" uid="uid://rerjonsav62n" path="res://Other/Fonts/Epyval.ttf" id="3_ruhxg"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -52,7 +48,7 @@ alignment = 2
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_fonts/font = SubResource("SystemFont_4wqm4")
+theme_override_fonts/font = ExtResource("3_ruhxg")
 theme_override_font_sizes/font_size = 64
 text = "START"
 alignment = 0
@@ -61,7 +57,7 @@ alignment = 0
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_fonts/font = SubResource("SystemFont_4wqm4")
+theme_override_fonts/font = ExtResource("3_ruhxg")
 theme_override_font_sizes/font_size = 64
 text = "OPTIONS"
 alignment = 0
@@ -70,7 +66,7 @@ alignment = 0
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_fonts/font = SubResource("SystemFont_4wqm4")
+theme_override_fonts/font = ExtResource("3_ruhxg")
 theme_override_font_sizes/font_size = 64
 text = "CREDITS"
 alignment = 0
@@ -79,22 +75,23 @@ alignment = 0
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_fonts/font = SubResource("SystemFont_4wqm4")
+theme_override_fonts/font = ExtResource("3_ruhxg")
 theme_override_font_sizes/font_size = 64
 text = "QUIT"
 alignment = 0
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
-offset_left = 409.0
-offset_top = 283.0
-offset_right = 908.0
-offset_bottom = 435.0
+offset_left = 192.0
+offset_top = 276.0
+offset_right = 971.0
+offset_bottom = 514.0
 theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_fonts/font = SubResource("SystemFont_k3w06")
-theme_override_font_sizes/font_size = 128
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("3_ruhxg")
+theme_override_font_sizes/font_size = 150
 text = "Ground Zero"
 
 [node name="Version" type="Label" parent="."]
@@ -104,17 +101,30 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -204.0
-offset_top = -76.0
-offset_right = -4.0
+offset_left = -276.0
+offset_top = -82.0
+offset_right = -12.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
-theme_override_fonts/font = SubResource("SystemFont_k3w06")
+theme_override_fonts/font = ExtResource("3_ruhxg")
 theme_override_font_sizes/font_size = 64
 text = "Pre-Alpha"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -172.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = 172.0
+grow_horizontal = 0
+texture = ExtResource("3_1ndym")
+expand_mode = 1
 
 [connection signal="mouse_entered" from="Button Manager/HBoxContainer/VBoxContainer/Start" to="." method="_on_start_mouse_entered"]
 [connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]

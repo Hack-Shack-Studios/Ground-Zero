@@ -286,8 +286,11 @@ transform = Transform3D(-0.351139, -0.869708, -0.346855, -7.08226e-09, -0.370444
 
 [node name="Simple Fortress" parent="." instance=ExtResource("6_6b102")]
 
+[connection signal="win_condition" from="." to="." method="_on_win_condition"]
 [connection signal="timeout" from="UI/Regen" to="." method="_on_regen_timeout"]
 [connection signal="timeout" from="UI/Regen" to="Map/Player" method="_on_regen_timeout"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="player_death" from="Map/Player" to="." method="_on_player_player_death"]
 [connection signal="player_hit" from="Map/Player" to="." method="_on_player_player_hit"]
+[connection signal="player_respawn" from="Map/Player" to="." method="_on_player_player_respawn"]
 [connection signal="forge_hit" from="Map/NavigationRegion3D/Forge" to="." method="_on_forge_forge_hit"]

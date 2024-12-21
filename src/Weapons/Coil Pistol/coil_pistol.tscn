@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfa6nffv7pvih"]
+[gd_scene load_steps=11 format=3 uid="uid://cfa6nffv7pvih"]
 
 [ext_resource type="PackedScene" uid="uid://cma5r78iv0s35" path="res://Weapons/Coil Pistol/coil_pistol.fbx" id="1_1lmul"]
 
@@ -52,6 +52,35 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_mqqyk"]
+resource_name = "reloading"
+length = 1.5
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol_3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.01, 1.49),
+"transitions": PackedFloat32Array(0.435275, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.193), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pistol_3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.01, 1.5),
+"transitions": PackedFloat32Array(0.353554, 2.46229, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.362797, 0.0795437, 1.67197), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_aglpy"]
 resource_name = "shoot"
 length = 0.1
@@ -84,19 +113,9 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hpi7k"]
 _data = {
 "RESET": SubResource("Animation_s1e6n"),
+"reloading": SubResource("Animation_mqqyk"),
 "shoot": SubResource("Animation_aglpy")
 }
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_d4ojb"]
-size = Vector2(0.02, 0.02)
-subdivide_depth = 10
-orientation = 0
-
-[sub_resource type="Texture2DRD" id="Texture2DRD_4pntc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lbty"]
-transparency = 1
-albedo_texture = SubResource("Texture2DRD_4pntc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yrcek"]
 size = Vector3(0.904907, 0.13, 0.5)
@@ -120,13 +139,7 @@ libraries = {
 [node name="gun_barrel" type="Node3D" parent="." index="2"]
 transform = Transform3D(-4.37114e-08, -3.55271e-15, -1, -1.64203e-15, 1, 0, 1, 3.55271e-15, -4.37114e-08, 0.62363, -0.00136974, 0.204272)
 
-[node name="MuzzleFlash_TODO" type="MeshInstance3D" parent="." index="3"]
-transform = Transform3D(-5, 0, -7.54979e-07, 0, 5, 0, 7.54979e-07, 0, -5, 0.612521, -3.54322e-08, 0.198073)
-visible = false
-mesh = SubResource("PlaneMesh_d4ojb")
-surface_material_override/0 = SubResource("StandardMaterial3D_4lbty")
-
-[node name="Area3D" type="Area3D" parent="." index="4"]
+[node name="Area3D" type="Area3D" parent="." index="3"]
 collision_layer = 3
 collision_mask = 3
 
