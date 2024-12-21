@@ -15,7 +15,6 @@ const MIN_HEALTH: int = 1
 const WALK_SPEED = 5.0 # How fast the player moves
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.5 # How fast the player jumps
-const SENSITIVITY = 0.01 # Mouse camera movement sense
 const HIT_STAGGER = 8.0
 const BOB_FREQ = 2.0 # How often the steps occur
 const BOB_AMP = 0.08 # How high and low the steps go
@@ -24,6 +23,7 @@ const FOV_CHANGE = 1.5
 
 @export var health : int = 6
 
+# static var SENSITIVITY: float = 0.01 # Mouse camera movement sense
 var speed: float
 var beenHit := false
 var heal_value: int = 1
@@ -70,8 +70,8 @@ func _unhandled_input(event):
         # the x-axis, and left and right is based on the
         # y axis, its kinda confusing but there are resources
         # that explain this well
-        head.rotate_y(-event.relative.x * SENSITIVITY)
-        camera.rotate_x(-event.relative.y * SENSITIVITY)
+        head.rotate_y(-event.relative.x * (Global.sensitivity / 1000))
+        camera.rotate_x(-event.relative.y * (Global.sensitivity / 1000))
 
         # Max rotation allowed
         camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
