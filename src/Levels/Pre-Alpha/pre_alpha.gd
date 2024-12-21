@@ -108,8 +108,7 @@ func _on_enemy_spawn_timer_timeout() -> void:
 
 ## Updates the forge's health bar on hit
 func _on_forge_forge_hit() -> void:
-	print("Current Forge Health: ",forge.health)
-	_set_forge_bar()
+    _set_forge_bar()
 
 
 func _set_forge_bar() -> void:
