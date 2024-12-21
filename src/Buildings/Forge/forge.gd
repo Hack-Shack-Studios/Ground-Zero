@@ -1,9 +1,9 @@
 class_name Forge
 extends StaticBody3D
 
-## Handles Forge components 
+## Handles Forge components
 ##
-## The Forge is a machine that must be protected by the players, and is targeted by 
+## The Forge is a machine that must be protected by the players, and is targeted by
 ## the AI. The forge will handle a variety of things in this script, mainly the forge's
 ## health and upgrades
 
@@ -22,7 +22,7 @@ var robots_hacking: int
 
 ## Gets the current health of the forge
 func _get_health() -> int:
-	return health
+    return health
 
 
 ## Occurs whenever enemy attacks the forge, reducing the health by 1

@@ -148,11 +148,11 @@ func _headbob(time) -> Vector3:
 
 
 func hit():
-	emit_signal("player_hit")
-	health -= heal_value
-	update_health()
-	if health <= 0 and not dead:
-		respawn()
+    emit_signal("player_hit")
+    health -= heal_value
+    update_health()
+    if health <= 0 and not dead:
+        respawn()
 
 func respawn():
     respawn_label.visible = true

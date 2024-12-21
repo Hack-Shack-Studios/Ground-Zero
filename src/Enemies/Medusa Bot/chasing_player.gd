@@ -81,7 +81,7 @@ func physics_update(delta: float):
     # Medusa bot will go towards forge only if there are less than 2 robots
     # currently hacking it, and they are closer to the forge, than they are
     # of the player
-    if distance_to_forge <= distance_to_player and forge.robots_hacking < forge.MAX_HACKERS or not player.player_alive:
+    if distance_to_forge <= distance_to_player and forge.robots_hacking < forge.MAX_HACKERS or player.dead:
         Transitioned.emit(self, "ChasingForge")
     # If the medusa bot is within attack range, it will shoot at the player
     elif distance_to_player <= ATTACK_RANGE:
@@ -101,16 +101,3 @@ func random_velocities():
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
     pass # Replace with function body.
-
-"""
-directions = [NE, N, NW, E, SE, S, SW, W]
-on_chasing_player_time_out():
-    random_direction = rand(directions)
-    random_seconds = ran(1, 3)
-
-    for random_seconds:
-        maneuver_animation()
-        move(random_direction)
-        look_at(player)
-    chasing_player.start_timer()
-"""
