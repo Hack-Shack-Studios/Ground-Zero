@@ -12,7 +12,8 @@ signal forge_hit
 var minimum_health: int = 0
 var damage_amount: int = 1
 var health: int = 30
-
+var robots_hacking: int
+var current_robots
 ## Gets the current health of the forge
 func _get_health() -> int:
     return health

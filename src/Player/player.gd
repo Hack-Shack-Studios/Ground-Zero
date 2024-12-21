@@ -20,6 +20,7 @@ const BOB_FREQ = 2.0 # How often the steps occur
 const BOB_AMP = 0.08 # How high and low the steps go
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
+const MOUSE_MODE_CAPTURED: int = 2
 
 @export var health : int = 6
 
@@ -61,20 +62,20 @@ func _ready() -> void:
     rounds_label.text = round_info
 
 ## Handles mouse camera movement
-func _unhandled_input(event):
-    ## Condition is true whenever the mouse moves
-    ## The camera moves more or less based on how
-    ## quickly the mouse is moving, multiplied by the sense
-    if (event is InputEventMouseMotion && Input.get_mouse_mode() == 2) and not dead:
-        # Rotation is flipped, up and down is based on
-        # the x-axis, and left and right is based on the
-        # y axis, its kinda confusing but there are resources
-        # that explain this well
-        head.rotate_y(-event.relative.x * (Global.sensitivity / 1000))
-        camera.rotate_x(-event.relative.y * (Global.sensitivity / 1000))
-
-        # Max rotation allowed
-        camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+func _unhandled_input(event): 
+	## Condition is true whenever the mouse moves 
+	## The camera moves more or less based on how 
+	## quickly the mouse is moving, multiplied by the sense
+	if event is InputEventMouseMotion && Input.get_mouse_mode() == MOUSE_MODE_CAPTURED and not dead:
+		# Rotation is flipped, up and down is based on 
+		# the x-axis, and left and right is based on the 
+		# y axis, its kinda confusing but there are resources 
+		# that explain this well
+		head.rotate_y(-event.relative.x * SENSITIVITY) 
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		
+		# Max rotation allowed
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60)) 
 
 
 func _physics_process(delta: float) -> void:
@@ -148,7 +149,7 @@ func _headbob(time) -> Vector3:
 
 func hit(dir):
     emit_signal("player_hit")
-    velocity += dir * HIT_STAGGER # Limit this somehow
+    # velocity += dir * HIT_STAGGER # Limit this somehow
     health -= heal_value
     update_health()
     if health <= 0 and not dead:
