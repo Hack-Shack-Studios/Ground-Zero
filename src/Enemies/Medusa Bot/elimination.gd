@@ -15,25 +15,25 @@ var forge = StaticBody3D
 
 
 func enter():
-    forge = get_node(forge_path)
+	forge = get_node(forge_path)
 
-    animation.play("hurt")
-    await get_tree().create_timer(EXPLODE_DURATION).timeout
-    enemy.queue_free()
-
-    print("eliminated")
-
+	animation.play("hurt")
+	await get_tree().create_timer(EXPLODE_DURATION).timeout
+	get_parent().get_parent().emit_signal("enemy_death")
+	enemy.queue_free()
+	#get_parent().get_parent().get_parent().get_parent().get_parent().enemy_kills += 1
+	#print("eliminated " + str(get_parent().get_parent().get_parent().get_parent().get_parent().enemy_kills))
 
 func exit():
-    # When killed, has a low % drop rate of its laser head falling
-    
-    # get_tree().add_child(robot_head)
-    pass
+	# When killed, has a low % drop rate of its laser head falling
+	
+	# get_tree().add_child(robot_head)
+	pass
 
 
 func update(_delta: float):
-    pass
+	pass
 
 
 func physics_update(_delta: float):
-    pass
+	pass

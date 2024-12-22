@@ -55,178 +55,178 @@ var round_info: String
 @onready var hit_marker_HEADSHOT = $HUD/CenterContainer/HitMarkerHEADSHOT
 
 func _ready() -> void:
-    health_bar.value = max_health
-    current_bullets = magazine_size #Player should always start out with max ammo
-    weapon_info.text = "Coil Pistol\n" + str(current_bullets) + "/" + str(magazine_size) #Initialize Weapon GUI
-    round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
-    rounds_label.text = round_info
+	health_bar.value = max_health
+	current_bullets = magazine_size #Player should always start out with max ammo
+	weapon_info.text = "Coil Pistol\n" + str(current_bullets) + "/" + str(magazine_size) #Initialize Weapon GUI
+	round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
+	rounds_label.text = round_info
 
 ## Handles mouse camera movement
 func _unhandled_input(event):
-    ## Condition is true whenever the mouse moves
-    ## The camera moves more or less based on how
-    ## quickly the mouse is moving, multiplied by the sense
-    if (event is InputEventMouseMotion && Input.get_mouse_mode() == 2) and not dead:
-        # Rotation is flipped, up and down is based on
-        # the x-axis, and left and right is based on the
-        # y axis, its kinda confusing but there are resources
-        # that explain this well
-        head.rotate_y(-event.relative.x * (Global.sensitivity / 1000))
-        camera.rotate_x(-event.relative.y * (Global.sensitivity / 1000))
+	## Condition is true whenever the mouse moves
+	## The camera moves more or less based on how
+	## quickly the mouse is moving, multiplied by the sense
+	if (event is InputEventMouseMotion && Input.get_mouse_mode() == 2) and not dead:
+		# Rotation is flipped, up and down is based on
+		# the x-axis, and left and right is based on the
+		# y axis, its kinda confusing but there are resources
+		# that explain this well
+		head.rotate_y(-event.relative.x * (Global.sensitivity / 1000))
+		camera.rotate_x(-event.relative.y * (Global.sensitivity / 1000))
 
-        # Max rotation allowed
-        camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		# Max rotation allowed
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
 
 func _physics_process(delta: float) -> void:
-    round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
-    rounds_label.text = round_info
-    #print(get_parent().get_parent().waves_remaining)
-    # When the game detects the player is not
-    # touching the ground, it sets the velocity downwards
-    if not is_on_floor():
-        velocity += get_gravity() * delta
+	round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
+	rounds_label.text = round_info
+	#print(get_parent().get_parent().waves_remaining)
+	# When the game detects the player is not
+	# touching the ground, it sets the velocity downwards
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 
-    # When the player presses "space", they jump and they go up
-    if not dead:
-        hit_rect.visible = false
-        if Input.is_action_just_pressed("jump") and is_on_floor():
-            velocity.y = JUMP_VELOCITY
+	# When the player presses "space", they jump and they go up
+	if not dead:
+		hit_rect.visible = false
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 
-        # Handing running mechanic
-        if Input.is_action_pressed("sprint"):
-            speed = SPRINT_SPEED
-        else:
-            speed = WALK_SPEED
+		# Handing running mechanic
+		if Input.is_action_pressed("sprint"):
+			speed = SPRINT_SPEED
+		else:
+			speed = WALK_SPEED
 
-        # Gets the direction vector based on user input
-        var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
-        var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		# Gets the direction vector based on user input
+		var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
+		var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-        # Adding inertia, preventing players from being able to stop movement mid-air
-        if is_on_floor():
-            # Whatever direction they are going, the velocity increases that way
-            if direction:
-                velocity.x = direction.x * speed
-                velocity.z = direction.z * speed
-            else:
-                velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-                velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
-        else:
-            velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
-            velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
+		# Adding inertia, preventing players from being able to stop movement mid-air
+		if is_on_floor():
+			# Whatever direction they are going, the velocity increases that way
+			if direction:
+				velocity.x = direction.x * speed
+				velocity.z = direction.z * speed
+			else:
+				velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+				velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+		else:
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
 
-        # Head bob
-        t_bob += delta * velocity.length() * float(is_on_floor())
-        camera.transform.origin = _headbob(t_bob)
+		# Head bob
+		t_bob += delta * velocity.length() * float(is_on_floor())
+		camera.transform.origin = _headbob(t_bob)
 
-        # FOV
-        var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
-        var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
-        camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
+		# FOV
+		var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
+		var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
+		camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 
-        # NOTE: MAKE SEPERATE FUNCTIONS FOR DIFFERNET GUNS
+		# NOTE: MAKE SEPERATE FUNCTIONS FOR DIFFERNET GUNS
 
-        #Handle Shooting and Reloading...
-        if Input.is_action_just_pressed("shoot"):
-            shoot()
-        if Input.is_action_just_pressed("reload") or current_bullets <= 0:
-            reload()
+		#Handle Shooting and Reloading...
+		if Input.is_action_just_pressed("shoot"):
+			shoot()
+		if Input.is_action_just_pressed("reload") or current_bullets <= 0:
+			reload()
 
-        # Handles smooth colisions
-        move_and_slide()
-    else:
-        var format = "Respawn in %.1f"
-        respawn_label.text = format % respawn_timer.time_left
-        hit_rect.visible = true
+		# Handles smooth colisions
+		move_and_slide()
+	else:
+		var format = "Respawn in %.1f"
+		respawn_label.text = format % respawn_timer.time_left
+		hit_rect.visible = true
 
 func _headbob(time) -> Vector3:
-    var pos = Vector3.ZERO
-    pos.y = sin(time * BOB_FREQ) * BOB_AMP
-    pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
-    return pos
+	var pos = Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
+	return pos
 
 
 func hit():
-    emit_signal("player_hit")
-    health -= heal_value
-    update_health()
-    if health <= 0 and not dead:
-        respawn()
+	emit_signal("player_hit")
+	health -= heal_value
+	update_health()
+	if health <= 0 and not dead:
+		respawn()
 
 func respawn():
-    respawn_label.visible = true
-    dead = true
-    emit_signal("player_death")
-    respawn_timer.start()
-    await respawn_timer.timeout
-    dead = false
-    respawn_label.visible = false
-    emit_signal("player_respawn")
+	respawn_label.visible = true
+	dead = true
+	emit_signal("player_death")
+	respawn_timer.start()
+	await respawn_timer.timeout
+	dead = false
+	respawn_label.visible = false
+	emit_signal("player_respawn")
 
 ## TODO: Be able to manage multiple guns
 func shoot():
-    if current_bullets > 0: #if the magazine is not empty
-        if !gun_anim.is_playing():
-            gun_anim.play("shoot")
-            #CoilPistolShootSound.play()
-            if aimcast.is_colliding():
-                var b = bullet.instantiate()
-                gun_barrel.add_child(b)
-                b.look_at(aimcast.get_collision_point(), Vector3.UP)
-                current_bullets -= 1 #use one bullet once the bullet is visually "shot"
-                update_bullets_display()
-    else:
-        reload()
+	if current_bullets > 0: #if the magazine is not empty
+		if !gun_anim.is_playing():
+			gun_anim.play("shoot")
+			#CoilPistolShootSound.play()
+			if aimcast.is_colliding():
+				var b = bullet.instantiate()
+				gun_barrel.add_child(b)
+				b.look_at(aimcast.get_collision_point(), Vector3.UP)
+				current_bullets -= 1 #use one bullet once the bullet is visually "shot"
+				update_bullets_display()
+	else:
+		reload()
 
 func update_bullets_display():
-    var remaining_ammo_color: float = current_bullets / 20.0 #Aesthetics: checks the percentage of bullets left
-    weapon_info.text = "Coil Pistol\n"+str(current_bullets) + "/" + str(magazine_size) #Updates weapon text in format Ammo remaining / Total Ammo
-    if remaining_ammo_color <= 0.5 and remaining_ammo_color >= 0.2:
-        weapon_info.add_theme_color_override("font_color", Color(1, 1, 0))
-    elif remaining_ammo_color < 0.2:
-        weapon_info.add_theme_color_override("font_color", Color(1, 0, 0))
-    else:
-        weapon_info.add_theme_color_override("font_color", Color(0, 1, 0))
+	var remaining_ammo_color: float = current_bullets / 20.0 #Aesthetics: checks the percentage of bullets left
+	weapon_info.text = "Coil Pistol\n"+str(current_bullets) + "/" + str(magazine_size) #Updates weapon text in format Ammo remaining / Total Ammo
+	if remaining_ammo_color <= 0.5 and remaining_ammo_color >= 0.2:
+		weapon_info.add_theme_color_override("font_color", Color(1, 1, 0))
+	elif remaining_ammo_color < 0.2:
+		weapon_info.add_theme_color_override("font_color", Color(1, 0, 0))
+	else:
+		weapon_info.add_theme_color_override("font_color", Color(0, 1, 0))
 
 
 func reload():
-    gun_anim.stop()
-    gun_anim.play("reloading")
-    current_bullets = magazine_size
-    weapon_info.text = "Reloading..." #async so that this displays for whole animation before updating
-    await get_tree().create_timer(1.5).timeout #reload animation takes 1.5 seconds
-    update_bullets_display()
+	gun_anim.stop()
+	gun_anim.play("reloading")
+	current_bullets = magazine_size
+	weapon_info.text = "Reloading..." #async so that this displays for whole animation before updating
+	await get_tree().create_timer(1.5).timeout #reload animation takes 1.5 seconds
+	update_bullets_display()
 
 func heal() -> void:
-    health += heal_value
-    update_health()
+	health += heal_value
+	update_health()
 
 
 func update_health():
-    health_bar.value = health
+	health_bar.value = health
 
 
 ## Regens player health after delay.
 func _on_regen_timeout() -> void:
-    can_regen = true
-    heal_player()
+	can_regen = true
+	heal_player()
 
 ## Handles the healing of the player.
 func heal_player() -> void:
-    if (health < 6 and can_regen):
-        heal()
-        await (get_tree().create_timer(1.0).timeout)
-        heal_player()
+	if (health < 6 and can_regen):
+		heal()
+		await (get_tree().create_timer(1.0).timeout)
+		heal_player()
 
 ## If the player is hit by an enemy, their screen goes red.
 func _on_player_hit() -> void:
-    can_regen = false
-    hit_rect.visible = true
-    await get_tree().create_timer(0.2).timeout
-    hit_rect.visible = false
-    regen_timer.start()
+	can_regen = false
+	hit_rect.visible = true
+	await get_tree().create_timer(0.2).timeout
+	hit_rect.visible = false
+	regen_timer.start()
 
 
 func _on_respawn_timer_timeout() -> void:
-    pass
+	pass
