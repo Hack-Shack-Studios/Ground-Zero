@@ -33,25 +33,12 @@ subpixel_positioning = 0
 font_names = PackedStringArray("Agency FB")
 subpixel_positioning = 0
 
-[sub_resource type="SystemFont" id="SystemFont_2mcmm"]
-font_names = PackedStringArray("Agency FB")
-font_stretch = 125
-subpixel_positioning = 0
-
-[sub_resource type="SystemFont" id="SystemFont_lmgn3"]
-font_names = PackedStringArray("Agency FB")
-subpixel_positioning = 0
-
-[sub_resource type="SystemFont" id="SystemFont_n3oin"]
-font_names = PackedStringArray("Agency FB")
-subpixel_positioning = 0
-
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_0tg2p")
 
 [node name="RespawnTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 5.0
 one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -25,6 +25,9 @@ var wanter_time: float
 var is_wandering := false
 var direction_offset := 3.0
 
+# Track the navigation state
+var nav_map_ready: bool = false
+
 @onready var chasing_player_timer = $"../../ChasingPlayerTimer"
 
 func enter():
@@ -35,6 +38,9 @@ func enter():
     is_wandering = false
 
     print("Chasing Player")
+
+    # Connect the 'map_changed' signal to know when the map is ready
+    NavigationServer3D.map_changed.connect(_on_map_changed)
 
 func exit():
     chasing_player_timer.stop()
@@ -60,10 +66,11 @@ func physics_update(delta: float):
 
         print("Manuervering")
     else:
-        enemy.nav_agent.set_target_position(player.global_transform.origin) # Goes toward the player
-        var next_nav_point = enemy.nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
-        enemy.velocity = (next_nav_point - enemy.global_transform.origin).normalized() * move_speed # Sets velocity direction towards the target
-        enemy.rotation.y = lerp_angle(enemy.rotation.y, atan2(-enemy.velocity.x, -enemy.velocity.z), delta * 10.0) # Turn to face the player
+        if nav_map_ready:
+            enemy.nav_agent.set_target_position(player.global_transform.origin) # Goes toward the player
+            var next_nav_point = enemy.nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
+            enemy.velocity = (next_nav_point - enemy.global_transform.origin).normalized() * move_speed # Sets velocity direction towards the target
+            enemy.rotation.y = lerp_angle(enemy.rotation.y, atan2(-enemy.velocity.x, -enemy.velocity.z), delta * 10.0) # Turn to face the player
 
     ## TODO: Currently the location the enemy is following is
     ## on top of the player model, so the enemy tries to float,
@@ -98,6 +105,11 @@ func random_velocities():
     # Random direction between 1 and 3 meters, and 50/50 for left or right(negative or positive)
     move_direction = randf_range(1, 3) * (1 if randf() > 0.5 else -1)
 
-
+# TODO: Add safe_velocity to have avoidance work better
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
     pass # Replace with function body.
+
+
+func _on_map_changed():
+    # Set the navigation map state as ready
+    nav_map_ready = true

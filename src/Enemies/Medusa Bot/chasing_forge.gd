@@ -64,5 +64,6 @@ func physics_update(delta: float):
         Transitioned.emit(self, "ChasingPlayer")
     # else keep walking towards forge
 
+# TODO: Add safe_velocity to have avoidance work better #2
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
     pass # Replace with function body.
