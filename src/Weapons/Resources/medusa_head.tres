@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://dbfsnq6gscf8x"]
+
+[ext_resource type="Script" path="res://Weapons/weapon_resource.gd" id="1_t22py"]
+
+[resource]
+script = ExtResource("1_t22py")
+weapon_name = ""
+activate_anim = ""
+shoot_anim = ""
+reload_anim = ""
+deactivate_anim = ""
+out_of_ammo_anim = ""
+current_ammo = 5
+reserve_ammo = 5
+magazine = 5
+max_ammo = 10
+auto_fire = false
+Type = 1
+weapon_range = 2000
+damage = 10

@@ -125,15 +125,6 @@ func _physics_process(delta: float) -> void:
         var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
         camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 
-        # NOTE: MAKE SEPERATE FUNCTIONS FOR DIFFERNET GUNS
-
-        #Handle Shooting and Reloading...
-        #if Input.is_action_just_pressed("shoot"):
-            #shoot()
-        #if Input.is_action_just_pressed("reload") or current_bullets <= 0:
-            #reload()
-
-        # Handles smooth colisions
         move_and_slide()
     else:
         var format = "Respawn in %.1f"
@@ -178,24 +169,25 @@ func respawn():
     #else:
         #reload()
 
-func update_bullets_display():
-    var remaining_ammo_color: float = current_bullets / 20.0 #Aesthetics: checks the percentage of bullets left
-    weapon_info.text = "Coil Pistol\n"+str(current_bullets) + "/" + str(magazine_size) #Updates weapon text in format Ammo remaining / Total Ammo
-    if remaining_ammo_color <= 0.5 and remaining_ammo_color >= 0.2:
-        weapon_info.add_theme_color_override("font_color", Color(1, 1, 0))
-    elif remaining_ammo_color < 0.2:
-        weapon_info.add_theme_color_override("font_color", Color(1, 0, 0))
-    else:
-        weapon_info.add_theme_color_override("font_color", Color(0, 1, 0))
+## TODO: Add this to new weapon system
+#func update_bullets_display():
+    #var remaining_ammo_color: float = current_bullets / 20.0 #Aesthetics: checks the percentage of bullets left
+    #weapon_info.text = "Coil Pistol\n"+str(current_bullets) + "/" + str(magazine_size) #Updates weapon text in format Ammo remaining / Total Ammo
+    #if remaining_ammo_color <= 0.5 and remaining_ammo_color >= 0.2:
+        #weapon_info.add_theme_color_override("font_color", Color(1, 1, 0))
+    #elif remaining_ammo_color < 0.2:
+        #weapon_info.add_theme_color_override("font_color", Color(1, 0, 0))
+    #else:
+        #weapon_info.add_theme_color_override("font_color", Color(0, 1, 0))
 
-
-func reload():
-    gun_anim.stop()
-    gun_anim.play("reloading")
-    current_bullets = magazine_size
-    weapon_info.text = "Reloading..." #async so that this displays for whole animation before updating
-    await get_tree().create_timer(1.5).timeout #reload animation takes 1.5 seconds
-    update_bullets_display()
+## TODO: Add this to new weapon system
+#func reload():
+    #gun_anim.stop()
+    #gun_anim.play("reloading")
+    #current_bullets = magazine_size
+    #weapon_info.text = "Reloading..." #async so that this displays for whole animation before updating
+    #await get_tree().create_timer(1.5).timeout #reload animation takes 1.5 seconds
+    #update_bullets_display()
 
 func heal() -> void:
     health += heal_value

@@ -50,7 +50,7 @@ alignment = 2
 [node name="Resume" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = SubResource("SystemFont_h1et3")
 theme_override_font_sizes/font_size = 32
 text = "Resume"
@@ -58,7 +58,7 @@ text = "Resume"
 [node name="Main Menu" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = SubResource("SystemFont_h1et3")
 theme_override_font_sizes/font_size = 32
 text = "Main Menu"
@@ -66,7 +66,7 @@ text = "Main Menu"
 [node name="Quit" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = SubResource("SystemFont_h1et3")
 theme_override_font_sizes/font_size = 32
 text = "Quit"
