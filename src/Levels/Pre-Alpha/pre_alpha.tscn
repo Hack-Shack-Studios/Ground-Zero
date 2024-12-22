@@ -1,11 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2xr28r77qiug"]
+[gd_scene load_steps=23 format=3 uid="uid://b2xr28r77qiug"]
 
 [ext_resource type="Script" path="res://Levels/Pre-Alpha/pre_alpha.gd" id="1_1b5qn"]
 [ext_resource type="PackedScene" uid="uid://daxcj2wau0q4c" path="res://UI/pause_menu.tscn" id="2_bo550"]
+[ext_resource type="Script" path="res://UI/forge_health_bar.gd" id="2_reldq"]
 [ext_resource type="PackedScene" uid="uid://b5pxkpv2qnha5" path="res://Other/Scenes/skybox.tscn" id="3_wmexs"]
 [ext_resource type="PackedScene" uid="uid://orvopfwdvrfy" path="res://Player/player.tscn" id="4_usip7"]
 [ext_resource type="PackedScene" uid="uid://bklke6nfj1a0q" path="res://Buildings/Forge/forge.tscn" id="5_i5i1t"]
+[ext_resource type="FontFile" uid="uid://rerjonsav62n" path="res://Other/Fonts/Epyval.ttf" id="5_p2toc"]
 [ext_resource type="PackedScene" uid="uid://dhaeynqrn8bx5" path="res://Buildings/Fortress/fortress.tscn" id="6_6b102"]
+[ext_resource type="Script" path="res://UI/total_score_board.gd" id="6_qvoby"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ejsy0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -23,6 +26,8 @@ glow_enabled = true
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mivx"]
 bg_color = Color(0.376471, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4lgrj"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ya7h5"]
 bg_color = Color(0.360676, 0.00560704, 0.657435, 1)
 border_width_left = 2
@@ -30,6 +35,27 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uv8ou"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0, 0, 0, 0.27451)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ch0nd"]
+bg_color = Color(1, 0.968627, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kncfr"]
+bg_color = Color(0.623529, 0.247059, 0.909804, 0.203922)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_472va"]
+bg_color = Color(0.623529, 0.247059, 0.909804, 0.25098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_weefp"]
+bg_color = Color(0.623529, 0.247059, 0.909804, 0.25098)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ndq18"]
 vertices = PackedVector3Array(-2.06223, 0.499004, -3.79313, -0.062233, 0.499004, -4.04313, -0.062233, 0.499004, -67.0431, -3.31223, 0.499004, -2.54313, -3.81223, 0.499004, -0.543129, -70.0622, 0.499004, -67.0431, -70.0622, 0.499004, -0.543129, 1.93777, 0.499004, -3.79313, 3.43777, 0.499004, -2.04313, 69.9378, 0.499004, -0.543129, 69.9378, 0.499004, -67.0431, 3.43777, 0.499004, -0.543129, -0.312233, 6.249, -4.54313, -0.312233, 6.249, -4.04313, 0.687767, 6.249, -4.04313, 0.187767, 6.249, -5.04313, -0.312233, 11.249, -4.54313, -0.312233, 11.249, -4.04313, 0.687767, 11.249, -4.04313, 0.187767, 11.249, -5.04313, -0.312233, 15.249, -4.54313, -0.312233, 15.249, -4.04313, 0.687767, 15.249, -4.04313, 0.187767, 15.249, -5.04313, -2.31223, 16.499, -1.04313, -2.56223, 16.499, -1.54313, -2.56223, 16.499, 0.456871, -2.06223, 16.499, 0.706871, 0.937767, 16.499, -3.04313, -1.06223, 16.499, -3.04313, -1.31223, 16.499, -2.54313, 1.18777, 16.499, -2.54313, 1.93777, 16.499, -1.79313, 2.43777, 16.499, -1.54313, -1.31223, 16.499, 1.45687, -1.06223, 16.499, 1.95687, 1.93777, 16.499, 0.706871, 2.43777, 16.499, 0.456871, 0.437767, 16.499, 1.70687, 0.937767, 16.499, 1.95687, -1.06223, 200.499, -1.29313, -0.812233, 200.499, 0.456871, 0.937767, 200.499, 0.206871, 0.687767, 200.499, -1.54313, -0.812233, 0.499004, -1.04313, -0.562233, 0.499004, 0.206871, 0.687767, 0.499004, -0.043129, 0.437767, 0.499004, -1.29313, -0.812233, 16.499, -1.04313, -0.562233, 16.499, 0.206871, 0.687767, 16.499, -0.043129, 0.437767, 16.499, -1.29313, -4.31223, 6.249, -0.793129, -4.31223, 6.249, -0.293129, -3.81223, 6.249, -0.293129, -3.81223, 6.249, -0.793129, -4.31223, 11.249, -0.793129, -4.31223, 11.249, -0.293129, -3.81223, 11.249, -0.293129, -3.81223, 11.249, -0.793129, -4.31223, 15.249, -0.793129, -4.31223, 15.249, -0.293129, -3.81223, 15.249, -0.293129, -3.81223, 15.249, -0.793129, -0.062233, 0.499004, 65.9569, -0.062233, 0.499004, 3.20687, -2.06223, 0.499004, 2.70687, -3.31223, 0.499004, 1.45687, -70.0622, 0.499004, 65.9569, 1.93777, 0.499004, 2.70687, 3.18777, 0.499004, 1.45687, 69.9378, 0.499004, 65.9569, -0.312233, 6.249, 3.20687, -0.062233, 6.249, 3.95687, 0.437767, 6.249, 3.70687, 0.437767, 6.249, 3.20687, -0.312233, 11.249, 3.20687, -0.062233, 11.249, 3.95687, 0.437767, 11.249, 3.70687, 0.437767, 11.249, 3.20687, -0.312233, 15.249, 3.20687, -0.062233, 15.249, 3.95687, 0.437767, 15.249, 3.70687, 0.437767, 15.249, 3.20687)
@@ -132,15 +158,40 @@ anchor_right = 0.5
 grow_horizontal = 2
 
 [node name="ForgeHealthBar" type="ProgressBar" parent="UI/CanvasLayer/ForgeHealthBarControl"]
+z_index = 1
 layout_mode = 0
 offset_left = -600.0
 offset_top = 10.0
 offset_right = 600.0
 offset_bottom = 40.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_4lgrj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ya7h5")
 max_value = 30.0
 step = 1.0
+value = 5.0
 show_percentage = false
+script = ExtResource("2_reldq")
+
+[node name="ForgeSecondaryBar" type="ProgressBar" parent="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_uv8ou")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ch0nd")
+max_value = 30.0
+value = 30.0
+show_percentage = false
+
+[node name="decay_timer" type="Timer" parent="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar"]
+wait_time = 0.4
+one_shot = true
+
+[node name="stun_timer" type="Timer" parent="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar"]
+one_shot = true
 
 [node name="VersionControl" type="Control" parent="UI/CanvasLayer"]
 visible = false
@@ -226,6 +277,40 @@ scale = Vector2(3, 3)
 
 [node name="Skybox" parent="UI" instance=ExtResource("3_wmexs")]
 
+[node name="scoreboard" type="VBoxContainer" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = -1255.0
+offset_top = 889.0
+offset_right = -701.0
+offset_bottom = 1258.0
+
+[node name="header" type="Label" parent="UI/scoreboard"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_p2toc")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_kncfr")
+text = "SCOREBOARD"
+horizontal_alignment = 1
+
+[node name="total_score" type="Label" parent="UI/scoreboard"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("5_p2toc")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_472va")
+text = "SCORE: [Number here]"
+script = ExtResource("6_qvoby")
+
+[node name="info" type="Label" parent="UI/scoreboard"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_p2toc")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_weefp")
+text = "+100 (Kills)
++50 (Headshots)
+-25 (Deaths)"
+
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
@@ -290,6 +375,9 @@ size = Vector3(100, 0.002, 100)
 [connection signal="win_condition" from="." to="." method="_on_win_condition"]
 [connection signal="timeout" from="UI/Regen" to="." method="_on_regen_timeout"]
 [connection signal="timeout" from="UI/Regen" to="Map/Player" method="_on_regen_timeout"]
+[connection signal="value_changed" from="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar" to="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar" method="_on_value_changed"]
+[connection signal="timeout" from="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar/decay_timer" to="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar" method="_on_decay_timer_timeout"]
+[connection signal="timeout" from="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar/stun_timer" to="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar" method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="player_death" from="Map/Player" to="." method="_on_player_player_death"]
 [connection signal="player_hit" from="Map/Player" to="." method="_on_player_player_hit"]

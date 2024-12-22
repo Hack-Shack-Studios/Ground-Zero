@@ -4,6 +4,9 @@ extends Node3D
 ## Coil Pistol Bullet Manager
 ##
 ## Handles the logic for the bullet shot by the coil pistol
+
+signal headshot
+
 const SPEED = 40.0
 
 @onready var mesh = $MeshInstance3D
@@ -25,6 +28,7 @@ func _process(delta: float) -> void:
 				ray.get_collider().hit()
 				if ray.get_collider().is_in_group("head_enemy"): #Added new group just for head area3D node on enemy to register headshots
 					#Headshot will show a special hit marker
+					get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent()._on_headshot()
 					get_parent().get_parent().get_parent().get_parent().get_parent().hit_marker_HEADSHOT.visible = true
 				else:
 					get_parent().get_parent().get_parent().get_parent().get_parent().hit_marker.visible = true

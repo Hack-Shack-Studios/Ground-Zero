@@ -31,32 +31,32 @@ var player_died
 @onready var nav_agent = $NavigationAgent3D
 
 func _ready() -> void:
-    player = get_node(player_path)
-    forge = get_node(forge_path)
+	player = get_node(player_path)
+	forge = get_node(forge_path)
 
 # NEW FUNCTION
 func _physics_process(_delta: float) -> void:
-    move_and_slide()
+	move_and_slide()
 
 
 ## If any body part is hit, it will take @damage ammount of damage.
 ## Currently, only the Head has damage of 2, all other body parts is 1 damage
 func _on_area_3d_body_part_hit(damage: Variant) -> void:
-    health -= damage
+	health -= damage
 
-    if health <= 0 and enemy_alive:
-        if is_hacking:
-            forge.robots_hacking -= 1
-        enemy_alive = false
+	if health <= 0 and enemy_alive:
+		if is_hacking:
+			forge.robots_hacking -= 1
+		enemy_alive = false
 
-        # anim_tree.set("parameters/conditions/Hurt", true) #changed this logic for the sake of keeping track of kills
+		# anim_tree.set("parameters/conditions/Hurt", true) #changed this logic for the sake of keeping track of kills
 
 
 func _hit_finished() -> void:
-    if chasing_player:
-        player.hit()
+	if chasing_player:
+		player.hit()
 
 ## KEEP TRACK OF AMOUNT OF KILLS FOR FUTURE REFERENCE:
 func _on_enemy_death() -> void:
-    get_parent().get_parent().get_parent().enemy_kills += 1
-    print(get_parent().get_parent().get_parent().enemy_kills)
+	get_parent().get_parent().get_parent().enemy_kills += 1
+	print(get_parent().get_parent().get_parent().enemy_kills)

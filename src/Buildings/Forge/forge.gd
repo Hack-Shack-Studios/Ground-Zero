@@ -22,23 +22,23 @@ var robots_hacking: int
 
 ## Gets the current health of the forge
 func _get_health() -> int:
-    return health
+	return health
 
 
 ## Occurs whenever enemy attacks the forge, reducing the health by 1
 ## If the forge's health every reaches 0, the scene restarts
 func hit() -> void:
-    emit_signal("forge_hit")
-    for hackers in robots_hacking:
-        health -= damage_amount
-        print("forge hacked")
+	emit_signal("forge_hit")
+	for hackers in robots_hacking:
+		health -= damage_amount
+		print("forge hacked")
 
-    if health <= minimum_health:
-        print(str(health) + " <= " +str(minimum_health))
-        get_tree().change_scene_to_file("res://UI/game_over.tscn") #GO TO: Game Over sceen
+	if health <= minimum_health:
+		print(str(health) + " <= " +str(minimum_health))
+		get_tree().change_scene_to_file("res://UI/game_over.tscn") #GO TO: Game Over sceen
 
-    hacked_timer.start()
+	hacked_timer.start()
 
 
 func _on_hacked_timeout() -> void:
-    hit()
+	hit()
