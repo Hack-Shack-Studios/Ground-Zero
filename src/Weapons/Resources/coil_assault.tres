@@ -15,3 +15,6 @@ reserve_ammo = 20
 magazine = 20
 max_ammo = 40
 auto_fire = true
+Type = 1
+weapon_range = 2000
+damage = 1

@@ -41,15 +41,20 @@ func _physics_process(_delta: float) -> void:
 
 ## If any body part is hit, it will take @damage ammount of damage.
 ## Currently, only the Head has damage of 2, all other body parts is 1 damage
-func _on_area_3d_body_part_hit(damage: Variant) -> void:
+#func _on_area_3d_body_part_hit(damage: Variant) -> void:
+    #health -= damage
+#
+    #if health <= 0 and enemy_alive:
+        #if is_hacking:
+            #forge.robots_hacking -= 1
+        #enemy_alive = false
+func hit_successful(damage):
     health -= damage
-
+    print("Target Health: ",health)
     if health <= 0 and enemy_alive:
         if is_hacking:
             forge.robots_hacking -= 1
         enemy_alive = false
-
-        # anim_tree.set("parameters/conditions/Hurt", true) #changed this logic for the sake of keeping track of kills
 
 
 func _hit_finished() -> void:

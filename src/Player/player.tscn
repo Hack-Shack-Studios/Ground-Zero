@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://orvopfwdvrfy"]
+[gd_scene load_steps=31 format=3 uid="uid://orvopfwdvrfy"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0tg2p"]
+[ext_resource type="Script" path="res://Player/HUD.gd" id="2_0b52w"]
 [ext_resource type="Texture2D" uid="uid://bdvippxh3rsp4" path="res://Weapons/Coil Pistol/redcrosshair.png" id="3_l20qk"]
 [ext_resource type="Texture2D" uid="uid://dgawodhtiifkh" path="res://Weapons/Coil Pistol/Hit-Marker-PNG-Pic.png" id="4_h0bvh"]
 [ext_resource type="Texture2D" uid="uid://ffiya3g7xk72" path="res://Weapons/Coil Pistol/Coilgun_White_Transparent.png" id="4_v63of"]
@@ -112,6 +113,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bullet_Point:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.550523, -0.289106, -1.49436)]
+}
 
 [sub_resource type="Animation" id="Animation_4unq5"]
 resource_name = "coil_assault Activate"
@@ -151,6 +164,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bullet_Point:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.353348, -0.25307, -1.09516), Vector3(0.353348, -0.25307, -1.09516)]
 }
 
 [sub_resource type="Animation" id="Animation_76v5s"]
@@ -304,6 +329,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 2.37016, 0), Vector3(0, 1.5708, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bullet_Point:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.550523, -0.289106, -1.49436), Vector3(0.550523, -0.289106, -1.49436)]
+}
 
 [sub_resource type="Animation" id="Animation_fnmae"]
 resource_name = "coil_pistol Deactivate"
@@ -436,6 +473,44 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_0tg2p")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_0b52w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Current Weapon: "
+
+[node name="Current Weapon" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Current Ammo: "
+
+[node name="Current Ammo" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "hi"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Weapon Stack:"
+
+[node name="Weapon Stack" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
@@ -511,6 +586,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="WeaponGUI" type="PanelContainer" parent="HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -560,6 +636,7 @@ text = "ROUND [ ] of [ ]"
 horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -626,7 +703,14 @@ libraries = {
 "": SubResource("AnimationLibrary_fxo3e")
 }
 
+[node name="Bullet_Point" type="Marker3D" parent="Pivot/Main Camera/Weapons_Manager/FPS_Rig"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550523, -0.289106, -1.49436)
+
 [connection signal="player_hit" from="." to="." method="_on_player_hit"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="timeout" from="HUD/Regen" to="." method="_on_regen_timeout"]
+[connection signal="update_ammo" from="Pivot/Main Camera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_ammo"]
+[connection signal="update_weapon_stack" from="Pivot/Main Camera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_weapon_stack"]
+[connection signal="weapon_changed" from="Pivot/Main Camera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_weapon_changed"]
 [connection signal="animation_finished" from="Pivot/Main Camera/Weapons_Manager/FPS_Rig/AnimationPlayer" to="Pivot/Main Camera/Weapons_Manager" method="_on_animation_player_animation_finished"]

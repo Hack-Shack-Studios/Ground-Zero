@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://8swcop555jko"]
+
+[ext_resource type="Texture2D" uid="uid://bu83f1fhy1fnl" path="res://Weapons/Coil Pistol/reddot.png" id="1_ya4t1"]
+[ext_resource type="Script" path="res://Weapons/bullet_debug.gd" id="2_p22vc"]
+
+[node name="bullet_debug" type="Sprite3D"]
+billboard = 2
+texture = ExtResource("1_ya4t1")
+script = ExtResource("2_p22vc")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
