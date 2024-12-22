@@ -35,9 +35,12 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
+border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uv8ou"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(1, 0.968627, 0, 1)
+border_color = Color(0, 0, 0, 1)
+border_blend = true
 expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_right = 1.0
@@ -46,7 +49,8 @@ shadow_color = Color(0, 0, 0, 0.27451)
 shadow_offset = Vector2(0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ch0nd"]
-bg_color = Color(1, 0.968627, 0, 1)
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kncfr"]
 bg_color = Color(0.623529, 0.247059, 0.909804, 0.203922)
@@ -180,6 +184,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_uv8ou")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ch0nd")
 max_value = 30.0
