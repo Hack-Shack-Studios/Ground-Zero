@@ -23,9 +23,10 @@ func enter():
     forge = get_node(forge_path)
     enemy.chasing_player = true
 
+    #print("Shooting")
+
     # Anchor Down animation
 
-    print("Shooting")
 
 
 func exit():

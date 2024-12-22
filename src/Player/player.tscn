@@ -1,11 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://orvopfwdvrfy"]
+[gd_scene load_steps=31 format=3 uid="uid://orvopfwdvrfy"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0tg2p"]
-[ext_resource type="PackedScene" uid="uid://cfa6nffv7pvih" path="res://Weapons/Coil Pistol/coil_pistol.tscn" id="2_bmakn"]
+[ext_resource type="Script" path="res://Player/HUD.gd" id="2_0b52w"]
 [ext_resource type="Texture2D" uid="uid://bdvippxh3rsp4" path="res://Weapons/Coil Pistol/redcrosshair.png" id="3_l20qk"]
 [ext_resource type="Texture2D" uid="uid://dgawodhtiifkh" path="res://Weapons/Coil Pistol/Hit-Marker-PNG-Pic.png" id="4_h0bvh"]
 [ext_resource type="Texture2D" uid="uid://ffiya3g7xk72" path="res://Weapons/Coil Pistol/Coilgun_White_Transparent.png" id="4_v63of"]
+[ext_resource type="Script" path="res://Weapons/weapons_manager.gd" id="6_0i3mk"]
+[ext_resource type="PackedScene" uid="uid://ygjjfuv8dmq5" path="res://Weapons/Coil Pistol/coil_pistol.glb" id="6_1bymm"]
 [ext_resource type="Texture2D" uid="uid://cghx3qy3tqlmt" path="res://Weapons/Coil Pistol/HeadShotVariant.png" id="6_5nxv2"]
+[ext_resource type="Script" path="res://Weapons/weapon_resource.gd" id="7_ctafs"]
+[ext_resource type="PackedScene" uid="uid://ciwiop485dequ" path="res://Weapons/Coil Pistol/coil_assault.glb" id="7_hjdli"]
+[ext_resource type="Resource" uid="uid://buwp7sgd160od" path="res://Weapons/Resources/coil_assault.tres" id="8_tdh63"]
+[ext_resource type="Resource" uid="uid://8g1kyx7o7ycr" path="res://Weapons/Resources/coil_pistol.tres" id="9_57t3p"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_cst7t"]
 
@@ -33,9 +39,477 @@ subpixel_positioning = 0
 font_names = PackedStringArray("Agency FB")
 subpixel_positioning = 0
 
+[sub_resource type="Animation" id="Animation_7ckmu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coil_pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.86304, 0.140803)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("coil_pistol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("coil_pistol:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("coil_assault:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.27519, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("coil_assault:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("coil_assault:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bullet_Point:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.550523, -0.289106, -1.49436)]
+}
+
+[sub_resource type="Animation" id="Animation_4unq5"]
+resource_name = "coil_assault Activate"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coil_assault:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -3.27519, 0), Vector3(0.350552, -1.95926, -0.486898)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("coil_assault:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("coil_assault:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bullet_Point:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.353348, -0.25307, -1.09516), Vector3(0.353348, -0.25307, -1.09516)]
+}
+
+[sub_resource type="Animation" id="Animation_76v5s"]
+resource_name = "coil_assault Deactivate"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coil_assault:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.350552, -1.95926, -0.486898), Vector3(0, -3.27519, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("coil_assault:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.469005, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("coil_assault:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_60j70"]
+resource_name = "coil_assault OOA"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coil_assault:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.350552, -1.95926, -0.486898), Vector3(0.350552, -1.95926, -0.346677), Vector3(0.350552, -1.95926, -0.486898)]
+}
+
+[sub_resource type="Animation" id="Animation_ln7r1"]
+resource_name = "coil_assault Reload"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coil_assault:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.350552, -1.95926, -0.486898), Vector3(0.350552, -1.95926, -1.20049), Vector3(0.350552, -1.44342, -2.00735), Vector3(0.350552, -0.547067, -2.35645), Vector3(0.350552, 0.462081, -2.18449), Vector3(0.350552, 1.10312, 0.213322), Vector3(0.350552, -0.54033, -2.16806), Vector3(0.350552, -1.95926, -0.486898)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("coil_assault:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.50447, 0, 0), Vector3(0.973405, 0, 0), Vector3(1.50575, 0, 0), Vector3(2.29575, 0, 0), Vector3(-2.6954, 0, 0), Vector3(1.51536, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e3r8e"]
+resource_name = "coil_assault Shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coil_assault:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.350552, -1.95926, -0.486898), Vector3(0.350552, -1.95926, -0.308992), Vector3(0.350552, -1.95926, -0.486898)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("coil_assault:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0538958, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3ema6"]
+resource_name = "coil_pistol Activate"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coil_pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.86304, 0.140803), Vector3(0.550401, -0.609852, -0.631426)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("coil_pistol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("coil_pistol:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.37016, 0), Vector3(0, 1.5708, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bullet_Point:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.550523, -0.289106, -1.49436), Vector3(0.550523, -0.289106, -1.49436)]
+}
+
+[sub_resource type="Animation" id="Animation_fnmae"]
+resource_name = "coil_pistol Deactivate"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coil_pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.550401, -0.609852, -0.631426), Vector3(0, -1.86304, 0.140803)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("coil_pistol:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.95079, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("coil_pistol:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_o1j3l"]
+resource_name = "coil_pistol OOA"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coil_pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.550401, -0.609852, -0.631426), Vector3(0.550401, -0.609852, -0.55928), Vector3(0.550401, -0.609852, -0.631426)]
+}
+
+[sub_resource type="Animation" id="Animation_1r42l"]
+resource_name = "coil_pistol Reload"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coil_pistol:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.133333, 0.166667, 0.233333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(-3.46311e-08, 1.5708, 0.914518), Vector3(-5.52671e-08, 1.5708, 1.68126), Vector3(-6.33275e-08, 1.5708, 2.80438), Vector3(8.84448e-08, 1.5708, -1.66668), Vector3(1.0383e-07, 1.5708, -0.49302), Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("coil_pistol:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.550401, -0.609852, -0.631426), Vector3(0.550401, -0.609852, -0.767677), Vector3(0.550401, -0.609852, -0.957959), Vector3(0.550401, -0.609852, -0.631426)]
+}
+
+[sub_resource type="Animation" id="Animation_x1tmh"]
+resource_name = "coil_pistol Shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("coil_pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.0667667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.550401, -0.609852, -0.631426), Vector3(0.550401, -0.609852, -0.627723), Vector3(0.550401, -0.609852, -0.534861), Vector3(0.550401, -0.609852, -0.631426)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("coil_pistol:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(-5.53676e-09, 1.5708, 0.127008), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fxo3e"]
+_data = {
+"RESET": SubResource("Animation_7ckmu"),
+"coil_assault Activate": SubResource("Animation_4unq5"),
+"coil_assault Deactivate": SubResource("Animation_76v5s"),
+"coil_assault OOA": SubResource("Animation_60j70"),
+"coil_assault Reload": SubResource("Animation_ln7r1"),
+"coil_assault Shoot": SubResource("Animation_e3r8e"),
+"coil_pistol Activate": SubResource("Animation_3ema6"),
+"coil_pistol Deactivate": SubResource("Animation_fnmae"),
+"coil_pistol OOA": SubResource("Animation_o1j3l"),
+"coil_pistol Reload": SubResource("Animation_1r42l"),
+"coil_pistol Shoot": SubResource("Animation_x1tmh")
+}
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_0tg2p")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_0b52w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Current Weapon: "
+
+[node name="Current Weapon" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Current Ammo: "
+
+[node name="Current Ammo" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "hi"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Weapon Stack:"
+
+[node name="Weapon Stack" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
 
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -46,34 +520,6 @@ mesh = SubResource("CapsuleMesh_cst7t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_hryvx")
-
-[node name="Pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.516723, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Pivot"]
-
-[node name="Pistol_3" parent="Pivot/Camera3D" instance=ExtResource("2_bmakn")]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.354471, -0.451284, -0.409093)
-
-[node name="AimCast" type="RayCast3D" parent="Pivot/Camera3D"]
-target_position = Vector3(0, 0, -1000)
-
-[node name="CenterContainer" type="CenterContainer" parent="Pivot/Camera3D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Pivot/Camera3D/CenterContainer"]
-layout_mode = 2
-texture = ExtResource("3_l20qk")
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
@@ -140,6 +586,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="WeaponGUI" type="PanelContainer" parent="HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,6 +636,7 @@ text = "ROUND [ ] of [ ]"
 horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -212,6 +660,57 @@ visible = false
 layout_mode = 2
 texture = ExtResource("6_5nxv2")
 
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Main Camera" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.516723, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="Pivot/Main Camera"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Pivot/Main Camera/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_l20qk")
+
+[node name="Weapons_Manager" type="Node3D" parent="Pivot/Main Camera"]
+script = ExtResource("6_0i3mk")
+_weapon_resources = Array[ExtResource("7_ctafs")]([ExtResource("8_tdh63"), ExtResource("9_57t3p")])
+start_weapons = Array[String](["coil_pistol", "coil_assault"])
+
+[node name="FPS_Rig" type="Node3D" parent="Pivot/Main Camera/Weapons_Manager"]
+
+[node name="coil_pistol" parent="Pivot/Main Camera/Weapons_Manager/FPS_Rig" instance=ExtResource("6_1bymm")]
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0, -1.86304, 0.140803)
+visible = false
+
+[node name="coil_assault" parent="Pivot/Main Camera/Weapons_Manager/FPS_Rig" instance=ExtResource("7_hjdli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.27519, 0)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Main Camera/Weapons_Manager/FPS_Rig"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_fxo3e")
+}
+
+[node name="Bullet_Point" type="Marker3D" parent="Pivot/Main Camera/Weapons_Manager/FPS_Rig"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550523, -0.289106, -1.49436)
+
 [connection signal="player_hit" from="." to="." method="_on_player_hit"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="timeout" from="HUD/Regen" to="." method="_on_regen_timeout"]
+[connection signal="update_ammo" from="Pivot/Main Camera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_ammo"]
+[connection signal="update_weapon_stack" from="Pivot/Main Camera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_weapon_stack"]
+[connection signal="weapon_changed" from="Pivot/Main Camera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_weapon_changed"]
+[connection signal="animation_finished" from="Pivot/Main Camera/Weapons_Manager/FPS_Rig/AnimationPlayer" to="Pivot/Main Camera/Weapons_Manager" method="_on_animation_player_animation_finished"]

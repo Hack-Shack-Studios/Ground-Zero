@@ -24,7 +24,7 @@ func enter():
     enemy.is_hacking = true
     enemy.chasing_player = false
 
-    print("Hacking")
+    #print("Hacking")
 
 
 func exit():
