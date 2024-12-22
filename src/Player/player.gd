@@ -39,7 +39,7 @@ var dead = false
 var round_info: String
 
 @onready var head = $Pivot
-@onready var camera = $Pivot/Camera3D
+@onready var camera = $"Pivot/Main Camera"
 @onready var gun_anim = $Pivot/Camera3D/Pistol_3/AnimationPlayer
 @onready var gun_barrel = $Pivot/Camera3D/Pistol_3/gun_barrel
 @onready var aimcast = $Pivot/Camera3D/AimCast
@@ -128,10 +128,10 @@ func _physics_process(delta: float) -> void:
         # NOTE: MAKE SEPERATE FUNCTIONS FOR DIFFERNET GUNS
 
         #Handle Shooting and Reloading...
-        if Input.is_action_just_pressed("shoot"):
-            shoot()
-        if Input.is_action_just_pressed("reload") or current_bullets <= 0:
-            reload()
+        #if Input.is_action_just_pressed("shoot"):
+            #shoot()
+        #if Input.is_action_just_pressed("reload") or current_bullets <= 0:
+            #reload()
 
         # Handles smooth colisions
         move_and_slide()
@@ -164,20 +164,19 @@ func respawn():
     respawn_label.visible = false
     emit_signal("player_respawn")
 
-## TODO: Be able to manage multiple guns
-func shoot():
-    if current_bullets > 0: #if the magazine is not empty
-        if !gun_anim.is_playing():
-            gun_anim.play("shoot")
-            #CoilPistolShootSound.play()
-            if aimcast.is_colliding():
-                var b = bullet.instantiate()
-                gun_barrel.add_child(b)
-                b.look_at(aimcast.get_collision_point(), Vector3.UP)
-                current_bullets -= 1 #use one bullet once the bullet is visually "shot"
-                update_bullets_display()
-    else:
-        reload()
+#func shoot():
+    #if current_bullets > 0: #if the magazine is not empty
+        #if !gun_anim.is_playing():
+            #gun_anim.play("shoot")
+            ##CoilPistolShootSound.play()
+            #if aimcast.is_colliding():
+                #var b = bullet.instantiate()
+                #gun_barrel.add_child(b)
+                #b.look_at(aimcast.get_collision_point(), Vector3.UP)
+                #current_bullets -= 1 #use one bullet once the bullet is visually "shot"
+                #update_bullets_display()
+    #else:
+        #reload()
 
 func update_bullets_display():
     var remaining_ammo_color: float = current_bullets / 20.0 #Aesthetics: checks the percentage of bullets left

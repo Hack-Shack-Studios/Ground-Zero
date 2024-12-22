@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://buwp7sgd160od"]
+
+[ext_resource type="Script" path="res://Weapons/weapon_resource.gd" id="1_3echn"]
+
+[resource]
+script = ExtResource("1_3echn")
+weapon_name = "coil_assault"
+activate_anim = "coil_assault Activate"
+shoot_anim = "coil_assault Shoot"
+reload_anim = "coil_assault Reload"
+deactivate_anim = "coil_assault Deactivate"
+out_of_ammo_anim = "coil_assault OOA"
+current_ammo = 20
+reserve_ammo = 20
+magazine = 20
+max_ammo = 40
+auto_fire = true

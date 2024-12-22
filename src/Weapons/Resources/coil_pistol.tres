@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://8g1kyx7o7ycr"]
+
+[ext_resource type="Script" path="res://Weapons/weapon_resource.gd" id="1_06gxv"]
+
+[resource]
+script = ExtResource("1_06gxv")
+weapon_name = "coil_pistol"
+activate_anim = "coil_pistol Activate"
+shoot_anim = "coil_pistol Shoot"
+reload_anim = "coil_pistol Reload"
+deactivate_anim = "coil_pistol Deactivate"
+out_of_ammo_anim = "coil_pistol OOA"
+current_ammo = 10
+reserve_ammo = 10
+magazine = 10
+max_ammo = 20
+auto_fire = false

@@ -22,7 +22,7 @@ func enter():
     player = get_node(player_path)
     forge = get_node(forge_path)
 
-    print("Chasing Forge")
+    #print("Chasing Forge")
 
 func exit():
     pass

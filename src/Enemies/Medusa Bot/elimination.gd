@@ -21,12 +21,12 @@ func enter():
     await get_tree().create_timer(EXPLODE_DURATION).timeout
     enemy.queue_free()
 
-    print("eliminated")
+    #print("eliminated")
 
 
 func exit():
     # When killed, has a low % drop rate of its laser head falling
-    
+
     # get_tree().add_child(robot_head)
     pass
 

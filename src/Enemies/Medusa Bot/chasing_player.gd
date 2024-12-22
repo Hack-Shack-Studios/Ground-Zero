@@ -37,10 +37,10 @@ func enter():
     chasing_player_timer.start()
     is_wandering = false
 
-    print("Chasing Player")
-
     # Connect the 'map_changed' signal to know when the map is ready
     NavigationServer3D.map_changed.connect(_on_map_changed)
+
+    #print("Chasing player")
 
 func exit():
     chasing_player_timer.stop()
@@ -64,7 +64,7 @@ func physics_update(delta: float):
         else:
             enemy.velocity.x = move_direction * delta
 
-        print("Manuervering")
+        #print("Manuervering")
     else:
         if nav_map_ready:
             enemy.nav_agent.set_target_position(player.global_transform.origin) # Goes toward the player
