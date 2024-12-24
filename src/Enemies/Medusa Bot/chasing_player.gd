@@ -9,7 +9,7 @@ class_name ChasingPlayer
 ## Chasing the player will be the "base state", as defeating
 ## the players is high priority, with hacking kept in mind
 
-const ATTACK_RANGE := 15.0
+const ATTACK_RANGE := 5
 
 @export var enemy: CharacterBody3D
 @export var move_speed := 2.0
@@ -71,16 +71,6 @@ func physics_update(delta: float):
             var next_nav_point = enemy.nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
             enemy.velocity = (next_nav_point - enemy.global_transform.origin).normalized() * move_speed # Sets velocity direction towards the target
             enemy.rotation.y = lerp_angle(enemy.rotation.y, atan2(-enemy.velocity.x, -enemy.velocity.z), delta * 10.0) # Turn to face the player
-
-    ## TODO: Currently the location the enemy is following is
-    ## on top of the player model, so the enemy tries to float,
-    ## I can't/too tired to find the solution, so i'm just forcing
-    ## the bot back to the ground without delta so its instant
-    ## Technically should not be a problem with the medusa bot since
-    ## they are a ranged enemy, but can def seeing this being a
-    ## problem later
-    # if not enemy.is_on_floor():
-    #     enemy.velocity.y -= gravity
 
     var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
     var distance_to_player = enemy.global_position.distance_to(player.global_position)

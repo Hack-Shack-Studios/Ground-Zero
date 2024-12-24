@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://UI/h_scroll_bar.gd" id="5_wtcer"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_iycx4"]
-color = Color(0.847059, 0.368627, 0.72549, 1)
+color = Color(0.623529, 0.247059, 0.909804, 1)
 thickness = 25
 
 [sub_resource type="SystemFont" id="SystemFont_dvhx5"]
@@ -55,7 +55,7 @@ alignment = 2
 [node name="Back" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("3_6dct2")
 theme_override_font_sizes/font_size = 64
 text = "BACK"
@@ -67,7 +67,7 @@ offset_left = 379.0
 offset_top = -3.0
 offset_right = 673.0
 offset_bottom = 149.0
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_fonts/font = ExtResource("3_6dct2")
@@ -80,7 +80,7 @@ offset_left = 16.0
 offset_top = 204.0
 offset_right = 319.0
 offset_bottom = 356.0
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_fonts/font = ExtResource("3_6dct2")
@@ -105,7 +105,7 @@ offset_left = 16.0
 offset_top = 504.0
 offset_right = 319.0
 offset_bottom = 656.0
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_fonts/font = ExtResource("3_6dct2")
@@ -118,19 +118,7 @@ offset_left = 316.0
 offset_top = 28.0
 offset_right = 723.0
 offset_bottom = 75.0
-theme_override_colors/font_disabled_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/font_hover_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/font_pressed_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/font_focus_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/font_outline_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/icon_normal_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/icon_focus_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/icon_pressed_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/icon_hover_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/icon_hover_pressed_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/icon_disabled_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = SubResource("SystemFont_dvhx5")
 theme_override_font_sizes/font_size = 32
 selected = 0
@@ -147,7 +135,7 @@ offset_left = 16.0
 offset_top = 604.0
 offset_right = 319.0
 offset_bottom = 756.0
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_fonts/font = ExtResource("3_6dct2")
@@ -172,9 +160,9 @@ offset_left = 566.0
 offset_top = 31.0
 offset_right = 656.0
 offset_bottom = 82.0
-theme_override_colors/word_highlighted_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/font_readonly_color = Color(0.847059, 0.368627, 0.72549, 1)
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/word_highlighted_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_readonly_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("3_6dct2")
 theme_override_font_sizes/font_size = 30
 context_menu_enabled = false
@@ -191,7 +179,7 @@ offset_left = 16.0
 offset_top = 304.0
 offset_right = 319.0
 offset_bottom = 456.0
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_fonts/font = ExtResource("3_6dct2")
@@ -216,12 +204,24 @@ offset_left = 16.0
 offset_top = 404.0
 offset_right = 319.0
 offset_bottom = 556.0
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_fonts/font = ExtResource("3_6dct2")
 theme_override_font_sizes/font_size = 64
 text = "Sounds: "
+
+[node name="SFX" type="HSlider" parent="Sounds Tags"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = -14.0
+offset_right = 578.0
+offset_bottom = 113.0
+theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_4gdbj")
+bus_name = "sfx"
 
 [node name="Full Screen" type="Label" parent="."]
 layout_mode = 1
@@ -229,7 +229,7 @@ offset_left = 16.0
 offset_top = 704.0
 offset_right = 319.0
 offset_bottom = 856.0
-theme_override_colors/font_color = Color(0.847059, 0.368627, 0.72549, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_fonts/font = ExtResource("3_6dct2")
@@ -242,27 +242,22 @@ offset_left = 299.0
 offset_top = 39.0
 offset_right = 343.0
 offset_bottom = 63.0
-
-[node name="SFX" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 246.0
-offset_top = 390.0
-offset_right = 594.0
-offset_bottom = 517.0
-theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
-max_value = 1.0
-step = 0.001
-script = ExtResource("3_4gdbj")
-bus_name = "sfx"
+button_pressed = true
 
 [connection signal="mouse_entered" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_mouse_entered"]
 [connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="mouse_entered" from="Master Tag/Master" to="." method="_on_master_mouse_entered"]
 [connection signal="value_changed" from="Master Tag/Master" to="." method="_on_volume_value_changed"]
 [connection signal="item_selected" from="Resolutions Tag/Resolutions" to="." method="_on_resolutions_item_selected"]
+[connection signal="mouse_entered" from="Resolutions Tag/Resolutions" to="." method="_on_resolutions_mouse_entered"]
+[connection signal="mouse_entered" from="Sensitivity Tag/Sensitivity" to="." method="_on_sensitivity_mouse_entered"]
 [connection signal="value_changed" from="Sensitivity Tag/Sensitivity" to="Sensitivity Tag/Sensitivity" method="_on_value_changed"]
-[connection signal="text_changed" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_text_edit_text_changed"]
 [connection signal="text_changed" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_number_sensitivity_text_changed"]
+[connection signal="text_changed" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_text_edit_text_changed"]
 [connection signal="text_set" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_number_sensitivity_text_set"]
+[connection signal="mouse_entered" from="Music Tag/Music" to="." method="_on_music_mouse_entered"]
 [connection signal="value_changed" from="Music Tag/Music" to="." method="_on_volume_value_changed"]
+[connection signal="mouse_entered" from="Sounds Tags/SFX" to="." method="_on_sfx_mouse_entered"]
+[connection signal="value_changed" from="Sounds Tags/SFX" to="." method="_on_volume_value_changed"]
+[connection signal="mouse_entered" from="Full Screen/CheckButton" to="." method="_on_check_button_mouse_entered"]
 [connection signal="toggled" from="Full Screen/CheckButton" to="." method="_on_check_button_toggled"]
-[connection signal="value_changed" from="SFX" to="." method="_on_volume_value_changed"]
