@@ -40,8 +40,8 @@ var round_info: String
 
 @onready var head = $Pivot
 @onready var camera = $"Pivot/Main Camera"
-@onready var gun_anim = $Pivot/Camera3D/Pistol_3/AnimationPlayer
-@onready var gun_barrel = $Pivot/Camera3D/Pistol_3/gun_barrel
+#@onready var gun_anim = $Pivot/Camera3D/Pistol_3/AnimationPlayer
+#@onready var gun_barrel = $Pivot/Camera3D/Pistol_3/gun_barrel
 @onready var aimcast = $Pivot/Camera3D/AimCast
 @onready var respawn_timer = $RespawnTimer
 @onready var health_bar = $HUD/PlayerHealthBar

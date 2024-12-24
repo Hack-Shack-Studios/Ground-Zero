@@ -133,11 +133,13 @@ func paused_menu() -> void:
         Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
         pause_menu.hide()
         Engine.time_scale = 1
+        NonCombatMusic.stream_paused = false
 
     else:
         Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
         pause_menu.show()
         Engine.time_scale = 0
+        NonCombatMusic.stream_paused = true
 
     paused = !paused
 
@@ -160,3 +162,6 @@ func _on_win_condition() -> void:
 func _on_headshot():
     Global.score += 50
     score_label.update_score()
+
+func get_paused() -> bool:
+    return paused

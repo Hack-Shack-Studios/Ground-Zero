@@ -428,7 +428,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_x1tmh"]
 resource_name = "coil_pistol Shoot"
-length = 0.2
+length = 0.41
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -436,7 +436,7 @@ tracks/0/path = NodePath("coil_pistol:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.0667667, 0.2),
+"times": PackedFloat32Array(0, 0.0665667, 0.0666667, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.550401, -0.609852, -0.631426), Vector3(0.550401, -0.609852, -0.627723), Vector3(0.550401, -0.609852, -0.534861), Vector3(0.550401, -0.609852, -0.631426)]
@@ -448,7 +448,7 @@ tracks/1/path = NodePath("coil_pistol:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.0999, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 1.5708, 0), Vector3(-5.53676e-09, 1.5708, 0.127008), Vector3(0, 1.5708, 0)]
@@ -685,7 +685,7 @@ texture = ExtResource("3_l20qk")
 [node name="Weapons_Manager" type="Node3D" parent="Pivot/Main Camera"]
 script = ExtResource("6_0i3mk")
 _weapon_resources = Array[ExtResource("7_ctafs")]([ExtResource("8_tdh63"), ExtResource("9_57t3p")])
-start_weapons = Array[String](["coil_pistol", "coil_assault"])
+start_weapons = Array[String](["coil_pistol"])
 
 [node name="FPS_Rig" type="Node3D" parent="Pivot/Main Camera/Weapons_Manager"]
 
@@ -706,6 +706,10 @@ libraries = {
 [node name="Bullet_Point" type="Marker3D" parent="Pivot/Main Camera/Weapons_Manager/FPS_Rig"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550523, -0.289106, -1.49436)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pivot/Main Camera/Weapons_Manager"]
+unique_name_in_owner = true
+bus = &"sfx"
 
 [connection signal="player_hit" from="." to="." method="_on_player_hit"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

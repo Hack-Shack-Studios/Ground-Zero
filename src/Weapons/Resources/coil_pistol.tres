@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://8g1kyx7o7ycr"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://8g1kyx7o7ycr"]
 
 [ext_resource type="Script" path="res://Weapons/weapon_resource.gd" id="1_06gxv"]
+[ext_resource type="AudioStream" uid="uid://c04335hx4mm" path="res://Weapons/Coil Pistol/coil_pistol.mp3" id="2_huhak"]
 
 [resource]
 script = ExtResource("1_06gxv")
@@ -11,10 +12,11 @@ reload_anim = "coil_pistol Reload"
 deactivate_anim = "coil_pistol Deactivate"
 out_of_ammo_anim = "coil_pistol OOA"
 current_ammo = 10
-reserve_ammo = 10
+reserve_ammo = 60
 magazine = 10
-max_ammo = 20
-auto_fire = false
+max_ammo = 60
+auto_fire = true
 Type = 1
 weapon_range = 2000
 damage = 2
+shoot_sound = ExtResource("2_huhak")

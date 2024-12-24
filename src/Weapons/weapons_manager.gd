@@ -6,6 +6,7 @@ signal update_weapon_stack
 
 @onready var anim_player = get_node("%AnimationPlayer")
 @onready var bullet_point = get_node("%Bullet_Point")
+@onready var audio_player = get_node("%AudioStreamPlayer")
 
 var dubug_bullet = preload("res://Weapons/Resources/bullet_debug.tscn")
 
@@ -28,6 +29,7 @@ enum {
     HITSCAN,
     PROJECTILE,
 }
+
 
 func _ready() -> void:
     initialize(start_weapons) # enter the state machine
@@ -90,6 +92,11 @@ func shoot():
     # Can't shoot when no ammo, and enforces firerate based on animation speed
     if current_weapon.current_ammo != 0 and !anim_player.is_playing():
         anim_player.play(current_weapon.shoot_anim)
+
+        # Plays gun sound
+        audio_player.stream = current_weapon.shoot_sound
+        audio_player.play()
+
         current_weapon.current_ammo -= 1
         emit_signal("update_ammo", [current_weapon.current_ammo, current_weapon.reserve_ammo])
         var camera_collision = get_camera_collision()
@@ -99,13 +106,19 @@ func shoot():
             HITSCAN:
                 hit_scan_collision(camera_collision)
             PROJECTILE:
-                pass
-    else:
+                #projectile_collision(camera_collision)
+                print("projectile")
+
+        if current_weapon.current_ammo == 0:
+            reload()
+    elif current_weapon.current_ammo == 0:
         reload()
+
+
 func reload():
     if current_weapon.current_ammo == current_weapon.magazine:
         return
-    elif !anim_player.is_playing() and current_weapon.reserve_ammo != 0:
+    elif current_weapon.reserve_ammo != 0:
         anim_player.play(current_weapon.reload_anim)
         var reload_amount = min(current_weapon.magazine - current_weapon.current_ammo, current_weapon.reserve_ammo)
 

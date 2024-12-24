@@ -18,3 +18,5 @@ class_name WeaponResource
 @export_flags("hitscan","projectile") var Type
 @export var weapon_range: int
 @export var damage: int
+
+@export var shoot_sound: AudioStream

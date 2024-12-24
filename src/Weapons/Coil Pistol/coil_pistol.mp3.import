@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c04335hx4mm"
+path="res://.godot/imported/coil_pistol.mp3-1b54bfaeda1107d867c3714e8fc86a6b.mp3str"
+
+[deps]
+
+source_file="res://Weapons/Coil Pistol/coil_pistol.mp3"
+dest_files=["res://.godot/imported/coil_pistol.mp3-1b54bfaeda1107d867c3714e8fc86a6b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

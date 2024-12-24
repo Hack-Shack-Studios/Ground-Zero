@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_t22py")
-weapon_name = ""
+weapon_name = "medusa_head"
 activate_anim = ""
 shoot_anim = ""
 reload_anim = ""
@@ -14,7 +14,7 @@ current_ammo = 5
 reserve_ammo = 5
 magazine = 5
 max_ammo = 10
-auto_fire = false
+auto_fire = true
 Type = 1
 weapon_range = 2000
 damage = 10

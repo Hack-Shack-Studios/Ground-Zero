@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bifsoc0pmbg75"]
+
+[ext_resource type="AudioStream" uid="uid://yf06v61jnhuv" path="res://Music/Combat/NonBossFight.wav" id="1_nfxgv"]
+[ext_resource type="Script" path="res://Music/Combat/non_combat_music.gd" id="2_6x3x0"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_nfxgv")
+bus = &"Music"
+script = ExtResource("2_6x3x0")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
