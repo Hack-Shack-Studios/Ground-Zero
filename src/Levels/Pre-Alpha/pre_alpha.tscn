@@ -105,6 +105,7 @@ text = "Health: 6/6"
 
 [node name="Regen" type="Timer" parent="UI"]
 wait_time = 5.0
+one_shot = true
 
 [node name="Debug Menu" type="TextEdit" parent="UI"]
 visible = false
@@ -325,6 +326,7 @@ autostart = true
 [node name="Map" type="Node3D" parent="."]
 
 [node name="Player" parent="Map" instance=ExtResource("4_usip7")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 28.8781)
 
 [node name="Spawns" type="Node3D" parent="Map"]

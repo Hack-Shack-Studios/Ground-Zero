@@ -37,3 +37,32 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
     else:
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_master_mouse_entered() -> void:
+    ButtonHover.play()
+
+
+
+func _on_resolutions_mouse_entered() -> void:
+    ButtonHover.play()
+
+
+
+func _on_sensitivity_mouse_entered() -> void:
+    ButtonHover.play()
+
+
+
+func _on_music_mouse_entered() -> void:
+    ButtonHover.play()
+
+
+
+func _on_sfx_mouse_entered() -> void:
+    ButtonHover.play()
+
+
+
+func _on_check_button_mouse_entered() -> void:
+    ButtonHover.play()

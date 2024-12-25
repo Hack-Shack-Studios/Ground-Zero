@@ -13,8 +13,11 @@ const EXPLODE_DURATION := 1.5
 
 var forge = StaticBody3D
 
+@onready var laser_mesh = $"../../Laser/MeshInstance3D"
+
 
 func enter():
+    laser_mesh.visible = false
     forge = get_node(forge_path)
 
     animation.play("hurt")

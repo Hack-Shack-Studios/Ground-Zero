@@ -58,8 +58,9 @@ func hit_successful(damage):
 
 
 func _hit_finished() -> void:
-    if chasing_player:
-        player.hit()
+    # if chasing_player:
+    #     player.hit()
+    pass
 
 ## KEEP TRACK OF AMOUNT OF KILLS FOR FUTURE REFERENCE:
 func _on_enemy_death() -> void:

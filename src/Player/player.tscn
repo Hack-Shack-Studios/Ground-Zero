@@ -559,7 +559,8 @@ offset_bottom = -430.0
 grow_horizontal = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_tne3w")
 max_value = 6.0
-step = 1.0
+step = 0.1
+value = 6.0
 show_percentage = false
 
 [node name="ColorRect" type="ColorRect" parent="HUD"]
@@ -710,6 +711,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550523, -0.289106, -1.49436
 unique_name_in_owner = true
 bus = &"sfx"
 
+[node name="Laserd" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="player_hit" from="." to="." method="_on_player_hit"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="timeout" from="HUD/Regen" to="." method="_on_regen_timeout"]
@@ -717,3 +722,4 @@ bus = &"sfx"
 [connection signal="update_weapon_stack" from="Pivot/Main Camera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_weapon_stack"]
 [connection signal="weapon_changed" from="Pivot/Main Camera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_weapon_changed"]
 [connection signal="animation_finished" from="Pivot/Main Camera/Weapons_Manager/FPS_Rig/AnimationPlayer" to="Pivot/Main Camera/Weapons_Manager" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Laserd" to="." method="_on_laserd_timeout"]

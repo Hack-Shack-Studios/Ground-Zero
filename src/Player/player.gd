@@ -22,13 +22,13 @@ const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 const MOUSE_MODE_CAPTURED: int = 2
 
-@export var health : int = 6
+@export var health : float = 6
 
 # static var SENSITIVITY: float = 0.01 # Mouse camera movement sense
 var speed: float
 var beenHit := false
-var heal_value: int = 1
-var max_health: int = 6
+var heal_value: float = 1
+var max_health: float = 6
 var t_bob := 0.0 # head bobbing
 var bullet = preload("res://Weapons/Coil Pistol/coil_bullet.tscn")
 var bullet_instance
@@ -37,6 +37,7 @@ var current_bullets #How many bullets the player has left
 var can_regen := false
 var dead = false
 var round_info: String
+var lasers := 0
 
 @onready var head = $Pivot
 @onready var camera = $"Pivot/Main Camera"
@@ -53,6 +54,7 @@ var round_info: String
 @onready var rounds_label = $HUD/RoundGUI/RoundsInformation
 @onready var hit_marker = $HUD/CenterContainer/HitMarker
 @onready var hit_marker_HEADSHOT = $HUD/CenterContainer/HitMarkerHEADSHOT
+@onready var lazered_timer = $Laserd
 
 func _ready() -> void:
     health_bar.value = max_health
@@ -136,13 +138,6 @@ func _headbob(time) -> Vector3:
     return pos
 
 
-func hit():
-    emit_signal("player_hit")
-    health -= heal_value
-    update_health()
-    if health <= 0 and not dead:
-        respawn()
-
 func respawn():
     respawn_label.visible = true
     dead = true
@@ -153,19 +148,6 @@ func respawn():
     respawn_label.visible = false
     emit_signal("player_respawn")
 
-#func shoot():
-    #if current_bullets > 0: #if the magazine is not empty
-        #if !gun_anim.is_playing():
-            #gun_anim.play("shoot")
-            ##CoilPistolShootSound.play()
-            #if aimcast.is_colliding():
-                #var b = bullet.instantiate()
-                #gun_barrel.add_child(b)
-                #b.look_at(aimcast.get_collision_point(), Vector3.UP)
-                #current_bullets -= 1 #use one bullet once the bullet is visually "shot"
-                #update_bullets_display()
-    #else:
-        #reload()
 
 ## TODO: Add this to new weapon system
 func update_bullets_display():
@@ -188,7 +170,7 @@ func update_bullets_display():
     #update_bullets_display()
 
 func heal() -> void:
-    health += heal_value
+    health += .5
     update_health()
 
 
@@ -216,6 +198,34 @@ func _on_player_hit() -> void:
     hit_rect.visible = false
     regen_timer.start()
 
+func hit():
+    emit_signal("player_hit")
 
-func _on_respawn_timer_timeout() -> void:
-    pass
+    #for robots in lasers:
+    health -= .1
+    update_health()
+    print("Player HIT, new health: ",health)
+    if health <= 0 and not dead:
+        respawn()
+
+    #lazered_timer.start()
+
+
+#func hit() -> void:
+    #emit_signal("forge_hit")
+    #for hackers in robots_hacking:
+        #health -= damage_amount
+        #print("forge hacked")
+#
+    #if health <= minimum_health:
+        #print(str(health) + " <= " +str(minimum_health))
+        #get_tree().change_scene_to_file("res://UI/game_over.tscn") #GO TO: Game Over sceen
+#
+    #hacked_timer.start()
+#
+#
+#func _on_hacked_timeout() -> void:
+    #hit()
+
+func _on_laserd_timeout() -> void:
+    hit()
