@@ -255,13 +255,59 @@ step = 0.001
 script = ExtResource("3_4gdbj")
 bus_name = "sfx"
 
+[node name="Follow Us" type="LinkButton" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -410.0
+offset_top = -1085.0
+offset_right = -13.0
+offset_bottom = -958.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/underline_spacing = 0
+theme_override_fonts/font = ExtResource("3_6dct2")
+theme_override_font_sizes/font_size = 100
+text = "Follow Us!"
+underline = 1
+uri = "https://linktr.ee/HackShackStudios"
+
+[node name="Feedback" type="LinkButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 344.0
+offset_top = -966.0
+offset_right = 951.0
+offset_bottom = -839.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/underline_spacing = 0
+theme_override_fonts/font = ExtResource("3_6dct2")
+theme_override_font_sizes/font_size = 100
+text = "Give FeedBack!"
+underline = 1
+uri = "https://docs.google.com/forms/d/e/1FAIpQLScEcIIjRwPqx8RLUQLbtRxUFbGTa81TCK-SNHgrnRr2GzXmUA/viewform"
+
 [connection signal="mouse_entered" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_mouse_entered"]
 [connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="Master Tag/Master" to="." method="_on_volume_value_changed"]
 [connection signal="item_selected" from="Resolutions Tag/Resolutions" to="." method="_on_resolutions_item_selected"]
 [connection signal="value_changed" from="Sensitivity Tag/Sensitivity" to="Sensitivity Tag/Sensitivity" method="_on_value_changed"]
-[connection signal="text_changed" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_text_edit_text_changed"]
 [connection signal="text_changed" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_number_sensitivity_text_changed"]
+[connection signal="text_changed" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_text_edit_text_changed"]
 [connection signal="text_set" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_number_sensitivity_text_set"]
 [connection signal="value_changed" from="Music Tag/Music" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="Full Screen/CheckButton" to="." method="_on_check_button_toggled"]
