@@ -476,39 +476,40 @@ script = ExtResource("1_0tg2p")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("2_0b52w")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="Old Gun Stats" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Old Gun Stats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Old Gun Stats/HBoxContainer"]
 layout_mode = 2
 text = "Current Weapon: "
 
-[node name="Current Weapon" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+[node name="Current Weapon" type="Label" parent="CanvasLayer/Old Gun Stats/HBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Old Gun Stats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="CanvasLayer/Old Gun Stats/HBoxContainer2"]
 layout_mode = 2
 text = "Current Ammo: "
 
-[node name="Current Ammo" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+[node name="Current Ammo" type="Label" parent="CanvasLayer/Old Gun Stats/HBoxContainer2"]
 layout_mode = 2
 text = "hi"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Old Gun Stats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="CanvasLayer/Old Gun Stats/HBoxContainer3"]
 layout_mode = 2
 text = "Weapon Stack:"
 
-[node name="Weapon Stack" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+[node name="Weapon Stack" type="Label" parent="CanvasLayer/Old Gun Stats/HBoxContainer3"]
 layout_mode = 2
 
 [node name="RespawnTimer" type="Timer" parent="."]
@@ -586,7 +587,6 @@ wait_time = 5.0
 autostart = true
 
 [node name="WeaponGUI" type="PanelContainer" parent="HUD"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -636,7 +636,6 @@ text = "ROUND [ ] of [ ]"
 horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="HUD"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -685,7 +684,7 @@ texture = ExtResource("3_l20qk")
 [node name="Weapons_Manager" type="Node3D" parent="Pivot/Main Camera"]
 script = ExtResource("6_0i3mk")
 _weapon_resources = Array[ExtResource("7_ctafs")]([ExtResource("8_tdh63"), ExtResource("9_57t3p")])
-start_weapons = Array[String](["coil_pistol"])
+start_weapons = Array[String](["coil_assault"])
 
 [node name="FPS_Rig" type="Node3D" parent="Pivot/Main Camera/Weapons_Manager"]
 
