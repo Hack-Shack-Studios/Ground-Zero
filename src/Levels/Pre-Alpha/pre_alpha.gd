@@ -47,7 +47,7 @@ var player_died = false
 
 var enemy_kills = 0:
     set(new_val):
-        Global.score += 100
+        Global.score += 15
         score_label.update_score()
         enemy_kills = new_val
 
@@ -146,7 +146,7 @@ func paused_menu() -> void:
 ##Changes variable so that all instances of enemies on the map will effectively ignore the player
 func _on_player_player_death() -> void:
     player_died = true #enemies will access this property through get_parent() to determine movement logic
-    Global.score -= 25
+    Global.score -= 30
     score_label.update_score()
 
 

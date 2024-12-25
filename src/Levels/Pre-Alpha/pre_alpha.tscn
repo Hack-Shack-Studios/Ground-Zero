@@ -283,12 +283,15 @@ scale = Vector2(3, 3)
 [node name="Skybox" parent="UI" instance=ExtResource("3_wmexs")]
 
 [node name="scoreboard" type="VBoxContainer" parent="UI"]
-visible = false
-layout_mode = 0
-offset_left = -1255.0
-offset_top = 889.0
-offset_right = -701.0
-offset_bottom = 1258.0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -445.0
+offset_top = 274.0
+offset_right = -166.0
+offset_bottom = 440.0
+grow_vertical = 2
 
 [node name="header" type="Label" parent="UI/scoreboard"]
 layout_mode = 2
@@ -312,9 +315,8 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("5_p2toc")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_weefp")
-text = "+100 (Kills)
-+50 (Headshots)
--25 (Deaths)"
+text = "+15 (Kills)
+-30 (Deaths)"
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 30.0
