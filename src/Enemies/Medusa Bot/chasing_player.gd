@@ -9,7 +9,7 @@ class_name ChasingPlayer
 ## Chasing the player will be the "base state", as defeating
 ## the players is high priority, with hacking kept in mind
 
-const ATTACK_RANGE := 5
+const ATTACK_RANGE := 6.0
 
 @export var enemy: CharacterBody3D
 @export var move_speed := 2.0

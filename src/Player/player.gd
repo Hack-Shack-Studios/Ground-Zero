@@ -172,7 +172,7 @@ func respawn():
     #update_bullets_display()
 
 func heal() -> void:
-    health += .2
+    health += .5
     update_health()
 
 

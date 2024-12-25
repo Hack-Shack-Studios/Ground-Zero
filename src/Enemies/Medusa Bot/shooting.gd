@@ -5,7 +5,7 @@ class_name Shooting
 ##
 ## Chasing the forge
 
-const SHOOT_RANGE := 20.0
+const SHOOT_RANGE := 6.0
 
 @export var player_path = "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
@@ -34,7 +34,7 @@ func enter():
     forge = get_node(forge_path)
     enemy.chasing_player = true
     enemy.look_at(Vector3(player.global_position.x, enemy.global_position.y, player.global_position.z), Vector3.UP)
-
+    animation.play("shoot")
     #print("Shooting")
 
 
@@ -75,16 +75,14 @@ func physics_update(delta: float):
 
         #animation.play("anchor_down")
         #await get_tree().create_timer(anchor_down_length).timeout
-
+        laser_mesh.visible = true
         enemy.velocity = Vector3.ZERO # Stop moving
-        animation.play("shoot")
         await get_tree().create_timer(shoot_length).timeout # Allows shoot animation to finish
 
         ## If enemy is IN_RANGE, LOOK_AT(PLAYER), SHOOT LASER, SLOWLY CHASE
         ## Get current position of player
         ## Rotate to players position SLOWLY
 
-        laser_mesh.visible = true
         var target = laser.get_collider()
         if laser.is_colliding() and target is CharacterBody3D and target.is_in_group("Player") and laser_hit_timer.is_stopped():
 
