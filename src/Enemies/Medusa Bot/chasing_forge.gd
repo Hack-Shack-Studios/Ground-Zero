@@ -22,7 +22,7 @@ func enter():
     player = get_node(player_path)
     forge = get_node(forge_path)
 
-    #print("Chasing Forge")
+    print("Chasing Forge")
 
 func exit():
     pass
@@ -55,13 +55,11 @@ func physics_update(delta: float):
 
     var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
     var distance_to_player = enemy.global_position.distance_to(player.global_position)
-
+    print("robots hacking: "+str(forge.robots_hacking) + ", player dead: ",player.dead)
     if forge.robots_hacking > 1 and not player.dead:
         Transitioned.emit(self, "ChasingPlayer")
     elif distance_to_forge <= 4:
         Transitioned.emit(self, "Hacking")
-    elif distance_to_player < distance_to_forge:
-        Transitioned.emit(self, "ChasingPlayer")
     # else keep walking towards forge
 
 # TODO: Add safe_velocity to have avoidance work better #2

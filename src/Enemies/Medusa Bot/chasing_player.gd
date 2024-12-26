@@ -40,7 +40,7 @@ func enter():
     # Connect the 'map_changed' signal to know when the map is ready
     NavigationServer3D.map_changed.connect(_on_map_changed)
 
-    #print("Chasing player")
+    print("Chasing player")
 
 func exit():
     chasing_player_timer.stop()

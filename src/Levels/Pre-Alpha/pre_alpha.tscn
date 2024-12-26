@@ -71,6 +71,8 @@ albedo_color = Color(0.145098, 0.556863, 0.262745, 1)
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162144, -0.0722611, 0.146532)
 script = ExtResource("1_1b5qn")
+waves_remaining = 1
+wave_count = Array[int]([1])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -344,7 +346,7 @@ transform = Transform3D(1, 0, 0, 0, -0.370444, 0.928855, 0, -0.928855, -0.370444
 transform = Transform3D(0.602665, 0.741221, 0.295612, 0, -0.370444, 0.928855, 0.797994, -0.559788, -0.223254, 1.28798, 0, -60.3241)
 
 [node name="Spawn5" type="Node3D" parent="Map/Spawns"]
-transform = Transform3D(0.602665, 0.741221, 0.295612, 0, -0.370444, 0.928855, 0.797994, -0.559788, -0.223254, 14.615, 0, -50.1188)
+transform = Transform3D(0.602665, 0.741221, 0.295612, 0, -0.370444, 0.928855, 0.797994, -0.559788, -0.223254, -3.01551, 0, -50.1188)
 
 [node name="Spawn6" type="Node3D" parent="Map/Spawns"]
 transform = Transform3D(0.602665, 0.741221, 0.295612, 0, -0.370444, 0.928855, 0.797994, -0.559788, -0.223254, -6.98936, 0, -58.9586)
@@ -362,10 +364,10 @@ transform = Transform3D(-0.939519, 0.318129, 0.126876, 0, -0.370444, 0.928855, 0
 transform = Transform3D(-0.310527, -0.882936, -0.352131, 0, -0.370444, 0.928855, -0.950565, 0.288435, 0.115033, 0.111088, 0, 58.4283)
 
 [node name="Spawn11" type="Node3D" parent="Map/Spawns"]
-transform = Transform3D(-0.310527, -0.882936, -0.352131, 0, -0.370444, 0.928855, -0.950565, 0.288435, 0.115033, -11.9825, 0, 62.3506)
+transform = Transform3D(-0.310527, -0.882936, -0.352131, 0, -0.370444, 0.928855, -0.950565, 0.288435, 0.115033, 5.68986, 0, 62.3506)
 
 [node name="Spawn12" type="Node3D" parent="Map/Spawns"]
-transform = Transform3D(-0.351139, -0.869708, -0.346855, -7.08226e-09, -0.370444, 0.928855, -0.936323, 0.326157, 0.130077, 7.58606, 0, 62.3506)
+transform = Transform3D(-0.351139, -0.869708, -0.346855, -7.08226e-09, -0.370444, 0.928855, -0.936323, 0.326157, 0.130077, -4.10403, 0, 62.3506)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Map"]
 navigation_mesh = SubResource("NavigationMesh_ndq18")

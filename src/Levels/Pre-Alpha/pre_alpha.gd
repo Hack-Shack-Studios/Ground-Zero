@@ -22,8 +22,8 @@ var can_regen: bool = false
 var enemy = load("res://Enemies/Medusa Bot/medusa_bot.tscn")
 var instance
 var MAX_WAVES: int = 5
-var waves_remaining: int = MAX_WAVES
-var wave_count: Array[int] = [25, 20, 15, 10, 5]
+@export var waves_remaining: int = MAX_WAVES
+@export var wave_count: Array[int] = [25, 20, 15, 10, 5]
 var total_enemies: int
 var spawn_delay: float = 3.5
 var time: int
@@ -134,14 +134,19 @@ func paused_menu() -> void:
         pause_menu.hide()
         Engine.time_scale = 1
         NonCombatMusic.stream_paused = false
+        Global.ui_opened = false
 
-    else:
+        paused = !paused
+
+    elif !Global.ui_opened:
         Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
         pause_menu.show()
         Engine.time_scale = 0
         NonCombatMusic.stream_paused = true
+        Global.ui_opened = true
 
-    paused = !paused
+        paused = !paused
+
 
 ##Changes variable so that all instances of enemies on the map will effectively ignore the player
 func _on_player_player_death() -> void:

@@ -79,6 +79,7 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta: float) -> void:
+
     round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
     rounds_label.text = round_info
     #print(get_parent().get_parent().waves_remaining)
@@ -100,21 +101,24 @@ func _physics_process(delta: float) -> void:
             speed = WALK_SPEED
 
         # Gets the direction vector based on user input
-        var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
-        var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+        if !Global.ui_opened:
+            var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
+            var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-        # Adding inertia, preventing players from being able to stop movement mid-air
-        if is_on_floor():
-            # Whatever direction they are going, the velocity increases that way
-            if direction:
-                velocity.x = direction.x * speed
-                velocity.z = direction.z * speed
+            # Adding inertia, preventing players from being able to stop movement mid-air
+            if is_on_floor():
+                # Whatever direction they are going, the velocity increases that way
+                if direction:
+                    velocity.x = direction.x * speed
+                    velocity.z = direction.z * speed
+                else:
+                    velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+                    velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
             else:
-                velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-                velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+                velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
+                velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
         else:
-            velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
-            velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
+            velocity = Vector3.ZERO
 
         # Head bob
         t_bob += delta * velocity.length() * float(is_on_floor())

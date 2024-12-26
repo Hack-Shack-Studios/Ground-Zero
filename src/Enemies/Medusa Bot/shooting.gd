@@ -5,7 +5,7 @@ class_name Shooting
 ##
 ## Chasing the forge
 
-const SHOOT_RANGE := 6.0
+const SHOOT_RANGE := 69.0
 
 @export var player_path = "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
@@ -35,7 +35,8 @@ func enter():
     enemy.chasing_player = true
     enemy.look_at(Vector3(player.global_position.x, enemy.global_position.y, player.global_position.z), Vector3.UP)
     animation.play("shoot")
-    #print("Shooting")
+
+    print("Shooting")
 
 
 
@@ -99,13 +100,10 @@ func physics_update(delta: float):
     var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
     var distance_to_player = enemy.global_position.distance_to(player.global_position)
 
-    if distance_to_forge < distance_to_player and forge.robots_hacking < forge.MAX_HACKERS or player.dead:
+    if distance_to_forge <= distance_to_player and forge.robots_hacking < forge.MAX_HACKERS or player.dead:
         Transitioned.emit(self, "ChasingForge")
     elif distance_to_player > SHOOT_RANGE:
-        if distance_to_player > distance_to_forge:
-            Transitioned.emit(self, "ChasingPlayer")
-        else:
-            Transitioned.emit(self, "ChasingForge")
+        Transitioned.emit(self, "ChasingPlayer")
 
 
 func _on_laser_finished_timeout() -> void:

@@ -1,0 +1,407 @@
+[gd_scene load_steps=12 format=3 uid="uid://ebtvuuyx6gaf"]
+
+[ext_resource type="FontFile" uid="uid://rerjonsav62n" path="res://Other/Fonts/Epyval.ttf" id="1_w4hxa"]
+[ext_resource type="StyleBox" uid="uid://0eayij5138wb" path="res://UI/shop.tres" id="2_simtb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi3wq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc6us"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.632686, 0.632686, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37n7l"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_color = Color(0.632686, 0.632686, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdbnt"]
+bg_color = Color(1, 1, 0.643137, 1)
+border_width_left = 10
+border_width_top = 10
+border_color = Color(0.632686, 0.632686, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boqsa"]
+bg_color = Color(1, 1, 0.643137, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color(0.632686, 0.632686, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxgrg"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_color = Color(0.632686, 0.632686, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2of7"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color(0.632686, 0.632686, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h68xj"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color(0.632686, 0.632686, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghkuu"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.632686, 0.632686, 7.70092e-07, 1)
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NO BUTTONS FUCKK" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -916.0
+offset_top = -355.5
+offset_right = 916.0
+offset_bottom = 191.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -916.0
+offset_top = -355.5
+offset_right = 916.0
+offset_bottom = 191.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vi3wq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_w4hxa")
+theme_override_font_sizes/normal_font_size = 100
+text = "hellow world"
+
+[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("2_simtb")
+text = "Buff | Effect | Duration | Price "
+horizontal_alignment = 1
+
+[node name="Speed" type="Button" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("2_simtb")
+text = "Speed Boost             | +30% Movement Speed | 10 Seconds | 30"
+autowrap_mode = 2
+
+[node name="DamageReduction" type="Button" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("2_simtb")
+text = "Damage Reduction    | Take 50% less damage | 15 Seconds | 100"
+
+[node name="InfiniteAmmo" type="Button" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("2_simtb")
+text = "Infinite Ammo    | Unlimited ammo | 15 seconds | 120"
+
+[node name="DoublePoints" type="Button" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("2_simtb")
+text = "Double Points         | Earn 2x points for each robot kill | 20 seconds | 200"
+
+[node name="DoubleHealth" type="Button" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_fc6us")
+text = "Double Health         | Double your current and max health | Until depleted | 350"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 39.0
+offset_top = 169.5
+offset_right = 1881.0
+offset_bottom = 746.5
+alignment = 1
+
+[node name="Buffs" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Buffs"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_37n7l")
+text = "Buff
+"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Speed" type="Button" parent="HBoxContainer/Buffs"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_jdbnt")
+text = "Speed Boost"
+autowrap_mode = 2
+
+[node name="DamageReduction" type="Button" parent="HBoxContainer/Buffs"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_jdbnt")
+text = "Damage Reduction"
+
+[node name="InfiniteAmmo" type="Button" parent="HBoxContainer/Buffs"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_jdbnt")
+text = "Infinite Ammo"
+
+[node name="DoublePoints" type="Button" parent="HBoxContainer/Buffs"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_jdbnt")
+text = "Double Points"
+
+[node name="DoubleHealth" type="Button" parent="HBoxContainer/Buffs"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_boqsa")
+text = "Double Health"
+
+[node name="Effects" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label1" type="Label" parent="HBoxContainer/Effects"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
+text = "effect"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="HBoxContainer/Effects"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
+text = "+30% movement speed
+"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer/Effects"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
+text = "Take 50% less damage
+"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer/Effects"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
+text = "Unlimited ammo
+"
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer/Effects"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
+text = "Earn 2x points for each robot kill
+"
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer/Effects"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_a2of7")
+text = "Double your current and max health"
+vertical_alignment = 1
+
+[node name="Durration" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label1" type="Label" parent="HBoxContainer/Durration"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
+text = "duration"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="HBoxContainer/Durration"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
+text = "10 seconds"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer/Durration"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
+text = "15 seconds"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer/Durration"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
+text = "15 seconds
+"
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer/Durration"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
+text = "20 seconds
+"
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer/Durration"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_a2of7")
+text = "Until depleted"
+vertical_alignment = 1
+
+[node name="Price" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label1" type="Label" parent="HBoxContainer/Price"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
+text = "price"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="HBoxContainer/Price"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_h68xj")
+text = "30
+"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer/Price"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_h68xj")
+text = "100
+"
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer/Price"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_h68xj")
+text = "120
+"
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer/Price"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_h68xj")
+text = "200
+"
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer/Price"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("1_w4hxa")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ghkuu")
+text = "350
+"
+vertical_alignment = 1
