@@ -35,7 +35,8 @@ func enter():
     enemy.chasing_player = true
     enemy.look_at(Vector3(player.global_position.x, enemy.global_position.y, player.global_position.z), Vector3.UP)
     animation.play("shoot")
-    #print("Shooting")
+
+    print("Shooting")
 
 
 
@@ -45,22 +46,6 @@ func exit():
 
 func update(_delta: float):
     pass
-     #if ready_to_shoot:
-        #if laser_ready_timer.time_left == 0:
-            #laser_ready_timer.start()
-#
-        ##animation.play("anchor_down")
-        ##await get_tree().create_timer(anchor_down_length).timeout
-#
-        #enemy.velocity = Vector3.ZERO # Stop moving
-        #animation.play("shoot")
-        #await get_tree().create_timer(shoot_length).timeout # Allows shoot animation to finish
-#
-        #var target = laser.get_collider()
-        #if laser.is_colliding() and target is CharacterBody3D and target.is_in_group("Player") and laser_hit_timer.is_stopped():
-            #player.hit()
-            #laser_hit_timer.start()
-            #print("Laser collided with player, timer starting")
 
 
 func physics_update(delta: float):
@@ -99,13 +84,10 @@ func physics_update(delta: float):
     var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
     var distance_to_player = enemy.global_position.distance_to(player.global_position)
 
-    if distance_to_forge < distance_to_player and forge.robots_hacking < forge.MAX_HACKERS or player.dead:
+    if distance_to_forge <= distance_to_player and forge.robots_hacking < forge.MAX_HACKERS or player.dead:
         Transitioned.emit(self, "ChasingForge")
     elif distance_to_player > SHOOT_RANGE:
-        if distance_to_player > distance_to_forge:
-            Transitioned.emit(self, "ChasingPlayer")
-        else:
-            Transitioned.emit(self, "ChasingForge")
+        Transitioned.emit(self, "ChasingPlayer")
 
 
 func _on_laser_finished_timeout() -> void:

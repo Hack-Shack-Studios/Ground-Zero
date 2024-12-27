@@ -22,8 +22,8 @@ var can_regen: bool = false
 var enemy = load("res://Enemies/Medusa Bot/medusa_bot.tscn")
 var instance
 var MAX_WAVES: int = 5
-var waves_remaining: int = MAX_WAVES
-var wave_count: Array[int] = [25, 20, 15, 10, 5]
+@export var waves_remaining: int = 5
+@export var wave_count: Array[int] = [25, 20, 15, 10, 5]
 var total_enemies: int
 var spawn_delay: float = 3.5
 var time: int
@@ -47,7 +47,7 @@ var player_died = false
 
 var enemy_kills = 0:
     set(new_val):
-        Global.score += 15
+        Global.score += 15 if !Global.double_points else 30
         score_label.update_score()
         enemy_kills = new_val
 
@@ -85,12 +85,8 @@ func _process(_delta: float) -> void:
         #emit_signal("win_condition")
         #get_tree().change_scene_to_file("res://UI/game_over.tscn")
 
-    if Input.is_action_pressed("scoreboard_toggle"): #Stylistic choice: Hold TAB to view score rather than toggle.
-        scoreboard_container.visible = true
-    else:
-        scoreboard_container.visible = false
-
-
+    if Input.is_action_just_pressed("scoreboard_toggle"): #Stylistic choice: Hold TAB to view score rather than toggle.
+        scoreboard_container.visible = !scoreboard_container.visible
 
 ## Spawns an enemy at one of the random spawnpoints
 func _get_random_child(parent_node):
@@ -134,14 +130,19 @@ func paused_menu() -> void:
         pause_menu.hide()
         Engine.time_scale = 1
         NonCombatMusic.stream_paused = false
+        Global.ui_opened = false
 
-    else:
+        paused = !paused
+
+    elif !Global.ui_opened:
         Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
         pause_menu.show()
         Engine.time_scale = 0
         NonCombatMusic.stream_paused = true
+        Global.ui_opened = true
 
-    paused = !paused
+        paused = !paused
+
 
 ##Changes variable so that all instances of enemies on the map will effectively ignore the player
 func _on_player_player_death() -> void:

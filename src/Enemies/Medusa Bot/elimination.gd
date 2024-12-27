@@ -24,8 +24,8 @@ func enter():
     await get_tree().create_timer(EXPLODE_DURATION).timeout
     get_parent().get_parent().emit_signal("enemy_death")
     enemy.queue_free()
-    #get_parent().get_parent().get_parent().get_parent().get_parent().enemy_kills += 1
-    #print("eliminated " + str(get_parent().get_parent().get_parent().get_parent().get_parent().enemy_kills))
+
+    print("Eliminated")
 
 func exit():
     # When killed, has a low % drop rate of its laser head falling

@@ -86,12 +86,14 @@ offset_left = 1266.0
 offset_top = -8.0
 offset_right = 1306.0
 offset_bottom = 32.0
+mouse_filter = 1
 
 [node name="RegenRect" type="ColorRect" parent="UI"]
 visible = false
 layout_mode = 0
 offset_right = 3412.0
 offset_bottom = 2283.0
+mouse_filter = 2
 color = Color(0.17139, 0.642574, 0.231583, 0.231373)
 
 [node name="OldHealthBar" type="TextEdit" parent="UI"]
@@ -270,6 +272,7 @@ offset_left = -1263.0
 offset_top = 11.0
 offset_right = 660.0
 offset_bottom = 1094.0
+mouse_filter = 2
 color = Color(1, 0.0392157, 0.145098, 0.231373)
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("2_bo550")]
@@ -285,14 +288,17 @@ scale = Vector2(3, 3)
 
 [node name="scoreboard" type="VBoxContainer" parent="UI"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -445.0
-offset_top = 274.0
-offset_right = -166.0
-offset_bottom = 440.0
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -1261.0
+offset_top = 802.0
+offset_right = -982.0
+offset_bottom = 968.0
+grow_vertical = 0
+scale = Vector2(1.52121, 1.45337)
+size_flags_horizontal = 0
+mouse_filter = 2
 
 [node name="header" type="Label" parent="UI/scoreboard"]
 layout_mode = 2
@@ -344,7 +350,7 @@ transform = Transform3D(1, 0, 0, 0, -0.370444, 0.928855, 0, -0.928855, -0.370444
 transform = Transform3D(0.602665, 0.741221, 0.295612, 0, -0.370444, 0.928855, 0.797994, -0.559788, -0.223254, 1.28798, 0, -60.3241)
 
 [node name="Spawn5" type="Node3D" parent="Map/Spawns"]
-transform = Transform3D(0.602665, 0.741221, 0.295612, 0, -0.370444, 0.928855, 0.797994, -0.559788, -0.223254, 14.615, 0, -50.1188)
+transform = Transform3D(0.602665, 0.741221, 0.295612, 0, -0.370444, 0.928855, 0.797994, -0.559788, -0.223254, -3.01551, 0, -50.1188)
 
 [node name="Spawn6" type="Node3D" parent="Map/Spawns"]
 transform = Transform3D(0.602665, 0.741221, 0.295612, 0, -0.370444, 0.928855, 0.797994, -0.559788, -0.223254, -6.98936, 0, -58.9586)
@@ -362,10 +368,10 @@ transform = Transform3D(-0.939519, 0.318129, 0.126876, 0, -0.370444, 0.928855, 0
 transform = Transform3D(-0.310527, -0.882936, -0.352131, 0, -0.370444, 0.928855, -0.950565, 0.288435, 0.115033, 0.111088, 0, 58.4283)
 
 [node name="Spawn11" type="Node3D" parent="Map/Spawns"]
-transform = Transform3D(-0.310527, -0.882936, -0.352131, 0, -0.370444, 0.928855, -0.950565, 0.288435, 0.115033, -11.9825, 0, 62.3506)
+transform = Transform3D(-0.310527, -0.882936, -0.352131, 0, -0.370444, 0.928855, -0.950565, 0.288435, 0.115033, 5.68986, 0, 62.3506)
 
 [node name="Spawn12" type="Node3D" parent="Map/Spawns"]
-transform = Transform3D(-0.351139, -0.869708, -0.346855, -7.08226e-09, -0.370444, 0.928855, -0.936323, 0.326157, 0.130077, 7.58606, 0, 62.3506)
+transform = Transform3D(-0.351139, -0.869708, -0.346855, -7.08226e-09, -0.370444, 0.928855, -0.936323, 0.326157, 0.130077, -4.10403, 0, 62.3506)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Map"]
 navigation_mesh = SubResource("NavigationMesh_ndq18")
@@ -389,6 +395,9 @@ size = Vector3(100, 0.002, 100)
 [connection signal="timeout" from="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar/stun_timer" to="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar" method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="player_death" from="Map/Player" to="." method="_on_player_player_death"]
+[connection signal="player_death" from="Map/Player" to="Map/NavigationRegion3D/Forge" method="_on_player_player_death"]
 [connection signal="player_hit" from="Map/Player" to="." method="_on_player_player_hit"]
 [connection signal="player_respawn" from="Map/Player" to="." method="_on_player_player_respawn"]
+[connection signal="double_health" from="Map/NavigationRegion3D/Forge" to="." method="_on_forge_double_health"]
+[connection signal="double_health" from="Map/NavigationRegion3D/Forge" to="Map/Player" method="_on_forge_double_health"]
 [connection signal="forge_hit" from="Map/NavigationRegion3D/Forge" to="." method="_on_forge_forge_hit"]

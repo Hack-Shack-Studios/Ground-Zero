@@ -90,14 +90,19 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func shoot():
     # Can't shoot when no ammo, and enforces firerate based on animation speed
-    if current_weapon.current_ammo != 0 and !anim_player.is_playing():
+    if current_weapon.current_ammo != 0 and !anim_player.is_playing() and !Global.ui_opened:
         anim_player.play(current_weapon.shoot_anim)
 
         # Plays gun sound
         audio_player.stream = current_weapon.shoot_sound
         audio_player.play()
 
-        current_weapon.current_ammo -= 1
+        if Global.infinite_ammo:
+            current_weapon.current_ammo = current_weapon.magazine
+            current_weapon.reserve_ammo = current_weapon.max_ammo
+        else:
+            current_weapon.current_ammo -= 1
+
         emit_signal("update_ammo", [current_weapon.current_ammo, current_weapon.reserve_ammo])
         var camera_collision = get_camera_collision()
         match current_weapon.Type:

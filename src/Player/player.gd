@@ -43,7 +43,7 @@ var lasers := 0
 @onready var camera = $"Pivot/Main Camera"
 #@onready var gun_anim = $Pivot/Camera3D/Pistol_3/AnimationPlayer
 #@onready var gun_barrel = $Pivot/Camera3D/Pistol_3/gun_barrel
-@onready var aimcast = $Pivot/Camera3D/AimCast
+#@onready var aimcast = $Pivot/Camera3D/AimCast
 @onready var respawn_timer = $RespawnTimer
 @onready var health_bar = $HUD/PlayerHealthBar
 @onready var hit_rect = $HUD/ColorRect
@@ -79,6 +79,8 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta: float) -> void:
+    #print("Current Speed: ",int(velocity.length()))
+
     round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
     rounds_label.text = round_info
     #print(get_parent().get_parent().waves_remaining)
@@ -95,26 +97,35 @@ func _physics_process(delta: float) -> void:
 
         # Handing running mechanic
         if Input.is_action_pressed("sprint"):
-            speed = SPRINT_SPEED
+            speed = SPRINT_SPEED * (2 if Global.speed_boost else 1)
         else:
-            speed = WALK_SPEED
+            speed = WALK_SPEED * (2 if Global.speed_boost else 1)
+
+        if Global.speed_boost:
+            speed *= 2
+
+        if Global.speed_boost:
+            speed *= 2
 
         # Gets the direction vector based on user input
-        var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
-        var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+        if !Global.ui_opened:
+            var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
+            var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-        # Adding inertia, preventing players from being able to stop movement mid-air
-        if is_on_floor():
-            # Whatever direction they are going, the velocity increases that way
-            if direction:
-                velocity.x = direction.x * speed
-                velocity.z = direction.z * speed
+            # Adding inertia, preventing players from being able to stop movement mid-air
+            if is_on_floor():
+                # Whatever direction they are going, the velocity increases that way
+                if direction:
+                    velocity.x = direction.x * speed
+                    velocity.z = direction.z * speed
+                else:
+                    velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+                    velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
             else:
-                velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-                velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+                velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
+                velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
         else:
-            velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
-            velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
+            velocity = Vector3.ZERO
 
         # Head bob
         t_bob += delta * velocity.length() * float(is_on_floor())
@@ -147,6 +158,12 @@ func respawn():
     dead = false
     respawn_label.visible = false
     emit_signal("player_respawn")
+
+    Global.double_health = false
+    max_health = 6
+    health = max_health
+    health_bar.value = max_health
+    health_bar.max_value = max_health
 
 
 ## TODO: Add this to new weapon system
@@ -202,7 +219,7 @@ func hit():
     emit_signal("player_hit")
 
     #for robots in lasers:
-    health -= .1
+    health -= .1 if !Global.damage_reduction else .05
     update_health()
     print("Player HIT, new health: ",health)
     if health <= 0 and not dead:
@@ -229,3 +246,10 @@ func hit():
 
 func _on_laserd_timeout() -> void:
     hit()
+
+
+func _on_forge_double_health() -> void:
+    max_health = 12
+    health = max_health
+    health_bar.max_value = max_health
+    health_bar.value = max_health

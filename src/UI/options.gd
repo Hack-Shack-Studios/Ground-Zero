@@ -6,8 +6,6 @@ extends Control
 ## Buttons speak for themselves
 
 @onready var main_menu_music = "res://Music/main_menu_music.tscn"
-@onready var full_screen_button = $"Full Screen/CheckButton"
-
 
 func _on_back_pressed() -> void:
     ButtonNoise.play()
@@ -35,7 +33,7 @@ func _on_back_mouse_entered() -> void:
 func _on_check_button_toggled(toggled_on: bool) -> void:
     if toggled_on:
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-    else:
+    elif !toggled_on:
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 
@@ -66,3 +64,9 @@ func _on_sfx_mouse_entered() -> void:
 
 func _on_check_button_mouse_entered() -> void:
     ButtonHover.play()
+
+func _on_tree_entered() -> void:
+    if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+       $"Full Screen/CheckButton".button_pressed = true
+    else:
+        $"Full Screen/CheckButton".button_pressed = false

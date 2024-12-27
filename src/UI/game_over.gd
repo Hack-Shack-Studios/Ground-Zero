@@ -15,8 +15,9 @@ func _on_restart_button_pressed() -> void:
 func _on_menu_button_pressed() -> void:
     Global.win = false #IMPORTANT: If this isnt changed then subsequent runs will be wins if this current run was a win
     get_tree().change_scene_to_file("res://UI/main_menu.tscn")
-    MainMenuMusic.play() #Ensures the menu music plays
+    MainMenuMusic.play()
     ButtonNoise.play()
+    NonCombatMusic.stop()
 
 ##Changes the text to appropriate win text instead of game over
 func on_win():

@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 # @onready var current_weapon_label = $"VBoxContainer/HBoxContainer/Current Weapon"
-@onready var current_ammo_label = $"VBoxContainer/HBoxContainer2/Current Ammo"
+#@onready var current_ammo_label = $"VBoxContainer/HBoxContainer2/Current Ammo"
 # @onready var current_weapon_stack = $"VBoxContainer/HBoxContainer3/Weapon Stack"
 
 @onready var weapon_info = $"../HUD/WeaponGUI/InformationLabel"
