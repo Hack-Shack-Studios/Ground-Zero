@@ -395,6 +395,7 @@ size = Vector3(100, 0.002, 100)
 [connection signal="timeout" from="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar/stun_timer" to="UI/CanvasLayer/ForgeHealthBarControl/ForgeHealthBar" method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="player_death" from="Map/Player" to="." method="_on_player_player_death"]
+[connection signal="player_death" from="Map/Player" to="Map/NavigationRegion3D/Forge" method="_on_player_player_death"]
 [connection signal="player_hit" from="Map/Player" to="." method="_on_player_player_hit"]
 [connection signal="player_respawn" from="Map/Player" to="." method="_on_player_player_respawn"]
 [connection signal="double_health" from="Map/NavigationRegion3D/Forge" to="." method="_on_forge_double_health"]

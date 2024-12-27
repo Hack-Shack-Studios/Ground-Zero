@@ -28,6 +28,13 @@ var shop_ui_open := false
 @onready var shop_ui = $ShopUI
 @onready var scoreboard_container = $"../../../UI/scoreboard"
 
+# UI Buff Icons
+@onready var speed_boost_icon = $ShopUI/BuffIcons/VBoxContainer/SpeedBoost
+@onready var damage_reduction_icon = $ShopUI/BuffIcons/VBoxContainer/DamageReduction
+@onready var infinite_ammo_icon = $ShopUI/BuffIcons/VBoxContainer/InfiniteAmmo
+@onready var double_points_icon = $ShopUI/BuffIcons/VBoxContainer/DoublePoints
+@onready var double_health_icon = $ShopUI/BuffIcons/VBoxContainer/DoubleHealth
+
 func _ready() -> void:
     player = get_node(player_path)
 
@@ -129,6 +136,8 @@ func _on_speed_pressed() -> void:
         Global.score -= SPEED_PRICE
         Global.speed_boost = true
         speed_timer.start()
+        speed_boost_icon.visible = true
+
         # speed_boost.emit()
 
 
@@ -138,6 +147,7 @@ func _on_damage_reduction_pressed() -> void:
         Global.score -= DAMAGE_REDUCTION_PRICE
         Global.damage_reduction = true
         damage_reduction_timer.start()
+        damage_reduction_icon.visible = true
 
 
 func _on_infinite_ammo_pressed() -> void:
@@ -146,6 +156,7 @@ func _on_infinite_ammo_pressed() -> void:
         Global.score -= INFINITE_AMMO_PRICE
         Global.infinite_ammo = true
         infinite_ammo_timer.start()
+        infinite_ammo_icon.visible = true
 
 
 func _on_double_points_pressed() -> void:
@@ -154,7 +165,7 @@ func _on_double_points_pressed() -> void:
         Global.score -= DOUBLE_POINTS_PRICE
         Global.double_points = true
         double_points_timer.start()
-
+        double_points_icon.visible = true
 
 func _on_double_health_pressed() -> void:
     print("Double Health pressed, money: ", Global.score)
@@ -162,20 +173,28 @@ func _on_double_health_pressed() -> void:
         Global.score -= DOUBLE_HEALTH_PRICE
         Global.double_health = true
         double_health.emit()
+        double_health_icon.visible = true
 
 ## Timer functions
 
 func _on_speed_boost_timeout() -> void:
     Global.speed_boost = false
-
+    speed_boost_icon.visible = false
 
 func _on_damage_reduction_timeout() -> void:
     Global.damage_reduction = false
+    damage_reduction_icon.visible = false
 
 
 func _on_infinite_ammo_timeout() -> void:
     Global.infinite_ammo = false
+    infinite_ammo_icon.visible = false
 
 
 func _on_double_points_timeout() -> void:
     Global.double_points = false
+    double_points_icon.visible = false
+
+
+func _on_player_player_death() -> void:
+    double_health_icon.visible = false
