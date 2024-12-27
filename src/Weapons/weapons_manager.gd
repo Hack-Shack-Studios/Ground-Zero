@@ -97,7 +97,12 @@ func shoot():
         audio_player.stream = current_weapon.shoot_sound
         audio_player.play()
 
-        current_weapon.current_ammo -= 1
+        if Global.infinite_ammo:
+            current_weapon.current_ammo = current_weapon.magazine
+            current_weapon.reserve_ammo = current_weapon.max_ammo
+        else:
+            current_weapon.current_ammo -= 1
+
         emit_signal("update_ammo", [current_weapon.current_ammo, current_weapon.reserve_ammo])
         var camera_collision = get_camera_collision()
         match current_weapon.Type:

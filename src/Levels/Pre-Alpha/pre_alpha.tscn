@@ -292,9 +292,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = -1257.0
-offset_top = 129.0
+offset_top = 798.0
 offset_right = -978.0
-offset_bottom = 295.0
+offset_bottom = 964.0
 grow_vertical = 0
 scale = Vector2(1.52121, 1.45337)
 size_flags_horizontal = 0
@@ -397,4 +397,6 @@ size = Vector3(100, 0.002, 100)
 [connection signal="player_death" from="Map/Player" to="." method="_on_player_player_death"]
 [connection signal="player_hit" from="Map/Player" to="." method="_on_player_player_hit"]
 [connection signal="player_respawn" from="Map/Player" to="." method="_on_player_player_respawn"]
+[connection signal="double_health" from="Map/NavigationRegion3D/Forge" to="." method="_on_forge_double_health"]
+[connection signal="double_health" from="Map/NavigationRegion3D/Forge" to="Map/Player" method="_on_forge_double_health"]
 [connection signal="forge_hit" from="Map/NavigationRegion3D/Forge" to="." method="_on_forge_forge_hit"]

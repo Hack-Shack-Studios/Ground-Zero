@@ -9,7 +9,7 @@ class_name ChasingPlayer
 ## Chasing the player will be the "base state", as defeating
 ## the players is high priority, with hacking kept in mind
 
-const ATTACK_RANGE := 6.0
+const ATTACK_RANGE := 5.0
 
 @export var enemy: CharacterBody3D
 @export var move_speed := 2.0
@@ -40,7 +40,7 @@ func enter():
     # Connect the 'map_changed' signal to know when the map is ready
     NavigationServer3D.map_changed.connect(_on_map_changed)
 
-    print("Chasing player")
+    #print("Chasing player")
 
 func exit():
     chasing_player_timer.stop()

@@ -34,12 +34,9 @@ func update(_delta: float):
 
 func physics_update(delta: float):
 
-    var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
-    var distance_to_player = enemy.global_position.distance_to(player.global_position)
-
-    if distance_to_player < distance_to_forge:
+    if player:
         Transitioned.emit(self, "ChasingPlayer")
-    else:
+    elif forge:
         Transitioned.emit(self, "ChasingForge")
 
 

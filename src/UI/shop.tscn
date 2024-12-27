@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ebtvuuyx6gaf"]
+[gd_scene load_steps=9 format=3 uid="uid://ebtvuuyx6gaf"]
 
-[ext_resource type="Script" path="res://UI/shop.gd" id="1_lso25"]
 [ext_resource type="FontFile" uid="uid://rerjonsav62n" path="res://Other/Fonts/Epyval.ttf" id="1_w4hxa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37n7l"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(1, 1, 0.643137, 1)
 border_width_left = 10
 border_width_top = 10
 border_color = Color(0.632686, 0.632686, 7.70092e-07, 1)
@@ -58,7 +57,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("1_lso25")
 
 [node name="Menu" type="HBoxContainer" parent="."]
 layout_mode = 2

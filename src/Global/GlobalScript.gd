@@ -4,7 +4,7 @@ extends Node
 
 # Game outcome
 var win := false
-var score: int = 0
+var score: int = 9999
 
 # Player
 var sensitivity := 10.0

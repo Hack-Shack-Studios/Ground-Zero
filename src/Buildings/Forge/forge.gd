@@ -7,7 +7,7 @@ extends StaticBody3D
 ## the AI. The forge will handle a variety of things in this script, mainly the forge's
 ## health and upgrades
 
-
+signal double_health
 signal forge_hit
 
 @export var player_path = "/root/World/Map/Player"
@@ -104,26 +104,28 @@ const DOUBLE_POINTS_PRICE: int = 200
 const DOUBLE_HEALTH_PRICE: int = 350
 
 ## Timers
-@onready var speed_timer = $Timers/SpeedBoost
-@onready var damage_reduction_timer = $Timers/DamageReduction
-@onready var infinite_ammo_timer = $Timers/InfiniteAmmo
-@onready var double_points_timer = $Timers/DoublePoints
+@onready var speed_timer = get_node("ShopUI/Timers/SpeedBoost")
+@onready var damage_reduction_timer = get_node("ShopUI/Timers/DamageReduction")
+@onready var infinite_ammo_timer = get_node("ShopUI/Timers/InfiniteAmmo")
+@onready var double_points_timer = get_node("ShopUI/Timers/DoublePoints")
 
 ## Buttons
-@onready var speed_button = get_node("$Menu/Buffs/Speed")
-@onready var damage_reduction_button = get_node("$ShopUI/Menu/Buffs/DamageReduction")
-@onready var infinite_ammo_button = get_node("$ShopUI/Menu/Buffs/InfiniteAmmo")
-@onready var double_points_button = get_node("$ShopUI/Menu/Buffs/DoublePoints")
-@onready var double_health_button = get_node("$ShopUI/Menu/Buffs/DoubleHealth")
+@onready var speed_button = get_node("Menu/Buffs/Speed")
+@onready var damage_reduction_button = get_node("ShopUI/Menu/Buffs/DamageReduction")
+@onready var infinite_ammo_button = get_node("ShopUI/Menu/Buffs/InfiniteAmmo")
+@onready var double_points_button = get_node("ShopUI/Menu/Buffs/DoublePoints")
+@onready var double_health_button = get_node("ShopUI/Menu/Buffs/DoubleHealth")
 
 ## Colors
 var green := Color("DARK_GREEN")
 var red := Color("DARK_RED")
 
+@onready var score_label = get_node("../../../UI/scoreboard")
+
 func _on_speed_pressed() -> void:
     # speed_boost.emit()
     print("Speed pressed, money: ", Global.score)
-    if Global.score > SPEED_PRICE:
+    if Global.score >= SPEED_PRICE:
         Global.score -= SPEED_PRICE
         Global.speed_boost = true
         speed_timer.start()
@@ -132,7 +134,7 @@ func _on_speed_pressed() -> void:
 
 func _on_damage_reduction_pressed() -> void:
     print("Damage Reduction pressed, money: ", Global.score)
-    if Global.score > DAMAGE_REDUCTION_PRICE:
+    if Global.score >= DAMAGE_REDUCTION_PRICE:
         Global.score -= DAMAGE_REDUCTION_PRICE
         Global.damage_reduction = true
         damage_reduction_timer.start()
@@ -140,7 +142,7 @@ func _on_damage_reduction_pressed() -> void:
 
 func _on_infinite_ammo_pressed() -> void:
     print("Infinite Ammo pressed, money: ", Global.score)
-    if Global.score > INFINITE_AMMO_PRICE:
+    if Global.score >= INFINITE_AMMO_PRICE:
         Global.score -= INFINITE_AMMO_PRICE
         Global.infinite_ammo = true
         infinite_ammo_timer.start()
@@ -148,7 +150,7 @@ func _on_infinite_ammo_pressed() -> void:
 
 func _on_double_points_pressed() -> void:
     print("Double Points pressed, money: ", Global.score)
-    if Global.score > DOUBLE_POINTS_PRICE:
+    if Global.score >= DOUBLE_POINTS_PRICE:
         Global.score -= DOUBLE_POINTS_PRICE
         Global.double_points = true
         double_points_timer.start()
@@ -156,10 +158,10 @@ func _on_double_points_pressed() -> void:
 
 func _on_double_health_pressed() -> void:
     print("Double Health pressed, money: ", Global.score)
-    if Global.score > DOUBLE_HEALTH_PRICE:
+    if Global.score >= DOUBLE_HEALTH_PRICE:
         Global.score -= DOUBLE_HEALTH_PRICE
         Global.double_health = true
-
+        double_health.emit()
 
 ## Timer functions
 

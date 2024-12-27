@@ -47,7 +47,7 @@ var player_died = false
 
 var enemy_kills = 0:
     set(new_val):
-        Global.score += 15
+        Global.score += 15 if !Global.double_points else 30
         score_label.update_score()
         enemy_kills = new_val
 
