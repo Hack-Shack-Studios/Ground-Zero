@@ -107,10 +107,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -518.0
-offset_top = -551.0
-offset_right = -121.0
-offset_bottom = -424.0
+offset_left = -412.0
+offset_top = -538.0
+offset_right = -15.0
+offset_bottom = -411.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
@@ -122,25 +122,5 @@ theme_override_font_sizes/font_size = 100
 text = "Follow Us!"
 underline = 1
 uri = "https://linktr.ee/HackShackStudios"
-
-[node name="Feedback" type="LinkButton" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -612.0
-offset_top = 123.0
-offset_right = -5.0
-offset_bottom = 250.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_constants/underline_spacing = 0
-theme_override_fonts/font = ExtResource("3_2730k")
-theme_override_font_sizes/font_size = 100
-text = "Give FeedBack!"
-underline = 1
-uri = "https://docs.google.com/forms/d/e/1FAIpQLScEcIIjRwPqx8RLUQLbtRxUFbGTa81TCK-SNHgrnRr2GzXmUA/viewform"
 
 [connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
