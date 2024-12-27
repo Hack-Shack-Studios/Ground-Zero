@@ -715,6 +715,28 @@ bus = &"sfx"
 wait_time = 2.0
 one_shot = true
 
+[node name="BuffIcons" type="Node" parent="."]
+
+[node name="SpeedBoost" type="TextureRect" parent="BuffIcons"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DamageReduction" type="TextureRect" parent="BuffIcons"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InfiniteAmmo" type="TextureRect" parent="BuffIcons"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DoublePoints" type="TextureRect" parent="BuffIcons"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DoubleHealth" type="TextureRect" parent="BuffIcons"]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="player_hit" from="." to="." method="_on_player_hit"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="timeout" from="HUD/Regen" to="." method="_on_regen_timeout"]
