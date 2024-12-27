@@ -66,11 +66,10 @@ func physics_update(delta: float):
 
         #print("Manuervering")
     else:
-        if nav_map_ready:
-            enemy.nav_agent.set_target_position(player.global_transform.origin) # Goes toward the player
-            var next_nav_point = enemy.nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
-            enemy.velocity = (next_nav_point - enemy.global_transform.origin).normalized() * move_speed # Sets velocity direction towards the target
-            enemy.rotation.y = lerp_angle(enemy.rotation.y, atan2(-enemy.velocity.x, -enemy.velocity.z), delta * 10.0) # Turn to face the player
+        enemy.nav_agent.set_target_position(player.global_transform.origin) # Goes toward the player
+        var next_nav_point = enemy.nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
+        enemy.velocity = (next_nav_point - enemy.global_transform.origin).normalized() * move_speed # Sets velocity direction towards the target
+        enemy.rotation.y = lerp_angle(enemy.rotation.y, atan2(-enemy.velocity.x, -enemy.velocity.z), delta * 10.0) # Turn to face the player
 
     var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
     var distance_to_player = enemy.global_position.distance_to(player.global_position)

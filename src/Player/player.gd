@@ -101,6 +101,9 @@ func _physics_process(delta: float) -> void:
         else:
             speed = WALK_SPEED * (2 if Global.speed_boost else 1)
 
+        if Global.speed_boost:
+            speed *= 2
+
         # Gets the direction vector based on user input
         if !Global.ui_opened:
             var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
