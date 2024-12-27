@@ -22,7 +22,7 @@ var can_regen: bool = false
 var enemy = load("res://Enemies/Medusa Bot/medusa_bot.tscn")
 var instance
 var MAX_WAVES: int = 5
-@export var waves_remaining: int = MAX_WAVES
+@export var waves_remaining: int = 5
 @export var wave_count: Array[int] = [25, 20, 15, 10, 5]
 var total_enemies: int
 var spawn_delay: float = 3.5
@@ -85,12 +85,8 @@ func _process(_delta: float) -> void:
         #emit_signal("win_condition")
         #get_tree().change_scene_to_file("res://UI/game_over.tscn")
 
-    if Input.is_action_pressed("scoreboard_toggle"): #Stylistic choice: Hold TAB to view score rather than toggle.
-        scoreboard_container.visible = true
-    else:
-        scoreboard_container.visible = false
-
-
+    if Input.is_action_just_pressed("scoreboard_toggle"): #Stylistic choice: Hold TAB to view score rather than toggle.
+        scoreboard_container.visible = !scoreboard_container.visible
 
 ## Spawns an enemy at one of the random spawnpoints
 func _get_random_child(parent_node):

@@ -1,17 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ebtvuuyx6gaf"]
+[gd_scene load_steps=10 format=3 uid="uid://ebtvuuyx6gaf"]
 
+[ext_resource type="Script" path="res://UI/shop.gd" id="1_lso25"]
 [ext_resource type="FontFile" uid="uid://rerjonsav62n" path="res://Other/Fonts/Epyval.ttf" id="1_w4hxa"]
-[ext_resource type="StyleBox" uid="uid://0eayij5138wb" path="res://UI/shop.tres" id="2_simtb"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi3wq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc6us"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.632686, 0.632686, 7.70092e-07, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37n7l"]
 bg_color = Color(0, 0, 0, 1)
@@ -67,98 +57,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_lso25")
 
-[node name="NO BUTTONS FUCKK" type="PanelContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -916.0
-offset_top = -355.5
-offset_right = 916.0
-offset_bottom = 191.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer2" type="PanelContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -916.0
-offset_top = -355.5
-offset_right = 916.0
-offset_bottom = 191.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vi3wq")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2"]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_w4hxa")
-theme_override_font_sizes/normal_font_size = 100
-text = "hellow world"
-
-[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
-theme_override_fonts/font = ExtResource("1_w4hxa")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("2_simtb")
-text = "Buff | Effect | Duration | Price "
-horizontal_alignment = 1
-
-[node name="Speed" type="Button" parent="PanelContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
-theme_override_fonts/font = ExtResource("1_w4hxa")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("2_simtb")
-text = "Speed Boost             | +30% Movement Speed | 10 Seconds | 30"
-autowrap_mode = 2
-
-[node name="DamageReduction" type="Button" parent="PanelContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
-theme_override_fonts/font = ExtResource("1_w4hxa")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("2_simtb")
-text = "Damage Reduction    | Take 50% less damage | 15 Seconds | 100"
-
-[node name="InfiniteAmmo" type="Button" parent="PanelContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
-theme_override_fonts/font = ExtResource("1_w4hxa")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("2_simtb")
-text = "Infinite Ammo    | Unlimited ammo | 15 seconds | 120"
-
-[node name="DoublePoints" type="Button" parent="PanelContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
-theme_override_fonts/font = ExtResource("1_w4hxa")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = ExtResource("2_simtb")
-text = "Double Points         | Earn 2x points for each robot kill | 20 seconds | 200"
-
-[node name="DoubleHealth" type="Button" parent="PanelContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
-theme_override_fonts/font = ExtResource("1_w4hxa")
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_fc6us")
-text = "Double Health         | Double your current and max health | Until depleted | 350"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Menu" type="HBoxContainer" parent="."]
 layout_mode = 2
 offset_left = 39.0
 offset_top = 169.5
@@ -166,10 +68,10 @@ offset_right = 1881.0
 offset_bottom = 746.5
 alignment = 1
 
-[node name="Buffs" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Buffs" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/Buffs"]
+[node name="Label" type="Label" parent="Menu/Buffs"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -180,7 +82,7 @@ text = "Buff
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Speed" type="Button" parent="HBoxContainer/Buffs"]
+[node name="Speed" type="Button" parent="Menu/Buffs"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -189,7 +91,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_jdbnt")
 text = "Speed Boost"
 autowrap_mode = 2
 
-[node name="DamageReduction" type="Button" parent="HBoxContainer/Buffs"]
+[node name="DamageReduction" type="Button" parent="Menu/Buffs"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -197,7 +99,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_jdbnt")
 text = "Damage Reduction"
 
-[node name="InfiniteAmmo" type="Button" parent="HBoxContainer/Buffs"]
+[node name="InfiniteAmmo" type="Button" parent="Menu/Buffs"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -205,7 +107,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_jdbnt")
 text = "Infinite Ammo"
 
-[node name="DoublePoints" type="Button" parent="HBoxContainer/Buffs"]
+[node name="DoublePoints" type="Button" parent="Menu/Buffs"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -213,7 +115,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_jdbnt")
 text = "Double Points"
 
-[node name="DoubleHealth" type="Button" parent="HBoxContainer/Buffs"]
+[node name="DoubleHealth" type="Button" parent="Menu/Buffs"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -221,10 +123,10 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_boqsa")
 text = "Double Health"
 
-[node name="Effects" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Effects" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
 
-[node name="Label1" type="Label" parent="HBoxContainer/Effects"]
+[node name="Label1" type="Label" parent="Menu/Effects"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -234,7 +136,7 @@ text = "effect"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Label2" type="Label" parent="HBoxContainer/Effects"]
+[node name="Label2" type="Label" parent="Menu/Effects"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -244,7 +146,7 @@ text = "+30% movement speed
 "
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="HBoxContainer/Effects"]
+[node name="Label3" type="Label" parent="Menu/Effects"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -254,7 +156,7 @@ text = "Take 50% less damage
 "
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="HBoxContainer/Effects"]
+[node name="Label4" type="Label" parent="Menu/Effects"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -264,7 +166,7 @@ text = "Unlimited ammo
 "
 vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="HBoxContainer/Effects"]
+[node name="Label5" type="Label" parent="Menu/Effects"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -274,7 +176,7 @@ text = "Earn 2x points for each robot kill
 "
 vertical_alignment = 1
 
-[node name="Label6" type="Label" parent="HBoxContainer/Effects"]
+[node name="Label6" type="Label" parent="Menu/Effects"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -283,10 +185,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_a2of7")
 text = "Double your current and max health"
 vertical_alignment = 1
 
-[node name="Durration" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Durration" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
 
-[node name="Label1" type="Label" parent="HBoxContainer/Durration"]
+[node name="Label1" type="Label" parent="Menu/Durration"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -296,25 +198,27 @@ text = "duration"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Label2" type="Label" parent="HBoxContainer/Durration"]
+[node name="Label2" type="Label" parent="Menu/Durration"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
 text = "10 seconds"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="HBoxContainer/Durration"]
+[node name="Label3" type="Label" parent="Menu/Durration"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
 text = "15 seconds"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="HBoxContainer/Durration"]
+[node name="Label4" type="Label" parent="Menu/Durration"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -322,9 +226,10 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
 text = "15 seconds
 "
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="HBoxContainer/Durration"]
+[node name="Label5" type="Label" parent="Menu/Durration"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -332,21 +237,23 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_vxgrg")
 text = "20 seconds
 "
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label6" type="Label" parent="HBoxContainer/Durration"]
+[node name="Label6" type="Label" parent="Menu/Durration"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_a2of7")
-text = "Until depleted"
+text = "Until Death"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Price" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Price" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
 
-[node name="Label1" type="Label" parent="HBoxContainer/Price"]
+[node name="Label1" type="Label" parent="Menu/Price"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -356,7 +263,7 @@ text = "price"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Label2" type="Label" parent="HBoxContainer/Price"]
+[node name="Label2" type="Label" parent="Menu/Price"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -364,9 +271,10 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_h68xj")
 text = "30
 "
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="HBoxContainer/Price"]
+[node name="Label3" type="Label" parent="Menu/Price"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -374,9 +282,10 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_h68xj")
 text = "100
 "
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="HBoxContainer/Price"]
+[node name="Label4" type="Label" parent="Menu/Price"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -384,9 +293,10 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_h68xj")
 text = "120
 "
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="HBoxContainer/Price"]
+[node name="Label5" type="Label" parent="Menu/Price"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -394,9 +304,10 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_h68xj")
 text = "200
 "
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label6" type="Label" parent="HBoxContainer/Price"]
+[node name="Label6" type="Label" parent="Menu/Price"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
 theme_override_fonts/font = ExtResource("1_w4hxa")
@@ -404,4 +315,33 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_ghkuu")
 text = "350
 "
+horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="SpeedBoost" type="Timer" parent="Timers"]
+wait_time = 10.0
+one_shot = true
+
+[node name="DamageReduction" type="Timer" parent="Timers"]
+wait_time = 15.0
+one_shot = true
+
+[node name="InfiniteAmmo" type="Timer" parent="Timers"]
+wait_time = 15.0
+one_shot = true
+
+[node name="DoublePoints" type="Timer" parent="Timers"]
+wait_time = 20.0
+one_shot = true
+
+[connection signal="pressed" from="Menu/Buffs/Speed" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="Menu/Buffs/DamageReduction" to="." method="_on_damage_reduction_pressed"]
+[connection signal="pressed" from="Menu/Buffs/InfiniteAmmo" to="." method="_on_infinite_ammo_pressed"]
+[connection signal="pressed" from="Menu/Buffs/DoublePoints" to="." method="_on_double_points_pressed"]
+[connection signal="pressed" from="Menu/Buffs/DoubleHealth" to="." method="_on_double_health_pressed"]
+[connection signal="timeout" from="Timers/SpeedBoost" to="." method="_on_speed_boost_timeout"]
+[connection signal="timeout" from="Timers/DamageReduction" to="." method="_on_damage_reduction_timeout"]
+[connection signal="timeout" from="Timers/InfiniteAmmo" to="." method="_on_infinite_ammo_timeout"]
+[connection signal="timeout" from="Timers/DoublePoints" to="." method="_on_double_points_timeout"]

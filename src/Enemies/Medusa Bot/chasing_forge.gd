@@ -17,10 +17,14 @@ var gravity = 9.8
 var player: CharacterBody3D
 var forge = null
 
-
 func enter():
-    player = get_node(player_path)
-    forge = get_node(forge_path)
+    player = get_node_or_null(player_path)
+    forge = get_node_or_null(forge_path)
+
+    if not player:
+        push_error("Player node not found at path: " + player_path)
+    if not forge:
+        push_error("Forge node not found at path: " + forge_path)
 
     print("Chasing Forge")
 
@@ -30,38 +34,40 @@ func exit():
 func update(_delta: float):
     pass
 
-
 func physics_update(delta: float):
+    # Wait until the navigation map is ready
+    if not enemy.nav_agent.is_navigation_finished():
+        return
+
     enemy.move_and_slide()
     enemy.velocity = Vector3.ZERO
 
     animation.play("walk")
 
-    enemy.nav_agent.set_target_position(forge.global_transform.origin) # Goes toward the player
-    var next_nav_point = enemy.nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
-    enemy.velocity = (next_nav_point - enemy.global_transform.origin).normalized() * move_speed # Sets velocity direction towards the target
-    enemy.rotation.y = lerp_angle(enemy.rotation.y, atan2(-enemy.velocity.x, -enemy.velocity.z), delta * 10.0) # Turn to face the player
+    if forge:
+        # Set the target position to the forge's location
+        enemy.nav_agent.set_target_position(forge.global_transform.origin)
 
+        # Try to get the next path position
+        var next_nav_point = enemy.nav_agent.get_next_path_position()
+        if next_nav_point != Vector3.ZERO:  # Ensure it's a valid point
+            enemy.velocity = (next_nav_point - enemy.global_transform.origin).normalized() * move_speed
+            enemy.rotation.y = lerp_angle(
+                enemy.rotation.y,
+                atan2(-enemy.velocity.x, -enemy.velocity.z),
+                delta * 10.0
+            )  # Rotate to face the target
 
-    ## TODO: Currently the location the enemy is following is
-    ## on top of the player model, so the enemy tries to float,
-    ## I can't/too tired to find the solution, so i'm just forcing
-    ## the bot back to the ground without delta so its instant
-    ## Technically should not be a problem with the medusa bot since
-    ## they are a ranged enemy, but can def seeing this being a
-    ## problem later
-    if not enemy.is_on_floor():
-        enemy.velocity.y -= gravity
+    # Handle state transitions
+    if forge and player:
+        var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
+        var distance_to_player = enemy.global_position.distance_to(player.global_position)
 
-    var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
-    var distance_to_player = enemy.global_position.distance_to(player.global_position)
-    print("robots hacking: "+str(forge.robots_hacking) + ", player dead: ",player.dead)
-    if forge.robots_hacking > 1 and not player.dead:
-        Transitioned.emit(self, "ChasingPlayer")
-    elif distance_to_forge <= 4:
-        Transitioned.emit(self, "Hacking")
-    # else keep walking towards forge
+        if forge.robots_hacking > 1 and not player.dead:
+            Transitioned.emit(self, "ChasingPlayer")
+        elif distance_to_forge <= 4:
+            Transitioned.emit(self, "Hacking")
 
 # TODO: Add safe_velocity to have avoidance work better #2
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
-    pass # Replace with function body.
+    pass  # Replace with function body.

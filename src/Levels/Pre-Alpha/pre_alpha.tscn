@@ -71,8 +71,6 @@ albedo_color = Color(0.145098, 0.556863, 0.262745, 1)
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162144, -0.0722611, 0.146532)
 script = ExtResource("1_1b5qn")
-waves_remaining = 1
-wave_count = Array[int]([1])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -88,12 +86,14 @@ offset_left = 1266.0
 offset_top = -8.0
 offset_right = 1306.0
 offset_bottom = 32.0
+mouse_filter = 1
 
 [node name="RegenRect" type="ColorRect" parent="UI"]
 visible = false
 layout_mode = 0
 offset_right = 3412.0
 offset_bottom = 2283.0
+mouse_filter = 2
 color = Color(0.17139, 0.642574, 0.231583, 0.231373)
 
 [node name="OldHealthBar" type="TextEdit" parent="UI"]
@@ -272,6 +272,7 @@ offset_left = -1263.0
 offset_top = 11.0
 offset_right = 660.0
 offset_bottom = 1094.0
+mouse_filter = 2
 color = Color(1, 0.0392157, 0.145098, 0.231373)
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("2_bo550")]
@@ -287,14 +288,17 @@ scale = Vector2(3, 3)
 
 [node name="scoreboard" type="VBoxContainer" parent="UI"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -445.0
-offset_top = 274.0
-offset_right = -166.0
-offset_bottom = 440.0
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -1257.0
+offset_top = 129.0
+offset_right = -978.0
+offset_bottom = 295.0
+grow_vertical = 0
+scale = Vector2(1.52121, 1.45337)
+size_flags_horizontal = 0
+mouse_filter = 2
 
 [node name="header" type="Label" parent="UI/scoreboard"]
 layout_mode = 2

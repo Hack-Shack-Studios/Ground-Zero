@@ -66,3 +66,10 @@ func _on_sfx_mouse_entered() -> void:
 
 func _on_check_button_mouse_entered() -> void:
     ButtonHover.play()
+
+
+func _on_master_tag_focus_entered() -> void:
+    if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+        full_screen_button.toggle_mode = true
+    else:
+        full_screen_button.toggle_mode = false

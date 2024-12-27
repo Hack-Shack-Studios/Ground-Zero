@@ -127,6 +127,7 @@ transform = Transform3D(-8.74228e-08, 0, -0.1, 0, 2, 0, 2, 0, -4.37114e-09, 2.95
 mesh = SubResource("PrismMesh_vffl1")
 
 [node name="Hacked" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 2.0
 
 [node name="Shop" type="Sprite3D" parent="."]
@@ -187,10 +188,22 @@ text = "PRESS 'E' TO OPEN SHOP"
 transform = Transform3D(6, 0, 0, 0, 8, 0, 0, 0, 6, 0, 8, 0)
 shape = SubResource("ConvexPolygonShape3D_n4gvf")
 
-[node name="ShopUI" parent="." instance=ExtResource("3_3eexa")]
-
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="ShopUI" parent="." instance=ExtResource("3_3eexa")]
+script = null
 
 [connection signal="timeout" from="Hacked" to="." method="_on_hacked_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="pressed" from="ShopUI/Menu/Buffs/Speed" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="ShopUI/Menu/Buffs/DamageReduction" to="." method="_on_damage_reduction_pressed"]
+[connection signal="pressed" from="ShopUI/Menu/Buffs/InfiniteAmmo" to="." method="_on_infinite_ammo_pressed"]
+[connection signal="pressed" from="ShopUI/Menu/Buffs/DoublePoints" to="." method="_on_double_points_pressed"]
+[connection signal="pressed" from="ShopUI/Menu/Buffs/DoubleHealth" to="." method="_on_double_health_pressed"]
+[connection signal="timeout" from="ShopUI/Timers/SpeedBoost" to="." method="_on_speed_boost_timeout"]
+[connection signal="timeout" from="ShopUI/Timers/DamageReduction" to="." method="_on_damage_reduction_timeout"]
+[connection signal="timeout" from="ShopUI/Timers/InfiniteAmmo" to="." method="_on_infinite_ammo_timeout"]
+[connection signal="timeout" from="ShopUI/Timers/DoublePoints" to="." method="_on_double_points_timeout"]
+
+[editable path="ShopUI"]
