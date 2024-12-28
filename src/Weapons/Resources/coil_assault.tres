@@ -1,16 +1,17 @@
 [gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://buwp7sgd160od"]
 
-[ext_resource type="Script" path="res://Weapons/weapon_resource.gd" id="1_3echn"]
+[ext_resource type="Script" path="res://Weapons/Resources/weapon_resource.gd" id="1_lwomh"]
 [ext_resource type="AudioStream" uid="uid://c04335hx4mm" path="res://Weapons/Coil Pistol/coil_pistol.mp3" id="2_4e0uf"]
 
 [resource]
-script = ExtResource("1_3echn")
+script = ExtResource("1_lwomh")
 weapon_name = "coil_assault"
 activate_anim = "coil_assault Activate"
 shoot_anim = "coil_assault Shoot"
 reload_anim = "coil_assault Reload"
 deactivate_anim = "coil_assault Deactivate"
 out_of_ammo_anim = "coil_assault OOA"
+melee_anim = "coil_assault Melee"
 current_ammo = 20
 reserve_ammo = 100
 magazine = 20
@@ -19,4 +20,5 @@ auto_fire = true
 Type = 1
 weapon_range = 2000
 damage = 1
+melee_dmg = 1
 shoot_sound = ExtResource("2_4e0uf")

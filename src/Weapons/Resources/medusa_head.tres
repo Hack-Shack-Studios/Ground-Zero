@@ -1,20 +1,24 @@
-[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://dbfsnq6gscf8x"]
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=3 format=3 uid="uid://dbfsnq6gscf8x"]
 
-[ext_resource type="Script" path="res://Weapons/weapon_resource.gd" id="1_t22py"]
+[ext_resource type="Script" path="res://Weapons/Resources/weapon_resource.gd" id="1_sktbe"]
+[ext_resource type="AudioStream" uid="uid://b0m6pax85gmla" path="res://Weapons/Enemy Weapons/Medusa Head/LazerGunSHORT-VEED.mp3" id="2_ettho"]
 
 [resource]
-script = ExtResource("1_t22py")
+script = ExtResource("1_sktbe")
 weapon_name = "medusa_head"
-activate_anim = ""
-shoot_anim = ""
-reload_anim = ""
-deactivate_anim = ""
-out_of_ammo_anim = ""
-current_ammo = 5
-reserve_ammo = 5
-magazine = 5
-max_ammo = 10
+activate_anim = "medusa_head Activate"
+shoot_anim = "medusa_head Shoot"
+reload_anim = "medusa_head Reload"
+deactivate_anim = "medusa_head Deactivate"
+out_of_ammo_anim = "medusa_head OOA"
+melee_anim = "medusa_head Melee"
+current_ammo = 100
+reserve_ammo = 0
+magazine = 100
+max_ammo = 100
 auto_fire = true
 Type = 1
-weapon_range = 2000
+weapon_range = 6
 damage = 10
+melee_dmg = 1
+shoot_sound = ExtResource("2_ettho")

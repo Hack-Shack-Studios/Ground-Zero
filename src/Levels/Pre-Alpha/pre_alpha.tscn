@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b2xr28r77qiug"]
+[gd_scene load_steps=24 format=3 uid="uid://b2xr28r77qiug"]
 
 [ext_resource type="Script" path="res://Levels/Pre-Alpha/pre_alpha.gd" id="1_1b5qn"]
 [ext_resource type="PackedScene" uid="uid://daxcj2wau0q4c" path="res://UI/pause_menu.tscn" id="2_bo550"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://rerjonsav62n" path="res://Other/Fonts/Epyval.ttf" id="5_p2toc"]
 [ext_resource type="PackedScene" uid="uid://dhaeynqrn8bx5" path="res://Buildings/Fortress/fortress.tscn" id="6_6b102"]
 [ext_resource type="Script" path="res://UI/total_score_board.gd" id="6_qvoby"]
+[ext_resource type="PackedScene" uid="uid://lvelmdg0r3nn" path="res://Weapons/Spawnables/medusa_head.tscn" id="10_b0fa7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ejsy0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -386,6 +387,15 @@ use_collision = true
 size = Vector3(100, 0.002, 100)
 
 [node name="Simple Fortress" parent="." instance=ExtResource("6_6b102")]
+
+[node name="Weapons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8812, 0, 0)
+
+[node name="medusa_head" parent="Weapons" instance=ExtResource("10_b0fa7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.797399, 0)
+
+[node name="Spawnables" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88689, 0)
 
 [connection signal="win_condition" from="." to="." method="_on_win_condition"]
 [connection signal="timeout" from="UI/Regen" to="." method="_on_regen_timeout"]

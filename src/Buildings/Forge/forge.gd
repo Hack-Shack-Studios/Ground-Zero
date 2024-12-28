@@ -24,7 +24,7 @@ var shop_ui_open := false
 
 @onready var shop_visible = $VisibleOnScreenNotifier3D
 @onready var hacked_timer = %Hacked
-@onready var shop_interact_label = $ShopInteract/Viewport/Label
+@onready var shop_interact_label = get_node("ShopInteract/Viewport/Label")
 @onready var shop_ui = $ShopUI
 @onready var scoreboard_container = $"../../../UI/scoreboard"
 
@@ -94,7 +94,8 @@ func forge_shop():
 
 
 func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
-    shop_interact_label.visible = true
+    if shop_interact_label:
+        shop_interact_label.visible = true
 
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:

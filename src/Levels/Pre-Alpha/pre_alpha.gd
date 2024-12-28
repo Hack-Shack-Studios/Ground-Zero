@@ -51,7 +51,7 @@ var enemy_kills = 0:
         score_label.update_score()
         enemy_kills = new_val
 
-func _ready() -> void: ## TODO: You Win / You Lose text
+func _ready() -> void:
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     get_viewport().size = DisplayServer.screen_get_size()
     result_text.visible = false

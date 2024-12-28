@@ -27,7 +27,10 @@ var enemy_alive := true
 var chasing_player := false
 var player: CharacterBody3D
 var player_died
+var medusa_head = preload("res://Weapons/Spawnables/medusa_head.tscn")
+#var weapon_spawer
 
+@onready var weapon_spawner = get_node("/root/World/Spawnables")
 @onready var nav_agent = $NavigationAgent3D
 
 func _ready() -> void:
@@ -64,5 +67,16 @@ func _hit_finished() -> void:
 
 ## KEEP TRACK OF AMOUNT OF KILLS FOR FUTURE REFERENCE:
 func _on_enemy_death() -> void:
+    var weapon_drops = false
+
+    weapon_drops = true if randf() < .1 else false
+
+    if weapon_drops:
+        var medusa_head = medusa_head.instantiate()
+        medusa_head.position = position
+        medusa_head.position.y += .5
+
+        weapon_spawner.add_child(medusa_head)
+
     get_parent().get_parent().get_parent().enemy_kills += 1
     print(get_parent().get_parent().get_parent().enemy_kills)

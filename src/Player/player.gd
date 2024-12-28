@@ -165,8 +165,6 @@ func respawn():
     health_bar.value = max_health
     health_bar.max_value = max_health
 
-
-## TODO: Add this to new weapon system
 func update_bullets_display():
     var remaining_ammo_color: float = current_bullets / 20.0 #Aesthetics: checks the percentage of bullets left
     weapon_info.text = "Coil Pistol\n"+str(current_bullets) + "/" + str(magazine_size) #Updates weapon text in format Ammo remaining / Total Ammo

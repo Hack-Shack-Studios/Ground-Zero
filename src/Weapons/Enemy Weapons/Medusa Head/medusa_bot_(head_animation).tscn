@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpmrmqwb62v8e"]
+
+[ext_resource type="PackedScene" uid="uid://ba63q1nu8nxwe" path="res://Weapons/Enemy Weapons/Medusa Head/Medusa Bot (head animation).glb" id="1_56s2b"]
+[ext_resource type="PackedScene" uid="uid://mrv42iqtb5f3" path="res://Weapons/Enemy Weapons/Medusa Head/Laserbeam/laserbeam.tscn" id="2_acyel"]
+
+[node name="Medusa Bot (head animation)" instance=ExtResource("1_56s2b")]
+
+[node name="Laserbeam" parent="." index="2" instance=ExtResource("2_acyel")]

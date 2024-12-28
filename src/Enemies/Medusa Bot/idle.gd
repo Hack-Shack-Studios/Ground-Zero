@@ -31,8 +31,8 @@ func exit():
 func update(_delta: float):
     pass
 
-
-func physics_update(delta: float):
+# TODO: Fix this? Does this need be in physics?
+func physics_update(_delta: float):
 
     if player:
         Transitioned.emit(self, "ChasingPlayer")

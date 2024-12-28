@@ -1,8 +1,8 @@
 extends Label
 
 
-# Called when the node enters the scene tree for the first time.
-func _process(delta: float) -> void:
+# TODO: Use signals
+func _process(_delta: float) -> void:
     text = "SCORE: " + str(Global.score)
 
 func _ready() -> void:
