@@ -15,6 +15,7 @@ func hit_successful(damage_taken) -> void:
     health -= damage_taken
     print("Enemy: "+ name+",Damage: ",damage_taken)
 
+# TODO: Figure out how to get queue working from enemy class
     if health <= 0:
         # queue_free
         pass
