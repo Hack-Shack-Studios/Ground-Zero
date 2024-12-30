@@ -82,4 +82,6 @@ theme_override_font_sizes/font_size = 50
 action_mode = 0
 text = "SKIP INTRO"
 
+[node name="Node3D" type="Node3D" parent="."]
+
 [connection signal="pressed" from="skip_button" to="." method="_on_skip_button_pressed"]
