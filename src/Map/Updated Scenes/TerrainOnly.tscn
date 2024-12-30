@@ -57,3 +57,6 @@ skeleton = NodePath("")
 
 [node name="Rock 1" parent="Rocks" instance=ExtResource("3_pq87r")]
 transform = Transform3D(1.39521, 0, -1.43297, 0, 2, 0, 1.43297, 0, 1.39521, -33.9537, 2.57081, -67.096)
+
+[node name="Rock 2" parent="Rocks" instance=ExtResource("3_pq87r")]
+transform = Transform3D(1.39521, 0, -1.43297, 0, 2, 0, 1.43297, 0, 1.39521, 26.0696, -0.950867, -35.1782)
