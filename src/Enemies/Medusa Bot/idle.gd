@@ -38,6 +38,9 @@ func physics_update(_delta: float):
         Transitioned.emit(self, "ChasingPlayer")
     elif forge:
         Transitioned.emit(self, "ChasingForge")
+    else:
+        animation.stop()
+        print("Nothing exists, standing still")
 
 
 # TODO: Add safe_velocity to have avoidance work better #2

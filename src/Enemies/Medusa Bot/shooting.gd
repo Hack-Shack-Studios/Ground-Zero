@@ -8,7 +8,7 @@ class_name Shooting
 const SHOOT_RANGE := 6.0
 
 @export var player_path = "/root/World/Map/Player"
-@export var forge_path := "/root/World/Maps/Forge"
+@export var forge_path := "/root/World/Map/Forge"
 @export var animation: AnimationPlayer
 
 var gravity = 9.8
