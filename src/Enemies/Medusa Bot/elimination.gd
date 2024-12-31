@@ -8,19 +8,22 @@ class_name Elimination
 const EXPLODE_DURATION := 1.5
 
 @export var animation: AnimationPlayer
+
 @export var enemy: CharacterBody3D
+
+
 @export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
 
 var forge = StaticBody3D
 
-@onready var laser_mesh = $"../../Laser/MeshInstance3D"
+@onready var laser_mesh = $"../../Laser/laserbeam"
 
 
 func enter():
+    enemy.enemy_dead = true
     laser_mesh.visible = false
     forge = get_node(forge_path)
-
-    animation.play("hurt")
+    animation.play("Death")
     await get_tree().create_timer(EXPLODE_DURATION).timeout
     get_parent().get_parent().emit_signal("enemy_death")
     enemy.queue_free()

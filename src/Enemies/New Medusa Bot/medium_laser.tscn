@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyil1qi68jc6g"]
+
+[ext_resource type="PackedScene" uid="uid://mrv42iqtb5f3" path="res://Weapons/Enemy Weapons/Medusa Head/Laserbeam/laserbeam.tscn" id="1_bhjf1"]
+
+[node name="Medium Laser" type="Node3D"]
+
+[node name="Laserbeam" parent="." instance=ExtResource("1_bhjf1")]
+
+[node name="Cylinder" parent="Laserbeam" index="0"]
+visible = false
+
+[node name="Cylinder_002" parent="Laserbeam" index="2"]
+visible = false
+
+[editable path="Laserbeam"]

@@ -214,12 +214,12 @@ func _on_player_hit() -> void:
     regen_timer.start()
 
 func hit():
-    emit_signal("player_hit")
 
     #for robots in lasers:
-    health -= .1 if !Global.damage_reduction else .05
+    health -= .05 if !Global.damage_reduction else .25
     update_health()
     print("Player HIT, new health: ",health)
+    emit_signal("player_hit")
     if health <= 0 and not dead:
         respawn()
 

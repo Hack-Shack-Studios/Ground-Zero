@@ -8,6 +8,8 @@ class_name Idle
 const ATTACK_RANGE := 5.0
 
 @export var enemy: CharacterBody3D
+
+
 @export var move_speed := 2.0
 @export var player_path = "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
@@ -33,7 +35,7 @@ func update(_delta: float):
 
 # TODO: Fix this? Does this need be in physics?
 func physics_update(_delta: float):
-
+    print("Player: ",str(player))
     if player:
         Transitioned.emit(self, "ChasingPlayer")
     elif forge:

@@ -5,4 +5,7 @@
 
 [node name="Medusa Bot (head animation)" instance=ExtResource("1_56s2b")]
 
+[node name="Head" parent="." index="0"]
+transform = Transform3D(-0.00202696, 0.209419, -0.00273202, -0.209437, -0.00202735, -1.63626e-05, -4.28052e-05, 0.00273173, 0.209429, 0.0985826, 0.444889, 0)
+
 [node name="Laserbeam" parent="." index="2" instance=ExtResource("2_acyel")]

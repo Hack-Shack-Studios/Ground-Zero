@@ -12,9 +12,11 @@ class_name ChasingPlayer
 const ATTACK_RANGE := 5.0
 
 @export var enemy: CharacterBody3D
+
+
 @export var move_speed := 2.0
-@export var player_path = "/root/World/Map/Player"
-@export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
+var player_path = "/root/World/Map/Player"
+var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
 @export var animation: AnimationPlayer
 
 var gravity = 9.8
@@ -51,7 +53,7 @@ func update(_delta: float):
 func physics_update(delta: float):
     enemy.move_and_slide()
 
-    animation.play("walk")
+    animation.play("Walking")
 
     if is_wandering:
 

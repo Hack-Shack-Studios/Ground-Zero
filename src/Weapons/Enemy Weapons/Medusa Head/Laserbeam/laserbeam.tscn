@@ -23,9 +23,11 @@ emission_energy_multiplier = 1.5
 [node name="Laserbeam" instance=ExtResource("1_0gp67")]
 
 [node name="Cylinder" parent="." index="0"]
+visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_nksk1")
 
 [node name="Cylinder_001" parent="." index="1"]
+visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_7lpmo")
 
 [node name="Cylinder_002" parent="." index="2"]

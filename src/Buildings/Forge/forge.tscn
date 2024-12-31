@@ -191,7 +191,10 @@ shape = SubResource("ConvexPolygonShape3D_n4gvf")
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 
 [node name="ShopUI" parent="." instance=ExtResource("3_3eexa")]
-visible = false
+
+[node name="Menu" parent="ShopUI" index="0"]
+offset_right = 1959.0
+offset_bottom = 1249.5
 
 [connection signal="timeout" from="Hacked" to="." method="_on_hacked_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]

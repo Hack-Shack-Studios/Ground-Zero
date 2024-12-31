@@ -1,4 +1,3 @@
-class_name MedusaBot
 extends CharacterBody3D
 
 ## Handles most components reguarding the Medusa Bot
@@ -28,20 +27,23 @@ var chasing_player := false
 var player: CharacterBody3D
 var player_died
 var medusa_head = preload("res://Weapons/Spawnables/medusa_head.tscn")
-#var weapon_spawer
+var enemy_dead := false
 
 @onready var weapon_spawner = get_node("/root/World/Spawnables")
 @onready var nav_agent = $NavigationAgent3D
+@export var enemy_body: CharacterBody3D
 
 func _ready() -> void:
     player = get_node(player_path)
     forge = get_node(forge_path)
+
 
 # NEW FUNCTION
 func _physics_process(_delta: float) -> void:
     move_and_slide()
 
 
+## TODO: Combine both methods below
 ## If any body part is hit, it will take @damage ammount of damage.
 ## Currently, only the Head has damage of 2, all other body parts is 1 damage
 #func _on_area_3d_body_part_hit(damage: Variant) -> void:
@@ -58,6 +60,7 @@ func hit_successful(damage):
         if is_hacking:
             forge.robots_hacking -= 1
         enemy_alive = false
+        enemy_dead = true
 
 
 func _hit_finished() -> void:
@@ -69,7 +72,7 @@ func _hit_finished() -> void:
 func _on_enemy_death() -> void:
     var weapon_drops = false
 
-    weapon_drops = true if randf() < .1 else false
+    weapon_drops = true if randf() < .2 else false
 
     if weapon_drops:
         var medusa_head = medusa_head.instantiate()
