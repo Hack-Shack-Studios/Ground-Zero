@@ -10,7 +10,7 @@ extends Node3D
 signal win_condition
 
 @export var player_path := "/root/World/Map/Player"
-@export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
+@export var forge_path := "/root/World/Map/Forge"
 
 
 var forge = null
@@ -96,21 +96,22 @@ func _get_random_child(parent_node):
 
 ## Timer used to limit spawning too many enemies at once
 func _on_enemy_spawn_timer_timeout() -> void:
-    if (waves_remaining > 0):
-        waves_remaining -= 1
-        for n in wave_count[waves_remaining]:
-            log_text.text += "\nLoop: "+str(n)
-            total_enemies = wave_count[waves_remaining]
-            var spawn_point = _get_random_child(spawns).global_position
-            instance = enemy.instantiate()
-            instance.position = spawn_point
-            navigation_region.add_child(instance)
-            wave_text.text = "Waves Remaining: "+str(waves_remaining) + "\nEnemies: " + str(total_enemies) # str(len(enemies)) + "/" +
-            await (get_tree().create_timer(spawn_delay).timeout)
-
-    else: #if you win
-        emit_signal("win_condition") #Emit win condition signal (not neccessary, other ways to go about this)
-        get_tree().change_scene_to_file("res://UI/game_over.tscn")
+    pass
+    #if (waves_remaining > 0):
+        #waves_remaining -= 1
+        #for n in wave_count[waves_remaining]:
+            #log_text.text += "\nLoop: "+str(n)
+            #total_enemies = wave_count[waves_remaining]
+            #var spawn_point = _get_random_child(spawns).global_position
+            #instance = enemy.instantiate()
+            #instance.position = spawn_point
+            #navigation_region.add_child(instance)
+            #wave_text.text = "Waves Remaining: "+str(waves_remaining) + "\nEnemies: " + str(total_enemies) # str(len(enemies)) + "/" +
+            #await (get_tree().create_timer(spawn_delay).timeout)
+#
+    #else: #if you win
+        #emit_signal("win_condition") #Emit win condition signal (not neccessary, other ways to go about this)
+        #get_tree().change_scene_to_file("res://UI/game_over.tscn")
 
 
 

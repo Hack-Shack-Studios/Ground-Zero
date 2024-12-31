@@ -21,4 +21,5 @@ Type = 1
 weapon_range = 2000
 damage = 1
 melee_dmg = 1
+melee_range = 1.5
 shoot_sound = ExtResource("2_4e0uf")

@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://c50ipxmc8vfys"]
+
+[ext_resource type="Script" path="res://Merge Assets/Forge/forge.gd" id="1_6gltt"]
+[ext_resource type="PackedScene" uid="uid://b7llwi74x4vd5" path="res://Merge Assets/Forge/forge_model.tscn" id="1_ivt3d"]
+[ext_resource type="FontFile" uid="uid://rerjonsav62n" path="res://Other/Fonts/Epyval.ttf" id="2_yqkuu"]
+[ext_resource type="PackedScene" uid="uid://ebtvuuyx6gaf" path="res://UI/shop.tscn" id="3_egkko"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wfc3h"]
+viewport_path = NodePath("Shop/Viewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8fnkg"]
+viewport_path = NodePath("ShopInteract/Viewport")
+
+[node name="Forge" type="StaticBody3D"]
+script = ExtResource("1_6gltt")
+
+[node name="Forge" parent="." instance=ExtResource("1_ivt3d")]
+
+[node name="Hacked" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+
+[node name="Shop" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20257, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_wfc3h")
+
+[node name="Viewport" type="SubViewport" parent="Shop"]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+
+[node name="Label" type="Label" parent="Shop/Viewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -68.5
+offset_right = 121.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("2_yqkuu")
+theme_override_font_sizes/font_size = 100
+text = "SHOP"
+
+[node name="ShopInteract" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00618219, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_8fnkg")
+
+[node name="Viewport" type="SubViewport" parent="ShopInteract"]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+
+[node name="Label" type="Label" parent="ShopInteract/Viewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -68.5
+offset_right = 121.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("2_yqkuu")
+theme_override_font_sizes/font_size = 20
+text = "PRESS 'E' TO OPEN SHOP"
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="ShopUI" parent="." instance=ExtResource("3_egkko")]
+visible = false
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5, 0)
+depth = 10.0
+polygon = PackedVector2Array(-0.424924, 2.05642, 2.21905, 2.01446, 2.25053, -2.25577, -2.07216, -2.24528, -2.06167, 2.03544)
+
+[editable path="ShopUI"]
