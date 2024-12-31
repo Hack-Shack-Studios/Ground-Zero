@@ -12,7 +12,7 @@ const SHOOT_RANGE := 5.0
 
 
 @export var animation: AnimationPlayer
-@export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
+@export var forge_path := "/root/World/Map/Forge"
 
 
 var gravity = 9.8

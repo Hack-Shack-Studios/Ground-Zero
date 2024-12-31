@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://07dix2x2owxq"]
+
+[ext_resource type="Texture2D" uid="uid://b4f23dp3do4vh" path="res://Merge Assets/Map/Textures/Rock029_2K-JPG_Roughness.jpg" id="1_w3n1c"]
+[ext_resource type="Texture2D" uid="uid://dy6dqxtuwl1d5" path="res://Merge Assets/Map/Textures/Rock029_2K-JPG_NormalGL.jpg" id="2_inbnv"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.456973, 0.33948, 0.298588, 1)
+albedo_texture = ExtResource("1_w3n1c")
+roughness = 0.0
+normal_enabled = true
+normal_texture = ExtResource("2_inbnv")

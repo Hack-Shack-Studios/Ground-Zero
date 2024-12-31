@@ -12,7 +12,7 @@ const ATTACK_RANGE := 5.0
 
 @export var move_speed := 2.0
 @export var player_path = "/root/World/Map/Player"
-@export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
+@export var forge_path := "/root/World/Map/Forge"
 @export var animation: AnimationPlayer
 
 var gravity = 9.8
@@ -39,10 +39,11 @@ func physics_update(delta: float):
 
     animation.play("Walking")
 
-    enemy.nav_agent.set_target_position(forge.global_transform.origin) # Goes toward the player
-    var next_nav_point = enemy.nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
-    enemy.velocity = (next_nav_point - enemy.global_transform.origin).normalized() * move_speed # Sets velocity direction towards the target
-    enemy.rotation.y = lerp_angle(enemy.rotation.y, atan2(-enemy.velocity.x, -enemy.velocity.z), delta * 10.0) # Turn to face the player
+    if forge:
+        enemy.nav_agent.set_target_position(forge.global_transform.origin) # Goes toward the player
+        var next_nav_point = enemy.nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
+        enemy.velocity = (next_nav_point - enemy.global_transform.origin).normalized() * move_speed # Sets velocity direction towards the target
+        enemy.rotation.y = lerp_angle(enemy.rotation.y, atan2(-enemy.velocity.x, -enemy.velocity.z), delta * 10.0) # Turn to face the player
 
     var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
     var distance_to_player = enemy.global_position.distance_to(player.global_position)

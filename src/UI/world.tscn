@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://daxcj2wau0q4c" path="res://UI/pause_menu.tscn" id="2_a4bss"]
 [ext_resource type="PackedScene" uid="uid://orvopfwdvrfy" path="res://Player/player.tscn" id="2_wo2ma"]
-[ext_resource type="PackedScene" uid="uid://bklke6nfj1a0q" path="res://Buildings/Forge/forge.tscn" id="3_aj2uf"]
+[ext_resource type="PackedScene" uid="uid://bklke6nfj1a0q" path="res://Merge Assets/Forge/old_forge.tscn" id="3_aj2uf"]
 [ext_resource type="PackedScene" uid="uid://b5pxkpv2qnha5" path="res://Other/Scenes/skybox.tscn" id="3_f37f7"]
 [ext_resource type="PackedScene" uid="uid://dhaeynqrn8bx5" path="res://Buildings/Fortress/fortress.tscn" id="5_pbw2e"]
 

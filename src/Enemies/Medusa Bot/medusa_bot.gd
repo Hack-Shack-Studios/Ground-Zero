@@ -81,5 +81,5 @@ func _on_enemy_death() -> void:
 
         weapon_spawner.add_child(medusa_head)
 
-    get_parent().get_parent().get_parent().enemy_kills += 1
-    print(get_parent().get_parent().get_parent().enemy_kills)
+    #get_parent().get_parent().get_parent().enemy_kills += 1
+    #print(get_parent().get_parent().get_parent().enemy_kills)
