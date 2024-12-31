@@ -7,7 +7,9 @@ class_name ChasingForge
 
 const ATTACK_RANGE := 5.0
 
+# TODO: Fix this terrible temp solution
 @export var enemy: CharacterBody3D
+
 @export var move_speed := 2.0
 @export var player_path = "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
@@ -35,7 +37,7 @@ func physics_update(delta: float):
     enemy.move_and_slide()
     enemy.velocity = Vector3.ZERO
 
-    animation.play("walk")
+    animation.play("Walking")
 
     enemy.nav_agent.set_target_position(forge.global_transform.origin) # Goes toward the player
     var next_nav_point = enemy.nav_agent.get_next_path_position() # updates many of the agent's internal states and properties

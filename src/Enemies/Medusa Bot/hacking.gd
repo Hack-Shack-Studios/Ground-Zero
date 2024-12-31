@@ -9,6 +9,8 @@ class_name Hacking
 const SHOOT_RANGE := 5.0
 
 @export var enemy: CharacterBody3D
+
+
 @export var animation: AnimationPlayer
 @export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
 
@@ -23,6 +25,9 @@ func enter():
     forge.robots_hacking += 1
     enemy.is_hacking = true
     enemy.chasing_player = false
+
+    animation.play("StartHacking")
+    await get_tree().create_timer(1.4833).timeout
 
     print("Hacking")
 
@@ -40,4 +45,4 @@ func physics_update(_delta: float):
     if not enemy.is_on_floor():
         enemy.velocity.y -= gravity
 
-    animation.play("shoot")
+    animation.play("ConstantHacking")

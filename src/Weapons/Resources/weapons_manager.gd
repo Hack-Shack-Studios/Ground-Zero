@@ -1,5 +1,7 @@
 extends Node3D
 
+## Weapon Manager
+
 signal weapon_changed
 signal update_ammo
 signal update_weapon_stack
@@ -8,20 +10,17 @@ signal update_weapon_stack
 @onready var bullet_point = get_node("%Bullet_Point")
 @onready var audio_player = get_node("%AudioStreamPlayer")
 
+# Hit marker
+@onready var hit_marker = get_node("%HitMarker")
+
 var dubug_bullet = preload("res://Weapons/Resources/bullet_debug.tscn")
-
 var current_weapon = null
-
 var weapon_stack = [] # An array of weapons currently held by the player
-
 var weapon_indicator = 0
-
 var next_weapon: String
-
 var weapon_list = {}
 
 @export var _weapon_resources: Array[WeaponResource]
-
 @export var start_weapons: Array[String]
 
 enum {
@@ -185,8 +184,13 @@ func hit_scan_collision(collision_point):
         hit_scan_damage(bullet_collision.collider, current_weapon.damage)
 
 func hit_scan_damage(collider, damage):
-    if collider.is_in_group("enemy") and collider.has_method("hit_successful"):
+    if collider.is_in_group("enemy") and collider.has_method("hit_successful") and !collider.enemy_dead:
+        print(str(collider))
         collider.hit_successful(damage)
+        hit_marker.visible = true
+        await get_tree().create_timer(.2).timeout
+        hit_marker.visible = false
+
 
 
 func _on_pick_up_detection_body_entered(body: Node3D) -> void:

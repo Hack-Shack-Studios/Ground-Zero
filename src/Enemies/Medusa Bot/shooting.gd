@@ -7,6 +7,9 @@ class_name Shooting
 
 const SHOOT_RANGE := 6.0
 
+@export var enemy: CharacterBody3D
+
+
 @export var player_path = "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
 @export var animation: AnimationPlayer
@@ -14,35 +17,33 @@ const SHOOT_RANGE := 6.0
 var gravity = 9.8
 var player: CharacterBody3D
 var forge = StaticBody3D
-var shoot_length := 2.5
+var shoot_length := 1.5
 
 # Laser
 @onready var laser_ready_timer: Timer = %LaserReady
 @onready var laser_finished_timer: Timer = %LaserFinished
 @onready var laser_hit_timer: Timer = %LaserHit
 @onready var laser: RayCast3D = $"../../Laser"
-@onready var laser_mesh = $"../../Laser/MeshInstance3D"
+@onready var laser_mesh = $"../../Laser/laserbeam"
 var ready_to_shoot := true
 var anchor_down_length := 2
 var is_lasering := false
 var laser_speed := 4.0
-
-@onready var enemy = $"../.."
 
 func enter():
     player = get_node(player_path)
     forge = get_node(forge_path)
     enemy.chasing_player = true
     enemy.look_at(Vector3(player.global_position.x, enemy.global_position.y, player.global_position.z), Vector3.UP)
-    animation.play("shoot")
+    animation.play("StartingShooting")
 
     print("Shooting")
 
 
 
 func exit():
-    pass
-
+    animation.play("EndingShooting")
+    await get_tree().create_timer(.35).timeout # Allows shoot animation to finish
 
 func update(_delta: float):
     pass
@@ -58,10 +59,10 @@ func physics_update(delta: float):
         if laser_ready_timer.time_left == 0:
             laser_ready_timer.start()
 
-        #animation.play("anchor_down")
-        #await get_tree().create_timer(anchor_down_length).timeout
+
         laser_mesh.visible = true
         enemy.velocity = Vector3.ZERO # Stop moving
+        animation.play("DuringShooting")
         await get_tree().create_timer(shoot_length).timeout # Allows shoot animation to finish
 
         ## If enemy is IN_RANGE, LOOK_AT(PLAYER), SHOOT LASER, SLOWLY CHASE
@@ -69,12 +70,11 @@ func physics_update(delta: float):
         ## Rotate to players position SLOWLY
 
         var target = laser.get_collider()
-        if laser.is_colliding() and target is CharacterBody3D and target.is_in_group("Player") and laser_hit_timer.is_stopped():
-
-
-            player.hit()
-            laser_hit_timer.start()
-            print("Laser collided with player, timer starting")
+        if target:
+            if target.is_in_group("Player") and laser_hit_timer.time_left == 0:
+                player.hit()
+                laser_hit_timer.start()
+                print("Laser collided with player, timer starting")
     else:
         laser_mesh.visible = false
 
@@ -104,7 +104,6 @@ func _on_laser_ready_timeout() -> void:
 
 func _on_laser_hit_timeout() -> void:
     print("Timer over, hitting player")
-    player.hit()
 
 func lerp_angle(from, to, weight):
     return from + short_angle_dist(from, to) * weight

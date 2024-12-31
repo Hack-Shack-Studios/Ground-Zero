@@ -19,7 +19,7 @@ var enemies = []
 var player = null
 var playerHealth: int
 var can_regen: bool = false
-var enemy = load("res://Enemies/Medusa Bot/medusa_bot.tscn")
+var enemy = load("res://Enemies/New Medusa Bot/new_medusa_bot.tscn")
 var instance
 var MAX_WAVES: int = 5
 @export var waves_remaining: int = 5
