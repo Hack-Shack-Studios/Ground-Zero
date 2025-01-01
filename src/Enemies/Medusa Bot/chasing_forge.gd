@@ -51,13 +51,11 @@ func physics_update(delta: float):
 	var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
 	var distance_to_player = enemy.global_position.distance_to(player.global_position)
 
-	if forge.robots_hacking > 1 and not player.dead:
+	if forge.robots_hacking > 1 and !player.dead:
 		Transitioned.emit(self, "ChasingPlayer")
 	elif distance_to_forge <= 4:
 		Transitioned.emit(self, "Hacking")
-	elif distance_to_player < distance_to_forge:
-		Transitioned.emit(self, "ChasingPlayer")
-	# else keep walking towards forge
+
 
 # TODO: Add safe_velocity to have avoidance work better #2
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
