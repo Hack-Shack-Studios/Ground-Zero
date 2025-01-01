@@ -53,7 +53,8 @@ bus = &"Music"
 
 [node name="lore_dump" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_right = 855.0
+offset_left = 16.0
+offset_right = 871.0
 offset_bottom = 1039.0
 theme_override_colors/default_color = Color(0, 0.945098, 0, 1)
 theme_override_fonts/normal_font = ExtResource("4_5dntk")
