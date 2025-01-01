@@ -12,8 +12,8 @@ signal player_death
 signal player_respawn
 
 const MIN_HEALTH: int = 1
-const WALK_SPEED = 5.0 # How fast the player moves
-const SPRINT_SPEED = 8.0
+const WALK_SPEED = 10.0 # How fast the player moves
+const SPRINT_SPEED = 16.0
 const JUMP_VELOCITY = 4.5 # How fast the player jumps
 const HIT_STAGGER = 8.0
 const BOB_FREQ = 2.0 # How often the steps occur

@@ -12,7 +12,6 @@ viewport_path = NodePath("Shop/Viewport")
 viewport_path = NodePath("ShopInteract/Viewport")
 
 [node name="Forge" type="StaticBody3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_6gltt")
 
 [node name="Forge" parent="." instance=ExtResource("1_ivt3d")]
