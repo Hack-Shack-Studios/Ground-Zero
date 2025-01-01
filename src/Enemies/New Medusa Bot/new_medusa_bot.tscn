@@ -397,7 +397,6 @@ enemy = NodePath("..")
 [node name="ChasingPlayer" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animation")]
 script = ExtResource("4_g03ng")
 enemy = NodePath("../..")
-move_speed = 0.5
 animation = NodePath("../../Medusa Bot (Seperate Animations + Hacking)/AnimationPlayer")
 
 [node name="ChasingForge" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animation")]

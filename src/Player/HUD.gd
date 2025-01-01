@@ -8,14 +8,14 @@ extends CanvasLayer
 
 
 func _on_weapons_manager_update_ammo(ammo) -> void:
-    var remaining_ammo_color: float = ammo[0] / 20.0
-    weapon_info.text = "Coil Pistol\n" + str(ammo[0]) + " / " + str(ammo[1])
-    if remaining_ammo_color <= 0.5 and remaining_ammo_color >= 0.2:
-        weapon_info.add_theme_color_override("font_color", Color(1, 1, 0))
-    elif remaining_ammo_color < 0.2:
-        weapon_info.add_theme_color_override("font_color", Color(1, 0, 0))
-    else:
-        weapon_info.add_theme_color_override("font_color", Color(0, 1, 0))
+	var remaining_ammo_color: float = ammo[0] / 20.0
+	weapon_info.text = "Coil Pistol\n" + str(ammo[0]) + " / " + str(ammo[1])
+	if remaining_ammo_color <= 0.5 and remaining_ammo_color >= 0.2:
+		weapon_info.add_theme_color_override("font_color", Color(1, 1, 0))
+	elif remaining_ammo_color < 0.2:
+		weapon_info.add_theme_color_override("font_color", Color(1, 0, 0))
+	else:
+		weapon_info.add_theme_color_override("font_color", Color(0, 1, 0))
 
 
 # func _on_weapons_manager_update_weapon_stack(weapon_stack) -> void:

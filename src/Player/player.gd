@@ -13,8 +13,8 @@ signal player_respawn
 signal next_wave
 
 const MIN_HEALTH: int = 1
-const WALK_SPEED = 10.0 # How fast the player moves
-const SPRINT_SPEED = 16.0
+const WALK_SPEED = 7.0 # How fast the player moves
+const SPRINT_SPEED = 12.0
 const JUMP_VELOCITY = 4.5 # How fast the player jumps
 const HIT_STAGGER = 8.0
 const BOB_FREQ = 2.0 # How often the steps occur
@@ -214,7 +214,7 @@ func hit():
 
 	if getting_hit and not dead:
 		#for robots in lasers:
-		health -= .05 if !Global.damage_reduction else .25
+		health -= 1 if !Global.damage_reduction else .5
 		update_health()
 		await get_tree().create_timer(.2).timeout
 		#print("Player HIT, new health: ",health)
@@ -284,5 +284,7 @@ func between_waves():
 
 func _on_between_waves_timeout() -> void:
 	emit_signal("next_wave")
+	print("Next wave starting")
 	round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
 	rounds_label.text = round_info
+	wave_complete = false

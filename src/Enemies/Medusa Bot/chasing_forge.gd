@@ -5,12 +5,12 @@ class_name ChasingForge
 ##
 ## Chasing the forge
 
-const ATTACK_RANGE := 6.0
+const ATTACK_RANGE := 5.5
 
 # TODO: Fix this terrible temp solution
 @export var enemy: CharacterBody3D
 
-@export var move_speed := 2.0
+@export var move_speed := 4.0
 @export var player_path = "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/Forge"
 @export var animation: AnimationPlayer

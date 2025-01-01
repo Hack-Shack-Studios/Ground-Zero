@@ -24,7 +24,7 @@ var enemy = load("res://Enemies/New Medusa Bot/new_medusa_bot.tscn")
 var instance
 var MAX_WAVES: int = 5
 @export var waves_remaining: int = 5
-@export var wave_count: Array[int] = [25, 20, 15, 10, 5]
+@export var wave_count: Array[int] = [30, 25, 20, 15, 10]
 var total_enemies: int
 var spawn_delay: float = 3.5
 var time: int
@@ -44,6 +44,7 @@ var player_died = false
 @onready var navigation_region = $Map/NavigationRegion3D
 @onready var log_text = $UI/CanvasLayer/LogControl/ConsoleLog
 @onready var scoreboard_container = $UI/scoreboard
+@onready var scoreboard_background = $UI/Panel
 @onready var score_label = $UI/scoreboard/total_score
 
 @onready var enemies_spawn = get_node("EnemiesRemaining")
@@ -83,6 +84,7 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("scoreboard_toggle"): #Stylistic choice: Hold TAB to view score rather than toggle.
 		scoreboard_container.visible = !scoreboard_container.visible
+		scoreboard_background.visible = scoreboard_container.visible
 
 	if enemies_spawn.get_child_count() == 0:
 		emit_signal("wave_finished")
@@ -123,7 +125,6 @@ func spawn_wave() -> void:
 			enemies_spawn.add_child(instance)
 			#enemies_remaining.text = "Waves Remaining: "+str(waves_remaining) + "\nEnemies: " + str(total_enemies) # str(len(enemies)) + "/" +
 			await get_tree().create_timer(spawn_delay).timeout
-
 	else:
 		emit_signal("win_condition") #Emit win condition signal (not neccessary, other ways to go about this)
 		get_tree().change_scene_to_file("res://UI/game_over.tscn")
@@ -184,7 +185,6 @@ func _on_headshot():
 func get_paused() -> bool:
 	return paused
 
-
-
 func _on_player_next_wave() -> void:
 	spawn_wave()
+	print("Wave Starting")

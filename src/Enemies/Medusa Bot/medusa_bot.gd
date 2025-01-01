@@ -19,7 +19,7 @@ const HITMARKER_DECAY = 1.0
 
 @onready var world = $"."
 
-var health: int = 6
+var health: int = 10
 var is_hacking := false
 var forge: StaticBody3D
 var enemy_alive := true

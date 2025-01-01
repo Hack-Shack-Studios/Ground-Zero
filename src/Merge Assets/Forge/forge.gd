@@ -74,6 +74,7 @@ func _process(_delta: float) -> void:
 	else:
 		shop_interact_label.visible = false
 		shop_ui.visible = false
+		Global.ui_opened = false
 
 
 func forge_shop():
