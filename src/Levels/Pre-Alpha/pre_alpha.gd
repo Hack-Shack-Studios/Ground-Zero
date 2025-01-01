@@ -61,6 +61,9 @@ func _ready() -> void:
 	_set_forge_bar()
 	_on_enemy_spawn_timer_timeout()
 
+	paused = true
+	paused_menu()
+
 
 func _process(_delta: float) -> void:
 	time = spawn_timer.time_left

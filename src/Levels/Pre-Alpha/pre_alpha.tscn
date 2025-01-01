@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cg4c6dv1hfpjw" path="res://Merge Assets/From other project/world_environment.tscn" id="9_da84c"]
 [ext_resource type="PackedScene" uid="uid://c50ipxmc8vfys" path="res://Merge Assets/Forge/forge.tscn" id="9_u53oa"]
 [ext_resource type="PackedScene" uid="uid://b3ecukkmu1kt3" path="res://Merge Assets/Map/Updated Scenes/TerrainOnly.tscn" id="9_vbnsh"]
-[ext_resource type="PackedScene" path="res://Merge Assets/From other project/spawns.tscn" id="10_rre6o"]
+[ext_resource type="PackedScene" uid="uid://dyq7ke6c3cebt" path="res://Merge Assets/From other project/spawns.tscn" id="10_rre6o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mivx"]
 bg_color = Color(0.376471, 0, 0, 1)
