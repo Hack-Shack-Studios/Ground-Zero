@@ -15,7 +15,7 @@ const ATTACK_RANGE := 5.5
 @export var forge_path := "/root/World/Map/Forge"
 @export var animation: AnimationPlayer
 
-var hacking_distance = 8
+var hacking_distance = 10
 var gravity = 9.8
 var player: CharacterBody3D
 var forge = null

@@ -45,7 +45,4 @@ func update(_delta: float):
 func physics_update(_delta: float):
 	enemy.velocity = Vector3.ZERO
 
-	if not enemy.is_on_floor():
-		enemy.velocity.y -= gravity
-
 	animation.play("ConstantHacking")

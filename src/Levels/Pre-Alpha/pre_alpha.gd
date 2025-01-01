@@ -165,7 +165,7 @@ func paused_menu() -> void:
 ##Changes variable so that all instances of enemies on the map will effectively ignore the player
 func _on_player_player_death() -> void:
 	player_died = true #enemies will access this property through get_parent() to determine movement logic
-	Global.score -= 30
+	Global.score -= 150
 	score_label.update_score()
 
 
