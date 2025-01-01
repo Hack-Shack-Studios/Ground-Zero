@@ -10,7 +10,7 @@ const ATTACK_RANGE := 5.5
 # TODO: Fix this terrible temp solution
 @export var enemy: CharacterBody3D
 
-var move_speed := 1.8
+var move_speed := 2.3
 @export var player_path = "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/Forge"
 @export var animation: AnimationPlayer

@@ -164,7 +164,7 @@ func respawn():
 
 func update_bullets_display():
 	var remaining_ammo_color: float = current_bullets / 20.0 #Aesthetics: checks the percentage of bullets left
-	weapon_info.text = str(current_bullets) + "/" + str(magazine_size) #Updates weapon text in format Ammo remaining / Total Ammo
+	weapon_info.text = "Coil Pistol\n"+str(current_bullets) + "/" + str(magazine_size) #Updates weapon text in format Ammo remaining / Total Ammo
 	if remaining_ammo_color <= 0.5 and remaining_ammo_color >= 0.2:
 		weapon_info.add_theme_color_override("font_color", Color(1, 1, 0))
 	elif remaining_ammo_color < 0.2:
@@ -275,23 +275,21 @@ func _on_world_wave_finished() -> void:
 
 
 func between_waves():
-	if between_wave_timer.time_left > 0:
-		#print("%.2f seconds until next wave" % between_wave_timer.time_left)
-		if get_parent().get_parent().waves_remaining != 0:
-			rounds_label.text = str(str(int(between_wave_timer.time_left))+" seconds until next wave") # str(len(enemies)) + "/" +
-			print(str(str(int(between_wave_timer.time_left))+" seconds until next wave"))
-
-		else:
-			rounds_label.text = "Mission Complete" # str(len(enemies)) + "/" +
+	if between_wave_timer.time_left > 0 and get_parent().get_parent().waves_remaining != 0:
+		rounds_label.text = str(str(int(between_wave_timer.time_left))+" seconds until next wave") # str(len(enemies)) + "/" +
+		print(str(str(int(between_wave_timer.time_left))+" seconds until next wave"))
 		await get_tree().create_timer(.1).timeout
 		between_waves()
 
 
 func _on_between_waves_timeout() -> void:
 	emit_signal("next_wave")
+	print("Next wave starting")
+	wave_complete = false
 
-	if get_parent().get_parent().waves_remaining != 0:
-		print("Next wave starting")
+	if get_parent().get_parent().waves_remaining == 0:
+		round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
+		rounds_label.text = "FINAL ROUND"
+	else:
 		round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
 		rounds_label.text = round_info
-		wave_complete = false

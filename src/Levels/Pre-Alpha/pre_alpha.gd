@@ -22,8 +22,8 @@ var playerHealth: int
 var can_regen: bool = false
 var enemy = load("res://Enemies/New Medusa Bot/new_medusa_bot.tscn")
 var instance
-var MAX_WAVES: int = 5
 @export var waves_remaining: int = 5
+var MAX_WAVES := waves_remaining
 @export var wave_count: Array[int] = [30, 25, 20, 15, 10]
 var total_enemies: int
 var spawn_delay: float = 3.5
