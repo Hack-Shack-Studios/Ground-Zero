@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpbsdkx7weugb"]
+
+[ext_resource type="PackedScene" uid="uid://cbn0degqxid4t" path="res://Merge Assets/Map/Updated Scenes/Rock.tscn" id="1_ubrha"]
+[ext_resource type="PackedScene" uid="uid://c8f2drxfgpwvo" path="res://Merge Assets/Rocks/rock_2.tscn" id="2_niwhl"]
+
+[node name="Ship RockWall" type="Node3D"]
+
+[node name="Node3D10" parent="." instance=ExtResource("1_ubrha")]
+transform = Transform3D(-3.16673, 0, 2.44373, 0, 4, 0, -2.44373, 0, -3.16673, 18.5342, -0.32396, 78.1379)
+
+[node name="Node3D12" parent="." instance=ExtResource("1_ubrha")]
+transform = Transform3D(1.58641, 0, 3.67196, 0, 4, 0, -3.67196, 0, 1.58641, -25.1763, -0.32396, 61.5246)
+
+[node name="Node3D14" parent="." instance=ExtResource("1_ubrha")]
+transform = Transform3D(-3.98895, 0, 0.297128, 0, 4, 0, -0.297128, 0, -3.98895, -23.1142, -7.52312, 73.5302)
+
+[node name="Node3D13" parent="." instance=ExtResource("1_ubrha")]
+transform = Transform3D(1.03986, 0, -3.86247, 0, 4, 0, 3.86247, 0, 1.03986, -42.1146, -3.33136, 67.2427)
+
+[node name="Node3D15" parent="." instance=ExtResource("1_ubrha")]
+transform = Transform3D(-2.33844, 0, -1.87928, 0, 3, 0, 1.87928, 0, -2.33844, -26.0885, 3.84579, 106.695)
+
+[node name="Node3D16" parent="." instance=ExtResource("1_ubrha")]
+transform = Transform3D(-2.76816, 0, 1.15641, 0, 3, 0, -1.15641, 0, -2.76816, -5.64289, -5.8767, 96.9261)
+
+[node name="Rock2" parent="." instance=ExtResource("2_niwhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1887, 0, 68.9686)

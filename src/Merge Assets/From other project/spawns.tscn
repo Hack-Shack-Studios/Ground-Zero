@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dyq7ke6c3cebt"]
+
+[node name="Spawns" type="Node3D"]
+
+[node name="Spawn1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.427, 5.56423, 51.316)
+
+[node name="Spawn2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9993, 4.40085, -22.8521)
+
+[node name="Spawn3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.4167, 4.28623, 12.5479)
+
+[node name="Spawn4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7826, 10.3892, -63.2213)
+
+[node name="Spawn5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5088, 3.13356, 49.3726)
+
+[node name="Spawn6" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.5532, 5.02349, 37.4796)
+visible = false

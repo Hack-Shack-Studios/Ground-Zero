@@ -53,17 +53,69 @@ bus = &"Music"
 
 [node name="lore_dump" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_right = 841.0
-offset_bottom = 230.0
+offset_right = 855.0
+offset_bottom = 1039.0
 theme_override_colors/default_color = Color(0, 0.945098, 0, 1)
 theme_override_fonts/normal_font = ExtResource("4_5dntk")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "> Foreign Planatery Body detected approximately 5 lightyears away.
-> ATMOSPHERE COMPOSITION: null.
-> LIFEFORM PRESENCE: null.
-> Activating Autopilot Systems..."
-visible_characters = 159
+text = "-------------------------------
+    FOREIGN PLANET DETECTED
+-------------------------------
+EARTH DISTANCE: 5.003 Light Years  
+CURRENT DISTANCE: 82.3k mi (142.3 km)
+ATMOSPHERE: NULL (ERROR: Data Retrieval Failed.)  
+LIFEFORMS: NULL (ERROR: Biometric Scan Inconclusive.)  
+
+Activating Autopilot... Course correction engaged.
+
+-------------------------------
+    MISSION OBJECTIVE
+-------------------------------
+ANOMALY DETECTED: Power signatures confirmed at coordinates.  
+PRIMARY: Recon, non-invasive analysis. Transmit findings via encrypted relay (Protocol 47-D) upon data acquisition.
+SECONDARY: Follow defensive protocols if hazardous entities encountered. 
+
+-------------------------------
+    HAZARD WARNING
+-------------------------------
+HAZARD LEVEL: UNKNOWN (ERROR: Data retrieval failed.)
+WARNING: Environmental and anomalous hazards likely present. Proceed with caution.
+
+-------------------------------
+    SHIP DIAGNOSTICS
+-------------------------------
+WARNING: HULL BREACH DETECTED.
+
+SYSTEM STATUS: 
+    Navigational Systems: OFFLINE.
+    Engine Systems:       OFFLINE.
+    Life Support Systems: CRITICAL.
+    Back-up Generators:   ONLINE.
+
+EMERGENCY LANDING INITIATED.
+
+-------------------------------
+    CREW DIAGNOSTICS
+-------------------------------
+4 CREW MEMBERS:
+    3 CRITICAL: Vitals CRITICAL, Immediate triage required.
+    1 OPTIMAL: Vitals STABLE, Mission Ready.  
+
+-------------------------------
+    ATTN: ORPHEUS-1
+-------------------------------
+FROM: Mission Control
+\"In event of catastrophic errors, engage and follow the attached protocols. Failure to comply may jeopardize the mission. The fate of this expedition rests on you. Godspeed and good luck, team.\"
+
+
+-------------------------------
+    -- END OF REPORT --
+-------------------------------"
+scroll_active = false
+scroll_following = true
+visible_characters = 1738
+visible_ratio = 0.97095
 
 [node name="skip_button" type="Button" parent="."]
 layout_mode = 0

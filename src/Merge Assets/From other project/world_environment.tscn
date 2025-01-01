@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg4c6dv1hfpjw"]
+
+[ext_resource type="Texture2D" uid="uid://dqjdlkhc6wt23" path="res://Merge Assets/From other project/panorama_image2.png" id="1_x0iku"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jl0vt"]
+panorama = ExtResource("1_x0iku")
+
+[sub_resource type="Sky" id="Sky_fowsc"]
+sky_material = SubResource("PanoramaSkyMaterial_jl0vt")
+
+[sub_resource type="Environment" id="Environment_7iw1d"]
+background_mode = 2
+sky = SubResource("Sky_fowsc")
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_7iw1d")

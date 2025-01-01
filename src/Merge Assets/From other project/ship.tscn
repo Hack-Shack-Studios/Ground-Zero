@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkj8ntvd71p8c"]
+
+[ext_resource type="PackedScene" uid="uid://dr1ddhk47r61e" path="res://Merge Assets/From other project/SpaceShipCrashed2.blend" id="1_uycoq"]
+
+[node name="Ship" type="Node3D"]
+
+[node name="SpaceShipCrashed" parent="." instance=ExtResource("1_uycoq")]
+transform = Transform3D(-2.41306, -0.640633, -0.129395, -0.626236, 2.40802, -0.243431, 0.187014, -0.202552, -2.48475, -11.1851, 7.74286, 63.1318)

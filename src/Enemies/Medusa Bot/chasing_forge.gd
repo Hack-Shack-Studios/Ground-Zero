@@ -21,41 +21,41 @@ var forge = null
 
 
 func enter():
-    player = get_node(player_path)
-    forge = get_node(forge_path)
+	player = get_node(player_path)
+	forge = get_node(forge_path)
 
-    #print("Chasing Forge")
+	#print("Chasing Forge")
 
 func exit():
-    pass
+	pass
 
 func update(_delta: float):
-    pass
+	pass
 
 
 func physics_update(delta: float):
-    enemy.move_and_slide()
-    enemy.velocity = Vector3.ZERO
+	enemy.move_and_slide()
+	enemy.velocity = Vector3.ZERO
 
-    animation.play("Walking")
+	animation.play("Walking")
 
-    if forge:
-        enemy.nav_agent.set_target_position(forge.global_transform.origin) # Goes toward the player
-        var next_nav_point = enemy.nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
-        enemy.velocity = (next_nav_point - enemy.global_transform.origin).normalized() * move_speed # Sets velocity direction towards the target
-        enemy.rotation.y = lerp_angle(enemy.rotation.y, atan2(-enemy.velocity.x, -enemy.velocity.z), delta * 10.0) # Turn to face the player
+	if forge:
+		enemy.nav_agent.set_target_position(forge.global_transform.origin) # Goes toward the player
+		var next_nav_point = enemy.nav_agent.get_next_path_position() # updates many of the agent's internal states and properties
+		enemy.velocity = (next_nav_point - enemy.global_transform.origin).normalized() * move_speed # Sets velocity direction towards the target
+		enemy.rotation.y = lerp_angle(enemy.rotation.y, atan2(-enemy.velocity.x, -enemy.velocity.z), delta * 10.0) # Turn to face the player
 
-    var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
-    var distance_to_player = enemy.global_position.distance_to(player.global_position)
+	var distance_to_forge = enemy.global_position.distance_to(forge.global_position)
+	var distance_to_player = enemy.global_position.distance_to(player.global_position)
 
-    if forge.robots_hacking > 1 and not player.dead:
-        Transitioned.emit(self, "ChasingPlayer")
-    elif distance_to_forge <= 4:
-        Transitioned.emit(self, "Hacking")
-    elif distance_to_player < distance_to_forge:
-        Transitioned.emit(self, "ChasingPlayer")
-    # else keep walking towards forge
+	if forge.robots_hacking > 1 and not player.dead:
+		Transitioned.emit(self, "ChasingPlayer")
+	elif distance_to_forge <= 4:
+		Transitioned.emit(self, "Hacking")
+	elif distance_to_player < distance_to_forge:
+		Transitioned.emit(self, "ChasingPlayer")
+	# else keep walking towards forge
 
 # TODO: Add safe_velocity to have avoidance work better #2
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
-    pass # Replace with function body.
+	pass # Replace with function body.
