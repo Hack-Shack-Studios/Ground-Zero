@@ -10,6 +10,7 @@ extends CharacterBody3D
 signal player_hit
 signal player_death
 signal player_respawn
+signal next_wave
 
 const MIN_HEALTH: int = 1
 const WALK_SPEED = 10.0 # How fast the player moves
@@ -56,11 +57,14 @@ var lasers := 0
 @onready var hit_marker_HEADSHOT = $HUD/CenterContainer/HitMarkerHEADSHOT
 @onready var lazered_timer = $Laserd
 
+@onready var between_wave_timer = $BetweenWaves
 var getting_hit = false
+var wave_complete = false
+
 
 func _ready() -> void:
 	health_bar.value = max_health
-	round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
+	round_info = str(get_parent().get_parent().waves_remaining - 1) + " ROUNDS LEFT"
 	rounds_label.text = round_info
 
 ## Handles mouse camera movement
@@ -82,9 +86,6 @@ func _unhandled_input(event):
 
 func _physics_process(delta: float) -> void:
 	#print("Current Speed: ",int(velocity.length()))
-
-	round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
-	rounds_label.text = round_info
 	#print(get_parent().get_parent().waves_remaining)
 	# When the game detects the player is not
 	# touching the ground, it sets the velocity downwards
@@ -259,3 +260,29 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 
 func _on_hit_box_area_exited(area: Area3D) -> void:
 	getting_hit = false
+
+
+func _on_world_wave_finished() -> void:
+		round_info = str(get_parent().get_parent().waves_remaining - 1) + " ROUNDS LEFT"
+
+		if !wave_complete:
+			wave_complete = true
+			rounds_label.text = "Wave Complete" # str(len(enemies)) + "/" +
+			print("Wave complete")
+			await (get_tree().create_timer(5).timeout)
+			between_wave_timer.start()
+			between_waves()
+
+
+func between_waves():
+	if between_wave_timer.time_left > 0:
+		#print("%.2f seconds until next wave" % between_wave_timer.time_left)
+		rounds_label.text = str(str(int(between_wave_timer.time_left))+" seconds until next wave") # str(len(enemies)) + "/" +
+		print(str(str(int(between_wave_timer.time_left))+" seconds until next wave"))
+		await get_tree().create_timer(.1).timeout
+		between_waves()
+
+func _on_between_waves_timeout() -> void:
+	emit_signal("next_wave")
+	round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
+	rounds_label.text = round_info

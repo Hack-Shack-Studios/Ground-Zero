@@ -5,7 +5,7 @@ class_name ChasingForge
 ##
 ## Chasing the forge
 
-const ATTACK_RANGE := 5.0
+const ATTACK_RANGE := 6.0
 
 # TODO: Fix this terrible temp solution
 @export var enemy: CharacterBody3D

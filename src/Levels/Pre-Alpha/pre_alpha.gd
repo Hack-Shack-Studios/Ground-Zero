@@ -8,6 +8,7 @@ extends Node3D
 ## future levels we make.
 
 signal win_condition
+signal wave_finished
 
 @export var player_path := "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/Forge"
@@ -45,6 +46,10 @@ var player_died = false
 @onready var scoreboard_container = $UI/scoreboard
 @onready var score_label = $UI/scoreboard/total_score
 
+@onready var enemies_spawn = get_node("EnemiesRemaining")
+@onready var enemies_remaining = $EnemiesRemaining
+
+
 var enemy_kills = 0:
 	set(new_val):
 		Global.score += 15 if !Global.double_points else 30
@@ -59,7 +64,7 @@ func _ready() -> void:
 	player = get_node(player_path)
 	forge = get_node(forge_path)
 	_set_forge_bar()
-	_on_enemy_spawn_timer_timeout()
+	spawn_wave()
 
 	paused = true
 	paused_menu()
@@ -71,8 +76,18 @@ func _process(_delta: float) -> void:
 	score_label.update_score()
 	wave_timer_text.text = str(time) + " seconds until next wave"
 
+	#print(enemies_remaining.get_child_count())
+
 	if Input.is_action_just_pressed("pause"):
 		paused_menu()
+
+	if Input.is_action_just_pressed("scoreboard_toggle"): #Stylistic choice: Hold TAB to view score rather than toggle.
+		scoreboard_container.visible = !scoreboard_container.visible
+
+	if enemies_spawn.get_child_count() == 0:
+		emit_signal("wave_finished")
+
+
 
 	## Debug Menu
 	#if Input.is_action_just_released("debug_1"): # Restart Scene
@@ -89,8 +104,6 @@ func _process(_delta: float) -> void:
 		#emit_signal("win_condition")
 		#get_tree().change_scene_to_file("res://UI/game_over.tscn")
 
-	if Input.is_action_just_pressed("scoreboard_toggle"): #Stylistic choice: Hold TAB to view score rather than toggle.
-		scoreboard_container.visible = !scoreboard_container.visible
 
 ## Spawns an enemy at one of the random spawnpoints
 func _get_random_child(parent_node):
@@ -99,7 +112,7 @@ func _get_random_child(parent_node):
 
 
 ## Timer used to limit spawning too many enemies at once
-func _on_enemy_spawn_timer_timeout() -> void:
+func spawn_wave() -> void:
 	if (waves_remaining > 0):
 		waves_remaining -= 1
 		for n in wave_count[waves_remaining]:
@@ -107,10 +120,11 @@ func _on_enemy_spawn_timer_timeout() -> void:
 			var spawn_point = _get_random_child(spawns).global_position
 			instance = enemy.instantiate()
 			instance.position = spawn_point
-			navigation_region.add_child(instance)
-			wave_text.text = "Waves Remaining: "+str(waves_remaining) + "\nEnemies: " + str(total_enemies) # str(len(enemies)) + "/" +
-			await (get_tree().create_timer(spawn_delay).timeout)
-	else: #if you win
+			enemies_spawn.add_child(instance)
+			#enemies_remaining.text = "Waves Remaining: "+str(waves_remaining) + "\nEnemies: " + str(total_enemies) # str(len(enemies)) + "/" +
+			await get_tree().create_timer(spawn_delay).timeout
+
+	else:
 		emit_signal("win_condition") #Emit win condition signal (not neccessary, other ways to go about this)
 		get_tree().change_scene_to_file("res://UI/game_over.tscn")
 
@@ -118,7 +132,7 @@ func _on_enemy_spawn_timer_timeout() -> void:
 
 ## Updates the forge's health bar on hit
 func _on_forge_forge_hit() -> void:
-	print("Current Forge Health: ",forge.health)
+	#print("Current Forge Health: ",forge.health)
 	_set_forge_bar()
 
 
@@ -169,3 +183,8 @@ func _on_headshot():
 
 func get_paused() -> bool:
 	return paused
+
+
+
+func _on_player_next_wave() -> void:
+	spawn_wave()

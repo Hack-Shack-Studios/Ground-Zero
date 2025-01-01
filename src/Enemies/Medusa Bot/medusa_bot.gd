@@ -56,7 +56,7 @@ func _physics_process(_delta: float) -> void:
 		#enemy_alive = false
 func hit_successful(damage):
 	health -= damage
-	print("Target Health: ",health)
+	#print("Target Health: ",health)
 	if health <= 0 and enemy_alive:
 		enemy_alive = false
 		enemy_dead = true
@@ -70,9 +70,9 @@ func _hit_finished() -> void:
 
 func _on_elimination_enemy_death() -> void:
 	if !signal_sent:
-		Global.score += 15
+		Global.score += 50
 		var weapon_drops = false
-		weapon_drops = true if randf() < .2 else false
+		weapon_drops = true if randf() < .1 else false
 
 		if is_hacking:
 			forge.robots_hacking -= 1
