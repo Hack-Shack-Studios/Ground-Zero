@@ -53,6 +53,8 @@ func hit() -> void:
 		print("forge hacked")
 
 	ForgeHit.play()
+	await get_tree().create_timer(.38).timeout
+	ForgeHit.stop()
 
 	if health <= minimum_health:
 		print(str(health) + " <= " +str(minimum_health))

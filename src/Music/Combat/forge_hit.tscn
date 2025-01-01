@@ -5,7 +5,7 @@
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_2rtw4")
-bus = &"Music"
+bus = &"sfx"
 script = ExtResource("2_y6t4f")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

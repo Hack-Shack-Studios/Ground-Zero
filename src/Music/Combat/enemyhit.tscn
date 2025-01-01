@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4uwgl326dcy7"]
+
+[ext_resource type="AudioStream" uid="uid://2fl3syoxn4os" path="res://Music/Combat/Gun Hit ENEMY-VEED.mp3" id="1_eg4db"]
+[ext_resource type="Script" path="res://Music/Combat/non_combat_music.gd" id="2_1ylds"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_eg4db")
+bus = &"sfx"
+script = ExtResource("2_1ylds")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
