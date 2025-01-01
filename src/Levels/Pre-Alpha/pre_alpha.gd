@@ -82,9 +82,9 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		paused_menu()
 
-	if Input.is_action_just_pressed("scoreboard_toggle"): #Stylistic choice: Hold TAB to view score rather than toggle.
+	if Input.is_action_just_pressed("scoreboard_toggle"):
 		scoreboard_container.visible = !scoreboard_container.visible
-		scoreboard_background.visible = scoreboard_container.visible
+		scoreboard_background.visible = !scoreboard_background.visible
 
 	if enemies_spawn.get_child_count() == 0:
 		emit_signal("wave_finished")

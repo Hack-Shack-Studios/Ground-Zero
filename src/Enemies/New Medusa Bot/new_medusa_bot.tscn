@@ -402,12 +402,12 @@ animation = NodePath("../../Medusa Bot (Seperate Animations + Hacking)/Animation
 [node name="ChasingForge" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animation")]
 script = ExtResource("5_b621i")
 enemy = NodePath("../..")
-move_speed = 0.5
 animation = NodePath("../../Medusa Bot (Seperate Animations + Hacking)/AnimationPlayer")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animation")]
 script = ExtResource("6_smvti")
 enemy = NodePath("../..")
+move_speed = 3.3
 animation = NodePath("../../Medusa Bot (Seperate Animations + Hacking)/AnimationPlayer")
 
 [node name="Hacking" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animation")]

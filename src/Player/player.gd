@@ -214,7 +214,7 @@ func hit():
 
 	if getting_hit and not dead:
 		#for robots in lasers:
-		health -= 1 if !Global.damage_reduction else .5
+		health -= .5 if !Global.damage_reduction else .25
 		update_health()
 		await get_tree().create_timer(.2).timeout
 		#print("Player HIT, new health: ",health)
@@ -263,7 +263,7 @@ func _on_hit_box_area_exited(area: Area3D) -> void:
 
 
 func _on_world_wave_finished() -> void:
-		round_info = str(get_parent().get_parent().waves_remaining - 1) + " ROUNDS LEFT"
+		round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
 
 		if !wave_complete:
 			wave_complete = true
@@ -277,14 +277,21 @@ func _on_world_wave_finished() -> void:
 func between_waves():
 	if between_wave_timer.time_left > 0:
 		#print("%.2f seconds until next wave" % between_wave_timer.time_left)
-		rounds_label.text = str(str(int(between_wave_timer.time_left))+" seconds until next wave") # str(len(enemies)) + "/" +
-		print(str(str(int(between_wave_timer.time_left))+" seconds until next wave"))
+		if get_parent().get_parent().waves_remaining != 0:
+			rounds_label.text = str(str(int(between_wave_timer.time_left))+" seconds until next wave") # str(len(enemies)) + "/" +
+			print(str(str(int(between_wave_timer.time_left))+" seconds until next wave"))
+
+		else:
+			rounds_label.text = "Mission Complete" # str(len(enemies)) + "/" +
 		await get_tree().create_timer(.1).timeout
 		between_waves()
 
+
 func _on_between_waves_timeout() -> void:
 	emit_signal("next_wave")
-	print("Next wave starting")
-	round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
-	rounds_label.text = round_info
-	wave_complete = false
+
+	if get_parent().get_parent().waves_remaining != 0:
+		print("Next wave starting")
+		round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
+		rounds_label.text = round_info
+		wave_complete = false
