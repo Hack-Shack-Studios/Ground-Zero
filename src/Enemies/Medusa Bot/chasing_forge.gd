@@ -15,6 +15,7 @@ const ATTACK_RANGE := 5.5
 @export var forge_path := "/root/World/Map/Forge"
 @export var animation: AnimationPlayer
 
+var hacking_distance = 6
 var gravity = 9.8
 var player: CharacterBody3D
 var forge = null
@@ -26,7 +27,7 @@ func enter():
 	player = get_node(player_path)
 	forge = get_node(forge_path)
 	#MedusaBotWalk.play()
-	#print("Chasing Forge")
+	print("Chasing Forge")
 
 func exit():
 	pass
@@ -52,9 +53,9 @@ func physics_update(delta: float):
 	var distance_to_player = enemy.global_position.distance_to(player.global_position)
 
 
-	if forge.robots_hacking == 2 or !player.dead:
+	if forge.robots_hacking >= 2 or distance_to_forge < distance_to_player:
 		Transitioned.emit(self, "ChasingPlayer")
-	elif distance_to_forge <= 4:
+	elif distance_to_forge <= hacking_distance:
 		Transitioned.emit(self, "Hacking")
 
 

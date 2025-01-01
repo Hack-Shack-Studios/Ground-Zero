@@ -27,6 +27,7 @@ var shop_ui_open := false
 @onready var shop_interact_label = get_node("ShopInteract/Viewport/Label")
 @onready var shop_ui = $ShopUI
 @onready var scoreboard_container = $"../../UI/scoreboard"
+@onready var scoreboard_bg = $"../../UI/Panel"
 
 # UI Buff Icons
 @onready var speed_boost_icon = $ShopUI/BuffIcons/VBoxContainer/SpeedBoost
@@ -84,6 +85,7 @@ func forge_shop():
 		Global.ui_opened = false
 		shop_ui_open = !shop_ui_open
 		scoreboard_container.visible = false
+		scoreboard_bg.visible = false
 
 	elif !Global.ui_opened:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
@@ -97,6 +99,7 @@ func forge_shop():
 func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
 	if shop_interact_label:
 		shop_interact_label.visible = true
+		scoreboard_bg.visible = true
 
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:

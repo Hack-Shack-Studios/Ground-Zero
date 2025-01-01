@@ -42,7 +42,7 @@ func enter():
 	is_wandering = false
 	#MedusaBotWalk.play()
 
-	#print("Chasing player")
+	print("Chasing player")
 
 func exit():
 	chasing_player_timer.stop()
