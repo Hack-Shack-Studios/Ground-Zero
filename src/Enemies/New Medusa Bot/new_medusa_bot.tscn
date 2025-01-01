@@ -168,7 +168,7 @@ bones/153/rotation = Quaternion(-0.500437, -0.525767, -0.432678, 0.534717)
 bones/154/rotation = Quaternion(0.161731, -0.00469566, -0.0178542, 0.986662)
 
 [node name="Cube_030" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="0"]
-transform = Transform3D(0.0432155, 3.29155e-09, 4.74666e-09, -2.09682e-09, 0.030582, -1.02445e-08, -2.82977e-09, 2.07219e-08, 0.0432155, -0.00212657, -0.0639932, -0.0791151)
+transform = Transform3D(0.0432155, -2.84103e-08, -4.91331e-08, 4.55563e-08, 0.030582, -7.38073e-08, 5.12632e-08, 6.68224e-08, 0.0432155, -0.00212626, -0.063991, -0.0791157)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_030/Cube_030" index="0" groups=["enemy"]]
 collision_layer = 16
@@ -178,13 +178,13 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_pfx8u")
 
 [node name="Cube_033" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="1"]
-transform = Transform3D(-7.4163e-09, 9.11413e-10, -0.0432155, -8.04952e-09, 0.030582, 1.28792e-09, 0.0432155, 2.02789e-08, -3.55253e-09, 0.158243, -0.0649481, -0.339426)
+transform = Transform3D(-4.79859e-08, -1.91397e-08, -0.0432155, -3.76718e-08, 0.030582, -3.21981e-08, 0.0432155, 4.26086e-08, -4.47661e-08, 0.158243, -0.0649457, -0.339426)
 
 [node name="Cube_002" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="2"]
-transform = Transform3D(0.0432155, 0, 2.79397e-09, 1.86265e-09, 0.030582, -9.31323e-09, -9.31323e-10, 1.86265e-08, 0.0432155, -0.00212654, -0.0639932, -0.0791152)
+transform = Transform3D(0.0432155, -2.42144e-08, -3.91155e-08, 3.72529e-08, 0.030582, -4.19095e-08, 4.09782e-08, 4.14439e-08, 0.0432155, -0.00212629, -0.0639911, -0.0791156)
 
 [node name="Cube_001" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="3"]
-transform = Transform3D(0.0662443, -8.71645e-10, 3.33555e-11, -3.82574e-11, 0.0662443, -1.86265e-09, -7.36766e-10, 3.72529e-08, 0.0662443, 0.000494659, 0.0201825, -0.147048)
+transform = Transform3D(0.0662443, -1.54776e-09, -9.22338e-09, 9.7355e-10, 0.0662443, -2.6077e-08, 8.96818e-09, 5.96046e-08, 0.0662443, 0.000494644, 0.0201848, -0.147048)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_001/Cube_001" index="0" groups=["enemy"]]
 collision_layer = 16
@@ -194,7 +194,7 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_3n8tn")
 
 [node name="Cylinder" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="4"]
-transform = Transform3D(-4.0045e-08, 0.240041, 2.97527e-08, -0.214699, -5.95993e-08, -2.98023e-08, -1.11759e-07, -3.87849e-08, 0.214699, -0.00180727, 4.17233e-07, -0.117503)
+transform = Transform3D(-5.86458e-08, 0.240041, 7.9871e-09, -0.214699, -7.9157e-08, 1.04308e-07, 3.72529e-08, -1.36392e-08, 0.214699, -0.00180733, 2.86102e-06, -0.117503)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cylinder/Cylinder" index="0" groups=["enemy"]]
 collision_layer = 16
@@ -204,7 +204,7 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_ci8ws")
 
 [node name="Cube_032" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="5"]
-transform = Transform3D(0.0432155, -1.38401e-09, -2.98573e-09, -1.76694e-09, 0.030582, -4.19095e-09, 4.76168e-09, 1.90921e-08, 0.0432155, -0.422686, -0.0639932, -0.0791151)
+transform = Transform3D(0.0432155, 3.03179e-08, 5.0894e-08, -4.68442e-08, 0.030582, -7.4273e-08, -5.12631e-08, 6.65896e-08, 0.0432155, -0.422686, -0.0639905, -0.0791152)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_032/Cube_032" index="0" groups=["enemy"]]
 collision_layer = 16
@@ -214,13 +214,13 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_3g412")
 
 [node name="Cube_034" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="6"]
-transform = Transform3D(-1.06361e-08, 1.82283e-09, 0.0432155, -4.18576e-09, 0.030582, -2.57585e-09, -0.0432155, 1.20762e-08, -7.4163e-09, -0.164573, -0.0647952, 0.0857089)
+transform = Transform3D(-4.99178e-08, 2.18739e-08, 0.0432155, 3.76718e-08, 0.030582, -3.3486e-08, -0.0432155, 4.21529e-08, -4.41221e-08, -0.164573, -0.0647931, 0.0857086)
 
 [node name="Cube_019" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="7"]
-transform = Transform3D(0.0432155, -4.65661e-09, -1.86265e-09, 7.45058e-09, 0.030582, 1.86265e-09, 6.51926e-09, 1.58325e-08, 0.0432155, -0.422686, -0.0639932, -0.0791151)
+transform = Transform3D(0.0432155, 2.32831e-08, 4.19095e-08, -2.98023e-08, 0.030582, -3.91155e-08, -4.00469e-08, 4.00469e-08, 0.0432155, -0.422686, -0.0639907, -0.0791151)
 
 [node name="Cube_018" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="8"]
-transform = Transform3D(0.0662443, 1.40124e-09, 3.53494e-10, -4.25335e-10, 0.0662443, -1.86265e-09, 2.96456e-10, 3.72529e-08, 0.0662443, 0.00049451, 0.0201825, -0.147048)
+transform = Transform3D(0.0662443, 2.32653e-09, 8.99851e-09, -1.96067e-09, 0.0662443, -2.6077e-08, -8.7214e-09, 5.96046e-08, 0.0662443, 0.000494525, 0.0201848, -0.147048)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_018/Cube_018" index="0" groups=["enemy"]]
 collision_layer = 16
@@ -230,7 +230,7 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_xqona")
 
 [node name="Cylinder_002" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="9"]
-transform = Transform3D(6.56507e-08, 0.240041, -2.91162e-08, -0.214699, 6.79794e-08, -2.98023e-08, -1.04308e-07, 2.62571e-08, 0.214699, -0.00180721, 4.76837e-07, -0.117503)
+transform = Transform3D(8.05337e-08, 0.240041, -8.98654e-09, -0.214699, 8.38119e-08, 1.04308e-07, 4.47035e-08, 2.97397e-09, 0.214699, -0.00180717, 2.86102e-06, -0.117503)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cylinder_002/Cylinder_002" index="0" groups=["enemy"]]
 collision_layer = 16
@@ -240,7 +240,7 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_ef0em")
 
 [node name="Cube_006" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="10"]
-transform = Transform3D(-0.124006, 1.83478e-10, -4.72845e-12, -1.40753e-10, -0.124006, 1.49012e-08, -3.60905e-11, -2.6077e-08, -0.124006, -0.0132714, 0.0151817, -0.152658)
+transform = Transform3D(-0.124006, -9.27779e-10, 1.78315e-10, 9.96097e-10, -0.124006, 1.30385e-08, -2.02107e-10, -2.42144e-08, -0.124006, -0.0132714, 0.015184, -0.152658)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_006/Cube_006" index="0" groups=["enemy"]]
 collision_layer = 16
@@ -250,7 +250,7 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_5sdd6")
 
 [node name="Cube_008" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="11"]
-transform = Transform3D(-9.4617e-06, 0.228508, -3.16729e-05, -0.228097, -7.54633e-06, 0.0136981, 0.013698, 3.21822e-05, 0.228097, 0.107561, 1.83297, -0.126679)
+transform = Transform3D(-9.46336e-06, 0.228508, -3.16723e-05, -0.228097, -7.54724e-06, 0.0136981, 0.0136981, 3.21819e-05, 0.228097, 0.107561, 1.83297, -0.12668)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_008/Cube_008" index="0" groups=["enemy"]]
 collision_layer = 16
@@ -260,31 +260,31 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_b5q3q")
 
 [node name="Cube_003" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="12"]
-transform = Transform3D(0.1781, -2.06637e-09, 1.74623e-10, 1.89175e-09, 0.1781, -5.96046e-08, 1.16415e-10, 7.45058e-08, 0.1781, -9.31323e-10, 1.40213, -0.117503)
+transform = Transform3D(0.1781, -1.65892e-09, 1.22236e-09, 1.62981e-09, 0.1781, 9.68575e-08, -9.8953e-10, -8.19564e-08, 0.1781, 2.09548e-09, 1.40213, -0.117503)
 
 [node name="Cube_020" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="13"]
-transform = Transform3D(-0.0024745, 0.007027, -0.0733023, 0.0344835, -0.029592, -0.011643, -0.0365969, -0.0283583, -0.00601429, 0.370221, 1.76568, 1.65778)
+transform = Transform3D(-0.00247454, 0.00702696, -0.0733023, 0.0344835, -0.029592, -0.011643, -0.0365968, -0.0283583, -0.00601423, 0.370223, 1.76568, 1.65778)
 
 [node name="Cube_011" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="14"]
-transform = Transform3D(-0.00247449, 0.00702701, -0.0733023, 0.0344835, -0.029592, -0.011643, -0.0365969, -0.0283582, -0.00601431, 0.429254, 1.63654, 0.598373)
+transform = Transform3D(-0.00247452, 0.00702697, -0.0733023, 0.0344835, -0.029592, -0.011643, -0.0365969, -0.0283583, -0.00601425, 0.429254, 1.63654, 0.598373)
 
 [node name="Cube_009" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="15"]
-transform = Transform3D(-0.00355401, 0.00692322, -0.0732368, 0.0343058, -0.0296084, -0.012617, -0.0366748, -0.0283667, -0.00470496, 0.382012, 1.76898, 1.65832)
+transform = Transform3D(-0.00355407, 0.00692323, -0.0732368, 0.0343058, -0.0296084, -0.0126171, -0.0366748, -0.0283667, -0.00470492, 0.382013, 1.76898, 1.65832)
 
 [node name="Cube_015" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="16"]
-transform = Transform3D(-0.00355401, 0.00692321, -0.0732368, 0.0343058, -0.0296084, -0.012617, -0.0366748, -0.0283667, -0.00470494, 0.382012, 1.76898, 1.65832)
+transform = Transform3D(-0.00355407, 0.00692322, -0.0732368, 0.0343058, -0.0296084, -0.0126171, -0.0366748, -0.0283667, -0.0047049, 0.382013, 1.76899, 1.65832)
 
 [node name="Cube_022" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="17"]
-transform = Transform3D(-0.00628454, -0.00814817, -0.0724269, 0.0167127, 0.0380729, -0.0169071, 0.0470718, -0.0146055, -0.00366687, 0.72795, 0.595658, 0.288342)
+transform = Transform3D(-0.00628455, -0.00814818, -0.0724269, 0.0167127, 0.0380729, -0.0169072, 0.0470718, -0.0146056, -0.00366686, 0.72795, 0.59566, 0.288343)
 
 [node name="Cube_013" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="18"]
-transform = Transform3D(-0.00628446, -0.00693832, -0.0728299, 0.0167122, 0.0383377, -0.0148663, 0.047072, -0.0145375, -0.00444525, 0.705463, 0.589936, 0.286532)
+transform = Transform3D(-0.00628446, -0.00693833, -0.0728299, 0.0167122, 0.0383376, -0.0148663, 0.047072, -0.0145376, -0.00444524, 0.705463, 0.589938, 0.286532)
 
 [node name="Cube_023" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="19"]
-transform = Transform3D(-0.00785909, 0.00319463, -0.0733288, 0.0496459, -0.001867, -0.0119014, -0.00284396, -0.0414194, -0.0051193, 0.51757, 0.994065, 1.48928)
+transform = Transform3D(-0.00785911, 0.00319462, -0.0733288, 0.0496459, -0.00186697, -0.0119014, -0.00284393, -0.0414194, -0.00511928, 0.51757, 0.994067, 1.48928)
 
 [node name="Cube_010" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="20"]
-transform = Transform3D(0.0453432, 0.0173026, -0.00932625, 0.0120906, -0.00983259, 0.070108, 0.0182311, -0.036513, -0.0232989, -0.485097, 1.65544, 1.10929)
+transform = Transform3D(0.0453432, 0.0173026, -0.00932622, 0.0120905, -0.00983259, 0.070108, 0.0182311, -0.036513, -0.0232988, -0.485096, 1.65544, 1.10929)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_010/Cube_010" index="0" groups=["enemy"]]
 collision_layer = 16
@@ -294,7 +294,7 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_1f0lt")
 
 [node name="Cube_007" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="21"]
-transform = Transform3D(0.0493943, 0.00484701, -0.0114891, 0.00654935, 0.00800354, 0.0724273, 0.00720254, -0.040518, 0.0129322, -0.165095, 1.19432, 1.33968)
+transform = Transform3D(0.0493943, 0.00484703, -0.0114891, 0.00654933, 0.00800352, 0.0724273, 0.00720256, -0.040518, 0.0129322, -0.165096, 1.19432, 1.33968)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_007/Cube_007" index="0" groups=["enemy"]]
 transform = Transform3D(1, -2.79397e-09, -7.45058e-09, 1.30385e-08, 1, -2.98023e-08, 0, 7.45058e-09, 1, 0.0791707, 0.0220702, 0.000206709)
@@ -305,31 +305,31 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_0ruw1")
 
 [node name="Cube_012" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="22"]
-transform = Transform3D(0.168247, -0.0570134, 0.0127227, 0.0573897, 0.168562, -0.0035645, -0.0109003, 0.00746701, 0.177609, 0.0416055, 1.36007, -0.108917)
+transform = Transform3D(0.168247, -0.0570132, 0.0127228, 0.0573896, 0.168562, -0.00356445, -0.0109004, 0.00746699, 0.177609, 0.0416054, 1.36007, -0.108917)
 
 [node name="Cube_017" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="23"]
-transform = Transform3D(-0.00247451, -0.00702701, 0.0733022, -0.0344834, -0.029592, -0.011643, 0.0365969, -0.0283582, -0.0060143, -0.368688, 1.76544, 1.65765)
+transform = Transform3D(-0.00247451, -0.00702705, 0.0733022, -0.0344834, -0.029592, -0.0116431, 0.0365969, -0.0283582, -0.00601435, -0.368686, 1.76544, 1.65765)
 
 [node name="Cube_025" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="24"]
-transform = Transform3D(-0.00247451, -0.007027, 0.0733022, -0.0344834, -0.029592, -0.011643, 0.0365969, -0.0283582, -0.0060143, -0.368688, 1.76543, 1.65765)
+transform = Transform3D(-0.0024745, -0.00702705, 0.0733023, -0.0344833, -0.0295921, -0.0116431, 0.0365969, -0.0283582, -0.00601436, -0.368686, 1.76544, 1.65765)
 
 [node name="Cube_028" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="25"]
-transform = Transform3D(-0.00628445, 0.00693833, 0.0728298, -0.0167122, 0.0383376, -0.0148663, -0.047072, -0.0145376, -0.00444524, -0.706056, 0.590532, 0.286754)
+transform = Transform3D(-0.00628456, 0.00693835, 0.0728298, -0.0167124, 0.0383376, -0.0148664, -0.0470719, -0.0145377, -0.00444533, -0.706057, 0.590535, 0.286757)
 
 [node name="Cube_026" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="26"]
-transform = Transform3D(-0.00628445, 0.00693833, 0.0728298, -0.0167122, 0.0383376, -0.0148663, -0.047072, -0.0145375, -0.00444524, -0.706056, 0.590532, 0.286753)
+transform = Transform3D(-0.00628456, 0.00693836, 0.0728298, -0.0167123, 0.0383376, -0.0148664, -0.0470719, -0.0145376, -0.00444534, -0.706057, 0.590535, 0.286756)
 
 [node name="Cube_029" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="27"]
-transform = Transform3D(-0.00355401, -0.0069232, 0.0732368, -0.0343058, -0.0296084, -0.012617, 0.0366748, -0.0283667, -0.00470494, -0.384674, 1.76944, 1.65849)
+transform = Transform3D(-0.00355398, -0.00692329, 0.0732368, -0.0343058, -0.0296084, -0.0126171, 0.0366749, -0.0283667, -0.00470507, -0.384671, 1.76945, 1.65849)
 
 [node name="Cube_027" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="28"]
-transform = Transform3D(-0.00355401, -0.00692321, 0.0732368, -0.0343058, -0.0296084, -0.012617, 0.0366748, -0.0283667, -0.00470495, -0.384674, 1.76944, 1.65849)
+transform = Transform3D(-0.00355398, -0.0069233, 0.0732368, -0.0343057, -0.0296084, -0.0126171, 0.0366749, -0.0283666, -0.00470508, -0.38467, 1.76945, 1.65849)
 
 [node name="Cube_024" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="29"]
-transform = Transform3D(-0.00785909, -0.00319462, 0.0733287, -0.0496458, -0.00186701, -0.0119014, 0.00284398, -0.0414194, -0.00511929, -0.518058, 0.994144, 1.48932)
+transform = Transform3D(-0.00785916, -0.0031947, 0.0733287, -0.0496458, -0.00186708, -0.0119015, 0.00284409, -0.0414194, -0.00511939, -0.518057, 0.99415, 1.48932)
 
 [node name="Cube_016" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="30"]
-transform = Transform3D(0.0454631, -0.0170865, 0.0093267, -0.0111829, -0.00819686, 0.071105, -0.0185097, -0.0370151, -0.0200512, 0.481202, 1.63144, 1.11537)
+transform = Transform3D(0.0454631, -0.0170866, 0.00932673, -0.011183, -0.00819693, 0.0711049, -0.0185098, -0.0370151, -0.0200514, 0.481204, 1.63144, 1.11536)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_016/Cube_016" index="0"]
 collision_layer = 16
@@ -339,7 +339,7 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_lgox0")
 
 [node name="Cube_014" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="31"]
-transform = Transform3D(0.0493942, -0.004847, 0.0114891, -0.00654935, 0.00800352, 0.0724272, -0.00720253, -0.040518, 0.0129322, 0.165095, 1.19432, 1.33968)
+transform = Transform3D(0.0493942, -0.00484701, 0.0114892, -0.00654939, 0.00800347, 0.0724273, -0.00720254, -0.040518, 0.0129321, 0.165095, 1.19432, 1.33968)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_014/Cube_014" index="0"]
 collision_layer = 16
@@ -349,10 +349,10 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_ji5db")
 
 [node name="Cube_021" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="32"]
-transform = Transform3D(0.0475594, 0.013312, -0.00531946, -0.0162226, 0.0393574, -0.00149033, 0.00308127, 0.00174346, 0.0742593, -0.510176, -0.025282, -0.170286)
+transform = Transform3D(0.0475594, 0.013312, -0.00531938, -0.0162226, 0.0393574, -0.00149025, 0.00308124, 0.00174341, 0.0742593, -0.510176, -0.0252798, -0.170284)
 
 [node name="Cube_005" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="33"]
-transform = Transform3D(0.1781, 1.1778e-10, -2.43745e-10, -3.38503e-10, 0.1781, -3.58559e-08, 3.63798e-10, 5.86733e-08, 0.1781, 1.33573e-09, 1.42107, -0.117503)
+transform = Transform3D(0.1781, 4.96158e-10, 7.84894e-10, -6.96929e-10, 0.1781, 1.17812e-07, -6.69388e-10, -9.54606e-08, 0.1781, 4.54658e-09, 1.42107, -0.117503)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_005/Cube_005" index="0"]
 collision_layer = 16
@@ -362,7 +362,7 @@ collision_mask = 3
 shape = SubResource("ConvexPolygonShape3D_7e54x")
 
 [node name="Cube_004" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D" index="34"]
-transform = Transform3D(0.0569595, -2.09184e-11, -1.45519e-11, 2.27374e-11, 0.0569595, -7.45058e-09, 2.54659e-11, 1.49012e-08, 0.0569595, 0.0101799, 1.2762, -0.144179)
+transform = Transform3D(0.0569595, 3.50155e-10, -6.54836e-11, -3.39242e-10, 0.0569595, -5.58794e-09, 7.27596e-11, 1.30385e-08, 0.0569595, 0.0101799, 1.2762, -0.144179)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Medusa Bot (Seperate Animations + Hacking)/metarig/Skeleton3D/Cube_004/Cube_004" index="0"]
 collision_layer = 16

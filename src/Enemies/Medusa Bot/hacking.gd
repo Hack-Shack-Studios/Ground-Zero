@@ -26,6 +26,7 @@ func enter():
 	forge.robots_hacking += 1
 	enemy.is_hacking = true
 	enemy.chasing_player = false
+	enemy.look_at(Vector3(forge.global_position.x, enemy.global_position.y, forge.global_position.z), Vector3.UP)
 
 	animation.play("StartHacking")
 

@@ -79,7 +79,7 @@ func physics_update(delta: float):
 	# Medusa bot will go towards forge only if there are less than 2 robots
 	# currently hacking it, and they are closer to the forge, than they are
 	# of the player
-	if distance_to_forge <= distance_to_player and forge.robots_hacking <= 2 or player.dead:
+	if distance_to_forge > distance_to_player and forge.robots_hacking < 2 or player.dead:
 		Transitioned.emit(self, "ChasingForge")
 	# If the medusa bot is within attack range, it will shoot at the player
 	elif distance_to_player <= ATTACK_RANGE:
