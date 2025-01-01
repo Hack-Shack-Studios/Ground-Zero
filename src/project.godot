@@ -35,6 +35,7 @@ MainMenuMusic="*res://Music/Main Menu/main_menu_music.tscn"
 CoilPistolShootSound="*res://Sounds/Weapons/Coil Pistol/coil_pistol_shoot_sound.tscn"
 Global="*res://Global/GlobalScript.gd"
 NonCombatMusic="*res://Music/Combat/non_combat_music.tscn"
+MedusaBotWalk="*res://Sounds/Enemies/Medusa Bot/medusa_bot_walk.tscn"
 
 [display]
 

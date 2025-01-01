@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3cw3g6m5rrrj"]
+[gd_scene load_steps=6 format=3 uid="uid://c3cw3g6m5rrrj"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_wbpo1"]
 [ext_resource type="Texture2D" uid="uid://byxogsybw301e" path="res://Other/Images/forge.png" id="2_rvvuj"]
 [ext_resource type="FontFile" uid="uid://rerjonsav62n" path="res://Other/Fonts/Epyval.ttf" id="3_ruhxg"]
 [ext_resource type="Texture2D" uid="uid://b6k31ucdotjj8" path="res://Other/Images/HackShack_FinalLogo_ForgePurple.png" id="4_lpuaw"]
+[ext_resource type="PackedScene" uid="uid://dgma4wftrs6nl" path="res://UI/menu_video.tscn" id="5_6awcp"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -14,37 +15,35 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wbpo1")
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_rvvuj")
+[node name="UI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Button Manager" type="MarginContainer" parent="."]
+[node name="Button Manager" type="MarginContainer" parent="UI"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 623.0
+offset_right = 624.0
+offset_bottom = 1061.0
 grow_vertical = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Button Manager"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Button Manager"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Button Manager/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Button Manager/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 18
 alignment = 2
 
-[node name="Start" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
+[node name="Start" type="Button" parent="UI/Button Manager/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
@@ -53,7 +52,7 @@ theme_override_font_sizes/font_size = 64
 text = "START"
 alignment = 0
 
-[node name="Options" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="UI/Button Manager/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
@@ -62,7 +61,7 @@ theme_override_font_sizes/font_size = 64
 text = "OPTIONS"
 alignment = 0
 
-[node name="Credits" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="UI/Button Manager/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
@@ -71,7 +70,7 @@ theme_override_font_sizes/font_size = 64
 text = "CREDITS"
 alignment = 0
 
-[node name="Quit" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="UI/Button Manager/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 50)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
@@ -80,7 +79,7 @@ theme_override_font_sizes/font_size = 64
 text = "QUIT"
 alignment = 0
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="UI"]
 layout_mode = 1
 offset_left = 192.0
 offset_top = 276.0
@@ -94,7 +93,7 @@ theme_override_fonts/font = ExtResource("3_ruhxg")
 theme_override_font_sizes/font_size = 150
 text = "Ground Zero"
 
-[node name="Version" type="Label" parent="."]
+[node name="Version" type="Label" parent="UI"]
 layout_mode = 1
 offset_left = 7.0
 offset_top = -11.0
@@ -107,29 +106,30 @@ theme_override_fonts/font = ExtResource("3_ruhxg")
 theme_override_font_sizes/font_size = 64
 text = "Pre-Alpha"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="UI"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -172.0
+offset_left = 1708.0
 offset_top = -21.0
-offset_right = 28.0
+offset_right = 1908.0
 offset_bottom = 179.0
 grow_horizontal = 0
 texture = ExtResource("4_lpuaw")
 expand_mode = 1
 
-[node name="Feedback" type="LinkButton" parent="."]
+[node name="Feedback" type="LinkButton" parent="UI"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -620.0
-offset_top = -127.0
-offset_right = -13.0
+offset_left = 1260.0
+offset_top = 913.0
+offset_right = 1867.0
+offset_bottom = 1040.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
@@ -142,11 +142,29 @@ text = "Give FeedBack!"
 underline = 1
 uri = "https://docs.google.com/forms/d/e/1FAIpQLScEcIIjRwPqx8RLUQLbtRxUFbGTa81TCK-SNHgrnRr2GzXmUA/viewform"
 
-[connection signal="mouse_entered" from="Button Manager/HBoxContainer/VBoxContainer/Start" to="." method="_on_start_mouse_entered"]
-[connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="mouse_entered" from="Button Manager/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_mouse_entered"]
-[connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="mouse_entered" from="Button Manager/HBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_mouse_entered"]
-[connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="mouse_entered" from="Button Manager/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
-[connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Background" type="TextureRect" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 913.0
+offset_bottom = 593.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rvvuj")
+
+[node name="MenuVideo" parent="." instance=ExtResource("5_6awcp")]
+show_behind_parent = true
+y_sort_enabled = true
+layout_mode = 1
+mouse_filter = 2
+
+[connection signal="mouse_entered" from="UI/Button Manager/HBoxContainer/VBoxContainer/Start" to="." method="_on_start_mouse_entered"]
+[connection signal="pressed" from="UI/Button Manager/HBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="UI/Button Manager/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_mouse_entered"]
+[connection signal="pressed" from="UI/Button Manager/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="UI/Button Manager/HBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="pressed" from="UI/Button Manager/HBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="UI/Button Manager/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="UI/Button Manager/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

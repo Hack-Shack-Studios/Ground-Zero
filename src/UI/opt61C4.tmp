@@ -1,0 +1,282 @@
+[gd_scene load_steps=12 format=3 uid="uid://dhcqw7qbxpvtv"]
+
+[ext_resource type="Script" path="res://UI/options.gd" id="1_6i6o4"]
+[ext_resource type="Texture2D" uid="uid://byxogsybw301e" path="res://Other/Images/forge.png" id="2_8prsk"]
+[ext_resource type="Script" path="res://UI/volume_slider.gd" id="3_4gdbj"]
+[ext_resource type="FontFile" uid="uid://rerjonsav62n" path="res://Other/Fonts/Epyval.ttf" id="3_6dct2"]
+[ext_resource type="Script" path="res://UI/h_scroll_bar.gd" id="5_wtcer"]
+[ext_resource type="Theme" uid="uid://0qy2aipx0335" path="res://UI/options.tres" id="6_pm6lu"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_iycx4"]
+color = Color(0.623529, 0.247059, 0.909804, 1)
+thickness = 25
+
+[sub_resource type="SystemFont" id="SystemFont_dvhx5"]
+font_names = PackedStringArray("Agency FB")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jme4"]
+bg_color = Color(0, 0.827451, 0.858824, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g26rm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlsj8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6i6o4")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8prsk")
+
+[node name="Button Manager" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Button Manager"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Button Manager/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 18
+alignment = 2
+
+[node name="Back" type="Button" parent="Button Manager/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("3_6dct2")
+theme_override_font_sizes/font_size = 64
+text = "BACK"
+alignment = 0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+offset_left = 379.0
+offset_top = -3.0
+offset_right = 673.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = ExtResource("3_6dct2")
+theme_override_font_sizes/font_size = 128
+text = "Options"
+
+[node name="Master Tag" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 204.0
+offset_right = 319.0
+offset_bottom = 356.0
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = ExtResource("3_6dct2")
+theme_override_font_sizes/font_size = 64
+text = "Master:"
+
+[node name="Master" type="HSlider" parent="Master Tag"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = -14.0
+offset_right = 578.0
+offset_bottom = 113.0
+theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_4gdbj")
+bus_name = "Master"
+
+[node name="Resolutions Tag" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 504.0
+offset_right = 319.0
+offset_bottom = 656.0
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = ExtResource("3_6dct2")
+theme_override_font_sizes/font_size = 64
+text = "Resolution: "
+
+[node name="Resolutions" type="OptionButton" parent="Resolutions Tag"]
+layout_mode = 2
+offset_left = 316.0
+offset_top = 28.0
+offset_right = 723.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = SubResource("SystemFont_dvhx5")
+theme_override_font_sizes/font_size = 32
+selected = 0
+item_count = 3
+popup/item_0/text = "1920x1080"
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
+[node name="Sensitivity Tag" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 604.0
+offset_right = 319.0
+offset_bottom = 756.0
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = ExtResource("3_6dct2")
+theme_override_font_sizes/font_size = 64
+text = "Sensitivity: "
+
+[node name="Sensitivity" type="HScrollBar" parent="Sensitivity Tag"]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 24.0
+offset_right = 553.0
+offset_bottom = 89.0
+min_value = 0.01
+max_value = 20.0
+step = 0.01
+value = 0.01
+script = ExtResource("5_wtcer")
+
+[node name="NumberSensitivity" type="TextEdit" parent="Sensitivity Tag"]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 31.0
+offset_right = 656.0
+offset_bottom = 82.0
+theme_override_colors/word_highlighted_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_readonly_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_fonts/font = ExtResource("3_6dct2")
+theme_override_font_sizes/font_size = 30
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="Music Tag" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 304.0
+offset_right = 319.0
+offset_bottom = 456.0
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = ExtResource("3_6dct2")
+theme_override_font_sizes/font_size = 64
+text = "Music:"
+
+[node name="Music" type="HSlider" parent="Music Tag"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = -14.0
+offset_right = 578.0
+offset_bottom = 113.0
+theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_4gdbj")
+bus_name = "Music"
+
+[node name="Sounds Tags" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 404.0
+offset_right = 319.0
+offset_bottom = 556.0
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = ExtResource("3_6dct2")
+theme_override_font_sizes/font_size = 64
+text = "Sounds: "
+
+[node name="SFX" type="HSlider" parent="Sounds Tags"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = -14.0
+offset_right = 578.0
+offset_bottom = 113.0
+theme_override_styles/slider = SubResource("StyleBoxLine_iycx4")
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_4gdbj")
+bus_name = "sfx"
+
+[node name="Full Screen" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 704.0
+offset_right = 319.0
+offset_bottom = 856.0
+theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/font = ExtResource("3_6dct2")
+theme_override_font_sizes/font_size = 64
+text = "Fullscreen:"
+
+[node name="CheckButton" type="CheckButton" parent="Full Screen"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 22.0
+offset_right = 609.0
+offset_bottom = 330.0
+scale = Vector2(0.2, 0.2)
+theme = ExtResource("6_pm6lu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8jme4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_g26rm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jlsj8")
+button_pressed = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="mouse_entered" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="focus_entered" from="Master Tag" to="." method="_on_master_tag_focus_entered"]
+[connection signal="mouse_entered" from="Master Tag/Master" to="." method="_on_master_mouse_entered"]
+[connection signal="value_changed" from="Master Tag/Master" to="." method="_on_volume_value_changed"]
+[connection signal="item_selected" from="Resolutions Tag/Resolutions" to="." method="_on_resolutions_item_selected"]
+[connection signal="mouse_entered" from="Resolutions Tag/Resolutions" to="." method="_on_resolutions_mouse_entered"]
+[connection signal="mouse_entered" from="Sensitivity Tag/Sensitivity" to="." method="_on_sensitivity_mouse_entered"]
+[connection signal="value_changed" from="Sensitivity Tag/Sensitivity" to="Sensitivity Tag/Sensitivity" method="_on_value_changed"]
+[connection signal="text_changed" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_text_edit_text_changed"]
+[connection signal="text_changed" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_number_sensitivity_text_changed"]
+[connection signal="text_set" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_number_sensitivity_text_set"]
+[connection signal="mouse_entered" from="Music Tag/Music" to="." method="_on_music_mouse_entered"]
+[connection signal="value_changed" from="Music Tag/Music" to="." method="_on_volume_value_changed"]
+[connection signal="mouse_entered" from="Sounds Tags/SFX" to="." method="_on_sfx_mouse_entered"]
+[connection signal="value_changed" from="Sounds Tags/SFX" to="." method="_on_volume_value_changed"]
+[connection signal="mouse_entered" from="Full Screen/CheckButton" to="." method="_on_check_button_mouse_entered"]
+[connection signal="toggled" from="Full Screen/CheckButton" to="." method="_on_check_button_toggled"]

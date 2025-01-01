@@ -32,19 +32,22 @@ var nav_map_ready: bool = false
 
 @onready var chasing_player_timer = $"../../ChasingPlayerTimer"
 
+@onready var walk_sound = $MedusaBotWalk
+
 func enter():
 	player = get_node(player_path)
 	forge = get_node(forge_path)
 	enemy.chasing_player = true
 	chasing_player_timer.start()
 	is_wandering = false
+	#MedusaBotWalk.play()
 
 	#print("Chasing player")
 
 func exit():
 	chasing_player_timer.stop()
 	is_wandering = false
-
+	#MedusaBotWalk.stop()
 
 func update(_delta: float):
 	pass

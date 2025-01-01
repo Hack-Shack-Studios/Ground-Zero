@@ -1014,7 +1014,7 @@ texture = ExtResource("3_l20qk")
 [node name="Weapons_Manager" type="Node3D" parent="Pivot/Main Camera"]
 script = ExtResource("6_0i3mk")
 _weapon_resources = Array[ExtResource("7_ctafs")]([ExtResource("8_tdh63"), ExtResource("9_57t3p"), ExtResource("11_ijnic")])
-start_weapons = Array[String](["medusa_head"])
+start_weapons = Array[String](["coil_assault"])
 
 [node name="FPS_Rig" type="Node3D" parent="Pivot/Main Camera/Weapons_Manager"]
 
@@ -1097,6 +1097,13 @@ collision_mask = 8
 transform = Transform3D(1.6, 0, 0, 0, 2, 0, 0, 0, 1.4, 0, 0, 0)
 shape = SubResource("BoxShape3D_4qd1n")
 
+[node name="HitBox" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 32
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("ConvexPolygonShape3D_hryvx")
+
 [connection signal="player_hit" from="." to="." method="_on_player_hit"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="timeout" from="HUD/Regen" to="." method="_on_regen_timeout"]
@@ -1106,5 +1113,7 @@ shape = SubResource("BoxShape3D_4qd1n")
 [connection signal="animation_finished" from="Pivot/Main Camera/Weapons_Manager/FPS_Rig/AnimationPlayer" to="Pivot/Main Camera/Weapons_Manager" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Laserd" to="." method="_on_laserd_timeout"]
 [connection signal="body_entered" from="PickUpDetection" to="Pivot/Main Camera/Weapons_Manager" method="_on_pick_up_detection_body_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="HitBox" to="." method="_on_hit_box_area_exited"]
 
 [editable path="Pivot/Main Camera/Weapons_Manager/FPS_Rig/medusa_head"]

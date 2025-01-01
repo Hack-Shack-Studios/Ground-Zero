@@ -56,6 +56,8 @@ var lasers := 0
 @onready var hit_marker_HEADSHOT = $HUD/CenterContainer/HitMarkerHEADSHOT
 @onready var lazered_timer = $Laserd
 
+var getting_hit = false
+
 func _ready() -> void:
 	health_bar.value = max_health
 	round_info = str(get_parent().get_parent().waves_remaining) + " ROUNDS LEFT"
@@ -215,13 +217,17 @@ func _on_player_hit() -> void:
 
 func hit():
 
-	#for robots in lasers:
-	health -= .05 if !Global.damage_reduction else .25
-	update_health()
-	print("Player HIT, new health: ",health)
-	emit_signal("player_hit")
-	if health <= 0 and not dead:
-		respawn()
+	if getting_hit and not dead:
+		#for robots in lasers:
+		health -= .05 if !Global.damage_reduction else .25
+		update_health()
+		await get_tree().create_timer(.2).timeout
+		print("Player HIT, new health: ",health)
+		emit_signal("player_hit")
+		if health <= 0:
+			respawn()
+			dead = true
+		hit()
 
 	#lazered_timer.start()
 
@@ -242,12 +248,20 @@ func hit():
 #func _on_hacked_timeout() -> void:
 	#hit()
 
-func _on_laserd_timeout() -> void:
-	hit()
-
 
 func _on_forge_double_health() -> void:
 	max_health = 12
 	health = max_health
 	health_bar.max_value = max_health
 	health_bar.value = max_health
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if !getting_hit:
+		getting_hit = true
+		hit()
+
+
+
+func _on_hit_box_area_exited(area: Area3D) -> void:
+	getting_hit = false

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpkcphl34sybq"
+path="res://.godot/imported/robotWalk-VEED.mp3-38b83a137e148bf6f15591d2eaa2ef18.mp3str"
+
+[deps]
+
+source_file="res://Merge Assets/From other project/robotWalk-VEED.mp3"
+dest_files=["res://.godot/imported/robotWalk-VEED.mp3-38b83a137e148bf6f15591d2eaa2ef18.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -12,6 +12,7 @@ viewport_path = NodePath("Shop/Viewport")
 viewport_path = NodePath("ShopInteract/Viewport")
 
 [node name="Forge" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_6gltt")
 
 [node name="Forge" parent="." instance=ExtResource("1_ivt3d")]
@@ -42,7 +43,7 @@ offset_right = 121.0
 offset_bottom = 68.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_color = Color(1, 1, 0.207843, 1)
 theme_override_fonts/font = ExtResource("2_yqkuu")
 theme_override_font_sizes/font_size = 100
 text = "SHOP"
@@ -69,7 +70,7 @@ offset_right = 121.0
 offset_bottom = 68.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.623529, 0.247059, 0.909804, 1)
+theme_override_colors/font_color = Color(1, 1, 0.207843, 1)
 theme_override_fonts/font = ExtResource("2_yqkuu")
 theme_override_font_sizes/font_size = 20
 text = "PRESS 'E' TO OPEN SHOP"

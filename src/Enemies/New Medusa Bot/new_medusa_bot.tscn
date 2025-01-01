@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cjrhsjf06l6g3"]
+[gd_scene load_steps=31 format=4 uid="uid://cjrhsjf06l6g3"]
 
 [ext_resource type="PackedScene" uid="uid://bfg6nyskucer5" path="res://Enemies/New Medusa Bot/Medusa Bot (Seperate Animations + Hacking).glb" id="1_olaj4"]
 [ext_resource type="Script" path="res://Enemies/Medusa Bot/medusa_bot.gd" id="2_qdfun"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Enemies/Medusa Bot/hacking.gd" id="7_aglox"]
 [ext_resource type="Script" path="res://Enemies/Medusa Bot/shooting.gd" id="8_mkyaa"]
 [ext_resource type="Script" path="res://Enemies/Medusa Bot/elimination.gd" id="9_wd2s3"]
+[ext_resource type="PackedScene" uid="uid://by0m2wp0sfhri" path="res://Sounds/Enemies/Medusa Bot/medusa_bot_walk.tscn" id="10_vyfsr"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pfx8u"]
 points = PackedVector3Array(3.61388, 6.21964, 3.40435, 3.61388, 8.01991, 3.40435, 6.21879, 6.21964, 3.40435, 3.61388, 6.21964, 5.732, 3.61388, 7.25592, 5.732, 6.21879, 8.01991, 3.40435, 6.21879, 6.21964, 5.732, 6.21879, 7.25592, 5.732)
@@ -53,7 +54,7 @@ points = PackedVector3Array(0.26464, 1.66011, -0.000105858, 0.229276, 1.66011, -
 points = PackedVector3Array(0.84979, -3.09688, 1.68098, -1.15021, -3.09688, 1.68098, 0.84979, -5.09668, 1.68098, 0.84979, 1, 0.344234, -1.15021, -5.09668, 1.68098, -1.15021, 1, 0.344234, 0.84979, -5.09668, -0.319077, 0.84979, 1, -1.6555, -1.15021, -5.09668, -0.319077, -1.15021, 1, -1.6555, 0.84979, -1.0004, -1.6555, -1.15021, -1.0004, -1.6555)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ak65"]
-height = 1.47151
+height = 1.69167
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i278"]
 resource_name = "Material.001"
@@ -104,7 +105,11 @@ emission_enabled = true
 emission = Color(0.984314, 1, 0.458824, 1)
 emission_energy_multiplier = 1.5
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_crwht"]
+size = Vector3(0.0266724, 0.0444336, 6.91887)
+
 [node name="NewMedusaBot" type="CharacterBody3D" groups=["enemy"]]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.127136, 0)
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("2_qdfun")
@@ -376,13 +381,14 @@ visible = false
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.847678, 0)
 shape = SubResource("CapsuleShape3D_2ak65")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.5
 path_max_distance = 0.21
 avoidance_enabled = true
+debug_enabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "enemy")]
 script = ExtResource("3_gwdvj")
@@ -427,29 +433,40 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Laser" type="RayCast3D" parent="."]
-transform = Transform3D(-0.999877, -0.00211415, -0.0155752, 0.00245782, 0.957693, -0.28778, 0.0155247, -0.287783, -0.95757, -0.0073761, 1.55966, -0.245296)
+transform = Transform3D(-0.999877, -0.00211415, -0.0155752, 0.000611397, 0.984931, -0.172943, 0.0157061, -0.172932, -0.984809, -0.0073761, 1.55966, -0.245296)
 target_position = Vector3(0, 0, 7)
+collision_mask = 32
 
 [node name="laserbeam" type="MeshInstance3D" parent="Laser"]
 transform = Transform3D(0.0499965, -0.00022611, 0.000590068, 0.00058997, -0.0020707, -0.0499961, 2.50558e-05, 0.499995, -0.000206785, -0.0312916, -0.0720891, 16.0159)
 visible = false
+layers = 32
 mesh = SubResource("ArrayMesh_1yk4y")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_vr474")
 
+[node name="Hitbox" type="Area3D" parent="Laser"]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Laser/Hitbox"]
+transform = Transform3D(1.00012, -1.39698e-09, 1.37649e-06, 4.54485e-07, 1, 0, -2.00234e-07, 6.85453e-07, 1, 0.00388843, 0.00610256, 3.483)
+shape = SubResource("BoxShape3D_crwht")
+
 [node name="LaserFinished" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 5.0
 one_shot = true
 
 [node name="LaserReady" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 0.2
 one_shot = true
 
 [node name="LaserHit" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.1
 one_shot = true
+
+[node name="MedusaBotWalk" parent="." instance=ExtResource("10_vyfsr")]
 
 [editable path="Medusa Bot (Seperate Animations + Hacking)"]

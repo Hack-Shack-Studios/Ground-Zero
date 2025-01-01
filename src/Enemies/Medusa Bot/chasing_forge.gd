@@ -19,15 +19,18 @@ var gravity = 9.8
 var player: CharacterBody3D
 var forge = null
 
+@onready var walk_sound = $MedusaBotWalk
+
 
 func enter():
 	player = get_node(player_path)
 	forge = get_node(forge_path)
-
+	#MedusaBotWalk.play()
 	#print("Chasing Forge")
 
 func exit():
 	pass
+	#MedusaBotWalk.stop()
 
 func update(_delta: float):
 	pass

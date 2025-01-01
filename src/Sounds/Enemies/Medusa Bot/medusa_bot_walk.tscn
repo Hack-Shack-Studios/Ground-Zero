@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://by0m2wp0sfhri"]
+
+[ext_resource type="AudioStream" uid="uid://dpkcphl34sybq" path="res://Merge Assets/From other project/robotWalk-VEED.mp3" id="1_51kb7"]
+[ext_resource type="Script" path="res://Sounds/Enemies/Medusa Bot/medusa_bot_walk.gd" id="2_52fhf"]
+
+[node name="MedusaBotWalk" type="AudioStreamPlayer"]
+stream = ExtResource("1_51kb7")
+autoplay = true
+bus = &"sfx"
+script = ExtResource("2_52fhf")

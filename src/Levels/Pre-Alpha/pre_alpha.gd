@@ -99,7 +99,6 @@ func _on_enemy_spawn_timer_timeout() -> void:
 	if (waves_remaining > 0):
 		waves_remaining -= 1
 		for n in wave_count[waves_remaining]:
-			print("\nLoop: "+str(n))
 			total_enemies = wave_count[waves_remaining]
 			var spawn_point = _get_random_child(spawns).global_position
 			instance = enemy.instantiate()

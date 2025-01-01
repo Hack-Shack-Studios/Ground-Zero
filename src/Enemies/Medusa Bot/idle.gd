@@ -21,30 +21,30 @@ var forge = null
 
 
 func enter():
-    player = get_node(player_path)
-    forge = get_node(forge_path)
-    enemy.velocity = Vector3.ZERO
+	player = get_node(player_path)
+	forge = get_node(forge_path)
+	enemy.velocity = Vector3.ZERO
 
-    print("Idle")
+	#print("Idle")
 
 func exit():
-    pass
+	pass
 
 func update(_delta: float):
-    pass
+	pass
 
 # TODO: Fix this? Does this need be in physics?
 func physics_update(_delta: float):
-    print("Player: ",str(player))
-    if player:
-        Transitioned.emit(self, "ChasingPlayer")
-    elif forge:
-        Transitioned.emit(self, "ChasingForge")
-    else:
-        animation.stop()
-        print("Nothing exists, standing still")
+	#print("Player: ",str(player))
+	if player:
+		Transitioned.emit(self, "ChasingPlayer")
+	elif forge:
+		Transitioned.emit(self, "ChasingForge")
+	else:
+		animation.stop()
+		print("Nothing exists, standing still")
 
 
 # TODO: Add safe_velocity to have avoidance work better #2
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
-    pass # Replace with function body.
+	pass # Replace with function body.

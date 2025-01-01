@@ -33,6 +33,7 @@ var enemy_dead := false
 @onready var nav_agent = $NavigationAgent3D
 @export var enemy_body: CharacterBody3D
 
+
 func _ready() -> void:
 	player = get_node(player_path)
 	forge = get_node(forge_path)

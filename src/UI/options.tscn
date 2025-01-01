@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhcqw7qbxpvtv"]
+[gd_scene load_steps=13 format=3 uid="uid://dhcqw7qbxpvtv"]
 
 [ext_resource type="Script" path="res://UI/options.gd" id="1_6i6o4"]
 [ext_resource type="Texture2D" uid="uid://byxogsybw301e" path="res://Other/Images/forge.png" id="2_8prsk"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://rerjonsav62n" path="res://Other/Fonts/Epyval.ttf" id="3_6dct2"]
 [ext_resource type="Script" path="res://UI/h_scroll_bar.gd" id="5_wtcer"]
 [ext_resource type="Theme" uid="uid://0qy2aipx0335" path="res://UI/options.tres" id="6_pm6lu"]
+[ext_resource type="PackedScene" uid="uid://dgma4wftrs6nl" path="res://UI/menu_video.tscn" id="7_ndkgv"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_iycx4"]
 color = Color(0.623529, 0.247059, 0.909804, 1)
@@ -33,6 +34,7 @@ grow_vertical = 2
 script = ExtResource("1_6i6o4")
 
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -261,6 +263,12 @@ button_pressed = true
 icon_alignment = 1
 expand_icon = true
 
+[node name="MenuVideo" parent="." instance=ExtResource("7_ndkgv")]
+show_behind_parent = true
+y_sort_enabled = true
+layout_mode = 1
+mouse_filter = 2
+
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="mouse_entered" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_mouse_entered"]
 [connection signal="pressed" from="Button Manager/HBoxContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
@@ -271,8 +279,8 @@ expand_icon = true
 [connection signal="mouse_entered" from="Resolutions Tag/Resolutions" to="." method="_on_resolutions_mouse_entered"]
 [connection signal="mouse_entered" from="Sensitivity Tag/Sensitivity" to="." method="_on_sensitivity_mouse_entered"]
 [connection signal="value_changed" from="Sensitivity Tag/Sensitivity" to="Sensitivity Tag/Sensitivity" method="_on_value_changed"]
-[connection signal="text_changed" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_number_sensitivity_text_changed"]
 [connection signal="text_changed" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_text_edit_text_changed"]
+[connection signal="text_changed" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_number_sensitivity_text_changed"]
 [connection signal="text_set" from="Sensitivity Tag/NumberSensitivity" to="Sensitivity Tag/Sensitivity" method="_on_number_sensitivity_text_set"]
 [connection signal="mouse_entered" from="Music Tag/Music" to="." method="_on_music_mouse_entered"]
 [connection signal="value_changed" from="Music Tag/Music" to="." method="_on_volume_value_changed"]
