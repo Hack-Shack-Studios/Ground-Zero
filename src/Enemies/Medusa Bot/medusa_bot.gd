@@ -15,7 +15,7 @@ const DIE_ANIMATION = 1.5
 const HITMARKER_DECAY = 1.0
 
 @export var player_path := "/root/World/Map/Player"
-@export var forge_path := "/root/World/Map/NavigationRegion3D/Forge"
+@export var forge_path := "/root/World/Map/Forge"
 
 @onready var world = $"."
 
