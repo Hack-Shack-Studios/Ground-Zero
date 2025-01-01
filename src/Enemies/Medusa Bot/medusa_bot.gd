@@ -74,6 +74,9 @@ func _on_elimination_enemy_death() -> void:
 		var weapon_drops = false
 		weapon_drops = true if randf() < .2 else false
 
+		if is_hacking:
+			forge.robots_hacking -= 1
+
 		if weapon_drops:
 			var medusa_head = medusa_head.instantiate()
 			medusa_head.position = position
