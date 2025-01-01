@@ -90,5 +90,9 @@ polygon = PackedVector2Array(-0.424924, 2.05642, 2.21905, 2.01446, 2.25053, -2.2
 [connection signal="pressed" from="ShopUI/Menu/Buffs/InfiniteAmmo" to="." method="_on_infinite_ammo_pressed"]
 [connection signal="pressed" from="ShopUI/Menu/Buffs/DoublePoints" to="." method="_on_double_points_pressed"]
 [connection signal="pressed" from="ShopUI/Menu/Buffs/DoubleHealth" to="." method="_on_double_health_pressed"]
+[connection signal="timeout" from="ShopUI/Timers/SpeedBoost" to="." method="_on_speed_boost_timeout"]
+[connection signal="timeout" from="ShopUI/Timers/DamageReduction" to="." method="_on_damage_reduction_timeout"]
+[connection signal="timeout" from="ShopUI/Timers/InfiniteAmmo" to="." method="_on_infinite_ammo_timeout"]
+[connection signal="timeout" from="ShopUI/Timers/DoublePoints" to="." method="_on_double_points_timeout"]
 
 [editable path="ShopUI"]
