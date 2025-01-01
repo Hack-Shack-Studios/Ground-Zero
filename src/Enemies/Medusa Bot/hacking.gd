@@ -18,6 +18,7 @@ const SHOOT_RANGE := 5.0
 var gravity = 9.8
 var forge: StaticBody3D
 var hack_delay := 1.0
+var hacking = false
 
 func enter():
 	forge = get_node(forge_path)

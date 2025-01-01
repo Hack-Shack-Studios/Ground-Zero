@@ -33,9 +33,6 @@ func enter():
 	print("Eliminated")
 
 func exit():
-	# When killed, has a low % drop rate of its laser head falling
-
-	# get_tree().add_child(robot_head)
 	pass
 
 
