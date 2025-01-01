@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ebtvuuyx6gaf"]
+[gd_scene load_steps=15 format=3 uid="uid://ebtvuuyx6gaf"]
 
 [ext_resource type="FontFile" uid="uid://rerjonsav62n" path="res://Other/Fonts/Epyval.ttf" id="1_w4hxa"]
 [ext_resource type="Texture2D" uid="uid://b7fui2v6jkhv6" path="res://Other/Images/Buffs/speed_boost.png" id="2_3sy5e"]
@@ -54,6 +54,9 @@ border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.632686, 0.632686, 7.70092e-07, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbpmv"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="Shop" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -64,11 +67,13 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="Menu" type="HBoxContainer" parent="."]
+z_index = 1
+y_sort_enabled = true
 layout_mode = 2
-offset_left = 39.0
-offset_top = 169.5
+offset_left = 47.0
+offset_top = 170.0
 offset_right = 1881.0
-offset_bottom = 746.5
+offset_bottom = 747.0
 alignment = 1
 
 [node name="Buffs" type="VBoxContainer" parent="Menu"]
@@ -320,6 +325,15 @@ text = "350
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 56.0
+offset_top = 177.0
+offset_right = 1872.0
+offset_bottom = 708.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lbpmv")
 
 [node name="Timers" type="Node" parent="."]
 
