@@ -52,6 +52,8 @@ func hit() -> void:
 		health -= damage_amount
 		print("forge hacked")
 
+	ForgeHit.play()
+
 	if health <= minimum_health:
 		print(str(health) + " <= " +str(minimum_health))
 		get_tree().change_scene_to_file("res://UI/game_over.tscn") #GO TO: Game Over sceen

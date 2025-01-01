@@ -29,7 +29,7 @@ var total_enemies: int
 var spawn_delay: float = 3.5
 var time: int
 var player_died = false
-
+var music = preload("res://Music/Forge/ForgeHitNoise-VEED.mp3")
 
 @onready var regen_timer = $UI/Regen
 @onready var regen_rect = $UI/RegenRect
