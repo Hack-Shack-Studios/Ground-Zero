@@ -58,8 +58,6 @@ func hit_successful(damage):
 	health -= damage
 	print("Target Health: ",health)
 	if health <= 0 and enemy_alive:
-		if is_hacking:
-			forge.robots_hacking -= 1
 		enemy_alive = false
 		enemy_dead = true
 
@@ -83,6 +81,8 @@ func _on_elimination_enemy_death() -> void:
 
 			weapon_spawner.add_child(medusa_head)
 		signal_sent = true
+		enemy_dead = true
+		enemy_alive = false
 
 ## KEEP TRACK OF AMOUNT OF KILLS FOR FUTURE REFERENCE:
 

@@ -20,29 +20,29 @@ var forge: StaticBody3D
 var hack_delay := 1.0
 
 func enter():
-    forge = get_node(forge_path)
-    forge.hit()
-    forge.robots_hacking += 1
-    enemy.is_hacking = true
-    enemy.chasing_player = false
+	forge = get_node(forge_path)
+	forge.hit()
+	forge.robots_hacking += 1
+	enemy.is_hacking = true
+	enemy.chasing_player = false
 
-    animation.play("StartHacking")
-    await get_tree().create_timer(1.4833).timeout
+	animation.play("StartHacking")
+	await get_tree().create_timer(1.4833).timeout
 
-    print("Hacking")
+	print("Hacking")
 
 
 func exit():
-    pass
+	pass
 
 func update(_delta: float):
-    pass
+	pass
 
 
 func physics_update(_delta: float):
-    enemy.velocity = Vector3.ZERO
+	enemy.velocity = Vector3.ZERO
 
-    if not enemy.is_on_floor():
-        enemy.velocity.y -= gravity
+	if not enemy.is_on_floor():
+		enemy.velocity.y -= gravity
 
-    animation.play("ConstantHacking")
+	animation.play("ConstantHacking")

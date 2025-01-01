@@ -123,7 +123,8 @@ func _on_forge_forge_hit() -> void:
 
 
 func _set_forge_bar() -> void:
-	forge_health_bar.value = forge._get_health()
+	if forge:
+		forge_health_bar.value = forge.health
 
 
 func paused_menu() -> void:

@@ -85,4 +85,10 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5, 
 depth = 10.0
 polygon = PackedVector2Array(-0.424924, 2.05642, 2.21905, 2.01446, 2.25053, -2.25577, -2.07216, -2.24528, -2.06167, 2.03544)
 
+[connection signal="pressed" from="ShopUI/Menu/Buffs/Speed" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="ShopUI/Menu/Buffs/DamageReduction" to="." method="_on_damage_reduction_pressed"]
+[connection signal="pressed" from="ShopUI/Menu/Buffs/InfiniteAmmo" to="." method="_on_infinite_ammo_pressed"]
+[connection signal="pressed" from="ShopUI/Menu/Buffs/DoublePoints" to="." method="_on_double_points_pressed"]
+[connection signal="pressed" from="ShopUI/Menu/Buffs/DoubleHealth" to="." method="_on_double_health_pressed"]
+
 [editable path="ShopUI"]

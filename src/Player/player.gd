@@ -99,9 +99,9 @@ func _physics_process(delta: float) -> void:
 
 		# Handing running mechanic
 		if Input.is_action_pressed("sprint"):
-			speed = SPRINT_SPEED * (2 if Global.speed_boost else 1)
+			speed = SPRINT_SPEED * (1.5 if Global.speed_boost else 1)
 		else:
-			speed = WALK_SPEED * (2 if Global.speed_boost else 1)
+			speed = WALK_SPEED * (1.5 if Global.speed_boost else 1)
 
 		if Global.speed_boost:
 			speed *= 2

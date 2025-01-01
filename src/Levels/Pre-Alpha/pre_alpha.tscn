@@ -330,7 +330,7 @@ navigation_mesh = SubResource("NavigationMesh_yycwc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.714, -3.837, 9.615)
 
 [node name="Forge" parent="Map" instance=ExtResource("9_u53oa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.32212)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1.32212)
 
 [node name="Spawnables" type="Node3D" parent="."]
 
