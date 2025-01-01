@@ -68,6 +68,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	time = spawn_timer.time_left
 	_set_forge_bar()
+	score_label.update_score()
 	wave_timer_text.text = str(time) + " seconds until next wave"
 
 	if Input.is_action_just_pressed("pause"):

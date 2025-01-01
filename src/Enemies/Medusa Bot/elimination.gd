@@ -5,6 +5,8 @@ class_name Elimination
 ##
 ## Bot getting eliminated
 
+signal enemy_death
+
 const EXPLODE_DURATION := 1.5
 
 @export var animation: AnimationPlayer
@@ -20,26 +22,26 @@ var forge = StaticBody3D
 
 
 func enter():
-    enemy.enemy_dead = true
-    laser_mesh.visible = false
-    forge = get_node(forge_path)
-    animation.play("Death")
-    await get_tree().create_timer(EXPLODE_DURATION).timeout
-    get_parent().get_parent().emit_signal("enemy_death")
-    enemy.queue_free()
+	enemy.enemy_dead = true
+	laser_mesh.visible = false
+	forge = get_node(forge_path)
+	animation.play("Death")
+	await get_tree().create_timer(EXPLODE_DURATION).timeout
+	enemy.queue_free()
+	emit_signal("enemy_death")
 
-    print("Eliminated")
+	print("Eliminated")
 
 func exit():
-    # When killed, has a low % drop rate of its laser head falling
+	# When killed, has a low % drop rate of its laser head falling
 
-    # get_tree().add_child(robot_head)
-    pass
+	# get_tree().add_child(robot_head)
+	pass
 
 
 func update(_delta: float):
-    pass
+	pass
 
 
 func physics_update(_delta: float):
-    pass
+	pass

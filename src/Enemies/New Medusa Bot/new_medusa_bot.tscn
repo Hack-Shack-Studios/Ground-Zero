@@ -469,4 +469,6 @@ one_shot = true
 
 [node name="MedusaBotWalk" parent="." instance=ExtResource("10_vyfsr")]
 
+[connection signal="enemy_death" from="StateMachine/Elimination" to="." method="_on_elimination_enemy_death"]
+
 [editable path="Medusa Bot (Seperate Animations + Hacking)"]
