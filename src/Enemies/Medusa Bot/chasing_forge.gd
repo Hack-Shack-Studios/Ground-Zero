@@ -15,7 +15,7 @@ const ATTACK_RANGE := 5.5
 @export var forge_path := "/root/World/Map/Forge"
 @export var animation: AnimationPlayer
 
-var hacking_distance = 6
+var hacking_distance = 8
 var gravity = 9.8
 var player: CharacterBody3D
 var forge = null
@@ -53,7 +53,7 @@ func physics_update(delta: float):
 	var distance_to_player = enemy.global_position.distance_to(player.global_position)
 
 
-	if forge.robots_hacking >= 2 or distance_to_forge < distance_to_player:
+	if (forge.robots_hacking >= 2 or distance_to_forge < distance_to_player) and !player.dead :
 		Transitioned.emit(self, "ChasingPlayer")
 	elif distance_to_forge <= hacking_distance:
 		Transitioned.emit(self, "Hacking")

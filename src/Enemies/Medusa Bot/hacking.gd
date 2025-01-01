@@ -28,7 +28,9 @@ func enter():
 	enemy.chasing_player = false
 
 	animation.play("StartHacking")
-	await get_tree().create_timer(1.4833).timeout
+
+	if enemy:
+		await get_tree().create_timer(1.4833).timeout
 
 	print("Hacking")
 
