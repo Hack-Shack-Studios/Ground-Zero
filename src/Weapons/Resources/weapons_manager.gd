@@ -30,6 +30,8 @@ enum {
 }
 
 
+@onready var player = $"../../.."
+
 func _ready() -> void:
 	initialize(start_weapons) # enter the state machine
 
@@ -95,7 +97,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func shoot():
 	# Can't shoot when no ammo, and enforces firerate based on animation speed
-	if current_weapon.current_ammo != 0 and !anim_player.is_playing() and !Global.ui_opened or Global.infinite_ammo:
+	if current_weapon.current_ammo != 0 and !anim_player.is_playing() and !Global.ui_opened and !player.dead:
 		anim_player.play(current_weapon.shoot_anim)
 
 		# Plays gun sound

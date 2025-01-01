@@ -50,11 +50,10 @@ func hit() -> void:
 	emit_signal("forge_hit")
 	for hackers in robots_hacking:
 		health -= damage_amount
+		ForgeHit.play()
+		await get_tree().create_timer(.38).timeout
+		ForgeHit.stop()
 		print("forge hacked")
-
-	ForgeHit.play()
-	await get_tree().create_timer(.38).timeout
-	ForgeHit.stop()
 
 	if health <= minimum_health:
 		print(str(health) + " <= " +str(minimum_health))
