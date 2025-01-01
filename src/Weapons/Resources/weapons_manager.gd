@@ -97,34 +97,37 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func shoot():
 	# Can't shoot when no ammo, and enforces firerate based on animation speed
-	if current_weapon.current_ammo != 0 and !anim_player.is_playing() and !Global.ui_opened and !player.dead:
-		anim_player.play(current_weapon.shoot_anim)
+	if Global.infinite_ammo:
+		current_weapon.current_ammo = current_weapon.magazine
+		current_weapon.reserve_ammo = current_weapon.max_ammo
+		if current_weapon.current_ammo != 0 and !anim_player.is_playing() and !Global.ui_opened and !player.dead:
+			anim_player.play(current_weapon.shoot_anim)
 
-		# Plays gun sound
-		audio_player.stream = current_weapon.shoot_sound
-		audio_player.play()
+			# Plays gun sound
+			audio_player.stream = current_weapon.shoot_sound
+			audio_player.play()
 
-		if Global.infinite_ammo:
-			current_weapon.current_ammo = current_weapon.magazine
-			current_weapon.reserve_ammo = current_weapon.max_ammo
-		else:
-			current_weapon.current_ammo -= 1
+			if Global.infinite_ammo:
+				current_weapon.current_ammo = current_weapon.magazine
+				current_weapon.reserve_ammo = current_weapon.max_ammo
+			else:
+				current_weapon.current_ammo -= 1
 
-		emit_signal("update_ammo", [current_weapon.current_ammo, current_weapon.reserve_ammo])
-		var camera_collision = get_camera_collision(current_weapon.weapon_range)
-		match current_weapon.Type:
-			NULL:
-				print("Weapon Type Not Chosen")
-			HITSCAN:
-				hit_scan_collision(camera_collision[1])
-			PROJECTILE:
-				#projectile_collision(camera_collision[1)
-				print("projectile")
+			emit_signal("update_ammo", [current_weapon.current_ammo, current_weapon.reserve_ammo])
+			var camera_collision = get_camera_collision(current_weapon.weapon_range)
+			match current_weapon.Type:
+				NULL:
+					print("Weapon Type Not Chosen")
+				HITSCAN:
+					hit_scan_collision(camera_collision[1])
+				PROJECTILE:
+					#projectile_collision(camera_collision[1)
+					print("projectile")
 
-		if current_weapon.current_ammo == 0:
+			if current_weapon.current_ammo == 0:
+				reload()
+		elif current_weapon.current_ammo == 0:
 			reload()
-	elif current_weapon.current_ammo == 0:
-		reload()
 
 
 func reload():
