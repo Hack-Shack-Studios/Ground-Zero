@@ -53,7 +53,7 @@ func physics_update(delta: float):
 	var distance_to_player = enemy.global_position.distance_to(player.global_position)
 
 
-	if distance_to_forge > distance_to_player:
+	if distance_to_forge > distance_to_player and !player.dead:
 		Transitioned.emit(self, "ChasingPlayer")
 	elif distance_to_forge <= hacking_distance:
 		Transitioned.emit(self, "Hacking")

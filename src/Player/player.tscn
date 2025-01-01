@@ -934,12 +934,13 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.996078, 0.313726, 1)
 theme_override_fonts/font = SubResource("SystemFont_lmgn3")
-theme_override_font_sizes/font_size = 64
-text = "Current Gun: Coil Pistol
-[Bullets] / [Magazine]"
+theme_override_font_sizes/font_size = 100
+text = "[Bullets] / [Magazine]"
+horizontal_alignment = 1
 uppercase = true
 
 [node name="DisplayedWeapon" type="TextureRect" parent="HUD/WeaponGUI"]
+visible = false
 modulate = Color(1, 1, 1, 0.352941)
 layout_mode = 2
 texture = ExtResource("4_v63of")
