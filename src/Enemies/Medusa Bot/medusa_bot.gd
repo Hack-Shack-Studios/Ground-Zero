@@ -56,9 +56,6 @@ func _physics_process(_delta: float) -> void:
 		#enemy_alive = false
 func hit_successful(damage):
 	health -= damage
-	Enemyhit.play()
-	await get_tree().create_timer(.23).timeout
-	Enemyhit.stop()
 	#print("Target Health: ",health)
 	if health <= 0 and enemy_alive:
 		enemy_alive = false

@@ -190,6 +190,10 @@ func hit_scan_damage(collider, damage):
 		#print(str(collider))
 		collider.hit_successful(damage)
 
+		Enemyhit.play()
+		await get_tree().create_timer(.23).timeout
+		Enemyhit.stop()
+
 		hit_marker.visible = true
 		await get_tree().create_timer(.2).timeout
 		hit_marker.visible = false
