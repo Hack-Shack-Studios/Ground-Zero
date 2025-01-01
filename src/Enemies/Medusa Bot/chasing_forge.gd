@@ -10,7 +10,7 @@ const ATTACK_RANGE := 5.5
 # TODO: Fix this terrible temp solution
 @export var enemy: CharacterBody3D
 
-@export var move_speed := 2.5
+var move_speed := 1.8
 @export var player_path = "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/Forge"
 @export var animation: AnimationPlayer
@@ -53,7 +53,7 @@ func physics_update(delta: float):
 	var distance_to_player = enemy.global_position.distance_to(player.global_position)
 
 
-	if (forge.robots_hacking >= 2 or distance_to_forge < distance_to_player) and !player.dead :
+	if distance_to_forge > distance_to_player:
 		Transitioned.emit(self, "ChasingPlayer")
 	elif distance_to_forge <= hacking_distance:
 		Transitioned.emit(self, "Hacking")

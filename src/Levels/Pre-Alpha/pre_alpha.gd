@@ -166,6 +166,10 @@ func paused_menu() -> void:
 func _on_player_player_death() -> void:
 	player_died = true #enemies will access this property through get_parent() to determine movement logic
 	Global.score -= 150
+
+	if Global.score < 0:
+		Global.score = 0
+
 	score_label.update_score()
 
 

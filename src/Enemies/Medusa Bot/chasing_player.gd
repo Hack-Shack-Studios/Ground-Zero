@@ -14,7 +14,7 @@ const ATTACK_RANGE := 4
 @export var enemy: CharacterBody3D
 
 
-@export var move_speed := 2.5
+var move_speed := 1.8
 @export var player_path = "/root/World/Map/Player"
 @export var forge_path := "/root/World/Map/Forge"
 @export var animation: AnimationPlayer

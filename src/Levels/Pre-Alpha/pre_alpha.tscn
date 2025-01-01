@@ -75,7 +75,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.162144, -0.0722611, 0.1465
 script = ExtResource("1_1b5qn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.5, -2.18557e-08, 0, -4.37114e-08, 1, -0.5, 0.866026, 3.78552e-08, 0, 0, 0)
+transform = Transform3D(0.999961, 0.00854213, 0.00178454, 0, -0.204496, 0.978867, 0.00872653, -0.978831, -0.204488, 0, 0, 0)
 shadow_enabled = true
 
 [node name="UI" type="Control" parent="."]

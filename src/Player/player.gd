@@ -164,7 +164,7 @@ func respawn():
 
 func update_bullets_display():
 	var remaining_ammo_color: float = current_bullets / 20.0 #Aesthetics: checks the percentage of bullets left
-	weapon_info.text = "Coil Pistol\n"+str(current_bullets) + "/" + str(magazine_size) #Updates weapon text in format Ammo remaining / Total Ammo
+	weapon_info.text = str(current_bullets) + "/" + str(magazine_size) #Updates weapon text in format Ammo remaining / Total Ammo
 	if remaining_ammo_color <= 0.5 and remaining_ammo_color >= 0.2:
 		weapon_info.add_theme_color_override("font_color", Color(1, 1, 0))
 	elif remaining_ammo_color < 0.2:
