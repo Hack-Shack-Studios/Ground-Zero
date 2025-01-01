@@ -74,7 +74,7 @@ func physics_update(delta: float):
 			if target.is_in_group("Player") and laser_hit_timer.time_left == 0:
 				#player.hit()
 				laser_hit_timer.start()
-				print("Laser collided with player, timer starting")
+				#print("Laser collided with player, timer starting")
 	else:
 		laser_mesh.visible = false
 
@@ -102,8 +102,8 @@ func _on_laser_ready_timeout() -> void:
 	#await timer(anchor_down_anim_time).timeout()
 
 
-func _on_laser_hit_timeout() -> void:
-	print("Timer over, hitting player")
+#func _on_laser_hit_timeout() -> void:
+	##print("Timer over, hitting player")
 
 func lerp_angle(from, to, weight):
 	return from + short_angle_dist(from, to) * weight

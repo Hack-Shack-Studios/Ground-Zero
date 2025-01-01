@@ -388,6 +388,7 @@ shape = SubResource("CapsuleShape3D_2ak65")
 path_height_offset = 0.5
 path_max_distance = 0.21
 avoidance_enabled = true
+radius = 1.0
 debug_enabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "enemy")]
@@ -433,7 +434,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Laser" type="RayCast3D" parent="."]
-transform = Transform3D(-0.999877, -0.00211415, -0.0155752, 0.000611397, 0.984931, -0.172943, 0.0157061, -0.172932, -0.984809, -0.0073761, 1.55966, -0.245296)
+transform = Transform3D(-0.999877, -0.00211415, -0.0155752, 0.00234015, 0.959845, -0.280519, 0.0155428, -0.280521, -0.959722, -0.0073761, 1.55966, -0.245296)
 target_position = Vector3(0, 0, 7)
 collision_mask = 32
 

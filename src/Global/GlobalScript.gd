@@ -7,7 +7,7 @@ var win := false
 var score: int = 0
 
 # Player
-var sensitivity := 10.0
+var sensitivity := 2.5
 
 # Menu
 var ui_opened := false

@@ -216,7 +216,7 @@ func hit():
 		health -= .05 if !Global.damage_reduction else .25
 		update_health()
 		await get_tree().create_timer(.2).timeout
-		print("Player HIT, new health: ",health)
+		#print("Player HIT, new health: ",health)
 		emit_signal("player_hit")
 		if health <= 0:
 			respawn()

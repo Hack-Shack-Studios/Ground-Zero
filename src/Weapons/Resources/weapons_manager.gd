@@ -185,7 +185,7 @@ func hit_scan_collision(collision_point):
 
 func hit_scan_damage(collider, damage):
 	if collider.is_in_group("enemy") and collider.has_method("hit_successful") and !collider.enemy_dead:
-		print(str(collider))
+		#print(str(collider))
 		collider.hit_successful(damage)
 		hit_marker.visible = true
 		await get_tree().create_timer(.2).timeout
