@@ -23,3 +23,7 @@ Watch [Ground Zero Gameplay](https://youtu.be/6oPpJZYi0E4) on YouTube.
 7. **Music & Sound Design:** Bud Bajalia
 8. **Marketing & Promotion:** Emily Delaere
 9. **DevOps & Development Infrastructure:** Daniel Hiromoto
+
+## Play Now
+
+Interested in playing? Play Ground Zero [on itch.io](https://edgarquinones.itch.io/ground-zero)! 
